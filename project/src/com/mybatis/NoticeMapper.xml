@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.NoticeMapper">
+
+	<select id="selectAll" resultType="NoticeDTO" parameterType="hashmap">
+		select nonum,notitle, to_char(nowriteday,'YYYY/MM/dd') nowriteDay, noreadCnt
+	    from notice
+	     <if test="searchName == 'title'">
+	       where notitle LIKE '%'||#{searchValue}||'%'
+	    </if>
+	  
+	    order by nonum desc
+	</select>
+	<insert id="boardWrite" parameterType="NoticeDTO">
+	    insert into notice ( nonum,notitle,nocontent)
+	    values ( notice_seq.nextval, #{notitle},#{nocontent})
+	</insert>
+	<select id="selectByNum" resultType="NoticeDTO" parameterType="int">
+		select nonum,notitle, nocontent, to_char(nowriteDay,'YYYY/MM/dd') nowriteDay, noreadCnt
+	    from notice
+	    where nonum = #{nonum}
+	</select>
+	<update id="readCnt" parameterType="int">
+	   update notice
+	   set noreadCnt = noreadCnt + 1
+	   where nonum = #{nonum}
+	</update>
+	
+	<delete id="deleteByNum" parameterType="int">
+	   delete from notice
+	    where nonum = #{nonum}
+	</delete>
+	
+	<update id="updateByNum" parameterType="NoticeDTO">
+	    update notice
+	    set notitle=#{notitle} , nocontent=#{nocontent}
+	    where nonum = #{nonum}
+	</update>
+	
+	
+	<!-- <select id="search" parameterType="hashmap" resultType="MyBoardDTO">
+	    select num,title,author, to_char(writeday,'YYYY/MM/dd') writeday, readCnt
+	    from myboard
+	    
+	    <if test="searchName == 'title'">
+	       where title LIKE '%'||#{searchValue}||'%'
+	    </if>
+	    <if test="searchName == 'author'">
+	       where author LIKE '%'||#{searchValue}||'%'
+	    </if> 
+	</select> -->
+	
+	<select id="totalCount" resultType="int">
+	   select count(*)
+	   from notice
+	</select>
+	
+	<select id="totalCount1" resultType="int" parameterType="hashmap">
+	   select count(*)
+	   from notice
+	   
+	    <if test="searchName == 'title'">
+	       where notitle LIKE '%'||#{searchValue}||'%'
+	    </if>
+
+	</select>
+	
+	
+	
+	
+	
+	
+</mapper>
+
+
+
+
+
