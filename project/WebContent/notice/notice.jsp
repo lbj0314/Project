@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -55,14 +55,14 @@
 	</tr>
 	<c:set value="${list}" var="dto" scope="request"/>
 
-		<%-- <c:set value="${dto.list}" var="list1" scope="request"/> --%>
-		<%-- ${list.getList().size==0} --%>
+		<c:set value="${dto.list}" var="list1" scope="request"/>
+		${list.getList().size==0}
 	<c:if test="${empty dto}">
 		<tr>
 			<td colspan=5 align=center><b>레코드가 없습니다.</b></td>
 		</tr>
 	</c:if>
-	<%-- ${list.getList().size()!=0} --%>
+	${list.getList().size()!=0}
 	<c:if test="${!empty list}">
 		<c:forEach var="xxx" items="${dto}">
 			<tr>
@@ -74,8 +74,14 @@
 			</tr>
 		</c:forEach>
 	</c:if>
-	<%-- <tr>
+	<tr>
 	<td colspan=5><jsp:include page="page.jsp" flush="true" /></td>
-	</tr> --%>
+	</tr>
 </table>
-<a href="NoticeWriteUIServlet">글쓰기</a>
+
+
+<c:if test="${!empty sessionScope.adminaa}">
+		<a href="NoticeWriteUIServlet">글쓰기</a>
+	</c:if>
+
+ --%>

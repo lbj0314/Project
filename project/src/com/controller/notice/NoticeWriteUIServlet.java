@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 public class NoticeWriteUIServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		   response.sendRedirect("write.jsp");
+		   response.sendRedirect("notice/writeview.jsp");
 	}
 
 	

@@ -24,7 +24,7 @@ public class NoticeRetrieveServlet extends HttpServlet {
 		
 		String nonum = request.getParameter("nonum");
 		NoticeService service = new NoticeService();
-		String target="retrieve.jsp";
+		String target="notice/retrieveview.jsp";
 		try {
 			NoticeDTO dto = service.selectByNum(Integer.parseInt(nonum));
 			request.setAttribute("retrieve", dto);

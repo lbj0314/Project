@@ -21,14 +21,12 @@ public class NoticePerPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		 String perPage = request.getParameter("perPage");
-		 
+		 if(perPage.equals("def")) perPage = "3";
 		 System.out.println(perPage);
-		/* PageDTO.setPerPage(Integer.parseInt(perPage));
-		 */
+		 PageDTO.setPerPage(Integer.parseInt(perPage));
 		 String target="NoticeListServlet";
-		// request.setAttribute("perPage", perPage);
-		/* RequestDispatcher dis = request.getRequestDispatcher(target);
-		 dis.forward(request, response);*/
+		RequestDispatcher dis = request.getRequestDispatcher(target);
+		 dis.forward(request, response);
 	}
 
 	/**

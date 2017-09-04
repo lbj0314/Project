@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dto.notice.PageDTO;
 import com.exception.MyException;
@@ -37,10 +38,9 @@ public class NoticeListServlet extends HttpServlet {
 		 map.put("searchValue", searchValue);
 		 
 		 NoticeService service = new NoticeService();
-		 String target = "list.jsp";
+		 String target = "notice/noticelistview.jsp";
 		 try {
 			 PageDTO list = service.page(Integer.parseInt(curPage), map);
-			 System.out.println(list.getList());
 			request.setAttribute("list", list);
 	
 		} catch (MyException e) {
