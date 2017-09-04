@@ -142,7 +142,7 @@
 
 			<c:if test="${list.getList().size()!=0}">
 				<tr>
-					<td colspan="5"><jsp:include page="page.jsp" flush="true" /></td>
+					<td colspan="5"><jsp:include page="/notice/page.jsp" flush="true" /></td>
 				</tr>
 			</c:if>
 

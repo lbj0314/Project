@@ -14,11 +14,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="/project/css/style.css">
 
 
 
 </head>
 <body>
+<jsp:include page="/login/loginForm.jsp" flush="true" /><br>
 <jsp:include page="/include/top.jsp" flush="true"/>
 <jsp:include page="/notice/noticelist.jsp" flush="true"/>
 

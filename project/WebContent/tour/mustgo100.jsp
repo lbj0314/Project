@@ -5,5 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
     
-    
+    <div id="conta">
 <img src="/project/images/mustgo100.jpg" width=80% height=80%><br>
+
+</div>

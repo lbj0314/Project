@@ -7,14 +7,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
-
-
-<link rel="stylesheet" type="text/css" href="/project/css/style.css">
 
 
 <c:set value="${list}" var="dto" />

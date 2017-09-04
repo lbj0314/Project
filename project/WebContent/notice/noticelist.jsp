@@ -8,13 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
 
 <!-- jQeury문 -->

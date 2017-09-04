@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/project/css/style.css">
 
 <script type="text/javascript">
 $('.dropdown-toggle').dropdown()
