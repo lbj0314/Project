@@ -10,9 +10,9 @@
 		<right_margin>30</right_margin>
 	</page_setting>
 	<category_index>0</category_index>
-	<zoom>0.75</zoom>
-	<x>258</x>
-	<y>282</y>
+	<zoom>0.5</zoom>
+	<x>0</x>
+	<y>201</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -41,11 +41,11 @@
 		<suspend_validator>false</suspend_validator>
 		<export_setting>
 			<export_ddl_setting>
-				<output_path></output_path>
-				<encoding></encoding>
-				<line_feed></line_feed>
+				<output_path>erd\project.sql</output_path>
+				<encoding>UTF-8</encoding>
+				<line_feed>CR+LF</line_feed>
 				<is_open_after_saved>true</is_open_after_saved>
-				<environment_id>null</environment_id>
+				<environment_id>0</environment_id>
 				<category_id>null</category_id>
 				<ddl_target>
 					<create_comment>true</create_comment>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2017-09-04 12:46:10</creation_date>
-			<updated_date>2017-09-04 15:45:07</updated_date>
+			<updated_date>2017-09-04 16:05:19</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -1491,7 +1491,7 @@
 			<binary>false</binary>
 			<args></args>
 			<char_semantics>false</char_semantics>
-			<description>댓글수</description>
+			<description>음식점 댓글수</description>
 			<logical_name>RESTREPLECNT</logical_name>
 			<physical_name>RESTREPLECNT</physical_name>
 			<type>year(4)</type>
