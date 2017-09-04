@@ -9,9 +9,9 @@ PUBLIC "-//com.mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias type="com.dto.notice.NoticeDTO" alias="NoticeDTO" />
 		<typeAlias type="com.dto.notice.PageDTO" alias="PageDTO" />
-		<typeAlias type="com.dto.Login.ComDTO" alias="ComDTO" />
-		<typeAlias type="com.dto.Login.EntDTO" alias="EntDTO" />
-		<typeAlias type="com.dto.Login.AdmDTO" alias="AdmDTO" />
+		<typeAlias type="com.dto.login.ComDTO" alias="ComDTO" />
+		<typeAlias type="com.dto.login.EntDTO" alias="EntDTO" />
+		<typeAlias type="com.dto.login.AdmDTO" alias="AdmDTO" />
 	</typeAliases>
 
 	<environments default="development">
