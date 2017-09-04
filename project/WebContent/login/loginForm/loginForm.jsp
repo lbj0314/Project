@@ -7,7 +7,7 @@
 <option value="adm">관리자</option>
 </select>
 아이디<input type="text" name="userid">
-비밀번호<input type="text" name="passwd">
+비밀번호<input type="text" name="passwd">  
 <input type="submit" value="로그인">
 </form>
       
