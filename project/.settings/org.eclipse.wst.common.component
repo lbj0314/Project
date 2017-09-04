@@ -2,12 +2,6 @@
     <wb-module deploy-name="project">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <dependent-module archiveName="slf4j-api-1.7.7.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/slf4j-api-1.7.7/slf4j-api-1.7.7">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="standard.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/standard/standard">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="context-root" value="project"/>
         <property name="java-output-path" value="/project/build/classes"/>
     </wb-module>
