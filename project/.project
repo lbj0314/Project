@@ -3,8 +3,6 @@
 	<name>project</name>
 	<comment></comment>
 	<projects>
-		<project>slf4j-api-1.7.7</project>
-		<project>standard</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
