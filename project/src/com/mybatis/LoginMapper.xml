@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.LoginMapper">
+	
+	<select id="comLogin" parameterType="hashmap" resultType="ComDTO">
+		select *
+		from commember
+		where comid = ${userid}
+		and compasswd = ${passwd}
+	</select>
+	
+	<select id="entLogin" parameterType="hashmap" resultType="EntDTO">
+		select *
+		from entmember
+		where entid = ${userid}
+		and entpasswd = ${passwd}
+	</select>
+	
+	<select id="admLogin" parameterType="hashmap" resultType="AdmDTO">
+		select *
+		from admmember
+		where admid = ${userid}
+		and admpasswd = ${passwd}
+	</select>
+
+</mapper>
+
+
+
+
+

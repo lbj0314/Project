@@ -1,4 +1,4 @@
-<%@page import="com.dto.restaurant.PageDTO"%>
+<%@page import="com.dto.restaurant.RestPageDTO"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="com.dto.restaurant.RestDTO"%>
 <%@page import="java.util.List"%>

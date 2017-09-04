@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title> 
+<title>Insert title here</title>
 
 
 <link rel="stylesheet"
@@ -28,32 +28,28 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#perPage").on("change", function(event) {
-			
+
 			//ajax코드
 			$.ajax({
-				type:"get",
-				url:"NoticePerPageServlet",
-				data:{
-					perPage:$("#perPage").val()
+				type : "get",
+				url : "NoticePerPageServlet",
+				data : {
+					perPage : $("#perPage").val()
 				},
-				dataType:"text",
-				success:function(responseData, status, xhr){
+				dataType : "text",
+				success : function(responseData, status, xhr) {
 					console.log(responseData);
-					
+
 					///$("#result").text(responseData);
-					
+
 				},
-				error:function(xhr,status,e){
-					console.log(status,e);
-					
+				error : function(xhr, status, e) {
+					console.log(status, e);
+
 				}
-				
-				
-				
-				
-				
+
 			});
-			
+
 		});
 
 	});
@@ -115,17 +111,13 @@
 
 			<tr>
 				<td colspan="4">
-					<!-- ajax 처리하여 페이지 보여줄 갯수 처리를 위하여 남겨놓음 -->
-					
-					
-					
-					
-					<!-- <form action="NoticePerPageServlet" class="form-inline"> -->
-						페이지에서 보여줄 갯수 <select name="perPage" class="form-inline" id="perPage">
-							<option value="3">3</option>
-							<option value="5">5</option>
-							<option value="10">10</option>
-						</select><!--  <input type="submit" value="검색" class="btn btn-primary"> -->
+					<!-- ajax 처리하여 페이지 보여줄 갯수 처리를 위하여 남겨놓음 --> <!-- <form action="NoticePerPageServlet" class="form-inline"> -->
+					페이지에서 보여줄 갯수 <select name="perPage" class="form-inline"
+					id="perPage">
+						<option value="3">3</option>
+						<option value="5">5</option>
+						<option value="10">10</option>
+				</select> <!--  <input type="submit" value="검색" class="btn btn-primary"> -->
 					<!-- </form> -->
 
 					<form action="NoticeListServlet" class="form-inline">
