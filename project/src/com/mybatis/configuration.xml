@@ -4,13 +4,16 @@ PUBLIC "-//com.mybatis.org//DTD Config 3.0//EN"
 "http://com.mybatis.org/dtd/com.mybatis-3-config.dtd">
 <configuration>
 
-   <properties resource="com/mybatis/jdbc.properties" />
-   
-   <typeAliases>
-    <typeAlias type="com.dto.notice.NoticeDTO" alias="NoticeDTO"/>
-    <typeAlias type="com.dto.notice.PageDTO" alias="PageDTO"/>
-   </typeAliases>
-   
+	<properties resource="com/mybatis/jdbc.properties" />
+
+	<typeAliases>
+		<typeAlias type="com.dto.notice.NoticeDTO" alias="NoticeDTO" />
+		<typeAlias type="com.dto.notice.PageDTO" alias="PageDTO" />
+		<typeAlias type="com.dto.Login.ComDTO" alias="ComDTO" />
+		<typeAlias type="com.dto.Login.EntDTO" alias="EntDTO" />
+		<typeAlias type="com.dto.Login.AdmDTO" alias="AdmDTO" />
+	</typeAliases>
+
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />
@@ -24,6 +27,7 @@ PUBLIC "-//com.mybatis.org//DTD Config 3.0//EN"
 	</environments>
 	<mappers>
 		<mapper resource="com/mybatis/NoticeMapper.xml" />
+		<mapper resource="com/mybatis/LoginMapper.xml" />
 	</mappers>
 </configuration>
 
