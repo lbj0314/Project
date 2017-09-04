@@ -35,6 +35,7 @@ public class LoginService {
 		try {
 		dto = dao.admLogin(session, map);
 		}catch(Exception e) {
+			e.printStackTrace();
 			throw new MyException("관리자 로그인 예외");
 		}finally {
 			session.close();

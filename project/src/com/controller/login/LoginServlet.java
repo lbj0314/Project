@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 				if(dto==null) {
 					target="error.jsp";
 				}else {
-				session.setAttribute("login", dto);
+				session.setAttribute("comlogin", dto);
 				target="login/comLogin.jsp";
 				}
 			} catch (MyException e) {
@@ -47,27 +47,29 @@ public class LoginServlet extends HttpServlet {
 			}
 			
 		}
-		if (wholog.equals("adm")) {
+		else if (wholog.equals("adm")) {
 			try {
 				AdmDTO dto = service.admLogin(map);
+			
 				if(dto==null) {
 					target="error.jsp";
 				}else {
-				session.setAttribute("login", dto);
-				target="login/admLogin.jsp";
+				
+				session.setAttribute("admlogin", dto);
+				target="/home.jsp";
 				}
 			} catch (MyException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		if (wholog.equals("ent")) {
+		else if (wholog.equals("ent")) {
 			try {
 				EntDTO dto = service.entLogin(map);
 				if(dto==null) {
 					target="error.jsp";
 				}else {
-				session.setAttribute("login", dto);
+				session.setAttribute("entlogin", dto);
 				target="login/entLogin.jsp";
 				}
 			} catch (MyException e) {

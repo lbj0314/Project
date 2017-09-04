@@ -144,7 +144,7 @@
 
 		</table>
 
-<c:if test="${!empty sessionScope.adminaa}">
+<c:if test="${!empty sessionScope.admlogin}">
 
 		<div class="huge-top">
 			<button class="btn btn-normal pull-right"

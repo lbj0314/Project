@@ -37,7 +37,7 @@
 </div>
 <div class="form-group">
 내용<textarea rows="10" cols="10" name="content" class="form-control"><%= nocontent%></textarea>
-	<c:if test="${!empty sessionScope.adminaa}">
+	<c:if test="${!empty sessionScope.admlogin}">
  	<input type="submit" value="수정" class="btn btn-primary">
  	</c:if>
  
@@ -45,7 +45,7 @@
 </form>
 
 <a href="NoticeListServlet" class="btn btn-primary">목록</a>
-<c:if test="${!empty sessionScope.adminaa}">
+<c:if test="${!empty sessionScope.admlogin}">
 <a href="NoticeDeleteServlet?nonum=<%=nonum%>" class="btn btn-primary"> 삭제</a>
 </c:if>
 </body>
