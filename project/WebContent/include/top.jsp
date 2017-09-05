@@ -49,7 +49,7 @@ $('.dropdown-toggle').dropdown()
   </a>
   <ul class="dropdown-menu">
     <li><a href="/project/RestListServlet">음식점 정보</a></li>
-  </ul>
+  </ul>     
 </div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <div class="btn-group">
