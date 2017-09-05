@@ -24,7 +24,7 @@ public class TourListServlet extends HttpServlet {
 		TourService service = new TourService();
 		String target = "goodsList.jsp";
 		try {
-			/*List<TourDTO> list = service.TourList();*/
+			List<TourDTO> list = service.TourList(Integer.parseInt(attNum));
 			request.setAttribute("tourList", list);
 		} catch (MyException e) {
 			// TODO Auto-generated catch block

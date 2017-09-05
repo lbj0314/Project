@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.JoinMapper">
+	
+	<insert id="AdmJoin" parameterType="AdmDTO">
+	insert into adminator(admnum, admid, admpasswd)
+	value(adminator_seq.nextval, #{userid}, #{passwd})
+	
+	</insert>
+	
+	<insert id="ComJoin" parameterType="ComDTO">
+	insert into commember(comnum, comid, compasswd, comname, comssn, comphone, comgrade,
+			 commemail, comaddr1, comaddr2, compost1, compost2)
+	value(commember_seq.nextval, #{comid}, #{compasswd}, #{comname}, #{comssn}, #{comphone}, null,
+			 #{commemail}, #{comaddr1}, #{comaddr2}, #{compost1}, #{compost2} )
+	
+	</insert>
+	
+	<insert id="EntJoin" parameterType="EntDTO">
+	insert into entmember(entnum, entid, entpasswd, entname, entlocation, entphone,
+			 entcellphone, entfax, entin, enttype)
+	value(entmember_seq.nextval, #{entid}, #{entpasswd}, #{entname}, #{entlocation}, #{entphone},
+			 #{entcellphone}, #{entfax}, #{entin}, #{enttype})
+	
+	</insert>
+
+</mapper>
+
+
+
+
+
