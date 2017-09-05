@@ -12,6 +12,7 @@ PUBLIC "-//com.mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.dto.login.ComDTO" alias="ComDTO" />
 		<typeAlias type="com.dto.login.EntDTO" alias="EntDTO" />
 		<typeAlias type="com.dto.login.AdmDTO" alias="AdmDTO" />
+		<typeAlias type="com.dto.tour.TourDTO" alias="TourDTO"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -28,6 +29,7 @@ PUBLIC "-//com.mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<mapper resource="com/mybatis/NoticeMapper.xml" />
 		<mapper resource="com/mybatis/LoginMapper.xml" />
+		<mapper resource="com/mybatis/TourMapper.xml"/>
 	</mappers>
 </configuration>
 
