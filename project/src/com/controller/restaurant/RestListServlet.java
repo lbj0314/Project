@@ -14,43 +14,40 @@ import com.dto.restaurant.RestPageDTO;
 import com.exception.MyException;
 import com.service.restaurant.RestService;
 
-
 @WebServlet("/RestListServlet")
 public class RestListServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String restcurPage = request.getParameter("restcurPage");
+		if (restcurPage == null) {
+			restcurPage = "1";
+		}
+		String restsearchName = request.getParameter("restsearchName");
+		String restsearchValue = request.getParameter("restsearchValue");
+		HashMap<String, String> restmap = new HashMap<>();
+		restmap.put("restsearchName", restsearchName);
+		restmap.put("restsearchValue", restsearchValue);
+
+		RestService service = new RestService();
+		String target = "rest_list.jsp";
+		RestPageDTO restlist = null;
+		try {
+			restlist = service.restpage(Integer.parseInt(restcurPage), restmap);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (MyException e) {
+			e.printStackTrace();
+			//target = "error.jsp";
+		}
+		request.setAttribute("restlist", restlist);
 		
-		// list.jsp에서   1  2  3  4
-				String restcurPage = request.getParameter("restcurPage");
-				if(restcurPage == null) {
-					restcurPage = "1";
-				}
-				
-				String restsearchName = request.getParameter( "restsearchName" );
-				String restsearchValue = request.getParameter( "restsearchValue" );
+		RequestDispatcher dis = request.getRequestDispatcher(target);
+		dis.forward(request, response);
+	}// end doGet
 
-				 HashMap<String, String> map = new HashMap<>();
-				 map.put("restsearchName", restsearchName);
-				 map.put("restsearchValue", restsearchValue);
-				 
-				 RestService service = new RestService();
-				 String target = "rest_list.jsp";
-				 try {
-					 RestPageDTO list = service.page(Integer.parseInt(restcurPage), map);
-					 System.out.println(list.getRestlist());
-					request.setAttribute("list", list);
-			
-				} catch (MyException e) {
-					target = "error.jsp";
-				}
-				
-				 RequestDispatcher dis = request.getRequestDispatcher(target);
-				 dis.forward(request, response);
-			}//end 
-
-	
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
