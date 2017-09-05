@@ -8,7 +8,7 @@
 	<c:if test="${!empty sessionScope.admlogin}">
      	<font size="6">안녕하세요 관리자님!!!!</font>
      	
-	<a href="LogoutFormServlet" class="btn btn-default">로그아웃</a>&nbsp;
+	<a href="/project/LogoutFormServlet" class="btn btn-default">로그아웃</a>&nbsp;
 	</c:if>
 	<c:if test="${empty sessionScope.admlogin}">
 	<form action="LoginServlet" method="get" class="form-inline">

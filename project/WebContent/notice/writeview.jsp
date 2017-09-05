@@ -4,29 +4,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>writeView</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/project/css/style.css">
+
+
 </head>
 <body>
-<h1>글쓰기 화면</h1>
-	<div class="container-fluid">
-		
-<form action="/project/NoticeWriteServlet" method="post" >
-제목<input type="text" name="title" class="form-control"><br>
-내용<textarea rows="10" cols="10" name="content" class="form-control"></textarea>
- <input type="submit" value="글쓰기" class="form-control">
-</form>
-
-<div class="huge-top">
-			<button class="btn btn-normal pull-right"
-				onclick="location.href='/project/NoticeListServlet';">목록</button>
-		</div>
-
+<div id="conright">
+<jsp:include page="/login/loginForm.jsp" flush="true"/><br>
 
 </div>
+<jsp:include page="/include/top.jsp" flush="true"/><br>
+<jsp:include page="/notice/write.jsp" flush="true"/><br>
+<jsp:include page="/include/copyright.jsp" flush="true"/><br>
+
+
 </body>
 </html>
