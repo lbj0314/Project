@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.RestaurantMapper">
+
+	<select id="restselectAll" resultType="RestDTO" parameterType="hashmap">
+		select restnum, resttitle, to_char(restwriteday,'YYYY/MM/dd') restwriteDay, restreadCnt
+	    from restaurant
+	     <if test="restsearchName == 'resttitle'">
+	       where resttitle LIKE '%'||#{restsearchValue}||'%'
+	    </if>
+	  
+	    order by restnum desc
+	</select>
+	<insert id="restboardWrite" parameterType="RestDTO">
+	    insert into restaurant ( restnum,resttitle,restcontent)
+	    values ( restaurant_seq.nextval, #{resttitle},#{restcontent})
+	</insert>
+	<select id="restselectByNum" resultType="RestDTO" parameterType="int">
+		select restnum,resttitle, restcontent, to_char(restwriteDay,'YYYY/MM/dd') restwriteDay, restreadCnt
+	    from restaurant
+	    where restnum = #{restnum}
+	</select>
+	<update id="restreadCnt" parameterType="int">
+	   update restaurant
+	   set restreadCnt = restreadCnt + 1
+	   where restnum = #{restnum}
+	</update>
+	
+	<delete id="restdeleteByNum" parameterType="int">
+	   delete from restaurant
+	    where restnum = #{restnum}
+	</delete>
+	
+	<update id="restupdateByNum" parameterType="RestDTO">
+	    update restaurant
+	    set resttitle=#{resttitle} , restcontent=#{restcontent}
+	    where restnum = #{restnum}
+	</update>
+
+	<select id="resttotalCount" resultType="int">
+	   select count(*)
+	   from restaurant
+	</select>
+	
+	<select id="resttotalCount1" resultType="int" parameterType="hashmap">
+	   select count(*)
+	   from restaurant
+	   
+	    <if test="restsearchName == 'title'">
+	       where resttitle LIKE '%'||#{restsearchValue}||'%'
+	    </if>
+
+	</select>
+	
+</mapper>
+
+
+
+
+

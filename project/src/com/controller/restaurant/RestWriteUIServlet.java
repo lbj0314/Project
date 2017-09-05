@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class RestWriteUIServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		   response.sendRedirect("rest_write.jsp");
+		   response.sendRedirect("rest/rest_write.jsp");
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

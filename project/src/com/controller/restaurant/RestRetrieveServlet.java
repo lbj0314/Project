@@ -21,10 +21,10 @@ public class RestRetrieveServlet extends HttpServlet {
 
 		String restnum = request.getParameter("restnum");
 		RestService service = new RestService();
-		String target="rest/restretrieveview.jsp";
+		String target="rest/rest_retrieveview.jsp";
 		try {
 			RestDTO restdto = service.restselectByNum(Integer.parseInt(restnum));
-			request.setAttribute("restretrieve", restdto);
+			request.setAttribute("retrieve", restdto);
 		} catch (MyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -17,7 +17,7 @@ public class RestDeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String restnum = request.getParameter("restnum");
 		RestService service = new RestService();
-		String target ="NoticeListServlet";
+		String target ="RestListServlet";
 		try {
 			service.restdeleteByNum(Integer.parseInt(restnum));
 

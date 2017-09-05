@@ -8,7 +8,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 <!-- jQeury문 -->
@@ -24,7 +23,7 @@
 				dataType:"text",
 				success:function(responseData, status, xhr){
 					console.log(responseData);
-					$("#r").submit();
+					$('#rr').submit();
 				},
 				error:function(xhr,status,e){
 					console.log(status,e);
@@ -68,10 +67,10 @@
 
 
 						<tr>
-							<td>${r.restnum}</td>
-							<td><a href="NoticeRetrieveServlet?nonum=${r.restnum}">${r.resttitle}</a></td>
-							<td>${r.restwriteDay}</td>
-							<td>${r.restreadCnt}</td>
+							<td>${rr.restnum}</td>
+							<td><a href="NoticeRetrieveServlet?nonum=${rr.restnum}">${rr.resttitle}</a></td>
+							<td>${rr.restwriteDay}</td>
+							<td>${rr.restreadCnt}</td>
 						</tr>
 
 					</c:forEach>
@@ -102,7 +101,7 @@
 			
 			<c:if test="${restlist.getRestlist().size()!=0}">
 				<tr>
-					<!--  <td colspan="5"><jsp:include page="rest_page.jsp" flush="true" /></td>-->
+					<td colspan="5"><jsp:include page="rest_page.jsp" flush="true" /></td>
 				</tr>
 			</c:if>
 
