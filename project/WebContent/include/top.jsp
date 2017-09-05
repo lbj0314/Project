@@ -48,7 +48,7 @@ $('.dropdown-toggle').dropdown()
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li><a href="#">정보</a></li>
+    <li><a href="/project/RestListServlet">음식점 정보</a></li>
   </ul>
 </div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -59,7 +59,7 @@ $('.dropdown-toggle').dropdown()
   </a>
   <ul class="dropdown-menu">
     <li><a href="#">호텔,모텔</a><br></li>
-    
+    <li><a href="#">민박</a><br></li>
     <li><a href="#">캠핑</a><br></li>
     <li><a href="#">템플스테이</a></li>
   </ul>
@@ -77,6 +77,4 @@ $('.dropdown-toggle').dropdown()
     <li><a href="#">페이지이용 가이드</a></li>
   </ul>
 </div>
-
-
 </div>

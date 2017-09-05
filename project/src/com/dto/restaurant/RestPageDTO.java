@@ -3,14 +3,14 @@ package com.dto.restaurant;
 import java.util.List;
 
 public class RestPageDTO {
-	//전체 데이터
+
 		private List<RestDTO> restlist;
-		private int restcurPage; //현재 페이지
-		private int resttotalCount; //전체 레코드 갯수
+		private int restcurPage;
+		private int resttotalCount; 
 		private static int restperPage = 5;
 		private String restsearchName;
 		private String restsearchValue;
-		private int restperBlock = 5; // 페이지 당 보여줄 페이지 번호 갯수
+		private int restperBlock = 5;
 		public RestPageDTO() {
 			super();
 			// TODO Auto-generated constructor stub
