@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>음식점 목록</title>
+<title>숙박업소 목록</title>
 
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
@@ -24,7 +24,7 @@
 <body>
 <jsp:include page="/login/loginForm.jsp" flush="true" /><br>
 <jsp:include page="/include/top.jsp" flush="true"/>
-<jsp:include page="/restaurant/rest_list.jsp" flush="true"/>
+<jsp:include page="/stay/stay_list.jsp" flush="true"/>
 <jsp:include page="/include/copyright.jsp" flush="true"/>
 </body>
 </html>

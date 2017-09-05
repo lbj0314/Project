@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.StayMapper">
+
+	<select id="stayselectAll" resultType="StayDTO" parameterType="hashmap">
+		select staynum, staytitle, to_char(staywriteday,'YYYY/MM/dd') staywriteDay, stayreadCnt
+	    from stay
+	     <if test="staysearchName == 'staytitle'">
+	       where staytitle LIKE '%'||#{staysearchValue}||'%'
+	    </if>
+	  
+	    order by staynum desc
+	</select>
+	<insert id="stayboardWrite" parameterType="StayDTO">
+	    insert into stay ( staynum,staytitle,staycontent)
+	    values ( stay_seq.nextval, #{staytitle},#{staycontent})
+	</insert>
+	<select id="stayselectByNum" resultType="StayDTO" parameterType="int">
+		select staynum, staytitle, staycontent, to_char(staywriteDay,'YYYY/MM/dd') staywriteDay, stayreadCnt
+	    from stay
+	    where staynum = #{staynum}
+	</select>
+	<update id="stayreadCnt" parameterType="int">
+	   update stay
+	   set stayreadCnt = stayreadCnt + 1
+	   where staynum = #{staynum}
+	</update>
+	
+	<delete id="staydeleteByNum" parameterType="int">
+	   delete from stay
+	    where staynum = #{staynum}
+	</delete>
+	
+	<update id="stayupdateByNum" parameterType="StayDTO">
+	    update stay
+	    set staytitle=#{staytitle}, staycontent=#{staycontent}
+	    where staynum = #{staynum}
+	</update>
+
+	<select id="staytotalCount" resultType="int">
+	   select count(*)
+	   from stay
+	</select>
+	
+	<select id="staytotalCount1" resultType="int" parameterType="hashmap">
+	   select count(*)
+	   from stay
+	   
+	    <if test="staysearchName == 'title'">
+	       where staytitle LIKE '%'||#{staysearchValue}||'%'
+	    </if>
+
+	</select>
+	
+</mapper>
+
+
+
+
+
