@@ -14,7 +14,7 @@
    int stayreadCnt = dto.getstayreadCnt();
 %>
 
-
+ 
 
 <h1>숙박업소 글 자세히 화면</h1>
 

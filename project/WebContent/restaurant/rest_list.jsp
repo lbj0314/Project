@@ -10,7 +10,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-<!-- jQeury문 -->
+<!-- jQeury문 --> 
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#restperPage").on("change", function(event) {

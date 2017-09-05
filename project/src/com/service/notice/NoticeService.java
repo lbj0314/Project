@@ -13,25 +13,6 @@ import com.mybatis.MybatisTemplate;
 
 public class NoticeService {
 	
-	
-
-	/*public List<NoticeDTO> list() throws MyException{
-		SqlSession session = MybatisTemplate.openSession();
-		NoticeDAO dao = new NoticeDAO();
-		List<NoticeDTO> list = null;
-		try {
-			list = dao.list(session);
-		}catch(Exception e) {
-			e.printStackTrace();
-			throw new MyException("list 예외발생");
-		}finally {
-			session.close();
-		}
-		return list;
-	}//end list()
-	*/
-	
-	
 	public void boardWrite( NoticeDTO dto)throws MyException {
 		SqlSession session = MybatisTemplate.openSession();
 		NoticeDAO dao = new NoticeDAO();

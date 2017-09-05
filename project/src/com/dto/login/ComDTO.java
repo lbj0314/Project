@@ -6,17 +6,17 @@ public class ComDTO {
 	private String comid;
 	private String compasswd;
 	private String comname;
-	private int comssn;
-	private int comphone;
+	private long comssn;
+	private long comphone;
 	private String comgrade;
-	private String cmomemail;
+	private String comemail;
 	private String comaddr1;
 	private String comaddr2;
 	private int compost1;
 	private int compost2;
 	
 	
-	public ComDTO(String comid, String compasswd, String comname, int comssn, int comphone, String cmomemail,
+	public ComDTO(String comid, String compasswd, String comname, long comssn, long comphone, String comemail,
 			String comaddr1, String comaddr2, int compost1, int compost2) {
 		super();
 		this.comid = comid;
@@ -24,15 +24,15 @@ public class ComDTO {
 		this.comname = comname;
 		this.comssn = comssn;
 		this.comphone = comphone;
-		this.cmomemail = cmomemail;
+		this.comemail = comemail;
 		this.comaddr1 = comaddr1;
 		this.comaddr2 = comaddr2;
 		this.compost1 = compost1;
 		this.compost2 = compost2;
 	}
 	public ComDTO() {}
-	public ComDTO(int comnum, String comid, String compasswd, String comname, int comssn, int comphone, String comgrade,
-			String cmomemail, String comaddr1, String comaddr2, int compost1, int compost2) {
+	public ComDTO(int comnum, String comid, String compasswd, String comname, long comssn, long comphone,
+			String comgrade, String comemail, String comaddr1, String comaddr2, int compost1, int compost2) {
 		this.comnum = comnum;
 		this.comid = comid;
 		this.compasswd = compasswd;
@@ -40,11 +40,18 @@ public class ComDTO {
 		this.comssn = comssn;
 		this.comphone = comphone;
 		this.comgrade = comgrade;
-		this.cmomemail = cmomemail;
+		this.comemail = comemail;
 		this.comaddr1 = comaddr1;
 		this.comaddr2 = comaddr2;
 		this.compost1 = compost1;
 		this.compost2 = compost2;
+	}
+	@Override
+	public String toString() {
+		return "ComDTO [comnum=" + comnum + ", comid=" + comid + ", compasswd=" + compasswd + ", comname=" + comname
+				+ ", comssn=" + comssn + ", comphone=" + comphone + ", comgrade=" + comgrade + ", comemail=" + comemail
+				+ ", comaddr1=" + comaddr1 + ", comaddr2=" + comaddr2 + ", compost1=" + compost1 + ", compost2="
+				+ compost2 + "]";
 	}
 	public int getComnum() {
 		return comnum;
@@ -70,16 +77,16 @@ public class ComDTO {
 	public void setComname(String comname) {
 		this.comname = comname;
 	}
-	public int getComssn() {
+	public long getComssn() {
 		return comssn;
 	}
-	public void setComssn(int comssn) {
+	public void setComssn(long comssn) {
 		this.comssn = comssn;
 	}
-	public int getComphone() {
+	public long getComphone() {
 		return comphone;
 	}
-	public void setComphone(int comphone) {
+	public void setComphone(long comphone) {
 		this.comphone = comphone;
 	}
 	public String getComgrade() {
@@ -88,11 +95,11 @@ public class ComDTO {
 	public void setComgrade(String comgrade) {
 		this.comgrade = comgrade;
 	}
-	public String getCmomemail() {
-		return cmomemail;
+	public String getComemail() {
+		return comemail;
 	}
-	public void setCmomemail(String cmomemail) {
-		this.cmomemail = cmomemail;
+	public void setComemail(String comemail) {
+		this.comemail = comemail;
 	}
 	public String getComaddr1() {
 		return comaddr1;

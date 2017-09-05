@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<<<<<<< HEAD
-	pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript" src="../../jquery-3.2.1.js"></script>
 <!-- DAUM 주소 라이브러리 시작 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="../js_daumaddress/daum.js"></script>
+<script src="js_daumaddress/daum.js"></script>
 <!-- DAUM 주소 라이브러리 끝 -->
 <script type="text/javascript">
     
@@ -28,7 +27,7 @@
 				$("#fax").attr("disabled", false);
 				$("#in").attr("disabled", false);
 				$("#kind").attr("disabled", false);
-				$("#button").attr("disabled", true);
+				$("#button").attr("disabled", false);
 			} else if ($("#category option:selected").val() == "com") {
 				$("#name").attr("disabled", false);
 				$("#ssn").attr("disabled", false);
@@ -64,8 +63,8 @@
 
 	});
 </script>
-<form action="" method="get">
-<select id="category">
+<form action="JoinServlet" method="get">
+<select id="category" name="category">
 	<option value="com">일반회원</option>
 	<option value="ent">기업회원</option>
 	<option value="adm">관리자</option>
@@ -85,7 +84,7 @@
 	</tr>
 	<tr>
 		<td>주민 번호</td>
-		<td><input type="text" id="ssn" name="ssn"></td>
+		<td><input type="text" placeholder="주민 번호(-제외)" id="ssn" name="ssn"></td>
 	</tr>
 	<tr>
 		<td>핸드폰 번호</td>
@@ -130,24 +129,7 @@
 				<option value="stay">숙박 업소</option></select></td>
 	</tr>
 </table>
-<input type="submit" value="가입하기">
+<input type="submit" value="가입하기" class="btn btn-default">
 
 </form>
-=======
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<select>
-<option id="com">일반회원</option>
-<option id="ent">기업회원</option>
-<option id="adm">관리자</option>
-</select>
-<table border='1'>
-<tr><td>이름</td><td><input type="text"></td></tr>
-<tr><td>아이디</td><td><input type="text">
 
-
-
-</table>
->>>>>>> branch 'master' of https://github.com/lbj0314/Project.git

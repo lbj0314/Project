@@ -6,7 +6,7 @@
 <c:if test="${!empty update}">
 	<script>
 		alert('${update}');
-	</script>
+	</script> 
 </c:if>
 <c:if test="${!empty insert}">
 	<script>

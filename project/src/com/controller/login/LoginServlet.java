@@ -38,8 +38,8 @@ public class LoginServlet extends HttpServlet {
 				if(dto==null) {
 					target="error.jsp";
 				}else {
-				session.setAttribute("comlogin", dto);
-				target="login/comLogin.jsp";
+				session.setAttribute("comLogin", dto);
+				target="home.jsp";
 				}
 			} catch (MyException e) {
 				// TODO Auto-generated catch block
@@ -55,8 +55,8 @@ public class LoginServlet extends HttpServlet {
 					target="error.jsp";
 				}else {
 				
-				session.setAttribute("admlogin", dto);
-				target="/home.jsp";
+				session.setAttribute("admLogin", dto);
+				target="home.jsp";
 				}
 			} catch (MyException e) {
 				// TODO Auto-generated catch block
@@ -69,8 +69,8 @@ public class LoginServlet extends HttpServlet {
 				if(dto==null) {
 					target="error.jsp";
 				}else {
-				session.setAttribute("entlogin", dto);
-				target="login/entLogin.jsp";
+				session.setAttribute("entLogin", dto);
+				target="home.jsp";
 				}
 			} catch (MyException e) {
 				// TODO Auto-generated catch block
