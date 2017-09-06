@@ -29,7 +29,7 @@
 							<table style='padding:15px'>
 								<tr>
 									<td>
-										<a href="RestRetrieveServlet?restNun=${rrr.restNum}"> 
+										<a href="RestRetrieveServlet?restNum=${rrr.restNum}"> 
 											<img src="images/${rrr.restImage}.gif" border="0" align="center" width="200">
 										</a>
 									</td>

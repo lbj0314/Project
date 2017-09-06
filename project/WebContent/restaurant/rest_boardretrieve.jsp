@@ -30,7 +30,7 @@
 </div>
 </form>
 
-<a href="RestListServlet" class="btn btn-primary">목록</a>
+<a href="RestBoardListServlet" class="btn btn-primary">목록</a>
 <c:if test="${!empty sessionScope.login}">
 <a href="RestDeleteServlet?restnum=<%=restNum%>" class="btn btn-primary"> 삭제</a>
 </c:if>

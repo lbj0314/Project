@@ -68,7 +68,7 @@
 
 						<tr>
 							<td>${rr.restNum}</td>
-							<td><a href="RestRetrieveServlet?restnum=${rr.restNum}">${rr.restTitle}</a></td>
+							<td><a href="RestBoardRetrieveServlet?restnum=${rr.restNum}">${rr.restTitle}</a></td>
 							<td>${rr.restWriteDay}</td>
 							<td>${rr.restReadCnt}</td>
 						</tr>
@@ -81,7 +81,7 @@
 				<td colspan="4">	
 					<div class="form-group" align="center">
 					<!-- 검색 -->
-					<form action="RestListServlet" class="form-inline" id="r">
+					<form action="RestBoardListServlet" class="form-inline" id="r">
 						페이지에서 보여줄 개수 <select name="restPerPage" class="form-inline" id="restPerPage">
 							<option value="def">선택하세요</option>
 							<option value="5">5</option>

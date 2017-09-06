@@ -2,11 +2,13 @@ package com.dto.restaurant;
 
 public class RestDTO {
 	private int restNum;
-	private String restStyle;
+	private String restType;
 	private String restName;
 	private int restPrice;
 	private String restImage;
+	private String restImageClone;
 	private int restPhone;
+	private String restLocation;
 	private String restTitle;
 	private String restWriteDay;
 	private String restContent;
@@ -18,16 +20,18 @@ public class RestDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public RestDTO(int restNum, String restStyle, String restName, int restPrice, String restImage, int restPhone,
-			String restTitle, String restWriteDay, String restContent, int restReadCnt, int restRepleCnt,
-			String restSite, int entNum) {
+	public RestDTO(int restNum, String restType, String restName, int restPrice, String restImage,
+			String restImageClone, int restPhone, String restLocation, String restTitle, String restWriteDay,
+			String restContent, int restReadCnt, int restRepleCnt, String restSite, int entNum) {
 		super();
 		this.restNum = restNum;
-		this.restStyle = restStyle;
+		this.restType = restType;
 		this.restName = restName;
 		this.restPrice = restPrice;
 		this.restImage = restImage;
+		this.restImageClone = restImageClone;
 		this.restPhone = restPhone;
+		this.restLocation = restLocation;
 		this.restTitle = restTitle;
 		this.restWriteDay = restWriteDay;
 		this.restContent = restContent;
@@ -42,11 +46,11 @@ public class RestDTO {
 	public void setRestNum(int restNum) {
 		this.restNum = restNum;
 	}
-	public String getRestStyle() {
-		return restStyle;
+	public String getRestType() {
+		return restType;
 	}
-	public void setRestStyle(String restStyle) {
-		this.restStyle = restStyle;
+	public void setRestType(String restType) {
+		this.restType = restType;
 	}
 	public String getRestName() {
 		return restName;
@@ -66,11 +70,23 @@ public class RestDTO {
 	public void setRestImage(String restImage) {
 		this.restImage = restImage;
 	}
+	public String getRestImageClone() {
+		return restImageClone;
+	}
+	public void setRestImageClone(String restImageClone) {
+		this.restImageClone = restImageClone;
+	}
 	public int getRestPhone() {
 		return restPhone;
 	}
 	public void setRestPhone(int restPhone) {
 		this.restPhone = restPhone;
+	}
+	public String getRestLocation() {
+		return restLocation;
+	}
+	public void setRestLocation(String restLocation) {
+		this.restLocation = restLocation;
 	}
 	public String getRestTitle() {
 		return restTitle;
@@ -116,10 +132,11 @@ public class RestDTO {
 	}
 	@Override
 	public String toString() {
-		return "RestDTO [restNum=" + restNum + ", restStyle=" + restStyle + ", restName=" + restName + ", restPrice="
-				+ restPrice + ", restImage=" + restImage + ", restPhone=" + restPhone + ", restTitle=" + restTitle
-				+ ", restWriteDay=" + restWriteDay + ", restContent=" + restContent + ", restReadCnt=" + restReadCnt
-				+ ", restRepleCnt=" + restRepleCnt + ", restSite=" + restSite + ", entNum=" + entNum + "]";
+		return "RestDTO [restNum=" + restNum + ", restType=" + restType + ", restName=" + restName + ", restPrice="
+				+ restPrice + ", restImage=" + restImage + ", restImageClone=" + restImageClone + ", restPhone="
+				+ restPhone + ", restLocation=" + restLocation + ", restTitle=" + restTitle + ", restWriteDay="
+				+ restWriteDay + ", restContent=" + restContent + ", restReadCnt=" + restReadCnt + ", restRepleCnt="
+				+ restRepleCnt + ", restSite=" + restSite + ", entNum=" + entNum + "]";
 	}
 	
 	

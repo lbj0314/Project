@@ -55,7 +55,7 @@
 
 <c:if test="${restcurPage != 1}">
 	<a
-		href='RestListServlet?restCurPage=1&restSearchName=${restSearchName}&restSearchValue=${restSearchValue}' class="btn btn-primary btn-sm active" role="button">처음</a>
+		href='RestBoardListServlet?restCurPage=1&restSearchName=${restSearchName}&restSearchValue=${restSearchValue}' class="btn btn-primary btn-sm active" role="button">처음</a>
 &nbsp;
 </c:if>
 
@@ -68,7 +68,7 @@
 
 <c:if test="${restStartPage != 1}">
 	<a
-		href='RestListServlet?restCurPage=${restStartPage -1}&restSearchName=${restSearchName }&restSearchValue= ${restSearchValue}' class="btn btn-primary btn-sm active" role="button">&lt;&lt;</a>
+		href='RestBoardListServlet?restCurPage=${restStartPage -1}&restSearchName=${restSearchName }&restSearchValue= ${restSearchValue}' class="btn btn-primary btn-sm active" role="button">&lt;&lt;</a>
 	 
 &nbsp;
 </c:if>
@@ -81,7 +81,7 @@
 
 <c:if test="${restCurPage != 1}">
 	<a
-		href='RestListServlet?restcurPage=${restCurPage -1}&restSearchName=${restSearchName}&restSearchValue=${restSearchValue}' class="btn btn-primary btn-sm active" role="button">&lt;</a>
+		href='RestBoardListServlet?restcurPage=${restCurPage -1}&restSearchName=${restSearchName}&restSearchValue=${restSearchValue}' class="btn btn-primary btn-sm active" role="button">&lt;</a>
 
 &nbsp;
 </c:if>
@@ -97,7 +97,7 @@
 </c:if>
 	<c:if test="${restCurPage != rr}">
 		<a
-			href='RestListServlet?restCurPage=${rr}&restSearchName=${restSearchName }&restSearchValue=${restSearchValue }' class="btn btn-primary btn-sm active" role="button">${rr}</a> 
+			href='RestBoardListServlet?restCurPage=${rr}&restSearchName=${restSearchName }&restSearchValue=${restSearchValue }' class="btn btn-primary btn-sm active" role="button">${rr}</a> 
 		&nbsp;
 		</c:if>
 </c:forEach>
@@ -109,7 +109,7 @@
 </c:if>
 <c:if test="${restCurPage != restEndPage }">
 	<a
-		href='RestListServlet?restCurPage=${restEndPage }&restSearchName=${restSearchName }&restSearchValue=${restSearchValue}' class="btn btn-primary btn-sm active" role="button">${restEndPage}</a>
+		href='RestBoardListServlet?restCurPage=${restEndPage }&restSearchName=${restSearchName }&restSearchValue=${restSearchValue}' class="btn btn-primary btn-sm active" role="button">${restEndPage}</a>
 
 
 </c:if>
@@ -121,7 +121,7 @@
 </c:if>
 <c:if test="${restCurPage != restTotalNum }">
 	<a
-		href='RestListServlet?restCurPage=${restCurPage +1 }&restSearchName=${restSearchName }&restSearchValue=${restSearchValue }' class="btn btn-primary btn-sm active" role="button">&gt;</a>
+		href='RestBoardListServlet?restCurPage=${restCurPage +1 }&restSearchName=${restSearchName }&restSearchValue=${restSearchValue }' class="btn btn-primary btn-sm active" role="button">&gt;</a>
 </c:if>
 
 &nbsp;
@@ -130,7 +130,7 @@
 </c:if>
 <c:if test="${restEndPage != restTotalNum }">
 	<a
-		href='RestListServlet?restCurPage=${restEndPage +1 }&restSearchName=${restSearchName }&restSearchValue= ${restSearchValue }' class="btn btn-primary btn-sm active" role="button">&gt;&gt;</a>
+		href='RestBoardListServlet?restCurPage=${restEndPage +1 }&restSearchName=${restSearchName }&restSearchValue= ${restSearchValue }' class="btn btn-primary btn-sm active" role="button">&gt;&gt;</a>
 </c:if>
 &nbsp;
 <c:if test="${restCurPage == restTotalNum }">
@@ -138,7 +138,7 @@
 </c:if>
 <c:if test="${restCurPage != restTotalNum }">
 	<a
-		href='RestListServlet?restCurPage=${restTotalNum}&restSearchName=${restSearchName }&restSearchValue=${restSearchValue }' class="btn btn-primary btn-sm active" role="button">마지막</a>
+		href='RestBoardListServlet?restCurPage=${restTotalNum}&restSearchName=${restSearchName }&restSearchValue=${restSearchValue }' class="btn btn-primary btn-sm active" role="button">마지막</a>
 </c:if>
 
 </div>

@@ -12,7 +12,7 @@
  
 <div class="huge-top">
 			<button class="btn btn-normal pull-right"
-				onclick="location.href='/project/RestListServlet';">목록</button>
+				onclick="location.href='/project/RestBoardListServlet';">목록</button>
 		</div>
 
 
