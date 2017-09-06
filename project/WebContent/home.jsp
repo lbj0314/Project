@@ -17,7 +17,7 @@
 	</script>
 </c:if>
 
-<c:if test="${!empty sessionScope.admLogin }">
+<c:if test="${!empty sessionScope.entLogin }">
 	<script>
 		alert("기업 회원으로 로그인 되었습니다.");
 	</script>
