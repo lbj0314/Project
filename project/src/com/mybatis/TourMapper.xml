@@ -2,22 +2,99 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mybatis.NoticeMapper">
+<mapper namespace="com.mybatis.TourMapper">
 
-	<!-- <select id="tourList" parameterType="string" resultType="GoodsDTO">
-	   select 
-	   			attNum,
-	   			attImage,
-	          attPhone,
-	          attLocation,
-	          attPrice,
-	          attTitle,
-	          attContent,
-	          attWriteday,
-	          attReadCnt,
-	          attRepleCnt,
-	          attSite
-	   from Tour
-	   where attNum = #{attNum} 
+
+	
+	<select id="TourtotalCount" resultType="int">
+	   select count(*)
+	   from tour
+	</select>
+	
+	<select id="TourtotalCount1" resultType="int" parameterType="hashmap">
+	   select count(*)
+	   from tour
+	   
+	    <if test="searchName == 'title'">
+	       where atttitle LIKE '%'||#{searchValue}||'%'
+	    </if>
+
+	</select>
+	<insert id="tourWrite" parameterType="TourDTO">
+	    insert into tour (attNum,attName,attImage,attPhone,
+		attLocation,attAdultPrice,attKidPrice,attTitle,attContent,
+		attSite,attType,entNum,attImageClone)
+	    values ( tour_seq.nextval, #{attName},#{attImage},#{attPhone}
+	    ,#{attLocation},#{attAdultPrice},#{attKidPrice},#{attTitle},#{attContent},
+	    #{attSite},#{attType},#{entNum},#{attImageClone})
+	    
+	</insert>
+	
+	
+	<select id="selectTour" resultType="TourDTO" parameterType="hashmap">
+		select attNum,attName,attImage,attPhone,
+		attLocation,attAdultPrice,attKidPrice,attTitle,attContent,
+		to_char(attWriteDay,'YYYY/MM/dd') attWriteDay,attReadCnt,
+		attRepleCnt,attSite,attGoods,attType,entNum,attImageClone
+		from tour
+	     <if test="searchName == 'title'">
+	       where attTitle LIKE '%'||#{searchValue}||'%'
+	    </if>
+	  
+	    order by attNum desc
+	</select>
+	
+	
+	<select id="selectByTourNum" resultType="TourDTO" parameterType="int">
+		select attNum,attName,attImage,attPhone,
+		attLocation,attAdultPrice,attKidPrice,attTitle,attContent,
+		to_char(attWriteDay,'YYYY/MM/dd') attWriteDay,attReadCnt,
+		attRepleCnt,attSite,attGoods,attType,entNum,attImageClone
+		from tour
+	    where attNum = #{attNum}
+	</select>
+	
+	
+	<update id="readTourCnt" parameterType="int">
+	   update tour
+	   set attReadCnt = attReadCnt + 1
+	   where attNum = #{attNum}
+	</update>
+	
+	<delete id="deleteByTourNum" parameterType="int">
+	   delete from tour
+	    where attNum = #{attNum}
+	</delete>
+	
+	<update id="updateByTourNum" parameterType="NoticeDTO">
+	    update tour
+	    set attName=#{attName} , attImage=#{attImage}
+	    , attPhone=#{attPhone}, attLocation=#{attLocation}
+	    , attAdultPrice=#{attAdultPrice},attKidPrice=#{attKidPrice},
+	     attTitle=#{attTitle}
+	    , attContent=#{attContent},
+	    attImageClone=#{attImageClone}
+	    where attNum = #{attNum}
+	</update>
+	
+	
+	<!-- <select id="search" parameterType="hashmap" resultType="MyBoardDTO">
+	    select num,title,author, to_char(writeday,'YYYY/MM/dd') writeday, readCnt
+	    from myboard
+	    
+	    <if test="searchName == 'title'">
+	       where title LIKE '%'||#{searchValue}||'%'
+	    </if>
+	    <if test="searchName == 'author'">
+	       where author LIKE '%'||#{searchValue}||'%'
+	    </if> 
 	</select> -->
+	
+	
+	
 </mapper>
+
+
+
+
+
