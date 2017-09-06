@@ -1,53 +1,65 @@
 package com.dto.tour;
 
 public class TourDTO {
-
 	private int attNum;
-	private String attBest100;
 	private String attName;
 	private String attImage;
-	private int attPhone;
+	private String attPhone;
 	private String attLocation;
-	private int attPrice;
+	private int attAdultPrice;
+	private int attKidPrice;
 	private String attTitle;
 	private String attContent;
-	private int attWriteday;
+	private String attWriteDay;
 	private int attReadCnt;
 	private int attRepleCnt;
 	private String attSite;
+	private int attGoods;
+	private String attType;
+	private int entNum;
+	private String attImageClone;
+	public String getAttImageClone() {
+		return attImageClone;
+	}
+	public void setAttImageClone(String attImageClone) {
+		this.attImageClone = attImageClone;
+	}
 	public TourDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public TourDTO(int attNum, String attBest100, String attName, String attImage, int attPhone, String attLocation,
-			int attPrice, String attTitle, String attContent, int attWriteday, int attReadCnt, int attRepleCnt,
-			String attSite) {
+
+	
+	
+	
+	
+	public TourDTO(int attNum, String attName, String attImage, String attPhone, String attLocation, int attAdultPrice,
+			int attKidPrice, String attTitle, String attContent, String attWriteDay, int attReadCnt, int attRepleCnt,
+			String attSite, int attGoods, String attType, int entNum, String attImageClone) {
 		super();
 		this.attNum = attNum;
-		this.attBest100 = attBest100;
 		this.attName = attName;
 		this.attImage = attImage;
 		this.attPhone = attPhone;
 		this.attLocation = attLocation;
-		this.attPrice = attPrice;
+		this.attAdultPrice = attAdultPrice;
+		this.attKidPrice = attKidPrice;
 		this.attTitle = attTitle;
 		this.attContent = attContent;
-		this.attWriteday = attWriteday;
+		this.attWriteDay = attWriteDay;
 		this.attReadCnt = attReadCnt;
 		this.attRepleCnt = attRepleCnt;
 		this.attSite = attSite;
+		this.attGoods = attGoods;
+		this.attType = attType;
+		this.entNum = entNum;
+		this.attImageClone = attImageClone;
 	}
 	public int getAttNum() {
 		return attNum;
 	}
 	public void setAttNum(int attNum) {
 		this.attNum = attNum;
-	}
-	public String getAttBest100() {
-		return attBest100;
-	}
-	public void setAttBest100(String attBest100) {
-		this.attBest100 = attBest100;
 	}
 	public String getAttName() {
 		return attName;
@@ -61,10 +73,10 @@ public class TourDTO {
 	public void setAttImage(String attImage) {
 		this.attImage = attImage;
 	}
-	public int getAttPhone() {
+	public String getAttPhone() {
 		return attPhone;
 	}
-	public void setAttPhone(int attPhone) {
+	public void setAttPhone(String attPhone) {
 		this.attPhone = attPhone;
 	}
 	public String getAttLocation() {
@@ -73,11 +85,17 @@ public class TourDTO {
 	public void setAttLocation(String attLocation) {
 		this.attLocation = attLocation;
 	}
-	public int getAttPrice() {
-		return attPrice;
+	public int getAttAdultPrice() {
+		return attAdultPrice;
 	}
-	public void setAttPrice(int attPrice) {
-		this.attPrice = attPrice;
+	public void setAttAdultPrice(int attAdultPrice) {
+		this.attAdultPrice = attAdultPrice;
+	}
+	public int getAttKidPrice() {
+		return attKidPrice;
+	}
+	public void setAttKidPrice(int attKidPrice) {
+		this.attKidPrice = attKidPrice;
 	}
 	public String getAttTitle() {
 		return attTitle;
@@ -91,11 +109,11 @@ public class TourDTO {
 	public void setAttContent(String attContent) {
 		this.attContent = attContent;
 	}
-	public int getAttWriteday() {
-		return attWriteday;
+	public String getAttWriteDay() {
+		return attWriteDay;
 	}
-	public void setAttWriteday(int attWriteday) {
-		this.attWriteday = attWriteday;
+	public void setAttWriteDay(String attWriteDay) {
+		this.attWriteDay = attWriteDay;
 	}
 	public int getAttReadCnt() {
 		return attReadCnt;
@@ -115,14 +133,36 @@ public class TourDTO {
 	public void setAttSite(String attSite) {
 		this.attSite = attSite;
 	}
+	public int getAttGoods() {
+		return attGoods;
+	}
+	public void setAttGoods(int attGoods) {
+		this.attGoods = attGoods;
+	}
+	public String getAttType() {
+		return attType;
+	}
+	public void setAttType(String attType) {
+		this.attType = attType;
+	}
+	public int getEntNum() {
+		return entNum;
+	}
+	public void setEntNum(int entNum) {
+		this.entNum = entNum;
+	}
 	@Override
 	public String toString() {
-		return "TourDTO [attNum=" + attNum + ", attBest100=" + attBest100 + ", attName=" + attName + ", attImage="
-				+ attImage + ", attPhone=" + attPhone + ", attLocation=" + attLocation + ", attPrice=" + attPrice
-				+ ", attTitle=" + attTitle + ", attContent=" + attContent + ", attWriteday=" + attWriteday
-				+ ", attReadCnt=" + attReadCnt + ", attRepleCnt=" + attRepleCnt + ", attSite=" + attSite + "]";
+		return "TourDTO [attNum=" + attNum + ", attName=" + attName + ", attImage=" + attImage + ", attPhone="
+				+ attPhone + ", attLocation=" + attLocation + ", attAdultPrice=" + attAdultPrice + ", attKidPrice="
+				+ attKidPrice + ", attTitle=" + attTitle + ", attContent=" + attContent + ", attWriteDay=" + attWriteDay
+				+ ", attReadCnt=" + attReadCnt + ", attRepleCnt=" + attRepleCnt + ", attSite=" + attSite + ", attGoods="
+				+ attGoods + ", attType=" + attType + ", entNum=" + entNum + ", attImageClone=" + attImageClone + "]";
 	}
 	
 	
+
 	
+	
+
 }
