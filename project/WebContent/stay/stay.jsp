@@ -27,28 +27,28 @@
 		<td><b>작성일</b></td>
 		<td><b>조회수</b></td>
 	</tr>
-	<c:set value="${restlist}" var="restdto" scope="request"/>
-		<c:set value="${restdto.restlist}" var="restlist2" scope="request"/>
-		${restlist.getRestlist().size==0}
-	<c:if test="${empty restdto}">
+	<c:set value="${staylist}" var="staydto" scope="request"/>
+		<c:set value="${staydto.staylist}" var="staylist2" scope="request"/>
+		${staylist.getstaylist().size==0}
+	<c:if test="${empty staydto}">
 		<tr>
 			<td colspan=5 align=center><b>레코드가 없습니다.</b></td>
 		</tr>
 	</c:if>
-	${restlist.getRestlist().size()!=0}
-	<c:if test="${!empty restlist}">
-		<c:forEach var="r" items="${restdto}">
+	${staylist.getstaylist().size()!=0}
+	<c:if test="${!empty staylist}">
+		<c:forEach var="r" items="${staydto}">
 			<tr>
 				<td>${r.num}</td>
-				<td><a href="MyBoardRetrieveServlet?num=${r.restnum}">${r.resttitle}</a></td>
-				<td>${r.restname}</td>
-				<td>${r.restwriteday}</td>
-				<td>${r.restreadCnt}</td>
+				<td><a href="MyBoardRetrieveServlet?num=${r.staynum}">${r.staytitle}</a></td>
+				<td>${r.stayname}</td>
+				<td>${r.staywriteday}</td>
+				<td>${r.stayreadCnt}</td>
 			</tr>
 		</c:forEach>
 	</c:if>
 	<tr>
-	<td colspan=5><jsp:include page="rest_page.jsp" flush="true" /></td>
+	<td colspan=5><jsp:include page="stay_page.jsp" flush="true" /></td>
 	</tr>
 </table>
 <c:if test="${!empty sessionScope.login.entname}">

@@ -1,29 +1,29 @@
-<%@page import="com.dto.restaurant.RestPageDTO"%>
+<%@page import="com.dto.stay.StayPageDTO"%>
 <%@page import="java.util.HashMap"%>
-<%@page import="com.dto.restaurant.RestDTO"%>
+<%@page import="com.dto.stay.StayDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+ 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-<!-- jQeury문 --> 
+<!-- jQeury문 -->
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#restperPage").on("change", function(event) {
+		$("#stayperPage").on("change", function(event) {
 			$.ajax({
 				type:"get",
-				url:"RestPerPageServlet",
+				url:"StayPerPageServlet",
 				data:{
-					restperPage:$("#restperPage").val()
+					stayperPage:$("#stayperPage").val()
 				},
 				dataType:"text",
 				success:function(responseData, status, xhr){
 					console.log(responseData);
-					$('#rr').submit();
+					$('#ss').submit();
 				},
 				error:function(xhr,status,e){
 					console.log(status,e);
@@ -35,7 +35,7 @@
 	});
 </script>
 	<h1 align=center>
-		음식점 목록
+		숙박업소 목록
 	</h1>
 	<div class="container">
 		<table class="table table-board">
@@ -45,13 +45,13 @@
 				<td>작성일</td>
 				<td>조회수</td>
 			</tr>
-			<c:set value="${restlist}" var="restdto" scope="request" />
+			<c:set value="${staylist}" var="staydto" scope="request" />
 
-			<c:set value="${restdto.getRestlist()}" var="restlist" scope="request" />
+			<c:set value="${staydto.getStaylist()}" var="staylist" scope="request" />
 			<c:choose>
 
 
-				<c:when test="${restlist.getRestlist().size()==0}">
+				<c:when test="${staylist.getStaylist().size()==0}">
 
 
 					<tr>
@@ -61,16 +61,16 @@
 
 
 				<c:otherwise>
-					<c:forEach var="r" items="${restlist}">
+					<c:forEach var="ss" items="${staylist}">
 
 
 
 
 						<tr>
-							<td>${rr.restnum}</td>
-							<td><a href="RestRetrieveServlet?restnum=${rr.restnum}">${rr.resttitle}</a></td>
-							<td>${rr.restwriteDay}</td>
-							<td>${rr.restreadCnt}</td>
+							<td>${ss.staynum}</td>
+							<td><a href="StayRetrieveServlet?staynum=${ss.staynum}">${ss.staytitle}</a></td>
+							<td>${ss.staywriteDay}</td>
+							<td>${ss.stayreadCnt}</td>
 						</tr>
 
 					</c:forEach>
@@ -81,16 +81,16 @@
 				<td colspan="4">	
 					<div class="form-group" align="center">
 					<!-- 검색 -->
-					<form action="RestListServlet" class="form-inline" id="r">
-						페이지에서 보여줄 개수 <select name="restperPage" class="form-inline" id="restperPage">
+					<form action="StayListServlet" class="form-inline" id="ss">
+						페이지에서 보여줄 개수 <select name="stayperPage" class="form-inline" id="stayperPage">
 							<option value="def">선택하세요</option>
 							<option value="3">3</option>
 							<option value="5">5</option>
 							<option value="8">8</option>
 							</select>
-							<select name="restsearchName" class="form-inline">
-								<option value="resttitle">제목</option>
-							</select> <input type="text" name="restsearchValue" class="form-control">
+							<select name="staysearchName" class="form-inline">
+								<option value="staytitle">제목</option>
+							</select> <input type="text" name="staysearchValue" class="form-control">
 							<input type="submit" value="검색" class="btn btn-primary">
 						
 					</form>
@@ -99,9 +99,9 @@
 				</td>
 			</tr>
 			
-			<c:if test="${restlist.getRestlist().size()!=0}">
+			<c:if test="${staylist.getStaylist().size()!=0}">
 				<tr>
-					<td colspan="5"><jsp:include page="rest_page.jsp" flush="true" /></td>
+					<td colspan="5"><jsp:include page="stay_page.jsp" flush="true" /></td>
 				</tr>
 			</c:if>
 
@@ -112,7 +112,7 @@
 
 		<div class="huge-top">
 			<button class="btn btn-normal pull-right"
-				onclick="location.href='RestWriteUIServlet';">글쓰기</button>
+				onclick="location.href='StayWriteUIServlet';">글쓰기</button>
 		</div>
 		</c:if>
 	</div>

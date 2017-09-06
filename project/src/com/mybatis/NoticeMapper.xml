@@ -38,20 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    set notitle=#{notitle} , nocontent=#{nocontent}
 	    where nonum = #{nonum}
 	</update>
-	
-	
-	<!-- <select id="search" parameterType="hashmap" resultType="MyBoardDTO">
-	    select num,title,author, to_char(writeday,'YYYY/MM/dd') writeday, readCnt
-	    from myboard
-	    
-	    <if test="searchName == 'title'">
-	       where title LIKE '%'||#{searchValue}||'%'
-	    </if>
-	    <if test="searchName == 'author'">
-	       where author LIKE '%'||#{searchValue}||'%'
-	    </if> 
-	</select> -->
-	
+
 	<select id="totalCount" resultType="int">
 	   select count(*)
 	   from notice
@@ -66,11 +53,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    </if>
 
 	</select>
-	
-	
-	
-	
-	
 	
 </mapper>
 
