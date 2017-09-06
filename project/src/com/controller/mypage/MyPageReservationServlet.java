@@ -8,15 +8,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/MyPageReservation")
+@WebServlet("/MyPageReservationServlet")
 public class MyPageReservationServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setAttribute("reservation", "reservation");
-		String target = "mypage/mypage.jsp";
-		response.sendRedirect(target);
+		String target="mypage/mypage.jsp";
+		RequestDispatcher dis = request.getRequestDispatcher(target);
+		dis.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -16,6 +16,18 @@ public class ComDTO {
 	private int compost2;
 	
 	
+	public ComDTO(String compasswd, String comname, long comphone, String comemail, String comaddr1, String comaddr2,
+			int compost1, int compost2) {
+		super();
+		this.compasswd = compasswd;
+		this.comname = comname;
+		this.comphone = comphone;
+		this.comemail = comemail;
+		this.comaddr1 = comaddr1;
+		this.comaddr2 = comaddr2;
+		this.compost1 = compost1;
+		this.compost2 = compost2;
+	}
 	public ComDTO(String comid, String compasswd, String comname, long comssn, long comphone, String comemail,
 			String comaddr1, String comaddr2, int compost1, int compost2) {
 		super();

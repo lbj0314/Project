@@ -3,6 +3,7 @@ package com.service.login;
 import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionException;
 
 import com.dao.login.LoginDAO;
 import com.dto.login.AdmDTO;
@@ -58,4 +59,35 @@ public class LoginService {
 		return dto;
 		
 	}
+	
+	public void comChange(ComDTO dto) throws MyException{
+		SqlSession session = MybatisTemplate.openSession();
+		LoginDAO dao = new LoginDAO();
+		try {
+			int n = dao.comChange(session, dto);
+			if(n==1) {
+				session.commit();
+			}
+		}catch(Exception e) {
+			throw new MyException("일반 회원수정 실패");
+		}finally {
+			session.close();
+		}
+	}
+	
+	public void comDelete(int comnum) throws MyException{
+		SqlSession session = MybatisTemplate.openSession();
+		LoginDAO dao = new LoginDAO();
+		try {
+			int n = dao.comDelete(session, comnum);
+			if(n==1) {
+				session.commit();
+			}
+		}catch(Exception e) {
+			throw new MyException("일반 회원 탈퇴 실패");
+		}finally {
+			session.close();
+		}
+	}
+
 }
