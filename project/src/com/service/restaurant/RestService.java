@@ -5,9 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.dao.GoodsDAO;
 import com.dao.restaurant.RestDAO;
-import com.dto.GoodsDTO;
 import com.dto.restaurant.RestDTO;
 import com.dto.restaurant.RestPageDTO;
 import com.exception.MyException;
@@ -129,9 +127,9 @@ public class RestService {
 		return dto;
 	}// end goodsList
 
-	public RestDTO restRetrieve(String restNum) throws MyException {
+	public List<RestDTO> restRetrieve(String restNum) throws MyException {
 		RestDAO dao = new RestDAO();
-		RestDTO dto = null;
+		List<RestDTO> dto = null;
 		SqlSession session = MybatisTemplate.openSession();
 		try {
 			dto = dao.restRetrieve(session, restNum);

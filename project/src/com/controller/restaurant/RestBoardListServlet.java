@@ -35,7 +35,7 @@ public class RestBoardListServlet extends HttpServlet {
 		 RestService service = new RestService();
 		 String target = "restaurant/rest_listview.jsp";
 		 try {
-			 RestPageDTO list = service.restpage(Integer.parseInt(restCurPage), restmap);
+			 RestPageDTO list = service.restPage(Integer.parseInt(restCurPage), restmap);
 			request.setAttribute("list", list);
 	
 		} catch (MyException e) {

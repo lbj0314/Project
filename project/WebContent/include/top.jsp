@@ -48,7 +48,7 @@ $('.dropdown-toggle').dropdown()
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li><a href="/project/RestListServlet">음식점 정보</a></li>
+    <li><a href="/project/RestBoardListServlet">음식점 정보</a></li>
   </ul>     
 </div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -71,9 +71,14 @@ public class RestDAO {
 		return dto;
 	}
 
-	public List<RestDTO> restList(SqlSession session, String restNum) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<RestDTO> restList(SqlSession session , String restNum) {
+		List<RestDTO> dto = session.selectList("restList",restNum);
+		return dto;
+	}
+
+	public List<RestDTO> restRetrieve(SqlSession session ,String restNum) {
+		List<RestDTO> dto = session.selectList("restRetrieve", restNum);
+		return dto;
 	}
 
 }// end class

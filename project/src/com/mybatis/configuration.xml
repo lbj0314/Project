@@ -3,20 +3,18 @@
 PUBLIC "-//com.mybatis.org//DTD Config 3.0//EN"
 "http://com.mybatis.org/dtd/com.mybatis-3-config.dtd">
 <configuration>
-
 	<properties resource="com/mybatis/jdbc.properties" />
-
 	<typeAliases>
 		<typeAlias type="com.dto.notice.NoticeDTO" alias="NoticeDTO" />
 		<typeAlias type="com.dto.notice.PageDTO" alias="PageDTO" />
 		<typeAlias type="com.dto.login.ComDTO" alias="ComDTO" />
 		<typeAlias type="com.dto.login.EntDTO" alias="EntDTO" />
 		<typeAlias type="com.dto.login.AdmDTO" alias="AdmDTO" />
-		<typeAlias type="com.dto.tour.TourDTO" alias="TourDTO"/>
+		<typeAlias type="com.dto.tour.TourDTO" alias="TourDTO" />
 		<typeAlias type="com.dto.restaurant.RestDTO" alias="RestDTO" />
 		<typeAlias type="com.dto.restaurant.RestPageDTO" alias="RestPageDTO" />
-			<typeAlias type="com.dto.stay.StayDTO" alias="StayDTO" />
-			<typeAlias type="com.dto.stay.StayPageDTO" alias="StayPageDTO" />
+		<typeAlias type="com.dto.stay.StayDTO" alias="StayDTO" />
+		<typeAlias type="com.dto.stay.StayPageDTO" alias="StayPageDTO" />
 	</typeAliases>
 
 	<environments default="development">
@@ -39,6 +37,3 @@ PUBLIC "-//com.mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/mybatis/JoinMapper.xml"/>
 	</mappers>
 </configuration>
-
-
-

@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="admLogin" parameterType="hashmap" resultType="AdmDTO">
 		select *
-		from admmember
+		from adminator
 		where admid = #{userid}
 		and admpasswd = #{passwd}
 		
