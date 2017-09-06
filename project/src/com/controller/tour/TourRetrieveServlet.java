@@ -1,8 +1,6 @@
 package com.controller.tour;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,56 +10,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dto.tour.TourDTO;
-import com.dto.tour.TourPageDTO;
 import com.exception.MyException;
-
 import com.service.tour.TourService;
 
 
-@WebServlet("/TourListServlet")
-public class TourListServlet extends HttpServlet {
+@WebServlet("/TourRetrieveServlet")
+public class TourRetrieveServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
-		// list.jsp에서   1  2  3  4
-				String curPage = request.getParameter("curPage");
-				if(curPage == null) {
-					curPage = "1";
-				}
+	String attNum = request.getParameter("attNum");
 		
-		String searchName = request.getParameter( "searchName" );
-		String searchValue = request.getParameter( "searchValue" );
-
-		 HashMap<String, String> map = new HashMap<>();
-		 map.put("searchName", searchName);
-		 map.put("searchValue", searchValue);
 		TourService service = new TourService();
-		String target="tour/tourList.jsp";
-		 
-		
+		String target="tour/tourRetrieve.jsp";
 		try {
-			TourPageDTO list=service.page(Integer.parseInt(curPage),map);
-			request.setAttribute("tourlist", list);
+			TourDTO dto = service.selectByTourNum(Integer.parseInt(attNum));
+			request.setAttribute("tourRetrieve", dto);
+			
 		} catch (MyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			target="error.jsp";
-			
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-	
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
-	
 		
+	
 	}
 
 	
