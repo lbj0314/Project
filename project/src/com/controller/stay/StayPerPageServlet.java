@@ -16,11 +16,11 @@ public class StayPerPageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String stayperPage = request.getParameter("stayperPage");
-		if (stayperPage.equals("def"))
-			stayperPage = "3";
-		System.out.println(stayperPage);
-		StayPageDTO.setstayperPage(Integer.parseInt(stayperPage));
+		String stayPerPage = request.getParameter("stayPerPage");
+		if (stayPerPage.equals("def"))
+			stayPerPage = "3";
+		System.out.println(stayPerPage);
+		StayPageDTO.setStayPerPage(Integer.parseInt(stayPerPage));
 		String target = "StayListServlet";
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);

@@ -19,17 +19,17 @@ public class StayWriteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 	
-		String staytitle = request.getParameter("staytitle");
-		String staycontent = request.getParameter("staycontent");
+		String stayTitle = request.getParameter("stayTitle");
+		String stayContent = request.getParameter("stayContent");
 		
 		StayDTO staydto = new StayDTO();
-		staydto.setstaytitle(staytitle);
-		staydto.setstaycontent(staycontent);
+		staydto.setStayTitle(stayTitle);
+		staydto.setStayContent(stayContent);
 		
 		StayService service = new StayService();
 		String target="StayListServlet";
 		try {
-			service.stayboardWrite(staydto);
+			service.stayBoardWrite(staydto);
 		} catch (MyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

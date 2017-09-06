@@ -19,17 +19,17 @@ public class RestWriteServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 	
-		String resttitle = request.getParameter("resttitle");
-		String restcontent = request.getParameter("restcontent");
+		String restTitle = request.getParameter("restTitle");
+		String restContent = request.getParameter("restContent");
 		
 		RestDTO restdto = new RestDTO();
-		restdto.setResttitle(resttitle);
-		restdto.setRestcontent(restcontent);
+		restdto.setRestTitle(restTitle);
+		restdto.setRestContent(restContent);
 		
 		RestService service = new RestService();
-		String target="RestListServlet";
+		String target="RestBoardListServlet";
 		try {
-			service.restboardWrite(restdto);
+			service.restBoardWrite(restdto);
 		} catch (MyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

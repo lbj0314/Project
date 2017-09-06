@@ -15,11 +15,11 @@ import com.service.stay.StayService;
 public class StayDeleteServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String staynum = request.getParameter("staynum");
+		String stayNum = request.getParameter("stayNum");
 		StayService service = new StayService();
 		String target ="StayListServlet";
 		try {
-			service.staydeleteByNum(Integer.parseInt(staynum));
+			service.stayDeleteByNum(Integer.parseInt(stayNum));
 
 		} catch (MyException e) {
 			target ="error.jsp";

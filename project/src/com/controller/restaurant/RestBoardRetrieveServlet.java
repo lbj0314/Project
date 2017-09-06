@@ -13,17 +13,17 @@ import com.dto.restaurant.RestDTO;
 import com.exception.MyException;
 import com.service.restaurant.RestService;
 
-@WebServlet("/RestRetrieveServlet")
-public class RestRetrieveServlet extends HttpServlet {
+@WebServlet("/RestBoardRetrieveServlet")
+public class RestBoardRetrieveServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String restnum = request.getParameter("restnum");
+		String restNum = request.getParameter("restNum");
 		RestService service = new RestService();
-		String target="rest/rest_retrieveview.jsp";
+		String target="restaurant/rest_boardretrieveview.jsp";
 		try {
-			RestDTO restdto = service.restselectByNum(Integer.parseInt(restnum));
+			RestDTO restdto = service.restSelectByNum(Integer.parseInt(restNum));
 			request.setAttribute("retrieve", restdto);
 		} catch (MyException e) {
 			// TODO Auto-generated catch block

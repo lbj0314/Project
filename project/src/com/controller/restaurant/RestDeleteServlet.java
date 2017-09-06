@@ -15,11 +15,11 @@ import com.service.restaurant.RestService;
 public class RestDeleteServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String restnum = request.getParameter("restnum");
+		String restNum = request.getParameter("restNum");
 		RestService service = new RestService();
-		String target ="RestListServlet";
+		String target ="RestBoardListServlet";
 		try {
-			service.restdeleteByNum(Integer.parseInt(restnum));
+			service.restDeleteByNum(Integer.parseInt(restNum));
 
 		} catch (MyException e) {
 			target ="error.jsp";

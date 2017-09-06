@@ -4,76 +4,74 @@ import java.util.List;
 
 public class StayPageDTO {
 
-		private List<StayDTO> staylist;
-		private int staycurPage;
-		private int staytotalCount; 
-		private static int stayperPage = 5;
-		private String staysearchName;
-		private String staysearchValue;
-		private int stayperBlock = 5;
+		private List<StayDTO> stayList;
+		private int stayCurPage;
+		private int stayTotalCount; 
+		private static int stayPerPage = 5;
+		private String staySearchName;
+		private String staySearchValue;
+		private int stayPerBlock = 5;
 		public StayPageDTO() {
 			super();
 			// TODO Auto-generated constructor stub
 		}
-		public StayPageDTO(List<StayDTO> staylist, int staycurPage, int staytotalCount, String staysearchName,
-				String staysearchValue, int stayperBlock) {
+		public StayPageDTO(List<StayDTO> stayList, int stayCurPage, int stayTotalCount, String staySearchName,
+				String staySearchValue, int stayPerBlock) {
 			super();
-			this.staylist = staylist;
-			this.staycurPage = staycurPage;
-			this.staytotalCount = staytotalCount;
-			this.staysearchName = staysearchName;
-			this.staysearchValue = staysearchValue;
-			this.stayperBlock = stayperBlock;
+			this.stayList = stayList;
+			this.stayCurPage = stayCurPage;
+			this.stayTotalCount = stayTotalCount;
+			this.staySearchName = staySearchName;
+			this.staySearchValue = staySearchValue;
+			this.stayPerBlock = stayPerBlock;
 		}
-		public List<StayDTO> getstaylist() {
-			return staylist;
+		public List<StayDTO> getStayList() {
+			return stayList;
 		}
-		public void setstaylist(List<StayDTO> staylist) {
-			this.staylist = staylist;
+		public void setStayList(List<StayDTO> stayList) {
+			this.stayList = stayList;
 		}
-		public int getstaycurPage() {
-			return staycurPage;
+		public int getStayCurPage() {
+			return stayCurPage;
 		}
-		public void setstaycurPage(int staycurPage) {
-			this.staycurPage = staycurPage;
+		public void setStayCurPage(int stayCurPage) {
+			this.stayCurPage = stayCurPage;
 		}
-		public int getstaytotalCount() {
-			return staytotalCount;
+		public int getStayTotalCount() {
+			return stayTotalCount;
 		}
-		public void setstaytotalCount(int staytotalCount) {
-			this.staytotalCount = staytotalCount;
+		public void setStayTotalCount(int stayTotalCount) {
+			this.stayTotalCount = stayTotalCount;
 		}
-		public static int getstayperPage() {
-			return stayperPage;
+		public static int getStayPerPage() {
+			return stayPerPage;
 		}
-		public static void setstayperPage(int stayperPage) {
-			StayPageDTO.stayperPage = stayperPage;
+		public static void setStayPerPage(int stayPerPage) {
+			StayPageDTO.stayPerPage = stayPerPage;
 		}
-		public String getstaysearchName() {
-			return staysearchName;
+		public String getStaySearchName() {
+			return staySearchName;
 		}
-		public void setstaysearchName(String staysearchName) {
-			this.staysearchName = staysearchName;
+		public void setStaySearchName(String staySearchName) {
+			this.staySearchName = staySearchName;
 		}
-		public String getstaysearchValue() {
-			return staysearchValue;
+		public String getStaySearchValue() {
+			return staySearchValue;
 		}
-		public void setstaysearchValue(String staysearchValue) {
-			this.staysearchValue = staysearchValue;
+		public void setStaySearchValue(String staySearchValue) {
+			this.staySearchValue = staySearchValue;
 		}
-		public int getstayperBlock() {
-			return stayperBlock;
+		public int getStayPerBlock() {
+			return stayPerBlock;
 		}
-		public void setstayperBlock(int stayperBlock) {
-			this.stayperBlock = stayperBlock;
+		public void setStayPerBlock(int stayPerBlock) {
+			this.stayPerBlock = stayPerBlock;
 		}
 		@Override
 		public String toString() {
-			return "StayPageDTO [staylist=" + staylist + ", staycurPage=" + staycurPage + ", staytotalCount="
-					+ staytotalCount + ", staysearchName=" + staysearchName + ", staysearchValue=" + staysearchValue
-					+ ", stayperBlock=" + stayperBlock + "]";
+			return "StayPageDTO [stayList=" + stayList + ", stayCurPage=" + stayCurPage + ", stayTotalCount="
+					+ stayTotalCount + ", staySearchName=" + staySearchName + ", staySearchValue=" + staySearchValue
+					+ ", stayPerBlock=" + stayPerBlock + "]";
 		}
-		
-		
-
+	
 }

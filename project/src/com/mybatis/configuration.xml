@@ -32,17 +32,11 @@ PUBLIC "-//com.mybatis.org//DTD Config 3.0//EN"
 	</environments>
 	<mappers>
 		<mapper resource="com/mybatis/NoticeMapper.xml" />
-<<<<<<< HEAD
 		<mapper resource="com/mybatis/LoginMapper.xml" />
 		<mapper resource="com/mybatis/RestaurantMapper.xml"/>
 		<mapper resource="com/mybatis/StayMapper.xml"/>
-		
-=======
-		<mapper resource="com/mybatis/LoginMapper.xml" />
 		<mapper resource="com/mybatis/TourMapper.xml"/>
 		<mapper resource="com/mybatis/JoinMapper.xml"/>
-		<mapper resource="com/mybatis/RestaurantMapper.xml"/>
->>>>>>> branch 'master' of https://github.com/lbj0314/Project.git
 	</mappers>
 </configuration>
 

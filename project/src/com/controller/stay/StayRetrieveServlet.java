@@ -19,11 +19,11 @@ public class StayRetrieveServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String staynum = request.getParameter("staynum");
+		String stayNum = request.getParameter("stayNum");
 		StayService service = new StayService();
-		String target="stay/stay_retrieveview.jsp";
+		String target="stay/stay_boardretrieveview.jsp";
 		try {
-			StayDTO staydto = service.stayselectByNum(Integer.parseInt(staynum));
+			StayDTO staydto = service.staySelectByNum(Integer.parseInt(stayNum));
 			request.setAttribute("retrieve", staydto);
 		} catch (MyException e) {
 			// TODO Auto-generated catch block
