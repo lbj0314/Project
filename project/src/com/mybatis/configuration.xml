@@ -3,9 +3,7 @@
 PUBLIC "-//com.mybatis.org//DTD Config 3.0//EN"
 "http://com.mybatis.org/dtd/com.mybatis-3-config.dtd">
 <configuration>
-
 	<properties resource="com/mybatis/jdbc.properties" />
-
 	<typeAliases>
 		<typeAlias type="com.dto.notice.NoticeDTO" alias="NoticeDTO" />
 		<typeAlias type="com.dto.notice.PageDTO" alias="PageDTO" />
@@ -38,7 +36,6 @@ PUBLIC "-//com.mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/mybatis/RestaurantMapper.xml" />
 		<mapper resource="com/mybatis/StayMapper.xml" />
 		<mapper resource="com/mybatis/TourMapper.xml" />
-
 	</mappers>
 </configuration>
 
