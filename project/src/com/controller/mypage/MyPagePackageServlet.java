@@ -1,22 +1,20 @@
 package com.controller.mypage;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/MyPageServlet")
-public class MyPageServlet extends HttpServlet {
+@WebServlet("/MyPagePackageServlet")
+public class MyPagePackageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String target = "mypage/mypage.jsp";
-		RequestDispatcher dis = request.getRequestDispatcher(target);
-		dis.forward(request, response);
 		
+		request.setAttribute("package", "package");
+		String target="mypage/mypage.jsp";
+		response.sendRedirect(target);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

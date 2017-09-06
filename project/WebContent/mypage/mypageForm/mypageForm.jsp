@@ -6,7 +6,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <a href="" class="btn btn-default">예약 확인하기</a>
-<a href="" class="btn btn-default">다녀온 패키지</a>
-<a href="" class="btn btn-default">내가 쓴 후기</a>
-<a href="" class="btn btn-default">내정보 변경하기</a>
-<a href="" class="btn btn-default">탈퇴하기</a>
+<a href="" class="btn btn-default">다녀온 패키지</a> <!-- 여기에 다녀온패키지와 연관해서 작성된 후기 바로가는 버튼링크 달기 -->
+<a href="MyPageMemberServlet" class="btn btn-default">내정보 변경하기</a>
+<a href="MyPageLeaveServlet" class="btn btn-default">탈퇴하기</a>
