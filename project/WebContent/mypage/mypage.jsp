@@ -23,13 +23,13 @@
 	<jsp:include page="/login/loginForm.jsp" flush="true" /><br>
 	<jsp:include page="/include/top.jsp" flush="true" />
 	<jsp:include page="mypageForm/mypageForm.jsp" flush="true" />
-	<c:if test=${!empty requestScope.reservation }>
+	<c:if test="${!empty requestScope.reservation }">
 	<jsp:include page="mypageForm/mypageReservation.jsp" flush="true" />
 	</c:if>
-	<c:if test=${!empty requestScope.leave }>
+	<c:if test="${!empty requestScope.leave }">
 	<jsp:include page="mypageForm/mypageLeave.jsp" flush="true" />
 	</c:if>
-	<c:if test=${!empty requestScope.member }>
+	<c:if test="${!empty requestScope.member }">
 	<jsp:include page="mypageForm/mypageMember.jsp" flush="true" />
 	</c:if>
 
