@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -23,25 +23,12 @@
 	<jsp:include page="/login/loginForm.jsp" flush="true" /><br>
 	<jsp:include page="/include/top.jsp" flush="true" />
 	<jsp:include page="mypageForm/mypageForm.jsp" flush="true" />
-	<c:if test="${!empty requestScope.reservation}">
-	<jsp:include page="mypageForm/mypageReservation.jsp" flush="true" />
+	<c:if test="${!empty requestScope.memberAfter }">
+	<jsp:include page="mypageForm/mypageAfterMember.jsp" flush="true" />
 	</c:if>
-	<c:if test="${!empty requestScope.leave}">
-	<jsp:include page="mypageForm/mypageLeave.jsp" flush="true" />
+	<c:if test="${!empty requestScope.reviewAfter }">
+	<jsp:include page="mypageForm/mypageAfterMember.jsp" flush="true" />
 	</c:if>
-	<c:if test="${!empty requestScope.member}">
-	<jsp:include page="mypageForm/mypageMember.jsp" flush="true" />
-	</c:if>
-	<c:if test="${!empty requestScope.box}">
-	<jsp:include page="mypageForm/mypageBox.jsp" flush="true" />
-	</c:if>
-	<c:if test="${!empty requestScope.membermanage }">
-	<jsp:include page="mypageForm/mypageMemberManage.jsp" flush="true" />
-	</c:if>
-	<c:if test="${!empty requestScope.reviewmanage }">
-	<jsp:include page="mypageForm/mypageReviewManage.jsp" flush="true" />
-	</c:if>
-
 	
 
 	<jsp:include page="/include/copyright.jsp" flush="true" />
