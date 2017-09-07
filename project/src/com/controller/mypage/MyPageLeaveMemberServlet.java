@@ -33,7 +33,7 @@ public class MyPageLeaveMemberServlet extends HttpServlet {
 		}
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
-		
+		 
 		
 	}
 
