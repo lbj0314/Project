@@ -4,59 +4,54 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.StayMapper">
 
-	<select id="stayselectAll" resultType="StayDTO" parameterType="hashmap">
-		select staynum, staytitle, to_char(staywriteday,'YYYY/MM/dd') staywriteDay, stayreadCnt
-	    from stay
-	     <if test="staysearchName == 'staytitle'">
-	       where staytitle LIKE '%'||#{staysearchValue}||'%'
-	    </if>
-	  
-	    order by staynum desc
+	<select id="StayselectAll" resultType="StayDTO" parameterType="hashmap">
+		select stayNum, stayTitle, to_char(stayWriteday,'YYYY/MM/dd')
+		stayWriteDay, stayReadCnt
+		from stay
+		<if test="staySearchName == 'stayTitle'">
+			where stayTitle LIKE '%'||#{staySearchValue}||'%'
+		</if>
+
+		order by stayNum desc
 	</select>
-	<insert id="stayboardWrite" parameterType="StayDTO">
-	    insert into stay ( staynum,staytitle,staycontent)
-	    values ( stay_seq.nextval, #{staytitle},#{staycontent})
+	<insert id="stayBoardWrite" parameterType="StayDTO">
+		insert into stay ( stayNum,stayTitle,stayContent)
+		values ( stay_seq.nextval, #{stayTitle},#{stayContent})
 	</insert>
-	<select id="stayselectByNum" resultType="StayDTO" parameterType="int">
-		select staynum, staytitle, staycontent, to_char(staywriteDay,'YYYY/MM/dd') staywriteDay, stayreadCnt
-	    from stay
-	    where staynum = #{staynum}
+	<select id="staySelectByNum" resultType="StayDTO" parameterType="int">
+		select stayNum, stayTitle, stayContent,
+		to_char(stayWriteDay,'YYYY/MM/dd') stayWriteDay, stayReadCnt
+		from stay
+		where stayNum = #{stayNum}
 	</select>
-	<update id="stayreadCnt" parameterType="int">
-	   update stay
-	   set stayreadCnt = stayreadCnt + 1
-	   where staynum = #{staynum}
+	<update id="stayReadCnt" parameterType="int">
+		update stay
+		set stayReadCnt = stayReadCnt + 1
+		where stayNum = #{stayNum}
 	</update>
-	
-	<delete id="staydeleteByNum" parameterType="int">
-	   delete from stay
-	    where staynum = #{staynum}
+
+	<delete id="stayDeleteByNum" parameterType="int">
+		delete from stay
+		where stayNum = #{stayNum}
 	</delete>
-	
-	<update id="stayupdateByNum" parameterType="StayDTO">
-	    update stay
-	    set staytitle=#{staytitle}, staycontent=#{staycontent}
-	    where staynum = #{staynum}
+
+	<update id="stayUpdateByNum" parameterType="StayDTO">
+		update stay
+		set stayTitle=#{stayTitle}, stayContent=#{stayContent}
+		where stayNum = #{stayNum}
 	</update>
 
-	<select id="staytotalCount" resultType="int">
-	   select count(*)
-	   from stay
+	<select id="stayTotalCount" resultType="int">
+		select count(*)
+		from stay
 	</select>
-	
-	<select id="staytotalCount1" resultType="int" parameterType="hashmap">
-	   select count(*)
-	   from stay
-	   
-	    <if test="staysearchName == 'title'">
-	       where staytitle LIKE '%'||#{staysearchValue}||'%'
-	    </if>
 
+	<select id="stayTotalCount1" resultType="int" parameterType="hashmap">
+		select count(*)
+		from stay
+
+		<if test="staySearchName == 'title'">
+			where stayTitle LIKE '%'||#{staySearchValue}||'%'
+		</if>
 	</select>
-	
 </mapper>
-
-
-
-
-

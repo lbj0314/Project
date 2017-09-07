@@ -19,18 +19,18 @@ public class StayUpdateServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
-		String staynum = request.getParameter("staynum");
-		String staytitle = request.getParameter("staytitle");
-		String staycontent = request.getParameter("staycontent");
+		String stayNum = request.getParameter("stayNum");
+		String stayTitle = request.getParameter("stayTitle");
+		String stayContent = request.getParameter("stayContent");
 		StayDTO staydto = new StayDTO();
-		staydto.setstaynum(Integer.parseInt(staynum));
-		staydto.setstaytitle(staytitle);
-		staydto.setstaycontent(staycontent);
+		staydto.setStayNum(Integer.parseInt(stayNum));
+		staydto.setStayTitle(stayTitle);
+		staydto.setStayContent(stayContent);
 
 		StayService service = new StayService();
 		String target = "StayListServlet";
 		try {
-			service.stayupdateByNum(staydto);
+			service.stayUpdateByNum(staydto);
 
 		} catch (MyException e) {
 			target = "error.jsp";

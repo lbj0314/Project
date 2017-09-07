@@ -19,22 +19,22 @@ public class StayListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String staycurPage = request.getParameter("staycurPage");
-		if(staycurPage == null) {
-			staycurPage = "1";
+		String stayCurPage = request.getParameter("stayCurPage");
+		if(stayCurPage == null) {
+			stayCurPage = "1";
 		}
 		
-		String staysearchName = request.getParameter( "staysearchName" );
-		String staysearchValue = request.getParameter( "staysearchValue" );
+		String staySearchName = request.getParameter( "staySearchName" );
+		String staySearchValue = request.getParameter( "staySearchValue" );
 
 		 HashMap<String, String> staymap = new HashMap<>();
-		 staymap.put("staysearchName", staysearchName);
-		 staymap.put("staysearchValue", staysearchValue);
+		 staymap.put("staySearchName", staySearchName);
+		 staymap.put("staySearchValue", staySearchValue);
 		 
 		 StayService service = new StayService();
-		 String target = "stay/stay_listview.jsp";
+		 String target = "stay/stay_boardlistview.jsp";
 		 try {
-			 StayPageDTO list = service.staypage(Integer.parseInt(staycurPage), staymap);
+			 StayPageDTO list = service.stayPage(Integer.parseInt(stayCurPage), staymap);
 			request.setAttribute("list", list);
 	
 		} catch (MyException e) {

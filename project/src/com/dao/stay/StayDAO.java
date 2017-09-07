@@ -11,63 +11,63 @@ import com.dto.stay.StayPageDTO;
 
 public class StayDAO {
 
-	public List<StayDTO> staylist(SqlSession session) {
-		List<StayDTO> list = session.selectList("stayselectAll");
+	public List<StayDTO> stayList(SqlSession session) {
+		List<StayDTO> list = session.selectList("stayEelectAll");
 		return list;
 	}
 
-	public int stayboardWrite(SqlSession session, StayDTO staydto) {
-		int n = session.insert("stayboardWrite", staydto);
+	public int stayBoardWrite(SqlSession session, StayDTO staydto) {
+		int n = session.insert("stayBoardWrite", staydto);
 		return n;
 	}
 
-	public StayDTO stayselectByNum(SqlSession session, int staynum) {
-		StayDTO dto = session.selectOne("stayselectByNum", staynum);
+	public StayDTO staySelectByNum(SqlSession session, int stayNum) {
+		StayDTO dto = session.selectOne("staySelectByNum", stayNum);
 		return dto;
 	}
 
-	public int stayreadCnt(SqlSession session, int staynum) {
-		int n = session.update("stayreadCnt", staynum);
+	public int stayReadCnt(SqlSession session, int stayNum) {
+		int n = session.update("stayReadCnt", stayNum);
 		return n;
 	}
 
-	public int staydeleteByNum(SqlSession session, int staynum) {
-		int n = session.delete("staydeleteByNum", staynum);
+	public int stayDeleteByNum(SqlSession session, int stayNum) {
+		int n = session.delete("stayDeleteByNum", stayNum);
 		return n;
 	}
 
-	public int stayupdateByNum(SqlSession session, StayDTO staydto) {
-		int n = session.update("stayupdateByNum", staydto);
+	public int stayUpdateByNum(SqlSession session, StayDTO staydto) {
+		int n = session.update("stayUpdateByNum", staydto);
 		return n;
 	}
 
-	public List<StayDTO> staysearch(SqlSession session, HashMap<String, String> staymap) {
-		List<StayDTO> list = session.selectList("staysearch", staymap);
+	public List<StayDTO> staySearch(SqlSession session, HashMap<String, String> staymap) {
+		List<StayDTO> list = session.selectList("staySearch", staymap);
 		return list;
 	}
 
-	public StayPageDTO staypage(SqlSession session, int staycurPage, HashMap<String, String> staymap) {
+	public StayPageDTO stayPage(SqlSession session, int stayCurPage, HashMap<String, String> staymap) {
 
 		StayPageDTO dto = new StayPageDTO();
 
-		int sIndex = (staycurPage - 1) * StayPageDTO.getstayperPage();
-		int length = StayPageDTO.getstayperPage();
+		int sIndex = (stayCurPage - 1) * StayPageDTO.getStayPerPage();
+		int length = StayPageDTO.getStayPerPage();
 
-		List<StayDTO> list = session.selectList("stayselectAll", staymap, new RowBounds(sIndex, length));
-		int staytotalCount = 0;
+		List<StayDTO> list = session.selectList("staySelectAll", staymap, new RowBounds(sIndex, length));
+		int stayTotalCount = 0;
 		System.out.println("!" + list);
-		dto.setstaylist(list);
-		dto.setstaycurPage(staycurPage);
-		System.out.println(">>" + dto.getstaylist());
-		if (staymap.get("staysearchValue") == null) {
-			staytotalCount = session.selectOne("staytotalCount");
+		dto.setStayList(list);
+		dto.setStayCurPage(stayCurPage);
+		System.out.println(">" + dto.getStayList());
+		if (staymap.get("staySearchValue") == null) {
+			stayTotalCount = session.selectOne("stayTotalCount");
 		} else {
-			staytotalCount = session.selectOne("staytotalCount2", staymap);
+			stayTotalCount = session.selectOne("stayTotalCount1", staymap);
 		}
 
-		dto.setstaytotalCount(staytotalCount);
-		dto.setstaysearchName(staymap.get("staysearchName"));
-		dto.setstaysearchValue(staymap.get("staysearchValue"));
+		dto.setStayTotalCount(stayTotalCount);
+		dto.setStaySearchName(staymap.get("staySearchName"));
+		dto.setStaySearchValue(staymap.get("staySearchValue"));
 		return dto;
 	}
 

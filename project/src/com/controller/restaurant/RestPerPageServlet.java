@@ -16,12 +16,12 @@ public class RestPerPageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String restperPage = request.getParameter("restperPage");
-		if (restperPage.equals("def"))
-			restperPage = "3";
-		System.out.println(restperPage);
-		RestPageDTO.setRestperPage(Integer.parseInt(restperPage));
-		String target = "RestListServlet";
+		String restPerPage = request.getParameter("restPerPage");
+		if (restPerPage.equals("def"))
+			restPerPage = "3";
+		System.out.println(restPerPage);
+		RestPageDTO.setRestPerPage(Integer.parseInt(restPerPage));
+		String target = "RestBoardListServlet";
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
 	}

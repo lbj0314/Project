@@ -1,56 +1,143 @@
 package com.dto.restaurant;
 
 public class RestDTO {
-	private int restnum;
-	private String resttitle;
-	private String restwriteDay;
-	private String restcontent;
-	private int restreadCnt;
+	private int restNum;
+	private String restType;
+	private String restName;
+	private int restPrice;
+	private String restImage;
+	private String restImageClone;
+	private int restPhone;
+	private String restLocation;
+	private String restTitle;
+	private String restWriteDay;
+	private String restContent;
+	private int restReadCnt;
+	private int restRepleCnt;
+	private String restSite;
+	private int entNum;
 	public RestDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public RestDTO(int restnum, String resttitle, String restwriteDay, String restcontent, int restreadCnt) {
+	public RestDTO(int restNum, String restType, String restName, int restPrice, String restImage,
+			String restImageClone, int restPhone, String restLocation, String restTitle, String restWriteDay,
+			String restContent, int restReadCnt, int restRepleCnt, String restSite, int entNum) {
 		super();
-		this.restnum = restnum;
-		this.resttitle = resttitle;
-		this.restwriteDay = restwriteDay;
-		this.restcontent = restcontent;
-		this.restreadCnt = restreadCnt;
+		this.restNum = restNum;
+		this.restType = restType;
+		this.restName = restName;
+		this.restPrice = restPrice;
+		this.restImage = restImage;
+		this.restImageClone = restImageClone;
+		this.restPhone = restPhone;
+		this.restLocation = restLocation;
+		this.restTitle = restTitle;
+		this.restWriteDay = restWriteDay;
+		this.restContent = restContent;
+		this.restReadCnt = restReadCnt;
+		this.restRepleCnt = restRepleCnt;
+		this.restSite = restSite;
+		this.entNum = entNum;
 	}
-	public int getRestnum() {
-		return restnum;
+	public int getRestNum() {
+		return restNum;
 	}
-	public void setRestnum(int restnum) {
-		this.restnum = restnum;
+	public void setRestNum(int restNum) {
+		this.restNum = restNum;
 	}
-	public String getResttitle() {
-		return resttitle;
+	public String getRestType() {
+		return restType;
 	}
-	public void setResttitle(String resttitle) {
-		this.resttitle = resttitle;
+	public void setRestType(String restType) {
+		this.restType = restType;
 	}
-	public String getRestwriteDay() {
-		return restwriteDay;
+	public String getRestName() {
+		return restName;
 	}
-	public void setRestwriteDay(String restwriteDay) {
-		this.restwriteDay = restwriteDay;
+	public void setRestName(String restName) {
+		this.restName = restName;
 	}
-	public String getRestcontent() {
-		return restcontent;
+	public int getRestPrice() {
+		return restPrice;
 	}
-	public void setRestcontent(String restcontent) {
-		this.restcontent = restcontent;
+	public void setRestPrice(int restPrice) {
+		this.restPrice = restPrice;
 	}
-	public int getRestreadCnt() {
-		return restreadCnt;
+	public String getRestImage() {
+		return restImage;
 	}
-	public void setRestreadCnt(int restreadCnt) {
-		this.restreadCnt = restreadCnt;
+	public void setRestImage(String restImage) {
+		this.restImage = restImage;
+	}
+	public String getRestImageClone() {
+		return restImageClone;
+	}
+	public void setRestImageClone(String restImageClone) {
+		this.restImageClone = restImageClone;
+	}
+	public int getRestPhone() {
+		return restPhone;
+	}
+	public void setRestPhone(int restPhone) {
+		this.restPhone = restPhone;
+	}
+	public String getRestLocation() {
+		return restLocation;
+	}
+	public void setRestLocation(String restLocation) {
+		this.restLocation = restLocation;
+	}
+	public String getRestTitle() {
+		return restTitle;
+	}
+	public void setRestTitle(String restTitle) {
+		this.restTitle = restTitle;
+	}
+	public String getRestWriteDay() {
+		return restWriteDay;
+	}
+	public void setRestWriteDay(String restWriteDay) {
+		this.restWriteDay = restWriteDay;
+	}
+	public String getRestContent() {
+		return restContent;
+	}
+	public void setRestContent(String restContent) {
+		this.restContent = restContent;
+	}
+	public int getRestReadCnt() {
+		return restReadCnt;
+	}
+	public void setRestReadCnt(int restReadCnt) {
+		this.restReadCnt = restReadCnt;
+	}
+	public int getRestRepleCnt() {
+		return restRepleCnt;
+	}
+	public void setRestRepleCnt(int restRepleCnt) {
+		this.restRepleCnt = restRepleCnt;
+	}
+	public String getRestSite() {
+		return restSite;
+	}
+	public void setRestSite(String restSite) {
+		this.restSite = restSite;
+	}
+	public int getEntNum() {
+		return entNum;
+	}
+	public void setEntNum(int entNum) {
+		this.entNum = entNum;
 	}
 	@Override
 	public String toString() {
-		return "RestDTO [restnum=" + restnum + ", resttitle=" + resttitle + ", restwriteDay=" + restwriteDay
-				+ ", restcontent=" + restcontent + ", restreadCnt=" + restreadCnt + "]";
+		return "RestDTO [restNum=" + restNum + ", restType=" + restType + ", restName=" + restName + ", restPrice="
+				+ restPrice + ", restImage=" + restImage + ", restImageClone=" + restImageClone + ", restPhone="
+				+ restPhone + ", restLocation=" + restLocation + ", restTitle=" + restTitle + ", restWriteDay="
+				+ restWriteDay + ", restContent=" + restContent + ", restReadCnt=" + restReadCnt + ", restRepleCnt="
+				+ restRepleCnt + ", restSite=" + restSite + ", entNum=" + entNum + "]";
 	}
+	
+	
 }

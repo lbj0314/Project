@@ -5,7 +5,7 @@
 <html>
 <head> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>음식점 정보</title>
+<title>음식점 글쓰기</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 <script src="//code.jquery.com/jquery.min.js"></script>
@@ -21,7 +21,7 @@
 
 </div>
 <jsp:include page="/include/top.jsp" flush="true"/><br>
-<jsp:include page="/restaurant/rest_list.jsp" flush="true"/><br>
+<jsp:include page="/restaurant/rest_boardwrite.jsp" flush="true"/><br>
 <jsp:include page="/include/copyright.jsp" flush="true"/><br>
 
 

@@ -13,103 +13,103 @@ import com.mybatis.MybatisTemplate;
 
 public class StayService {
 
-	public void stayboardWrite(StayDTO staydto) throws MyException {
+	public void stayBoardWrite(StayDTO staydto) throws MyException {
 		SqlSession session = MybatisTemplate.openSession();
 		StayDAO staydao = new StayDAO();
 		try {
-			int n = staydao.stayboardWrite(session, staydto);
+			int n = staydao.stayBoardWrite(session, staydto);
 			if (n == 1) {
 				session.commit();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MyException("stayboardWrite 예외발생");
+			throw new MyException("stayBoardWrite 예외발생");
 		} finally {
 			session.close();
 		}
 
 	}
 
-	public StayDTO stayselectByNum(int staynum) throws MyException {
+	public StayDTO staySelectByNum(int stayNum) throws MyException {
 
 		SqlSession session = MybatisTemplate.openSession();
 		StayDAO staydao = new StayDAO();
 		StayDTO staydto = null;
 		try {
-			int n = staydao.stayreadCnt(session, staynum);
+			int n = staydao.stayReadCnt(session, stayNum);
 			if (n == 1)
 				session.commit();
-			staydto = staydao.stayselectByNum(session, staynum);
+			staydto = staydao.staySelectByNum(session, stayNum);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MyException("stayselectByNum 예외발생");
+			throw new MyException("staySelectByNum 예외발생");
 		} finally {
 			session.close();
 		}
 		return staydto;
 	}
 
-	public void staydeleteByNum(int staynum) throws MyException {
+	public void stayDeleteByNum(int stayNum) throws MyException {
 
 		SqlSession session = MybatisTemplate.openSession();
 		StayDAO staydao = new StayDAO();
 		try {
-			int n = staydao.staydeleteByNum(session, staynum);
+			int n = staydao.stayDeleteByNum(session, stayNum);
 			if (n == 1)
 				session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MyException("staydeleteByNum 예외발생");
+			throw new MyException("stayDeleteByNum 예외발생");
 		} finally {
 			session.close();
 		}
 
 	}
 
-	public void stayupdateByNum(StayDTO staydto) throws MyException {
+	public void stayUpdateByNum(StayDTO staydto) throws MyException {
 
 		SqlSession session = MybatisTemplate.openSession();
 		StayDAO staydao = new StayDAO();
 		try {
-			int n = staydao.stayupdateByNum(session, staydto);
+			int n = staydao.stayUpdateByNum(session, staydto);
 			if (n == 1)
 				session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MyException("stayupdateByNum 예외발생");
+			throw new MyException("stayUpdateByNum 예외발생");
 		} finally {
 			session.close();
 		}
 
 	}
 
-	public List<StayDTO> staysearch(HashMap<String, String> staymap) throws MyException {
+	public List<StayDTO> staySearch(HashMap<String, String> staymap) throws MyException {
 		SqlSession session = MybatisTemplate.openSession();
 		StayDAO staydao = new StayDAO();
-		List<StayDTO> staylist = null;
+		List<StayDTO> stayList = null;
 		try {
-			staylist = staydao.staysearch(session, staymap);
+			stayList = staydao.staySearch(session, staymap);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MyException("staysearch 예외발생");
+			throw new MyException("staySearch 예외발생");
 		} finally {
 			session.close();
 		}
-		return staylist;
+		return stayList;
 	}
 
-	public StayPageDTO staypage(int staycurPage, HashMap<String, String> staymap) throws MyException {
+	public StayPageDTO stayPage(int stayCurPage, HashMap<String, String> staymap) throws MyException {
 		SqlSession session = MybatisTemplate.openSession();
 		StayDAO staydao = new StayDAO();
-		StayPageDTO staylist = null;
+		StayPageDTO stayList = null;
 		try {
-			staylist = staydao.staypage(session, staycurPage, staymap);
+			stayList = staydao.stayPage(session, stayCurPage, staymap);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MyException("staylist 예외발생");
+			throw new MyException("stayList 예외발생");
 		} finally {
 			session.close();
 		}
-		return staylist;
+		return stayList;
 	}
 }

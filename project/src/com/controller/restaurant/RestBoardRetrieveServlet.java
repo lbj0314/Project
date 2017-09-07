@@ -1,4 +1,4 @@
-package com.controller.stay;
+package com.controller.restaurant;
 
 import java.io.IOException;
 
@@ -9,22 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dto.stay.StayDTO;
+import com.dto.restaurant.RestDTO;
 import com.exception.MyException;
-import com.service.stay.StayService;
+import com.service.restaurant.RestService;
 
-@WebServlet("/StayRetrieveServlet")
-public class StayRetrieveServlet extends HttpServlet {
+@WebServlet("/RestBoardRetrieveServlet")
+public class RestBoardRetrieveServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String stayNum = request.getParameter("stayNum");
-		StayService service = new StayService();
-		String target="stay/stay_boardretrieveview.jsp";
+		String restNum = request.getParameter("restNum");
+		RestService service = new RestService();
+		String target="restaurant/rest_boardretrieveview.jsp";
 		try {
-			StayDTO staydto = service.staySelectByNum(Integer.parseInt(stayNum));
-			request.setAttribute("retrieve", staydto);
+			RestDTO restdto = service.restSelectByNum(Integer.parseInt(restNum));
+			request.setAttribute("retrieve", restdto);
 		} catch (MyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

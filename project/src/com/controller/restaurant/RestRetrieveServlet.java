@@ -1,6 +1,7 @@
 package com.controller.restaurant;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,30 +14,36 @@ import com.dto.restaurant.RestDTO;
 import com.exception.MyException;
 import com.service.restaurant.RestService;
 
+
 @WebServlet("/RestRetrieveServlet")
 public class RestRetrieveServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 
-		String restnum = request.getParameter("restnum");
+
+		String restNum = request.getParameter("restNum");
 		RestService service = new RestService();
-		String target="rest/rest_retrieveview.jsp";
+		 String restTitle="";
+		    String target="";
 		try {
-			RestDTO restdto = service.restselectByNum(Integer.parseInt(restnum));
-			request.setAttribute("retrieve", restdto);
+			List<RestDTO> dto = service.restRetrieve(restNum);
+			target = "goodsRetrieve.jsp";
+			request.setAttribute("RestDTO", dto);
 		} catch (MyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			target = "error.jsp";
+			restTitle= e.getMessage();
+			String link="home.jsp";
+			target="error.jsp";
+			request.setAttribute("restTitle", restTitle);
+			request.setAttribute("link", link);
 		}
 		
-		 RequestDispatcher dis = request.getRequestDispatcher(target);
-		 dis.forward(request, response);
-	}
+		RequestDispatcher dis =
+	request.getRequestDispatcher(target);
+		dis.forward(request, response);
+	}//end 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

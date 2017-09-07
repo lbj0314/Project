@@ -11,63 +11,73 @@ import com.dto.restaurant.RestPageDTO;
 
 public class RestDAO {
 
-	public List<RestDTO> restlist(SqlSession session) {
-		List<RestDTO> list = session.selectList("restselectAll");
+	public List<RestDTO> restList(SqlSession session) {
+		List<RestDTO> list = session.selectList("restSelectAll");
 		return list;
 	}
 
-	public int restboardWrite(SqlSession session, RestDTO restdto) {
-		int n = session.insert("restboardWrite", restdto);
+	public int restBoardWrite(SqlSession session, RestDTO restdto) {
+		int n = session.insert("restBoardWrite", restdto);
 		return n;
 	}
 
-	public RestDTO restselectByNum(SqlSession session, int restnum) {
-		RestDTO dto = session.selectOne("restselectByNum", restnum);
+	public RestDTO restSelectByNum(SqlSession session, int restNum) {
+		RestDTO dto = session.selectOne("restSelectByNum", restNum);
 		return dto;
 	}
 
-	public int restreadCnt(SqlSession session, int restnum) {
-		int n = session.update("restreadCnt", restnum);
+	public int restReadCnt(SqlSession session, int restNum) {
+		int n = session.update("restReadCnt", restNum);
 		return n;
 	}
 
-	public int restdeleteByNum(SqlSession session, int restnum) {
-		int n = session.delete("restdeleteByNum", restnum);
+	public int restDeleteByNum(SqlSession session, int restNum) {
+		int n = session.delete("restDeleteByNum", restNum);
 		return n;
 	}
 
-	public int restupdateByNum(SqlSession session, RestDTO restdto) {
-		int n = session.update("restupdateByNum", restdto);
+	public int restUpdateByNum(SqlSession session, RestDTO restdto) {
+		int n = session.update("restUpdateByNum", restdto);
 		return n;
 	}
 
-	public List<RestDTO> restsearch(SqlSession session, HashMap<String, String> restmap) {
-		List<RestDTO> list = session.selectList("restsearch", restmap);
+	public List<RestDTO> restSearch(SqlSession session, HashMap<String, String> restmap) {
+		List<RestDTO> list = session.selectList("restSearch", restmap);
 		return list;
 	}
 
-	public RestPageDTO restpage(SqlSession session, int restcurPage, HashMap<String, String> restmap) {
+	public RestPageDTO restPage(SqlSession session, int restCurPage, HashMap<String, String> restmap) {
 
 		RestPageDTO dto = new RestPageDTO();
 
-		int sIndex = (restcurPage - 1) * RestPageDTO.getRestperPage();
-		int length = RestPageDTO.getRestperPage();
+		int sIndex = (restCurPage - 1) * RestPageDTO.getRestPerPage();
+		int length = RestPageDTO.getRestPerPage();
 
-		List<RestDTO> list = session.selectList("restselectAll", restmap, new RowBounds(sIndex, length));
-		int resttotalCount = 0;
+		List<RestDTO> list = session.selectList("restSelectAll", restmap, new RowBounds(sIndex, length));
+		int restTotalCount = 0;
 		System.out.println("!" + list);
-		dto.setRestlist(list);
-		dto.setRestcurPage(restcurPage);
-		System.out.println(">>" + dto.getRestlist());
+		dto.setRestList(list);
+		dto.setRestCurPage(restCurPage);
+		System.out.println(">" + dto.getRestList());
 		if (restmap.get("searchValue") == null) {
-			resttotalCount = session.selectOne("resttotalCount");
+			restTotalCount = session.selectOne("restTotalCount");
 		} else {
-			resttotalCount = session.selectOne("resttotalCount2", restmap);
+			restTotalCount = session.selectOne("restTotalCount1", restmap);
 		}
 
-		dto.setResttotalCount(resttotalCount);
-		dto.setRestsearchName(restmap.get("restsearchName"));
-		dto.setRestsearchValue(restmap.get("restsearchValue"));
+		dto.setRestTotalCount(restTotalCount);
+		dto.setRestSearchName(restmap.get("restSearchName"));
+		dto.setRestSearchValue(restmap.get("restSearchValue"));
+		return dto;
+	}
+
+	public List<RestDTO> restList(SqlSession session , String restNum) {
+		List<RestDTO> dto = session.selectList("restList",restNum);
+		return dto;
+	}
+
+	public List<RestDTO> restRetrieve(SqlSession session ,String restNum) {
+		List<RestDTO> dto = session.selectList("restRetrieve", restNum);
 		return dto;
 	}
 

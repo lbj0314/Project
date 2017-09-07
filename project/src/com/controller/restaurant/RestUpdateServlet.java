@@ -19,18 +19,18 @@ public class RestUpdateServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
-		String restnum = request.getParameter("restnum");
-		String resttitle = request.getParameter("resttitle");
-		String restcontent = request.getParameter("restcontent");
+		String restNum = request.getParameter("restNum");
+		String restTitle = request.getParameter("restTitle");
+		String restContent = request.getParameter("restContent");
 		RestDTO restdto = new RestDTO();
-		restdto.setRestnum(Integer.parseInt(restnum));
-		restdto.setResttitle(resttitle);
-		restdto.setRestcontent(restcontent);
+		restdto.setRestNum(Integer.parseInt(restNum));
+		restdto.setRestTitle(restTitle);
+		restdto.setRestContent(restContent);
 
 		RestService service = new RestService();
-		String target = "RestListServlet";
+		String target = "RestBoardListServlet";
 		try {
-			service.restupdateByNum(restdto);
+			service.restUpdateByNum(restdto);
 
 		} catch (MyException e) {
 			target = "error.jsp";

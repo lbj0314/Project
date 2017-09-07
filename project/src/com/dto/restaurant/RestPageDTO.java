@@ -4,76 +4,74 @@ import java.util.List;
 
 public class RestPageDTO {
 
-		private List<RestDTO> restlist;
-		private int restcurPage;
-		private int resttotalCount; 
-		private static int restperPage = 5;
-		private String restsearchName;
-		private String restsearchValue;
-		private int restperBlock = 5;
+		private List<RestDTO> restList;
+		private int restCurPage;
+		private int restTotalCount; 
+		private static int restPerPage = 5;
+		private String restSearchName;
+		private String restSearchValue;
+		private int restPerBlock = 5;
 		public RestPageDTO() {
 			super();
 			// TODO Auto-generated constructor stub
 		}
-		public RestPageDTO(List<RestDTO> restlist, int restcurPage, int resttotalCount, String restsearchName,
-				String restsearchValue, int restperBlock) {
+		public RestPageDTO(List<RestDTO> restList, int restCurPage, int restTotalCount, String restSearchName,
+				String restSearchValue, int restPerBlock) {
 			super();
-			this.restlist = restlist;
-			this.restcurPage = restcurPage;
-			this.resttotalCount = resttotalCount;
-			this.restsearchName = restsearchName;
-			this.restsearchValue = restsearchValue;
-			this.restperBlock = restperBlock;
+			this.restList = restList;
+			this.restCurPage = restCurPage;
+			this.restTotalCount = restTotalCount;
+			this.restSearchName = restSearchName;
+			this.restSearchValue = restSearchValue;
+			this.restPerBlock = restPerBlock;
 		}
-		public List<RestDTO> getRestlist() {
-			return restlist;
+		public List<RestDTO> getRestList() {
+			return restList;
 		}
-		public void setRestlist(List<RestDTO> restlist) {
-			this.restlist = restlist;
+		public void setRestList(List<RestDTO> restList) {
+			this.restList = restList;
 		}
-		public int getRestcurPage() {
-			return restcurPage;
+		public int getRestCurPage() {
+			return restCurPage;
 		}
-		public void setRestcurPage(int restcurPage) {
-			this.restcurPage = restcurPage;
+		public void setRestCurPage(int restCurPage) {
+			this.restCurPage = restCurPage;
 		}
-		public int getResttotalCount() {
-			return resttotalCount;
+		public int getRestTotalCount() {
+			return restTotalCount;
 		}
-		public void setResttotalCount(int resttotalCount) {
-			this.resttotalCount = resttotalCount;
+		public void setRestTotalCount(int restTotalCount) {
+			this.restTotalCount = restTotalCount;
 		}
-		public static int getRestperPage() {
-			return restperPage;
+		public static int getRestPerPage() {
+			return restPerPage;
 		}
-		public static void setRestperPage(int restperPage) {
-			RestPageDTO.restperPage = restperPage;
+		public static void setRestPerPage(int restPerPage) {
+			RestPageDTO.restPerPage = restPerPage;
 		}
-		public String getRestsearchName() {
-			return restsearchName;
+		public String getRestSearchName() {
+			return restSearchName;
 		}
-		public void setRestsearchName(String restsearchName) {
-			this.restsearchName = restsearchName;
+		public void setRestSearchName(String restSearchName) {
+			this.restSearchName = restSearchName;
 		}
-		public String getRestsearchValue() {
-			return restsearchValue;
+		public String getRestSearchValue() {
+			return restSearchValue;
 		}
-		public void setRestsearchValue(String restsearchValue) {
-			this.restsearchValue = restsearchValue;
+		public void setRestSearchValue(String restSearchValue) {
+			this.restSearchValue = restSearchValue;
 		}
-		public int getRestperBlock() {
-			return restperBlock;
+		public int getRestPerBlock() {
+			return restPerBlock;
 		}
-		public void setRestperBlock(int restperBlock) {
-			this.restperBlock = restperBlock;
+		public void setRestPerBlock(int restPerBlock) {
+			this.restPerBlock = restPerBlock;
 		}
 		@Override
 		public String toString() {
-			return "RestPageDTO [restlist=" + restlist + ", restcurPage=" + restcurPage + ", resttotalCount="
-					+ resttotalCount + ", restsearchName=" + restsearchName + ", restsearchValue=" + restsearchValue
-					+ ", restperBlock=" + restperBlock + "]";
+			return "RestPageDTO [restList=" + restList + ", restCurPage=" + restCurPage + ", restTotalCount="
+					+ restTotalCount + ", restSearchName=" + restSearchName + ", restSearchValue=" + restSearchValue
+					+ ", restPerBlock=" + restPerBlock + "]";
 		}
 		
-		
-
 }
