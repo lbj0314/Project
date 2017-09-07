@@ -33,7 +33,7 @@
 	enctype="multipart/form-data">
 	<input type="hidden" name="attNum" value="${tourRetrieve.attNum}">
 	<input type="hidden" name="attImage" value="${tourRetrieve.attImage}">
-	<input type="hidden" name="attImage" value="${sessionScope.entLogin.entnum}">
+	<input type="hidden" name="entNum" value="${sessionScope.entLogin.entnum}">
 	<table align="center" width="100%" cellspacing="0" cellpadding="0"
 		style='margin-left: 18%'>
 		<tr>
@@ -89,7 +89,7 @@
 
 
 						<c:if
-							test="${!empty sessionScope.admLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum))}">
+							test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum)}">
 							<tr>
 								<!-- 이미지 수정부 -->
 								<td rowspan="10"><input type="file" name="attImage"
@@ -99,7 +99,7 @@
 
 									<br>현재파일:${tourRetrieve.attImageClone}</td>
 						</c:if>
-						<c:if test="${!empty sessionScope.comLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum != tourRetrieve.entNum))
+						<c:if test="${!empty sessionScope.admLogin || !empty sessionScope.comLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum != tourRetrieve.entNum))
 						|| (empty sessionScope.entLogin && empty sessionScope.comLogin && empty sessionScope.admLogin)}">
 							<tr>
 								<!-- 이미지 화면부 -->
@@ -234,8 +234,7 @@
 					</c:if>
 
 					<c:if
-						test="${!empty sessionScope.admLogin ||
-						 (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum))}">
+						test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum)}">
 						<tr>
 							<td class="td_title">업소사이트 수정</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
@@ -268,13 +267,16 @@
 </c:if>
 
 		<c:if
-			test="${!empty sessionScope.admLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum))}">
+			test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum)}">
 
 
 			<input type="submit" class="btn btn-default" value="수정 하기">
+					</c:if>
+			<c:if
+			test="${!empty sessionScope.admLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum))}">
 			<a href="TourDeleteServlet?attNum=${tourRetrieve.attNum}"
 				class="btn btn-default">삭제 하기</a>
-		</c:if>
+			</c:if>
 
 
 		<a href="TourListServlet" class="btn btn-default">목록으로</a>

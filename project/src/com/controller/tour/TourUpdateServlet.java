@@ -47,8 +47,6 @@ public class TourUpdateServlet extends HttpServlet {
 		upload.setSizeMax(1024 * 1024 * 5); // 전체 크기 5M
 
 		String fileName = null;
-		// long sizeInBytes = 0;
-		// String contentType = null;
 		String entNum = null;
 		String attNum = null;
 		String attImage = null;
@@ -89,7 +87,6 @@ public class TourUpdateServlet extends HttpServlet {
 						entNum = value;
 
 					}
-					
 					
 					else if (name.equals("attLocation")) {
 						attLocation = value;
