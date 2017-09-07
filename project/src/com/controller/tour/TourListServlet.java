@@ -29,15 +29,53 @@ public class TourListServlet extends HttpServlet {
 				if(curPage == null) {
 					curPage = "1";
 				}
-		
+		//String cc="1";
+		//String dd = "2";
 		String searchName = request.getParameter( "searchName" );
 		String searchValue = request.getParameter( "searchValue" );
-
+		String attLocation=request.getParameter("attLocation");
+		String attType=request.getParameter("attType");
+		String btngo = request.getParameter("btngo");
+		String attBtn = request.getParameter("attBtn");
+		if(attBtn==null) attBtn="1";
+		
+		
+		System.out.println("att"+attBtn);
+		String target="tour/tourListView.jsp";
+		
+		
+		
+		//String dd = request.getParameter("dd");
+		//if(dd==null) dd="2";
+		//System.out.println("!!!!"+cc);
+		//System.out.println(aa);
+		//System.out.println(bb);
+		
+		
+		
+		
+		
+	
 		 HashMap<String, String> map = new HashMap<>();
 		 map.put("searchName", searchName);
 		 map.put("searchValue", searchValue);
+		 map.put("attLocation", attLocation);
+		 map.put("attType", attType);
+		 
+		if(attBtn.equals("1")) {
+			map.put("attBtn", "1");
+
+			 
+		 }
+		 else if(attBtn.equals("cc")) {
+			 map.put("attBtn", "cc");
+		 }
+		else if(attBtn.equals("dd")) {
+			 map.put("attBtn", "dd");
+			 
+		 }
 		TourService service = new TourService();
-		String target="tour/tourList.jsp";
+		
 		 
 		
 		try {
@@ -56,11 +94,10 @@ public class TourListServlet extends HttpServlet {
 		
 		
 		
-		
-	
+
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
-	
+
 		
 	}
 

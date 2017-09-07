@@ -51,13 +51,9 @@
 						<option>타입선택</option>
 						<option value="자연">자연</option>
 						<option value="체험">체험</option>
-						<option value="문화시설">문화시설</option>
-						<option value="레포츠">레포츠</option>
 						<option value="역사">역사</option>
 						<option value="테마">테마</option>
 						<option value="쇼핑">쇼핑</option>
-						<option value="부산">부산</option>
-						<option value="울산">울산</option>
 
 				</select></td>
 			</div>
