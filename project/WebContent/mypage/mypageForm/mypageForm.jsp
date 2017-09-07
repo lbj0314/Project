@@ -11,8 +11,11 @@
 <a href="MyPageLeaveServlet" class="btn btn-default">탈퇴하기</a>
 </c:if>
 <c:if test="${!empty sessionScope.entLogin }">
-
+<!-- <a href="MyPageEnterListServlet  class="btn btn-default">내 등록업소 보기</a> -->
 <a href="MyPageMemberServlet" class="btn btn-default">내정보 변경하기</a>
 <a href="MyPageLeaveServlet" class="btn btn-default">탈퇴하기</a>
-
+</c:if>
+<c:if test="${!empty sessionScope.admLogin}">
+<a href="MemberManageServlet" class="btn btn-default">회원 관리하기</a>
+<a href="ReviewManageServlet" class="btn btn-default">후기글 관리하기</a>
 </c:if>

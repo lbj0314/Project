@@ -38,6 +38,7 @@ public class LoginServlet extends HttpServlet {
 					request.setAttribute("loginfail", "loginfail");
 				}else {
 				session.setAttribute("comLogin", dto);
+				session.setAttribute("alert", "true");
 				}
 			} catch (MyException e) {
 				// TODO Auto-generated catch block
@@ -54,6 +55,7 @@ public class LoginServlet extends HttpServlet {
 				}else {
 				
 				session.setAttribute("admLogin", dto);
+				session.setAttribute("alert", "true");
 				}
 			} catch (MyException e) {
 				// TODO Auto-generated catch block
@@ -67,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 					request.setAttribute("loginfail", "loginfail");
 				}else {
 				session.setAttribute("entLogin", dto);
-
+				session.setAttribute("alert", "true");
 				}
 			} catch (MyException e) {
 				// TODO Auto-generated catch block
