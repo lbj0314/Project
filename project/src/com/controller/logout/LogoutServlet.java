@@ -18,6 +18,7 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String target = "home.jsp";
 		session.invalidate();
+		request.setAttribute("sessionclose", "true");
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
 	}

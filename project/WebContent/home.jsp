@@ -5,6 +5,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<c:if test="${requestScope.sessionclose==true }">
+	<script>
+		alert("로그아웃 되었습니다.");
+	</script>
+</c:if>
+
 <c:if test="${!empty requestScope.loginfail }">
 	<script>
 		alert("아이디 또는 비밀번호를 다시 확인하세요");

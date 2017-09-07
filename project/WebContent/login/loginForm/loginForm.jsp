@@ -23,7 +23,7 @@
 	test="${!empty sessionScope.admLogin}">
 	관리자님 안녕하세요&nbsp;
 	<a href="/project/LogoutServlet" class="btn btn-default">로그아웃</a>&nbsp;
-	<a href="/project/MyPageFormServlet" class="btn btn-default">회원관리</a>&nbsp;
+	<a href="/project/MyPageFormServlet" class="btn btn-default">DB관리</a>&nbsp;
 </c:if>
 
 <c:if
