@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,19 +19,19 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.dto.tour.TourDTO;
 import com.exception.MyException;
+import com.service.notice.NoticeService;
 import com.service.tour.TourService;
 
 /**
- * Servlet implementation class MyBoardWriteServlet
+ * Servlet implementation class MyBoardUpdateServlet
  */
-@WebServlet("/TourWriteServlet")
-public class TourWriteServlet extends HttpServlet {
+@WebServlet("/TourUpdateServlet")
+public class TourUpdateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		long milliSecond = System.currentTimeMillis();
 
+		long milliSecond = System.currentTimeMillis();
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 
 		// Configure a repository (to ensure a secure temp location is used)
@@ -50,29 +49,26 @@ public class TourWriteServlet extends HttpServlet {
 		String fileName = null;
 		// long sizeInBytes = 0;
 		// String contentType = null;
-
-		String attLocation = null;
-
-		String attType = null;
-		String attName = null;
-		// String attLocation = request.getParameter("attLocation");
-		String attAdultPrice = null;
-		String attKidPrice = null;
-		String attSite = null;
-		String attContent = null;
-		String attPhone = null;
-		String attTitle = null;
 		String entNum = null;
+		String attNum = null;
 		String attImage = null;
 		String attImageClone = null;
-		
+		String attContent = null;
+		String attName = null;
+		String attLocation = null;
+		String attType = null;
+		String attAdultPrice = null;
+		String attKidPrice = null;
+		String attPhone = null;
+		String attSite = null;
+		String attTitle = null;
 		String target = "TourListServlet";
 		// Parse the request
 		try {
 			List<FileItem> items = upload.parseRequest(request);
 			// Process the uploaded items
 			Iterator<FileItem> iter = items.iterator();
-			
+		
 			while (iter.hasNext()) {
 				FileItem item = iter.next();
 
@@ -86,7 +82,16 @@ public class TourWriteServlet extends HttpServlet {
 					if (name.equals("attType")) {
 						attType = value;
 
-					} else if (name.equals("attLocation")) {
+					}else if (name.equals("attNum")) {
+						attNum = value;
+
+					}else if (name.equals("entNum")) {
+						entNum = value;
+
+					}
+					
+					
+					else if (name.equals("attLocation")) {
 						attLocation = value;
 
 					} else if (name.equals("attName")) {
@@ -115,29 +120,25 @@ public class TourWriteServlet extends HttpServlet {
 						attTitle = value;
 
 					}
-					else if (name.equals("entNum")) {
-						entNum = value;
-
-					}
 
 					// System.out.println(name+"\t"+value);
 					// System.out.println(contentType+"\t"+isInMemory+"\t"+sizeInBytes);
 
 				} else {
 					// type="file"인 경우
-
+					
 					fileName = item.getName();
-					attImage = fileName;
-					String[] attSplit = fileName.split("\\.");
-					attImageClone = attSplit[0] + milliSecond + "." + attSplit[1];
-					// contentType = item.getContentType(); //이미지가 아니면 업로드 불가능 처리를 할 수 있다. 나중에 구현
-					// sizeInBytes = item.getSize();
-					File uploadedFile = new File("c:\\upload", attImageClone);
-					item.write(uploadedFile);
-					
-					
+					// 이미지 파일을 수정했을 경우
+					if (!fileName.equals("")) {
+						attImage = fileName;
+						String[] attSplit = fileName.split("\\.");
+						attImageClone = attSplit[0] + milliSecond + "." + attSplit[1];
+						// contentType = item.getContentType(); //이미지가 아니면 업로드 불가능 처리를 할 수 있다. 나중에 구현
+						// sizeInBytes = item.getSize();
+						File uploadedFile = new File("c:\\upload", attImageClone);
+						item.write(uploadedFile);
 
-					
+					}
 
 				}
 			}
@@ -162,25 +163,32 @@ public class TourWriteServlet extends HttpServlet {
 		dto.setAttSite(attSite);
 		dto.setAttContent(attContent);
 		dto.setAttName(attName);
-		dto.setAttImage(attImage);
+		dto.setAttNum(Integer.parseInt(attNum));
+		System.out.println("attnum"+attNum);
+		
+		//이미지 파일이 수정되었을 때
+		if (!fileName.equals("")) {
+			dto.setAttImage(attImage);
+			dto.setAttImageClone(attImageClone);
+		}
 		dto.setAttPhone(attPhone);
 		dto.setAttTitle(attTitle);
-		dto.setAttImageClone(attImageClone);
+
 		TourService service = new TourService();
 		try {
-			service.tourWrite(dto);
-			request.setAttribute("tourcomp", "정상적으로 입력 완료하였습니다.");
+			service.updateByTourNum(dto);
+			request.setAttribute("tourcomp", "정상적으로 수정 완료하였습니다.");
 		} catch (MyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			target = "error.jsp";
-			request.setAttribute("tourcomp", "입력 실패~");
+			request.setAttribute("tourcomp", "수정 실패~");
 
 		}
 
 		response.sendRedirect(target);
 
-	}
+	}// end
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

@@ -19,11 +19,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="searchName == 'attName' and searchValue!=null">
 				attName LIKE '%'||#{searchValue}||'%'
 			</if>
-			<if
-				test="attLocation != '전체' and attLocation != 'def' and attLocation!=null">
+			<if	test="attLocation != '전체' and attLocation != 'def' and attLocation != null and attLocation != ''">
 				and attLocation =#{attLocation}
 			</if>
-			<if test="attType != 'def' and attType!=null">
+			<if test="attType != 'def' and attType != null and attType != ''">
 				and attType =#{attType}
 			</if>
 		</where>
@@ -48,17 +47,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		attRepleCnt,attSite,attGoods,attType,entNum,attImageClone
 		from tour
 		<where>
-			<if test="searchName == 'attTitle' and searchValue!=null">
+			<if test="searchName == 'attTitle' and searchValue!=null and searchValue!=''">
 				attTitle LIKE '%'||#{searchValue}||'%'
 			</if>
-			<if test="searchName == 'attName' and searchValue!=null">
+			<if test="searchName == 'attName' and searchValue!=null and searchValue!=''">
 				attName LIKE '%'||#{searchValue}||'%'
 			</if>
 			<if
-				test="attLocation != '전체' and attLocation != 'def' and attLocation!=null">
+				test="attLocation != '전체' and attLocation != 'def' and attLocation != null and attLocation != ''">
 				and attLocation =#{attLocation}
 			</if>
-			<if test="attType != 'def' and attType!=null">
+			<if test="attType != 'def' and attType != null and attType != ''">
 				and attType =#{attType}
 			</if>
 
@@ -67,13 +66,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 		<choose>
-		<when test="attBtn == '1'">
+		<when test="sortAtt == 'attNoSort' or sortAtt == '' or sortAtt == null">
 				order by attNum desc
 			</when>
-			<when test="attBtn == 'cc'">
+			<when test="sortAtt == 'attGoodSort'">
 				order by attGoods desc
 			</when>
-			<when test="attBtn == 'dd'">
+			<when test="sortAtt == 'attSysSort'">
 				order by attWriteDay desc
 			</when>
 		</choose>
@@ -98,26 +97,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		= attReadCnt + 1
 		where attNum = #{attNum}
 	</update>
+	<update id="goodsTour" parameterType="int">
+		update tour
+		set attGoods
+		= attGoods + 1
+		where attNum = #{attNum}
+	</update>
 
 	<delete id="deleteByTourNum" parameterType="int">
 		delete from tour
 		where attNum = #{attNum}
 	</delete>
 
-	<update id="updateByTourNum" parameterType="NoticeDTO">
+	<update id="updateByTourNum" parameterType="TourDTO">
 		update tour
 		set
-		attName=#{attName} , attImage=#{attImage}
-		, attPhone=#{attPhone},
-		attLocation=#{attLocation}
-		,
-		attAdultPrice=#{attAdultPrice},attKidPrice=#{attKidPrice},
+		<if test="attImageClone != null">
+		attImage=#{attImage},
+		attImageClone=#{attImageClone},
+		</if>
+		
+		attContent=#{attContent},
+		attName=#{attName},
+		attLocation=#{attLocation},
+		attType=#{attType},
+		attAdultPrice=#{attAdultPrice},
+		attKidPrice=#{attKidPrice},
+		attPhone=#{attPhone},
+		attSite=#{attSite},
 		attTitle=#{attTitle}
-		, attContent=#{attContent},
-		attImageClone=#{attImageClone}
 		where attNum = #{attNum}
 	</update>
-	<select id="TourList" resultType="int" parameterType="hashmap">
+	<!-- <select id="TourList" resultType="int" parameterType="hashmap">
 		select *
 		from notice
 
@@ -125,7 +136,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			where attLocation =#{attLocation}
 		</if>
 
-	</select>
+	</select> -->
 
 	<!-- <select id="search" parameterType="hashmap" resultType="MyBoardDTO"> 
 		select num,title,author, to_char(writeday,'YYYY/MM/dd') writeday, readCnt 

@@ -18,7 +18,7 @@
 <c:set value="${dto.getAttType()}" var="attType" />
 <c:set value="${dto.getTotalCount()}" var="totalCount" />
 <c:set value="${dto.getPerBlock()}" var="perBlock" />
-
+<c:set value="${dto.getSortAtt()}" var="sortAtt" />
 
 <fmt:parseNumber value="${totalCount/perPage}" integerOnly="true"
 	var="totalNum" />
@@ -60,7 +60,7 @@
 
 <c:if test="${curPage != 1}">
 	<a
-		href='TourListServlet?curPage=1&searchName=${searchName}&searchValue=${searchValue}&attLocation=${attLocation}&attType=${attType}' class="btn btn-primary btn-sm active" role="button">처음</a>
+		href='TourListServlet?curPage=1&searchName=${searchName}&searchValue=${searchValue}&attLocation=${attLocation}&attType=${attType}&sortAtt=${sortAtt}' class="btn btn-primary btn-sm active" role="button">처음</a>
 &nbsp;
 </c:if>
 
@@ -73,7 +73,7 @@
 
 <c:if test="${startPage != 1}">
 	<a
-		href='TourListServlet?curPage=${startPage -1}&searchName=${searchName }&searchValue= ${searchValue}&attLocation=${attLocation}&attType=${attType}' class="btn btn-primary btn-sm active" role="button">&lt;&lt;</a>
+		href='TourListServlet?curPage=${startPage -1}&searchName=${searchName }&searchValue= ${searchValue}&attLocation=${attLocation}&attType=${attType}&sortAtt=${sortAtt}' class="btn btn-primary btn-sm active" role="button">&lt;&lt;</a>
 	 
 &nbsp;
 </c:if>
@@ -86,7 +86,7 @@
 
 <c:if test="${curPage != 1}">
 	<a
-		href='TourListServlet?curPage=${curPage -1}&searchName=${searchName}&searchValue=${searchValue}&attLocation=${attLocation}&attType=${attType}' class="btn btn-primary btn-sm active" role="button">&lt;</a>
+		href='TourListServlet?curPage=${curPage -1}&searchName=${searchName}&searchValue=${searchValue}&attLocation=${attLocation}&attType=${attType}&sortAtt=${sortAtt}' class="btn btn-primary btn-sm active" role="button">&lt;</a>
 
 &nbsp;
 </c:if>
@@ -102,7 +102,7 @@
 </c:if>
 	<c:if test="${curPage != aa}">
 		<a
-			href='TourListServlet?curPage=${aa}&searchName=${searchName }&searchValue=${searchValue }&attLocation=${attLocation}&attType=${attType}' class="btn btn-primary btn-sm active" role="button">${aa}</a> 
+			href='TourListServlet?curPage=${aa}&searchName=${searchName }&searchValue=${searchValue }&attLocation=${attLocation}&attType=${attType}&sortAtt=${sortAtt}' class="btn btn-primary btn-sm active" role="button">${aa}</a> 
 		&nbsp;
 		</c:if>
 </c:forEach>
@@ -114,7 +114,7 @@
 </c:if>
 <c:if test="${curPage != endPage }">
 	<a
-		href='TourListServlet?curPage=${endPage }&searchName=${searchName }&searchValue=${searchValue}&attLocation=${attLocation}&attType=${attType}' class="btn btn-primary btn-sm active" role="button">${endPage}</a>
+		href='TourListServlet?curPage=${endPage }&searchName=${searchName }&searchValue=${searchValue}&attLocation=${attLocation}&attType=${attType}&sortAtt=${sortAtt}' class="btn btn-primary btn-sm active" role="button">${endPage}</a>
 
 
 </c:if>
@@ -126,7 +126,7 @@
 </c:if>
 <c:if test="${curPage != totalNum }">
 	<a
-		href='TourListServlet?curPage=${curPage +1 }&searchName=${searchName }&searchValue=${searchValue }&attLocation=${attLocation}&attType=${attType}' class="btn btn-primary btn-sm active" role="button">&gt;</a>
+		href='TourListServlet?curPage=${curPage +1 }&searchName=${searchName }&searchValue=${searchValue }&attLocation=${attLocation}&attType=${attType}&sortAtt=${sortAtt}' class="btn btn-primary btn-sm active" role="button">&gt;</a>
 </c:if>
 
 &nbsp;
@@ -135,7 +135,7 @@
 </c:if>
 <c:if test="${endPage != totalNum }">
 	<a
-		href='TourListServlet?curPage=${endPage +1 }&searchName=${searchName }&searchValue= ${searchValue }&attLocation=${attLocation}&attType=${attType}' class="btn btn-primary btn-sm active" role="button">&gt;&gt;</a>
+		href='TourListServlet?curPage=${endPage +1 }&searchName=${searchName }&searchValue= ${searchValue }&attLocation=${attLocation}&attType=${attType}&sortAtt=${sortAtt}' class="btn btn-primary btn-sm active" role="button">&gt;&gt;</a>
 </c:if>
 &nbsp;
 <c:if test="${curPage == totalNum }">
@@ -143,7 +143,7 @@
 </c:if>
 <c:if test="${curPage != totalNum }">
 	<a
-		href='TourListServlet?curPage=${totalNum}&searchName=${searchName }&searchValue=${searchValue }&attLocation=${attLocation}&attType=${attType}' class="btn btn-primary btn-sm active" role="button">마지막</a>
+		href='TourListServlet?curPage=${totalNum}&searchName=${searchName }&searchValue=${searchValue }&attLocation=${attLocation}&attType=${attType}&sortAtt=${sortAtt}' class="btn btn-primary btn-sm active" role="button">마지막</a>
 </c:if>
 
 </div>

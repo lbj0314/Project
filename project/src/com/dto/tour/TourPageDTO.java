@@ -13,16 +13,18 @@ public class TourPageDTO {
 	private String searchValue; 
 	private String attLocation; //명소별
 	private String attType; //타입별
-	private String attBtn;
+	private String sortAtt; //정렬
 	
 	
 
-	public String getAttBtn() {
-		return attBtn;
+	
+
+	public String getSortAtt() {
+		return sortAtt;
 	}
 
-	public void setAttBtn(String attBtn) {
-		this.attBtn = attBtn;
+	public void setSortAtt(String sortAtt) {
+		this.sortAtt = sortAtt;
 	}
 
 	public String getAttType() {

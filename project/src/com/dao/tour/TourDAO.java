@@ -72,11 +72,16 @@ public class TourDAO {
 		      dto.setSearchValue(map.get("searchValue"));
 		      dto.setAttLocation(map.get("attLocation"));
 		      dto.setAttType(map.get("attType"));
-		      dto.setAttType(map.get("attBtn"));
+		      dto.setSortAtt(map.get("sortAtt"));
 		      return dto;
 		}//end list()
 		
 		
+		/// 좋아요
+		public int goodsTour(SqlSession session , int num) {
+			int n = session.update("goodsTour",num);
+			return n;
+		}
 }//end class
 
 
