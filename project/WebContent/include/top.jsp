@@ -58,8 +58,6 @@ $('.dropdown-toggle').dropdown()
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-=======
-  <ul class="dropdown-menu">
     <li><a href="/project/StayListServlet">호텔,모텔</a><br></li>
     <li><a href="/project/StayListServlet">민박</a><br></li>
     <li><a href="/project/StayListServlet">캠핑</a><br></li>

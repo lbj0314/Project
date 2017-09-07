@@ -28,7 +28,7 @@ public class RestWriteServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		long milliSecond = System.currentTimeMillis();
-
+		
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		ServletContext servletContext = this.getServletConfig().getServletContext();
 		File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
@@ -113,7 +113,7 @@ public class RestWriteServlet extends HttpServlet {
 
 					fileName = item.getName();
 					restImage = fileName;
-					String[] restSplit = fileName.split("\\.");
+					String[] restSplit = fileName.split("\\");
 					restImageClone = restSplit[0] + milliSecond + "." + restSplit[1];
 					// contentType = item.getContentType(); //이미지가 아니면 업로드 불가능 처리를 할 수 있다. 나중에 구현
 					// sizeInBytes = item.getSize();
@@ -153,7 +153,7 @@ public class RestWriteServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			target = "error.jsp";
-			request.setAttribute("restcomp", "입력 실패~");
+			request.setAttribute("restcomp", "입력 실패");
 
 		}
 

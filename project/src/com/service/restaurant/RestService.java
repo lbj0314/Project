@@ -120,12 +120,12 @@ public class RestService {
 			dto = dao.restList(session, restNum);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MyException("goodsList 실패");
+			throw new MyException("restList 실패");
 		} finally {
 			session.close();
 		}
 		return dto;
-	}// end goodsList
+	}
 
 	public List<RestDTO> restRetrieve(String restNum) throws MyException {
 		RestDAO dao = new RestDAO();
@@ -135,10 +135,10 @@ public class RestService {
 			dto = dao.restRetrieve(session, restNum);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MyException("상품 자세히 보기 실패");
+			throw new MyException("음식점 자세히 보기 실패");
 		} finally {
 			session.close();
 		}
 		return dto;
-	}// end list()
+	}
 }
