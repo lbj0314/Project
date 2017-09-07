@@ -17,15 +17,7 @@ public class LogoutServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		String target = "home.jsp";
-		if(session.getAttribute("comLogin")!=null) {
-			session.invalidate();;
-		}
-		if(session.getAttribute("admLogin")!=null) {
-			session.invalidate();;
-		}
-		if(session.getAttribute("entLogin")!=null) {
-			session.invalidate();;
-		}
+		session.invalidate();
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
 	}
