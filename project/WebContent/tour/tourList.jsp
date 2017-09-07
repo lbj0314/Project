@@ -97,14 +97,14 @@
 		
 		
 		// 좋아요,조회순 
-		$("#btngood").on("click", function(event) {
+		$("#attSo").on("change", function(event) {
 
 			//ajax 검색종류별 통신
 			$.ajax({
 				type : "get",
 				url : "TourListServlet",
 				data : {
-					attBtn : $('#aaa').append(desc)
+					sortAtt : $('#attSo').val()
 
 					
 				},
@@ -134,6 +134,7 @@
 		
 		$("#attty > option[value=${tourlist.attType}").attr("selected", "true");
 		$("#attsearch > option[value=${tourlist.searchName}").attr("selected", "true");
+		$("#attSo > option[value=${tourlist.sortAtt}").attr("selected", "true");
 		
 	});
 </script>
@@ -178,8 +179,11 @@
 		</select> <input type="text" name="searchValue" class="form-control" value = "${tourlist.searchValue}"> <input
 			type="submit" value="검색" class="btn btn-primary">
 		
-		<button class="btn btn-default" id="btngood">좋아요순</button>
-		<button class="btn btn-default" id="btnselect">조회순</button>
+		<select name="sortAtt" class="form-control" id="attSo">
+		<option value="attNoSort">선택하세요</option>
+			<option value="attGoodSort">좋아요순</option>
+		<option value="attSysSort">최신순</option>
+		</select>
 	</div>
 
 </form>
@@ -278,6 +282,15 @@
 					flush="true" /></td>
 		</tr>
 	</c:if>
+	<tr>
+	<td colspan=8 align=center>
+	<c:if test="${!empty sessionScope.entLogin}">
+		<a href="/project/tour/tourwriteview.jsp" class="btn btn-primary">글쓰기</a>
+	</c:if>
+	
+	<td>
+	</tr>
+	
 </table>
 
 

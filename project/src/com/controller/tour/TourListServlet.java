@@ -35,12 +35,13 @@ public class TourListServlet extends HttpServlet {
 		String searchValue = request.getParameter( "searchValue" );
 		String attLocation=request.getParameter("attLocation");
 		String attType=request.getParameter("attType");
-		String btngo = request.getParameter("btngo");
-		String attBtn = request.getParameter("attBtn");
-		if(attBtn==null) attBtn="1";
+		
+		String sortAtt = request.getParameter("sortAtt");
+	/*	
+		System.out.println("al"+attLocation);
+		System.out.println("at"+attType);*/
 		
 		
-		System.out.println("att"+attBtn);
 		String target="tour/tourListView.jsp";
 		
 		
@@ -61,19 +62,8 @@ public class TourListServlet extends HttpServlet {
 		 map.put("searchValue", searchValue);
 		 map.put("attLocation", attLocation);
 		 map.put("attType", attType);
-		 
-		if(attBtn.equals("1")) {
-			map.put("attBtn", "1");
-
-			 
-		 }
-		 else if(attBtn.equals("cc")) {
-			 map.put("attBtn", "cc");
-		 }
-		else if(attBtn.equals("dd")) {
-			 map.put("attBtn", "dd");
-			 
-		 }
+		 map.put("sortAtt", sortAtt);
+		
 		TourService service = new TourService();
 		
 		 

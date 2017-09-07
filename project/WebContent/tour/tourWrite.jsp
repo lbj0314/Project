@@ -6,7 +6,8 @@
 
 
 <form action="/project/TourWriteServlet" enctype="multipart/form-data" method="post">
-	<input type="hidden" name="entNum" value="${sessionScope.login.entNum}">
+	<input type="hidden" name="entNum" value="${sessionScope.entLogin.entnum}">
+	${sessionScope.entLogin.entnum }
 	<table align=center>
 		<tr>
 
