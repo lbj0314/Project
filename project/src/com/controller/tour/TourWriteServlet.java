@@ -95,9 +95,6 @@ public class TourWriteServlet extends HttpServlet {
 					} else if (name.equals("attAdultPrice")) {
 						attAdultPrice = value;
 
-					} else if (name.equals("attAdultPrice")) {
-						attAdultPrice = value;
-
 					} else if (name.equals("attKidPrice")) {
 						attKidPrice = value;
 

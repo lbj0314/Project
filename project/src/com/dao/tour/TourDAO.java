@@ -63,15 +63,16 @@ public class TourDAO {
 		      dto.setList(list);
 		      dto.setCurPage(curPage);
 		      System.out.println(">>"+dto.getList());
-		      if(map.get("searchValue")==null){
-		    	  totalCount = session.selectOne("TourtotalCount");
-		      }else{
-		    	  totalCount = session.selectOne("TourtotalCount1", map);
-		      }
+		    
+		      totalCount = session.selectOne("TourtotalCount1", map);
+		     
 		      
 		      dto.setTotalCount(totalCount);
 		      dto.setSearchName(map.get("searchName"));
 		      dto.setSearchValue(map.get("searchValue"));
+		      dto.setAttLocation(map.get("attLocation"));
+		      dto.setAttType(map.get("attType"));
+		      dto.setAttType(map.get("attBtn"));
 		      return dto;
 		}//end list()
 		

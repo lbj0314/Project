@@ -5,26 +5,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.mybatis.LoginMapper">
 	
 	<select id="comLogin" parameterType="hashmap" resultType="ComDTO">
-		select *
+		select comnum, comid, compasswd, comname, comssn, comphone, comgrade,
+			 comemail, comaddr1, comaddr2, compost1, compost2
 		from commember
 		where comid = #{userid}
 		and compasswd = #{passwd}
 	</select>
 	
 	<select id="entLogin" parameterType="hashmap" resultType="EntDTO">
-		select *
+		select entnum, entid, entpasswd, entname, entlocation, entphone,
+			 entcellphone, entfax, entin, enttype
 		from entmember
 		where entid = #{userid}
 		and entpasswd = #{passwd}
 	</select>
 	
 	<select id="admLogin" parameterType="hashmap" resultType="AdmDTO">
-		select *
+		select admnum, admid, admpasswd
 		from adminator
 		where admid = #{userid}
-		and admpasswd = #{passwd}
-		
+		and admpasswd = #{passwd}		
 	</select>
+	
+	<update id="comChange" parameterType="ComDTO">
+		update commember
+		set compasswd=#{compasswd}, comname=#{comname}, comphone=#{comphone}, comemail=#{comemail},
+		comaddr1=#{comaddr1}, comaddr2=#{comaddr2}, compost1=#{compost1}, compost2=#{compost2}
+		where comnum=#{comnum}
+	
+	</update>
+	
+	<delete id="comDelete" parameterType="int">
+		delete from commember
+		where comnum=#{comnum}
+	</delete>
 
 </mapper>
 

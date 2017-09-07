@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/MyPageMemberServlet")
-public class MyPageMemberServlet extends HttpServlet {
+@WebServlet("/MyPageFormServlet")
+public class MyPageFormServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setAttribute("member", "member");
+		request.setAttribute("reservation", "reservation");
 		String target="mypage/mypage.jsp";
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
