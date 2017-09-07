@@ -23,11 +23,11 @@
 	test="${!empty sessionScope.admLogin}">
 	관리자님 안녕하세요&nbsp;
 	<a href="/project/LogoutServlet" class="btn btn-default">로그아웃</a>&nbsp;
-	<a href="/project/MyPageFormServlet" class="btn btn-default">마이페이지</a>&nbsp;
+	<a href="/project/MyPageFormServlet" class="btn btn-default">회원관리</a>&nbsp;
 </c:if>
 
 <c:if
-	test="${empty sessionScope.admLogin and empty sessionScope.comLogin and empty sessionScope.admLogin}">
+	test="${empty sessionScope.entLogin and empty sessionScope.comLogin and empty sessionScope.admLogin}">
 	<div id="conright" class="form-group">
 		<form action="LoginServlet" method="get" class="form-inline">
 			<select name="wholog" class="form-control">

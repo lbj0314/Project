@@ -1,4 +1,4 @@
-package com.controller.logout;
+package com.controller.mypage;
 
 import java.io.IOException;
 
@@ -8,16 +8,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet("/LogoutServlet")
-public class LogoutServlet extends HttpServlet {
+@WebServlet("/ReviewManageServlet")
+public class ReviewManageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		String target = "home.jsp";
-		session.invalidate();
+		request.setAttribute("reviewmanage", "reviewmanage");
+		String target="mypage/mypage.jsp";
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
 	}

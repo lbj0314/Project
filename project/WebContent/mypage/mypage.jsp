@@ -35,6 +35,13 @@
 	<c:if test="${!empty requestScope.box}">
 	<jsp:include page="mypageForm/mypageBox.jsp" flush="true" />
 	</c:if>
+	<c:if test="${!empty requestScope.membermanage }">
+	<jsp:include page="mypageForm/mypageMemberManage.jsp" flush="true" />
+	</c:if>
+	<c:if test="${!empty requestScope.reviewmanage }">
+	<jsp:include page="mypageForm/mypageReviewManage.jsp" flush="true" />
+	</c:if>
+	
 
 	<jsp:include page="/include/copyright.jsp" flush="true" />
 </body>

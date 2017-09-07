@@ -30,16 +30,15 @@ public class LoginServlet extends HttpServlet {
 		map.put("passwd", passwd);
 		LoginService service = new LoginService();
 		HttpSession session = request.getSession();
-		String target = null;
 		if (wholog.equals("com")) {
 			try {
 				
 				ComDTO dto = service.comLogin(map);
 				if(dto==null) {
-					target="error.jsp";
+					request.setAttribute("loginfail", "loginfail");
 				}else {
 				session.setAttribute("comLogin", dto);
-				target="home.jsp";
+				session.setAttribute("alert", "true");
 				}
 			} catch (MyException e) {
 				// TODO Auto-generated catch block
@@ -52,11 +51,11 @@ public class LoginServlet extends HttpServlet {
 				AdmDTO dto = service.admLogin(map);
 			
 				if(dto==null) {
-					target="error.jsp";
+					request.setAttribute("loginfail", "loginfail");
 				}else {
 				
 				session.setAttribute("admLogin", dto);
-				target="home.jsp";
+				session.setAttribute("alert", "true");
 				}
 			} catch (MyException e) {
 				// TODO Auto-generated catch block
@@ -67,16 +66,17 @@ public class LoginServlet extends HttpServlet {
 			try {
 				EntDTO dto = service.entLogin(map);
 				if(dto==null) {
-					target="error.jsp";
+					request.setAttribute("loginfail", "loginfail");
 				}else {
 				session.setAttribute("entLogin", dto);
-				target="home.jsp";
+				session.setAttribute("alert", "true");
 				}
 			} catch (MyException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		String target="home.jsp";
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
 

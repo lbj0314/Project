@@ -3,7 +3,6 @@ package com.dao.login;
 import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionException;
 
 import com.dto.login.AdmDTO;
 import com.dto.login.ComDTO;
@@ -33,6 +32,16 @@ public class LoginDAO {
 	
 	public int comDelete(SqlSession session, int comnum) {
 		int n = session.delete("comDelete", comnum);
+		return n;
+	}
+	
+	public int entChange(SqlSession session, EntDTO dto) {
+		int n = session.update("entChange", dto);
+		return n;
+	}
+	
+	public int entDelete(SqlSession session, int entnum) {
+		int n = session.delete("entDelete", entnum);
 		return n;
 	}
 }

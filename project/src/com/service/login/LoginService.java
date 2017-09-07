@@ -89,5 +89,35 @@ public class LoginService {
 			session.close();
 		}
 	}
+	
+	public void entChange(EntDTO dto) throws MyException{
+		SqlSession session = MybatisTemplate.openSession();
+		LoginDAO dao = new LoginDAO();
+		try {
+			int n = dao.entChange(session, dto);
+			if(n==1) {
+				session.commit();
+			}
+		}catch(Exception e) {
+			throw new MyException("기업 회원수정 실패");
+		}finally {
+			session.close();
+		}
+	}
+	
+	public void entDelete(int entnum) throws MyException{
+		SqlSession session = MybatisTemplate.openSession();
+		LoginDAO dao = new LoginDAO();
+		try {
+			int n = dao.entDelete(session, entnum);
+			if(n==1) {
+				session.commit();
+			}
+		}catch(Exception e) {
+			throw new MyException("기업 회원 탈퇴 실패");
+		}finally {
+			session.close();
+		}
+	}
 
 }
