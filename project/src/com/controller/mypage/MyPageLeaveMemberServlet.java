@@ -18,7 +18,7 @@ import com.service.login.LoginService;
 public class MyPageLeaveMemberServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LoginService service = new LoginService();
+		LoginService service = new LoginService(); 
 		HttpSession session = request.getSession();
 		ComDTO dto = (ComDTO)session.getAttribute("comLogin");
 		int comnum = dto.getComnum();
