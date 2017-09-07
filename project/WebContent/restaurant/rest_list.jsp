@@ -29,8 +29,8 @@
 							<table style='padding:15px'>
 								<tr>
 									<td>
-										<a href="RestRetrieveServlet?restNum=${rrr.restNum}"> 
-											<img src="images/${rrr.restImage}.gif" border="0" align="center" width="200">
+										<a href="RestRetrieveServlet?entNum=${rrr.entNum}"> 
+											<img src="images/1.jpg" border="0" align="center" width="200">
 										</a>
 									</td>
 								</tr>
@@ -40,7 +40,7 @@
 								</tr>
 								<tr>
 									<td class= "td_default" align ="center">
-										<a class= "a_black" href="RestRetrieveServlet?restNum=${rrr.restNum}"> 
+										<a class= "a_black" href="RestRetrieveServlet?entNum=${rrr.entNum}"> 
 										${rrr.restName}<br>
 										</a>
 										<font color="gray">

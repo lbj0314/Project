@@ -20,15 +20,13 @@ public class RestRetrieveServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-
-
 		String restNum = request.getParameter("restNum");
 		RestService service = new RestService();
 		 String restTitle="";
 		    String target="";
 		try {
 			List<RestDTO> dto = service.restRetrieve(restNum);
-			target = "goodsRetrieve.jsp";
+			target = "restaurant/rest_boardretrieve.jsp";
 			request.setAttribute("RestDTO", dto);
 		} catch (MyException e) {
 			restTitle= e.getMessage();

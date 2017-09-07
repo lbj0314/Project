@@ -4,29 +4,57 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.RestaurantMapper">
 
-	<select id="restSelectAll" resultType="RestDTO" parameterType="hashmap">
-		select restNum, restTitle, to_char(restWriteday,'YYYY/MM/dd')
-		restWriteDay, restReadCnt
-		from restaurant
-		<if test="restSearchName == 'restTitle'">
-			where restTitle LIKE '%'||#{restSearchValue}||'%'
-		</if>
 
-		order by restNum desc
+	<select id="restSelectAll" resultType="RestDTO" parameterType="hashmap">
+		select restNum,restName,restImage,restPhone,
+		restLocation,restPrice,restTitle,restContent,
+		to_char(restWriteDay,'YYYY/MM/dd') restWriteDay,restReadCnt,
+		restRepleCnt,restSite,restGoods,restType,entNum,restImageClone
+		from restaurant
+		<where>
+			<if test="restSearchName == 'restTitle' and restSearchValue!=null">
+				restTitle LIKE '%'||#{restSearchValue}||'%'
+			</if>
+			<if test="restSearchName == 'restName' and restSearchValue!=null">
+				restName LIKE '%'||#{restSearchValue}||'%'
+			</if>
+			<if
+				test="restLocation != '전체' and restLocation != 'def' and restLocation!=null">
+				and restLocation =#{restLocation}
+			</if>
+			<if test="restType != 'def' and restType!=null">
+				and restType =#{restType}
+			</if>
+		</where>
+		
+		<choose>
+		<when test="restBtn == '1'">
+				order by restNum desc
+			</when>
+			<when test="restBtn == 'cc'">
+				order by restGoods desc
+			</when>
+			<when test="restBtn == 'dd'">
+				order by restWriteDay desc
+			</when>
+		</choose>
 	</select>
-	<insert id="restBoardWrite" parameterType="RestDTO">
-		insert into restaurant ( restNum,restTitle,restContent)
-		values ( restaurant_seq.nextval, #{restTitle},#{restContent})
-	</insert>
+
+
 	<select id="restSelectByNum" resultType="RestDTO" parameterType="int">
-		select restNum,restTitle, restContent,
-		to_char(restWriteDay,'YYYY/MM/dd') restWriteDay, restReadCnt
+		select restNum,restName,restImage,restPhone,
+		restLocation,restPrice,restTitle,restContent,
+		to_char(restWriteDay,'YYYY/MM/dd') restWriteDay,restReadCnt,
+		restRepleCnt,restSite,restGoods,restType,entNum,restImageClone
 		from restaurant
 		where restNum = #{restNum}
 	</select>
+
+
 	<update id="restReadCnt" parameterType="int">
 		update restaurant
-		set restReadCnt = restReadCnt + 1
+		set restReadCnt
+		= restReadCnt + 1
 		where restNum = #{restNum}
 	</update>
 
@@ -37,34 +65,58 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<update id="restUpdateByNum" parameterType="RestDTO">
 		update restaurant
-		set restTitle=#{restTitle} , restContent=#{restContent}
+		set
+		restName=#{restName} , restImage=#{restImage}
+		, restPhone=#{restPhone},
+		restLocation=#{restLocation},
+		restPrice=#{restPrice},
+		restTitle=#{restTitle}
+		, restContent=#{restContent},
+		restImageClone=#{restImageClone}
 		where restNum = #{restNum}
 	</update>
-
-	<select id="restTotalCount" resultType="int">
-		select count(*)
-		from restaurant
-	</select>
-
-	<select id="restTotalCount1" resultType="int" parameterType="hashmap">
-		select count(*)
+	<select id="restList" resultType="int" parameterType="hashmap">
+		select *
 		from restaurant
 
-		<if test="restSearchName == 'title'">
-			where restTitle LIKE '%'||#{restSearchValue}||'%'
+		<if test="restLocation != '전체'">
+			where restLocation =#{restLocation}
 		</if>
-	</select>
-	<select resultType="RestDTO" parameterType="string" id="restList">
-		select
-		restNum, restName, restContent, restPrice, restImage
-		from restaurant
-		where restNum = #{restNum}
-	</select>
 
-	<select resultType="RestDTO" parameterType="string" id="restRetrieve"> 
-		select
-		restNum, restName, restContent, restPrice, restImage
+	</select>
+	
+<select id="restTotalCount" resultType="int" parameterType="hashmap">
+		select count(*)
 		from restaurant
-		where restNum = #{restNum}
-		</select>
+		<where>
+			<if test="restSearchName == 'restTitle' and restSearchValue!=null">
+				restTitle LIKE '%'||#{restSearchValue}||'%'
+			</if>
+			<if test="restSearchName == 'restName' and restSearchValue!=null">
+				restName LIKE '%'||#{restSearchValue}||'%'
+			</if>
+			<if
+				test="restLocation != '전체' and restLocation != 'def' and restLocation!=null">
+				and restLocation =#{restLocation}
+			</if>
+			<if test="restType != 'def' and restType!=null">
+				and restType =#{restType}
+			</if>
+		</where>
+	</select>
+	<insert id="restBoardWrite" parameterType="RestDTO">
+		insert into restaurant
+		(restNum,restName,restImage,restPhone,
+		restLocation,restPrice,restTitle,restContent,
+		restSite,restType,entNum,restImageClone)
+		values ( rest_seq.nextval,
+		#{restName},#{restImage},#{restPhone}
+		,#{restLocation},#{restPrice},#{restTitle},#{restContent},
+		#{restSite},#{restType},#{entNum},#{restImageClone})
+	</insert>
+	<!-- <select id="search" parameterType="hashmap" resultType="MyBoardDTO"> 
+		select num,title,author, to_char(writeday,'YYYY/MM/dd') writeday, readCnt 
+		from myboard <if test="searchName == 'title'"> where title LIKE '%'||#{searchValue}||'%' 
+		</if> <if test="searchName == 'author'"> where author LIKE '%'||#{searchValue}||'%' 
+		</if> </select> -->
 </mapper>

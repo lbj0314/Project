@@ -24,10 +24,10 @@ public class RestListServlet extends HttpServlet {
 		String restNum = request.getParameter("restNum");
 		
 		RestService service = new RestService();
-		String target ="restaurant/rest_boardlist.jsp";
+		String target ="restaurant/rest_boardlistview.jsp";
 		try {
 			List<RestDTO> list = service.restList("restNum");
-			request.setAttribute("rest_list", list);
+			request.setAttribute("rest_boardlist", list);
 		} catch (MyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

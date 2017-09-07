@@ -17,35 +17,58 @@ import com.service.restaurant.RestService;
 
 @WebServlet("/RestBoardListServlet")
 public class RestBoardListServlet extends HttpServlet {
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String restCurPage = request.getParameter("restCurPage");
-		if(restCurPage == null) {
-			restCurPage = "1";
-		}
-		
+		request.setCharacterEncoding("UTF-8");
+				String restCurPage = request.getParameter("restCurPage");
+				if(restCurPage == null) {
+					restCurPage = "1";
+				}
 		String restSearchName = request.getParameter( "restSearchName" );
 		String restSearchValue = request.getParameter( "restSearchValue" );
-
-		 HashMap<String, String> restmap = new HashMap<>();
-		 restmap.put("restSearchName", restSearchName);
-		 restmap.put("restSearchValue", restSearchValue);
-		 
-		 RestService service = new RestService();
-		 String target = "restaurant/rest_listview.jsp";
-		 try {
-			 RestPageDTO list = service.restPage(Integer.parseInt(restCurPage), restmap);
-			request.setAttribute("list", list);
-	
-		} catch (MyException e) {
-			target = "error.jsp";
-		}
+		String restLocation=request.getParameter("restLocation");
+		String restType=request.getParameter("restType");
+		String restBtngo = request.getParameter("restBtngo");
+		String restBtn = request.getParameter("restBtn");
+		if(restBtn==null) restBtn="1";
 		
-		 RequestDispatcher dis = request.getRequestDispatcher(target);
-		 dis.forward(request, response);
-	}//end 
+		
+		System.out.println("att"+restBtn);
+		String target="restaurant/rest_listboardview.jsp";
+		 HashMap<String, String> map = new HashMap<>();
+		 map.put("restSearchName", restSearchName);
+		 map.put("restSearchValue", restSearchValue);
+		 map.put("restLocation", restLocation);
+		 map.put("restType", restType);
+		 
+		if(restBtn.equals("1")) {
+			map.put("restBtn", "1");
 
+			 
+		 }
+		 else if(restBtn.equals("cc")) {
+			 map.put("restBtn", "cc");
+		 }
+		else if(restBtn.equals("dd")) {
+			 map.put("restBtn", "dd");
+			 
+		 }
+		RestService service = new RestService();
+		try {
+			RestPageDTO list=service.restPage(Integer.parseInt(restCurPage),map);
+			request.setAttribute("restlist", list);
+		} catch (MyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			target="error.jsp";
+			
+		}
+
+		RequestDispatcher dis = request.getRequestDispatcher(target);
+		dis.forward(request, response);		
+	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

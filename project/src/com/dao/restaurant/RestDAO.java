@@ -11,11 +11,6 @@ import com.dto.restaurant.RestPageDTO;
 
 public class RestDAO {
 
-	public List<RestDTO> restList(SqlSession session) {
-		List<RestDTO> list = session.selectList("restSelectAll");
-		return list;
-	}
-
 	public int restBoardWrite(SqlSession session, RestDTO restdto) {
 		int n = session.insert("restBoardWrite", restdto);
 		return n;

@@ -83,7 +83,7 @@ public class RestService {
 
 	}
 
-	public List<RestDTO> restSearch(HashMap<String, String> restmap) throws MyException {
+/*	public List<RestDTO> restSearch(HashMap<String, String> restmap) throws MyException {
 		SqlSession session = MybatisTemplate.openSession();
 		RestDAO restdao = new RestDAO();
 		List<RestDTO> restList = null;
@@ -96,7 +96,7 @@ public class RestService {
 			session.close();
 		}
 		return restList;
-	}
+	}*/
 
 	public RestPageDTO restPage(int restCurPage, HashMap<String, String> restmap) throws MyException {
 		SqlSession session = MybatisTemplate.openSession();

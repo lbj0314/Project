@@ -16,13 +16,14 @@ public class RestDTO {
 	private int restRepleCnt;
 	private String restSite;
 	private int entNum;
+	private int restGoods;
 	public RestDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public RestDTO(int restNum, String restType, String restName, int restPrice, String restImage,
 			String restImageClone, int restPhone, String restLocation, String restTitle, String restWriteDay,
-			String restContent, int restReadCnt, int restRepleCnt, String restSite, int entNum) {
+			String restContent, int restReadCnt, int restRepleCnt, String restSite, int entNum, int restGoods) {
 		super();
 		this.restNum = restNum;
 		this.restType = restType;
@@ -39,6 +40,7 @@ public class RestDTO {
 		this.restRepleCnt = restRepleCnt;
 		this.restSite = restSite;
 		this.entNum = entNum;
+		this.restGoods = restGoods;
 	}
 	public int getRestNum() {
 		return restNum;
@@ -130,13 +132,19 @@ public class RestDTO {
 	public void setEntNum(int entNum) {
 		this.entNum = entNum;
 	}
+	public int getRestGoods() {
+		return restGoods;
+	}
+	public void setRestGoods(int restGoods) {
+		this.restGoods = restGoods;
+	}
 	@Override
 	public String toString() {
 		return "RestDTO [restNum=" + restNum + ", restType=" + restType + ", restName=" + restName + ", restPrice="
 				+ restPrice + ", restImage=" + restImage + ", restImageClone=" + restImageClone + ", restPhone="
 				+ restPhone + ", restLocation=" + restLocation + ", restTitle=" + restTitle + ", restWriteDay="
 				+ restWriteDay + ", restContent=" + restContent + ", restReadCnt=" + restReadCnt + ", restRepleCnt="
-				+ restRepleCnt + ", restSite=" + restSite + ", entNum=" + entNum + "]";
+				+ restRepleCnt + ", restSite=" + restSite + ", entNum=" + entNum + ", restGoods=" + restGoods + "]";
 	}
 	
 	
