@@ -97,7 +97,7 @@
 									src="images/${tourRetrieve.attImageClone}"
 									alt="사진을 바꾸시려면 눌러주세요." border="0" align="center" width="300" />
 
-									<br>현재파일:${tourRetrieve.attImageClone}</td>
+									<br>현재파일:${tourRetrieve.attImage}</td>
 						</c:if>
 						<c:if test="${!empty sessionScope.admLogin || !empty sessionScope.comLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum != tourRetrieve.entNum))
 						|| (empty sessionScope.entLogin && empty sessionScope.comLogin && empty sessionScope.admLogin)}">
