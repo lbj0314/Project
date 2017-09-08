@@ -34,10 +34,11 @@
 	<br>
 	<br>
 	<br>
+	<br>
 	<a href="">숙박 보기</a><br>
-	<a href="/project/RestBoardListServlet">음식점 보기</a><br>
-	<a href="/project/TourListServlet">관광명소 보기</a><br>
-	<!-- error.jsp가 뜨는데 경로가 잘못된건지 뭔지 모르겠다 -->
+	<a href="">음식점 보기</a><br>
+	<a href="">관광명소 보기</a><br>
+
 	
 	마음에 드는 숙박, 음식점, 관광명소를 선택하신 후<br>
 	자유롭게 패키지를 설정하실 수 있습니다<br>
