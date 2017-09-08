@@ -65,14 +65,14 @@ public class TourWriteServlet extends HttpServlet {
 		String entNum = null;
 		String attImage = null;
 		String attImageClone = null;
-		
+
 		String target = "TourListServlet";
 		// Parse the request
 		try {
 			List<FileItem> items = upload.parseRequest(request);
 			// Process the uploaded items
 			Iterator<FileItem> iter = items.iterator();
-			
+
 			while (iter.hasNext()) {
 				FileItem item = iter.next();
 
@@ -114,8 +114,7 @@ public class TourWriteServlet extends HttpServlet {
 					} else if (name.equals("attTitle")) {
 						attTitle = value;
 
-					}
-					else if (name.equals("entNum")) {
+					} else if (name.equals("entNum")) {
 						entNum = value;
 
 					}
@@ -133,11 +132,14 @@ public class TourWriteServlet extends HttpServlet {
 					// contentType = item.getContentType(); //이미지가 아니면 업로드 불가능 처리를 할 수 있다. 나중에 구현
 					// sizeInBytes = item.getSize();
 					File uploadedFile = new File("c:\\upload", attImageClone);
-					item.write(uploadedFile);
 					
 					
+					//폴더가 없으면 폴더 생성
+					if (!uploadedFile.exists()) {
+						uploadedFile.mkdir();
+					}
 
-					
+					item.write(uploadedFile);
 
 				}
 			}
