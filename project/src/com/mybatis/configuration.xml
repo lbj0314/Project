@@ -16,6 +16,8 @@ PUBLIC "-//com.mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.dto.restaurant.RestPageDTO" alias="RestPageDTO" />
 		<typeAlias type="com.dto.stay.StayDTO" alias="StayDTO" />
 		<typeAlias type="com.dto.stay.StayPageDTO" alias="StayPageDTO" />
+		<typeAlias type="com.dto.fes.FesDTO" alias="FesDTO" />
+
 	</typeAliases>
 
 	<environments default="development">
@@ -36,5 +38,6 @@ PUBLIC "-//com.mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/mybatis/StayMapper.xml"/>
 		<mapper resource="com/mybatis/TourMapper.xml"/>
 		<mapper resource="com/mybatis/JoinMapper.xml"/>
+		<mapper resource="com/mybatis/FesMapper.xml"/>
 	</mappers>
 </configuration>

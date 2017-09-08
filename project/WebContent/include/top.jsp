@@ -35,9 +35,9 @@ $('.dropdown-toggle').dropdown()
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li><a href="/project/TourListServlet">축제</a><br></li>
-    
+    <li><a href="/project/TourListServlet">관광 명소</a><br></li>
     <li><a href="/project/tour/mustgo100view.jsp">관광100</a></li>
+    <li><a href="/project/FesListServlet">축제</a></li>
   </ul>
 </div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
