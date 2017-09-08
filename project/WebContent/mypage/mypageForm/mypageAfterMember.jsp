@@ -58,7 +58,7 @@
 					type="text" name="post2" value="${sessionScope.comdto.compost2 }"></td>
 			</tr>
 			<input type="submit" value="탈퇴 시키기" class="btn btn-default">
-			<a href="mypage.jsp" class="btn btn-default">회원 관리로 돌아가기</a>
+			<a href="MemberManageServlet" class="btn btn-default">회원 관리로 돌아가기</a>
 		</table>
 	</form>
 </c:if>
@@ -113,6 +113,6 @@
 			</tr>
 		</table>
 		<input type="submit" value="탈퇴 시키기" class="btn btn-default">
-		<a href="mypage.jsp" class="btn btn-default">후기글 관리로 돌아가기</a>
+		<a href="ReviewManageServlet" class="btn btn-default">후기글 관리로 돌아가기</a>
 	</form>
 </c:if>

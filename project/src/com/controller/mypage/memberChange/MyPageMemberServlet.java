@@ -1,4 +1,4 @@
-package com.controller.mypage;
+package com.controller.mypage.memberChange;
 
 import java.io.IOException;
 
@@ -10,17 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/MyPageBoxServlet")
-public class MyPageBoxServlet extends HttpServlet {
+@WebServlet("/MyPageMemberServlet")
+public class MyPageMemberServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		request.setAttribute("box", "box");
+		request.setAttribute("member", "member");
 		String target="mypage/mypage.jsp";
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

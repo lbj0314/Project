@@ -1,4 +1,4 @@
-package com.controller.mypage;
+package com.controller.mypage.memberChange;
 
 import java.io.IOException;
 
