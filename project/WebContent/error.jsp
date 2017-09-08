@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-error.jsp 란다^^
+<center>
+<h1 font-size="60px">error.jsp 란다^^</h1>
+</center>
 </body>
 </html>

@@ -9,66 +9,71 @@ import org.apache.ibatis.session.SqlSession;
 import com.dto.stay.StayDTO;
 import com.dto.stay.StayPageDTO;
 
+
+
 public class StayDAO {
 
-	public List<StayDTO> stayList(SqlSession session) {
-		List<StayDTO> list = session.selectList("stayEelectAll");
-		return list;
-	}
 
-	public int stayBoardWrite(SqlSession session, StayDTO staydto) {
-		int n = session.insert("stayBoardWrite", staydto);
+   //2. 명소 글쓰기
+	public int stayWrite(SqlSession session , StayDTO dto) {
+		int n = session.insert("stayWrite", dto);
 		return n;
 	}
-
-	public StayDTO staySelectByNum(SqlSession session, int stayNum) {
+	
+	
+	//3투어 글 자세히 보기
+	public StayDTO staySelectByNum(SqlSession session , int stayNum) {
 		StayDTO dto = session.selectOne("staySelectByNum", stayNum);
 		return dto;
 	}
-
-	public int stayReadCnt(SqlSession session, int stayNum) {
-		int n = session.update("stayReadCnt", stayNum);
+	public int stayReadCnt(SqlSession session , int stayNum) {
+		int n = session.update("stayReadCnt",stayNum);
 		return n;
 	}
 
-	public int stayDeleteByNum(SqlSession session, int stayNum) {
-		int n = session.delete("stayDeleteByNum", stayNum);
+	//4. 글 삭제
+	public int stayDeleteByNum(SqlSession session , int stayNum) {
+		int n = session.delete("stayDeleteByNum",stayNum);
 		return n;
 	}
-
-	public int stayUpdateByNum(SqlSession session, StayDTO staydto) {
-		int n = session.update("stayUpdateByNum", staydto);
-		return n;
-	}
-
-	public List<StayDTO> staySearch(SqlSession session, HashMap<String, String> staymap) {
-		List<StayDTO> list = session.selectList("staySearch", staymap);
-		return list;
-	}
-
-	public StayPageDTO stayPage(SqlSession session, int stayCurPage, HashMap<String, String> staymap) {
-
-		StayPageDTO dto = new StayPageDTO();
-
-		int sIndex = (stayCurPage - 1) * StayPageDTO.getStayPerPage();
-		int length = StayPageDTO.getStayPerPage();
-
-		List<StayDTO> list = session.selectList("staySelectAll", staymap, new RowBounds(sIndex, length));
-		int stayTotalCount = 0;
-		System.out.println("!" + list);
-		dto.setStayList(list);
-		dto.setStayCurPage(stayCurPage);
-		System.out.println(">" + dto.getStayList());
-		if (staymap.get("staySearchValue") == null) {
-			stayTotalCount = session.selectOne("stayTotalCount");
-		} else {
-			stayTotalCount = session.selectOne("stayTotalCount1", staymap);
+	//5. 글 수정
+		public int stayUpdateByNum(SqlSession session , StayDTO dto) {
+			int n = session.update("stayUpdateByNum", dto);
+			return n;
 		}
-
-		dto.setStayTotalCount(stayTotalCount);
-		dto.setStaySearchName(staymap.get("staySearchName"));
-		dto.setStaySearchValue(staymap.get("staySearchValue"));
-		return dto;
-	}
-
-}// end class
+		//7. 페이징 처리
+		public StayPageDTO stayPage(SqlSession session, int stayCurPage , HashMap<String, String> map ){
+			  
+			  StayPageDTO dto = new StayPageDTO();
+			  
+			  int sIndex = (stayCurPage - 1)* StayPageDTO.getStayPerPage();
+		      int length  = StayPageDTO.getStayPerPage();
+			
+		      List<StayDTO> list = session.selectList("staySelect", map ,new RowBounds(sIndex, length));
+			  int stayTotalCount=0;
+		      //PageDTO에 4개의 데이터 저장
+			  System.out.println("!!!"+list);
+		      dto.setList(list);
+		      dto.setStayCurPage(stayCurPage);
+		      System.out.println(">>"+dto.getList());
+		    
+		      stayTotalCount = session.selectOne("stayTotalCount", map);
+		     
+		      
+		      dto.setStayTotalCount(stayTotalCount);
+		      dto.setStaySearchName(map.get("staySearchName"));
+		      dto.setStaySearchValue(map.get("staySearchValue"));
+		      dto.setStayLocation(map.get("stayLocation"));
+		      dto.setStayType(map.get("stayType"));
+		      dto.setStayGrade(map.get("stayGrade"));
+		      dto.setSortStay(map.get("sortstay"));
+		      return dto;
+		}//end list()
+		
+		
+		/// 좋아요
+		public int stayGoods(SqlSession session , int stayNum) {
+			int n = session.update("stayGoods",stayNum);
+			return n;
+		}
+}//end class

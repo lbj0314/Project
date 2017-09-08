@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.exception.MyException;
 import com.service.stay.StayService;
 
+
 @WebServlet("/StayDeleteServlet")
 public class StayDeleteServlet extends HttpServlet {
 	
@@ -20,9 +21,10 @@ public class StayDeleteServlet extends HttpServlet {
 		String target ="StayListServlet";
 		try {
 			service.stayDeleteByNum(Integer.parseInt(stayNum));
-
+			request.setAttribute("deleok", "삭제 성공");
 		} catch (MyException e) {
 			target ="error.jsp";
+			request.setAttribute("deleerr", "삭제 실패");
 		}
 		response.sendRedirect(target);
 	}
@@ -30,4 +32,5 @@ public class StayDeleteServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 }

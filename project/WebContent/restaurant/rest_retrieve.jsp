@@ -1,63 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-
-
-<%-- <c:if test="${!empty requestScope.goodok}">
-	<script>
-		alert('${requestScope.goodok}');
-	</script>
-
-</c:if> --%>
-
-
 <script type="text/javascript">
-	$(document).ready(function() {
-
-		$("#xxx").on("click", function(event) {
-			//event.preventDefault();
-			//ajax 지역별 통신
-			$.ajax({
-				type : "get",
-				url : "TourGoodServlet",
-				dataType : "text",
-				data : {
-					attNum : $("#attNum").val()
-				},
-
-				success : function(responseData, status, xhr) {
-					console.log(responseData);
-					
-					$("#result").text(responseData);
-					$("#re1").css("display","none");
-
-					
-
-				},
-				error : function(xhr, status, e) {
-					console.log(status, e);
-
-				}
-
+	$(document).ready(
+			function() {
+				$("#restlo > option[value=${restRetrieve.restLocation}").attr(
+						"selected", "true");
+				$("#restty > option[value=${restRetrieve.restType}").attr(
+						"selected", "true");
 			});
-
-		});
-
-	});
 </script>
 
 
-<FORM action="TourUpdateServlet" method="post"
+<FORM action="RestUpdateServlet" method="post"
 	enctype="multipart/form-data">
-	<input type="hidden" name="attNum" value="${tourRetrieve.attNum}"
-		id="attNum"> <input type="hidden" name="attImage"
-		value="${tourRetrieve.attImage}"> <input type="hidden"
-		name="entNum" value="${sessionScope.entLogin.entnum}">
+	<input type="hidden" name="restNum" value="${restRetrieve.restNum}">
+	<input type="hidden" name="restImage" value="${restRetrieve.restImage}">
+	<input type="hidden" name="entNum"
+		value="${sessionScope.entLogin.entnum}">
 	<table align="center" width="100%" cellspacing="0" cellpadding="0"
 		style='margin-left: 18%'>
 		<tr>
@@ -72,29 +36,23 @@
 					border="0" style='margin-left: 30px'>
 
 					<tr>
-						<td class="td_default" align="center"><font size="5"><b>업소
-									정보 </b></font> &nbsp;</td>
-
+						<td class="td_default" align="center"><font size="5"><b>음식점
+									정보</b></font> &nbsp;</td>
 					</tr>
 
 					<tr>
-						<td>업소 번호:${tourRetrieve.attNum}
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;등록날짜:${tourRetrieve.attWriteDay}
+						<td>음식점 번호 : ${restRetrieve.restNum}
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;등록날짜 : ${restRetrieve.restWriteDay}
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							조회수:${tourRetrieve.attReadCnt}
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br> 좋아요수:
-							<span id="re1">${tourRetrieve.attGoods}</span>
-
-								
-
-							 <c:if test="${!empty sessionScope.comLogin}">
-
-								<span id="result"></span>
-								<button type="button" id="xxx" class="btn btn-default btn-xs">
+							조회수 : ${restRetrieve.restReadCnt}
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
 
 
-									<img src="/project/images/goods.png">
-								</button>
+							좋아요수 : ${restRetrieve.restGoods} <c:if
+								test="${!empty sessionScope.comLogin}">
+								<a href="RestGoodServlet?restNum=${restRetrieve.restNum}"> <img
+									src="/project/images/goods.png">
+								</a>
 							</c:if>
 						</td>
 
@@ -119,51 +77,51 @@
 
 
 						<c:if
-							test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum)}">
+							test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == restRetrieve.entNum)}">
 							<tr>
 								<!-- 이미지 수정부 -->
-								<td rowspan="10"><input type="file" name="attImage"
+								<td rowspan="10"><input type="file" name="restImage"
 									id="imgInp"> <img id="imgview"
-									src="images/${tourRetrieve.attImageClone}"
+									src="images/${restRetrieve.restImageClone}"
 									alt="사진을 바꾸시려면 눌러주세요." border="0" align="center" width="300" />
 
-									<br>현재파일:${tourRetrieve.attImage}</td>
+									<br>현재파일:${restRetrieve.restImage}</td>
 						</c:if>
 						<c:if
-							test="${!empty sessionScope.admLogin || !empty sessionScope.comLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum != tourRetrieve.entNum))
+							test="${!empty sessionScope.admLogin || !empty sessionScope.comLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum != restRetrieve.entNum))
 						|| (empty sessionScope.entLogin && empty sessionScope.comLogin && empty sessionScope.admLogin)}">
 							<tr>
 								<!-- 이미지 화면부 -->
 								<td rowspan="9"><img
-									src="images/${tourRetrieve.attImageClone}" border="0"
+									src="images/${restRetrieve.restImageClone}" border="0"
 									align="center" width="300" /><br> <a
 									class="btn btn-primary"
-									href="/project/TourFileDownServlet?attImageClone=${tourRetrieve.attImageClone}&attImage=${tourRetrieve.attImage}">다운받기</a>
+									href="/project/RestFileDownServlet?restImageClone=${restRetrieve.restImageClone}&restImage=${restRetrieve.restImage}">다운받기</a>
 
 								</td>
 						</c:if>
 
-						<td class="td_title">업소 이름</td>
+						<td class="td_title">음식점 이름</td>
 						<td class="td_default" colspan="2" style='padding-left: 30px'><input
-							type="text" name="attName" value="${tourRetrieve.attName}"
+							type="text" name="restName" value="${restRetrieve.restName}"
 							class="form-control"></td>
 
 						</tr>
 
 					</div>
 					<div class="form-inline">
-						<td class="td_title">업소 제목</td>
+						<td class="td_title">음식점 제목</td>
 						<td class="td_default" colspan="2" style='padding-left: 30px'><input
-							type="text" name="attTitle" value="${tourRetrieve.attTitle}"
+							type="text" name="restTitle" value="${restRetrieve.restTitle}"
 							class="form-control"></td>
 
 					</div>
 					<div class="form-inline">
 						<tr>
 
-							<td class="td_title">업소 지역</td>
+							<td class="td_title">음식점 지역</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<select name="attLocation" class="form-control" id="attlo">
+								<select name="restLocation" class="form-control" id="restlo">
 									<option>지역선택</option>
 									<option value="전체">전체</option>
 									<option value="서울">서울</option>
@@ -189,16 +147,17 @@
 					</div>
 					<div class="form-inline">
 						<tr>
-							<td class="td_title">업소 타입</td>
+							<td class="td_title">음식점 종류</td>
 
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<select name="attType" class="form-control" id="attty">
+								<select name="restType" class="form-control" id="restty">
 									<option value="def">타입선택</option>
-									<option value="자연">자연</option>
-									<option value="체험">체험</option>
-									<option value="역사">역사</option>
-									<option value="테마">테마</option>
-									<option value="쇼핑">쇼핑</option>
+									<option value="한식">한식</option>
+									<option value="일식">일식</option>
+									<option value="중식">중식</option>
+									<option value="양식">양식</option>
+									<option value="패스트푸드">패스트푸드</option>
+									<option value="제과">제과</option>
 
 							</select>
 							</td>
@@ -207,69 +166,51 @@
 					</div>
 					<div class="form-inline">
 						<tr>
-							<td class="td_title">업소 성인가격</td>
-
-
-
-
+							<td class="td_title">음식점 평균 가격</td>
 							<td class="td_red" colspan="2" style='padding-left: 30px'><fmt:formatNumber
-									type="currency" value="${tourRetrieve.attAdultPrice}"
-									pattern="\###,###" var="aap" /> <input type="text"
-								name="attAdultPrice" value="${tourRetrieve.attAdultPrice}"
-								class="form-control"></td>
-						</tr>
-					</div>
-					<div class="form-inline">
-						<tr>
-							<td class="td_title">업소 어린이가격</td>
-
-
-
-
-							<td class="td_red" colspan="2" style='padding-left: 30px'><fmt:formatNumber
-									type="currency" value="${tourRetrieve.attKidPrice}"
-									pattern="\###,###" var="akp" /> <input type="text"
-								name="attKidPrice" value="${tourRetrieve.attKidPrice}"
+									type="currency" value="${restRetrieve.restPrice}"
+									prestern="\###,###" var="ap" /> <input type="text"
+								name="restPrice" value="${restRetrieve.restPrice}"
 								class="form-control"></td>
 						</tr>
 					</div>
 					<div class="form-inline">
 						<tr>
 
-							<td class="td_title">업소 전화번호</td>
+							<td class="td_title">음식점 전화번호</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<input type="text" name="attPhone"
-								value="${tourRetrieve.attPhone}" class="form-control">
+								<input type="text" name="restPhone"
+								value="${restRetrieve.restPhone}" class="form-control">
 
 
 							</td>
 						</tr>
 					</div>
 					<tr>
-						<td class="td_title">업소 설명</td>
+						<td class="td_title">음식점 설명</td>
 						<td class="td_default" colspan="2" style='padding-left: 30px'>
-							<input type="text" name="attContent"
-							value="${tourRetrieve.attContent}" class="form-control">
+							<input type="text" name="restContent"
+							value="${restRetrieve.restContent}" class="form-control">
 
 						</td>
 					</tr>
 					<c:if test="${empty sessionScope.admLogin}">
 
 						<tr>
-							<td class="td_title">업소사이트 바로가기</td>
+							<td class="td_title">음식점사이트 바로가기</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'><a
-								href="${tourRetrieve.attSite}">${tourRetrieve.attSite}</a></td>
+								href="${restRetrieve.restSite}">${restRetrieve.restSite}</a></td>
 						</tr>
 					</c:if>
 
 					<c:if
-						test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum)}">
+						test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == restRetrieve.entNum)}">
 						<tr>
-							<td class="td_title">업소사이트 수정</td>
+							<td class="td_title">음식점사이트 수정</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
 
-								<input type="text" name="attSite"
-								value="${tourRetrieve.attSite}">
+								<input type="text" name="restSite"
+								value="${restRetrieve.restSite}">
 
 							</td>
 						</tr>
@@ -296,19 +237,19 @@
 </c:if>
 
 		<c:if
-			test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum)}">
+			test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == restRetrieve.entNum)}">
 
 
 			<input type="submit" class="btn btn-default" value="수정 하기">
 		</c:if>
 		<c:if
-			test="${!empty sessionScope.admLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum))}">
-			<a href="TourDeleteServlet?attNum=${tourRetrieve.attNum}"
+			test="${!empty sessionScope.admLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == restRetrieve.entNum))}">
+			<a href="RestDeleteServlet?restNum=${restRetrieve.restNum}"
 				class="btn btn-default">삭제 하기</a>
 		</c:if>
 
 
-		<a href="TourListServlet" class="btn btn-default">목록으로</a>
+		<a href="RestListServlet" class="btn btn-default">목록으로</a>
 
 	</div>
 
@@ -320,24 +261,17 @@
 <script>
 	function upCount() {
 		var amount = parseInt(document.getElementById("GOODS_AMOUNT").value);
-
 		amount = amount + 1;
 		document.getElementById("GOODS_AMOUNT").value = amount;
-
 	}
-
 	function downCount() {
 		var amount = parseInt(document.getElementById("GOODS_AMOUNT").value);
-
 		amount = amount - 1;
 		if (amount == 0) {
 			amount = 1;
 		}
-
 		document.getElementById("GOODS_AMOUNT").value = amount;
-
 	}
-
 	function cartAdd(f) {
 		f.action = "CartAddServlet";
 	}

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>stayWriteView</title>
+<title>restWriteView</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 <script src="//code.jquery.com/jquery.min.js"></script>
@@ -37,7 +37,7 @@
 		<jsp:include page="/login/loginForm.jsp" flush="true" /><br>
 	</div>
 	<jsp:include page="/include/top.jsp" flush="true" /><br>
-	<jsp:include page="/stay/stay_retrieve.jsp" flush="true" /><br>
+	<jsp:include page="/restaurant/rest_retrieve.jsp" flush="true" /><br>
 	<jsp:include page="/include/copyright.jsp" flush="true" /><br>
 </body>
 </html>

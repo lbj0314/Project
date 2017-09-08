@@ -4,67 +4,122 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.RestaurantMapper">
 
-	<select id="restSelectAll" resultType="RestDTO" parameterType="hashmap">
-		select restNum, restTitle, to_char(restWriteday,'YYYY/MM/dd')
-		restWriteDay, restReadCnt
+	<select id="restTotalCount" resultType="int" parameterType="hashmap">
+		select count(*)
 		from restaurant
-		<if test="restSearchName == 'restTitle'">
-			where restTitle LIKE '%'||#{restSearchValue}||'%'
-		</if>
-
-		order by restNum desc
+		<where>
+			<if test="restSearchName == 'restTitle' and restSearchValue!=null">
+				restTitle LIKE '%'||#{restSearchValue}||'%'
+			</if>
+			<if test="searchName == 'restName' and searchValue!=null">
+				restName LIKE '%'||#{restSearchValue}||'%'
+			</if>
+			<if	test="restLocation != '전체' and restLocation != 'def' and restLocation != null and restLocation != ''">
+				and restLocation =#{restLocation}
+			</if>
+			<if test="restType != 'def' and restType != null and restType != ''">
+				and restType =#{restType}
+			</if>
+		</where>
 	</select>
-	<insert id="restBoardWrite" parameterType="RestDTO">
-		insert into restaurant ( restNum,restTitle,restContent)
-		values ( restaurant_seq.nextval, #{restTitle},#{restContent})
+	<insert id="restWrite" parameterType="RestDTO">
+		insert into restaurant
+		(restNum,restName,restImage,restPhone,
+		restLocation,restPrice,restTitle,restContent,
+		restSite,restType,entNum,restImageClone)
+		values ( restaurant_seq.nextval,
+		#{restName},#{restImage},#{restPhone}
+		,#{restLocation},#{restPrice},#{restTitle},#{restContent},
+		#{restSite},#{restType},#{entNum},#{restImageClone})
+
 	</insert>
-	<select id="restSelectByNum" resultType="RestDTO" parameterType="int">
-		select restNum,restTitle, restContent,
-		to_char(restWriteDay,'YYYY/MM/dd') restWriteDay, restReadCnt
+
+
+	<select id="restSelect" resultType="RestDTO" parameterType="hashmap">
+		select restNum,restName,restImage,restPhone,
+		restLocation,restPrice,restTitle,restContent,
+		to_char(restWriteDay,'YYYY/MM/dd') restWriteDay,restReadCnt,
+		restRepleCnt,restSite,restGoods,restType,entNum,restImageClone
+		from restaurant
+		<where>
+			<if test="restSearchName == 'restTitle' and restSearchValue!=null and restSearchValue!=''">
+				restTitle LIKE '%'||#{restSearchValue}||'%'
+			</if>
+			<if test="restSearchName == 'restName' and restSearchValue!=null and restSearchValue!=''">
+				restName LIKE '%'||#{restSearchValue}||'%'
+			</if>
+			<if
+				test="restLocation != '전체' and restLocation != 'def' and restLocation != null and restLocation != ''">
+				and restLocation =#{restLocation}
+			</if>
+			<if test="restType != 'def' and restType != null and restType != ''">
+				and restType =#{restType}
+			</if>
+
+		</where>
+
+
+
+		<choose>
+		<when test="sortRest == 'restNoSort' or sortRest == '' or sortRest == null">
+				order by restNum desc
+			</when>
+			<when test="sortRest == 'restGoodSort'">
+				order by restGoods desc
+			</when>
+			<when test="sortRest == 'restSysSort'">
+				order by restWriteDay desc
+			</when>
+		</choose>
+
+
+	</select>
+
+
+	<select id="RestSelectByNum" resultType="RestDTO" parameterType="int">
+		select restNum,restName,restImage,restPhone,
+		restLocation,restPrice,restTitle,restContent,
+		to_char(restWriteDay,'YYYY/MM/dd') restWriteDay,restReadCnt,
+		restRepleCnt,restSite,restGoods,restType,entNum,restImageClone
 		from restaurant
 		where restNum = #{restNum}
 	</select>
+
+
 	<update id="restReadCnt" parameterType="int">
 		update restaurant
-		set restReadCnt = restReadCnt + 1
+		set restReadCnt
+		= restReadCnt + 1
+		where restNum = #{restNum}
+	</update>
+	<update id="restGoods" parameterType="int">
+		update restaurant
+		set restGoods
+		= restGoods + 1
 		where restNum = #{restNum}
 	</update>
 
-	<delete id="restDeleteByNum" parameterType="int">
+	<delete id="RestDeleteByNum" parameterType="int">
 		delete from restaurant
 		where restNum = #{restNum}
 	</delete>
 
 	<update id="restUpdateByNum" parameterType="RestDTO">
 		update restaurant
-		set restTitle=#{restTitle} , restContent=#{restContent}
+		set
+		<if test="restImageClone != null">
+		restImage=#{restImage},
+		restImageClone=#{restImageClone},
+		</if>
+		
+		restContent=#{restContent},
+		restName=#{restName},
+		restLocation=#{restLocation},
+		restType=#{restType},
+		restPrice=#{restPrice},
+		restPhone=#{restPhone},
+		restSite=#{restSite},
+		restTitle=#{restTitle}
 		where restNum = #{restNum}
 	</update>
-
-	<select id="restTotalCount" resultType="int">
-		select count(*)
-		from restaurant
-	</select>
-
-	<select id="restTotalCount1" resultType="int" parameterType="hashmap">
-		select count(*)
-		from restaurant
-
-		<if test="restSearchName == 'title'">
-			where restTitle LIKE '%'||#{restSearchValue}||'%'
-		</if>
-	</select>
-	<select resultType="RestDTO" parameterType="string" id="restList">
-		select
-		restNum, restName, restContent, restPrice, restImage
-		from restaurant
-		where restNum = #{restNum}
-	</select>
-
-	<select resultType="RestDTO" parameterType="string" id="restRetrieve"> 
-		select
-		restNum, restName, restContent, restPrice, restImage
-		from restaurant
-		where restNum = #{restNum}
-		</select>
 </mapper>

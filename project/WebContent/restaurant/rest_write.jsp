@@ -11,7 +11,7 @@
 		<tr>
 
 			<div class="form-inline">
-				<td align=center>음식점 이름 :</td>
+				<td align=center>음식점 이름:</td>
 				<td><input type="text" name="restName" class="form-control"></td>
 
 
@@ -24,9 +24,9 @@
 		<tr>
 			<div class="form-inline">
 
-				<td align=center>지역:</td>
-				<td><select name=restLocation" class="form-control">
-						<option>지역선택</option>
+				<td align=center>지역 :</td>
+				<td><select name="restLocation" class="form-control">
+						<option>지역 선택</option>
 						<option value="전체">전체</option>
 						<option value="서울">서울</option>
 						<option value="인천">인천</option>
@@ -46,23 +46,22 @@
 						<option value="전라남도">전라남도</option>
 						<option value="제주도">제주도</option>
 				</select></td>
-				<td align=center>타입:</td>
-				<td><select name="restType" class="form-control">
-						<option>타입선택</option>
+				<td align=center>음식 종류 :</td>
+				<td><select name="attType" class="form-control">
+						<option>음식종류 선택</option>
 						<option value="한식">한식</option>
 						<option value="일식">일식</option>
+						<option value="중식">중식</option>
 						<option value="양식">양식</option>
-						<option value="분식">분식</option>
 						<option value="패스트푸드">패스트푸드</option>
 						<option value="제과">제과</option>
+
 				</select></td>
 			</div>
 		</tr>
 		<tr>
-			<div class="form-inline">
-				<td align=center>가격 :</td>
-				<td><input type="text" name="restPrice"
-					class="form-control"></td>
+				<td align=center>1인당 평균 가격 :</td>
+				<td><input type="text" name="restPrice" class="form-control"></td>
 			</div>
 		</tr>
 		<tr>
@@ -77,7 +76,7 @@
 		<tr>
 			<div class="form-inline">
 
-				<td colspan=2 align=center>전화번호:</td>
+				<td colspan=2 align=center>전화번호 :</td>
 				<td colspan=2><input type="text" name="restPhone"
 					class="form-control"></td> <br>
 				</td>
@@ -95,7 +94,7 @@
 		</tr>
 
 		<tr>
-			<td colspan=4 align=center><h3>사진등록</h3></td>
+			<td colspan=4 align=center><h3>사진 등록</h3></td>
 		</tr>
 		<tr>
 			<td colspan=4 align=center><input type="file" name="restImage"

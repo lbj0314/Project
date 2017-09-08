@@ -17,35 +17,41 @@ import com.service.restaurant.RestService;
 
 @WebServlet("/RestBoardListServlet")
 public class RestBoardListServlet extends HttpServlet {
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String restCurPage = request.getParameter("restCurPage");
-		if(restCurPage == null) {
-			restCurPage = "1";
-		}
-		
+
+		request.setCharacterEncoding("UTF-8");
+
+				String restCurpage = request.getParameter("restCurpage");
+				if(restCurpage == null) {
+					restCurpage = "1";
+				}
+	
 		String restSearchName = request.getParameter( "restSearchName" );
 		String restSearchValue = request.getParameter( "restSearchValue" );
+		String restLocation=request.getParameter("restLocation");
+		String restType=request.getParameter("restType");
+		String sortRest = request.getParameter("sortRest");
+		String target="restaurant/rest_listview.jsp";
 
-		 HashMap<String, String> restmap = new HashMap<>();
-		 restmap.put("restSearchName", restSearchName);
-		 restmap.put("restSearchValue", restSearchValue);
-		 
-		 RestService service = new RestService();
-		 String target = "restaurant/rest_listview.jsp";
-		 try {
-			 RestPageDTO list = service.restPage(Integer.parseInt(restCurPage), restmap);
-			request.setAttribute("list", list);
-	
+		 HashMap<String, String> map = new HashMap<>();
+		 map.put("restSearchName", restSearchName);
+		 map.put("restSearchValue", restSearchValue);
+		 map.put("restLocation", restLocation);
+		 map.put("restType", restType);
+		 map.put("sortRest", sortRest);
+		RestService service = new RestService();
+		try {
+			RestPageDTO list=service.restPage(Integer.parseInt(restCurpage),map);
+			request.setAttribute("restlist", list);
 		} catch (MyException e) {
-			target = "error.jsp";
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			target="error.jsp";
 		}
-		
-		 RequestDispatcher dis = request.getRequestDispatcher(target);
-		 dis.forward(request, response);
-	}//end 
-
+		RequestDispatcher dis = request.getRequestDispatcher(target);
+		dis.forward(request, response);
+	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

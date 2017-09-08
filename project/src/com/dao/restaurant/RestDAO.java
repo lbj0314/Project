@@ -9,76 +9,70 @@ import org.apache.ibatis.session.SqlSession;
 import com.dto.restaurant.RestDTO;
 import com.dto.restaurant.RestPageDTO;
 
+
+
 public class RestDAO {
 
-	public List<RestDTO> restList(SqlSession session) {
-		List<RestDTO> list = session.selectList("restSelectAll");
-		return list;
-	}
 
-	public int restBoardWrite(SqlSession session, RestDTO restdto) {
-		int n = session.insert("restBoardWrite", restdto);
+   //2. 명소 글쓰기
+	public int restWrite(SqlSession session , RestDTO dto) {
+		int n = session.insert("restWrite", dto);
 		return n;
 	}
-
-	public RestDTO restSelectByNum(SqlSession session, int restNum) {
+	
+	
+	//3투어 글 자세히 보기
+	public RestDTO restSelectByNum(SqlSession session , int restNum) {
 		RestDTO dto = session.selectOne("restSelectByNum", restNum);
 		return dto;
 	}
-
-	public int restReadCnt(SqlSession session, int restNum) {
-		int n = session.update("restReadCnt", restNum);
+	public int restReadCnt(SqlSession session , int restNum) {
+		int n = session.update("restReadCnt",restNum);
 		return n;
 	}
 
-	public int restDeleteByNum(SqlSession session, int restNum) {
-		int n = session.delete("restDeleteByNum", restNum);
+	//4. 글 삭제
+	public int restDeleteByNum(SqlSession session , int restNum) {
+		int n = session.delete("restDeleteByNum",restNum);
 		return n;
 	}
-
-	public int restUpdateByNum(SqlSession session, RestDTO restdto) {
-		int n = session.update("restUpdateByNum", restdto);
-		return n;
-	}
-
-	public List<RestDTO> restSearch(SqlSession session, HashMap<String, String> restmap) {
-		List<RestDTO> list = session.selectList("restSearch", restmap);
-		return list;
-	}
-
-	public RestPageDTO restPage(SqlSession session, int restCurPage, HashMap<String, String> restmap) {
-
-		RestPageDTO dto = new RestPageDTO();
-
-		int sIndex = (restCurPage - 1) * RestPageDTO.getRestPerPage();
-		int length = RestPageDTO.getRestPerPage();
-
-		List<RestDTO> list = session.selectList("restSelectAll", restmap, new RowBounds(sIndex, length));
-		int restTotalCount = 0;
-		System.out.println("!" + list);
-		dto.setRestList(list);
-		dto.setRestCurPage(restCurPage);
-		System.out.println(">" + dto.getRestList());
-		if (restmap.get("searchValue") == null) {
-			restTotalCount = session.selectOne("restTotalCount");
-		} else {
-			restTotalCount = session.selectOne("restTotalCount1", restmap);
+	//5. 글 수정
+		public int restUpdateByNum(SqlSession session , RestDTO dto) {
+			int n = session.update("restUpdateByNum", dto);
+			return n;
 		}
-
-		dto.setRestTotalCount(restTotalCount);
-		dto.setRestSearchName(restmap.get("restSearchName"));
-		dto.setRestSearchValue(restmap.get("restSearchValue"));
-		return dto;
-	}
-
-	public List<RestDTO> restList(SqlSession session , String restNum) {
-		List<RestDTO> dto = session.selectList("restList",restNum);
-		return dto;
-	}
-
-	public List<RestDTO> restRetrieve(SqlSession session ,String restNum) {
-		List<RestDTO> dto = session.selectList("restRetrieve", restNum);
-		return dto;
-	}
-
-}// end class
+		//7. 페이징 처리
+		public RestPageDTO restPage(SqlSession session, int restCurPage , HashMap<String, String> map ){
+			  
+			  RestPageDTO dto = new RestPageDTO();
+			  
+			  int sIndex = (restCurPage - 1)* RestPageDTO.getRestPerPage();
+		      int length  = RestPageDTO.getRestPerPage();
+			
+		      List<RestDTO> list = session.selectList("restSelect", map ,new RowBounds(sIndex, length));
+			  int restTotalCount=0;
+		      //PageDTO에 4개의 데이터 저장
+			  System.out.println("!!!"+list);
+		      dto.setList(list);
+		      dto.setRestCurPage(restCurPage);
+		      System.out.println(">>"+dto.getList());
+		    
+		      restTotalCount = session.selectOne("restTotalCount", map);
+		     
+		      
+		      dto.setRestTotalCount(restTotalCount);
+		      dto.setRestSearchName(map.get("restSearchName"));
+		      dto.setRestSearchValue(map.get("restSearchValue"));
+		      dto.setRestLocation(map.get("restLocation"));
+		      dto.setRestType(map.get("restType"));
+		      dto.setSortRest(map.get("sortRest"));
+		      return dto;
+		}//end list()
+		
+		
+		/// 좋아요
+		public int restGoods(SqlSession session , int restNum) {
+			int n = session.update("restGoods",restNum);
+			return n;
+		}
+}//end class

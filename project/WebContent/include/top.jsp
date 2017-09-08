@@ -58,12 +58,7 @@ $('.dropdown-toggle').dropdown()
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-=======
-  <ul class="dropdown-menu">
-    <li><a href="/project/StayListServlet">호텔,모텔</a><br></li>
-    <li><a href="/project/StayListServlet">민박</a><br></li>
-    <li><a href="/project/StayListServlet">캠핑</a><br></li>
-    <li><a href="/project/StayListServlet">템플스테이</a></li>
+    <li><a href="/project/StayBoardListServlet">숙박업소 정보</a><br></li>
   </ul>
 </div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

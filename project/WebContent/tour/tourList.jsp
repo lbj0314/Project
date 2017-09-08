@@ -81,8 +81,8 @@
 				dataType : "text",
 				success : function(responseData, status, xhr) {
 					console.log(responseData);
-
-					$('#aaa').submit();
+			
+					//$('#aaa').submit();
 
 				},
 				error : function(xhr, status, e) {
@@ -113,6 +113,7 @@
 					console.log(responseData);
 
 					$('#aaa').submit();
+					
 
 				},
 				error : function(xhr, status, e) {
@@ -130,8 +131,8 @@
 		
 		
 		
-		$("#attlo > option[value=${tourlist.attLocation}").attr("selected", "true");
 		
+		$("#attlo > option[value=${tourlist.attLocation}").attr("selected", "true");
 		$("#attty > option[value=${tourlist.attType}").attr("selected", "true");
 		$("#attsearch > option[value=${tourlist.searchName}").attr("selected", "true");
 		$("#attSo > option[value=${tourlist.sortAtt}").attr("selected", "true");

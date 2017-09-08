@@ -1,7 +1,6 @@
 package com.service.stay;
 
 import java.util.HashMap;
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -12,49 +11,64 @@ import com.exception.MyException;
 import com.mybatis.MybatisTemplate;
 
 public class StayService {
-
-	public void stayBoardWrite(StayDTO staydto) throws MyException {
+	public void stayWrite(StayDTO dto) throws MyException {
 		SqlSession session = MybatisTemplate.openSession();
-		StayDAO staydao = new StayDAO();
+		StayDAO dao = new StayDAO();
 		try {
-			int n = staydao.stayBoardWrite(session, staydto);
+			int n = dao.stayWrite(session, dto);
 			if (n == 1) {
 				session.commit();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MyException("stayBoardWrite 예외발생");
+			throw new MyException("stayWrite 예외발생");
 		} finally {
 			session.close();
 		}
 
-	}
+	}// end boardWrite
 
 	public StayDTO staySelectByNum(int stayNum) throws MyException {
 
 		SqlSession session = MybatisTemplate.openSession();
-		StayDAO staydao = new StayDAO();
-		StayDTO staydto = null;
+		StayDAO dao = new StayDAO();
+		StayDTO dto = null;
 		try {
-			int n = staydao.stayReadCnt(session, stayNum);
+			int n = dao.stayReadCnt(session, stayNum);
 			if (n == 1)
 				session.commit();
-			staydto = staydao.staySelectByNum(session, stayNum);
+			dto = dao.staySelectByNum(session, stayNum);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new MyException("staySelectByNum 예외발생");
 		} finally {
 			session.close();
 		}
-		return staydto;
+		return dto;
+	}// end staySelectByNum
+
+	public void stayGoods(int stayNum) throws MyException {
+		SqlSession session = MybatisTemplate.openSession();
+		StayDAO dao = new StayDAO();
+		try {
+			int n = dao.stayGoods(session, stayNum);
+			if (n == 1)
+				session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new MyException("goodsStay 예외발생");
+		} finally {
+			session.close();
+
+		}
 	}
 
 	public void stayDeleteByNum(int stayNum) throws MyException {
 
 		SqlSession session = MybatisTemplate.openSession();
-		StayDAO staydao = new StayDAO();
+		StayDAO dao = new StayDAO();
 		try {
-			int n = staydao.stayDeleteByNum(session, stayNum);
+			int n = dao.stayDeleteByNum(session, stayNum);
 			if (n == 1)
 				session.commit();
 		} catch (Exception e) {
@@ -64,14 +78,14 @@ public class StayService {
 			session.close();
 		}
 
-	}
+	}// end stayDeleteByNum
 
-	public void stayUpdateByNum(StayDTO staydto) throws MyException {
+	public void stayUpdateByNum(StayDTO dto) throws MyException {
 
 		SqlSession session = MybatisTemplate.openSession();
-		StayDAO staydao = new StayDAO();
+		StayDAO dao = new StayDAO();
 		try {
-			int n = staydao.stayUpdateByNum(session, staydto);
+			int n = dao.stayUpdateByNum(session, dto);
 			if (n == 1)
 				session.commit();
 		} catch (Exception e) {
@@ -81,35 +95,20 @@ public class StayService {
 			session.close();
 		}
 
-	}
+	}// end deleteByNum
 
-	public List<StayDTO> staySearch(HashMap<String, String> staymap) throws MyException {
+	public StayPageDTO stayPage(int stayCurPage, HashMap<String, String> map) throws MyException {
 		SqlSession session = MybatisTemplate.openSession();
-		StayDAO staydao = new StayDAO();
-		List<StayDTO> stayList = null;
+		StayDAO dao = new StayDAO();
+		StayPageDTO list = null;
 		try {
-			stayList = staydao.staySearch(session, staymap);
+			list = dao.stayPage(session, stayCurPage, map);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MyException("staySearch 예외발생");
+			throw new MyException("staylist 예외발생");
 		} finally {
 			session.close();
 		}
-		return stayList;
-	}
-
-	public StayPageDTO stayPage(int stayCurPage, HashMap<String, String> staymap) throws MyException {
-		SqlSession session = MybatisTemplate.openSession();
-		StayDAO staydao = new StayDAO();
-		StayPageDTO stayList = null;
-		try {
-			stayList = staydao.stayPage(session, stayCurPage, staymap);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new MyException("stayList 예외발생");
-		} finally {
-			session.close();
-		}
-		return stayList;
+		return list;
 	}
 }
