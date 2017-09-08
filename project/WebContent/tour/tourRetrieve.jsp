@@ -17,23 +17,47 @@
 
 
 <script type="text/javascript">
-	$(document).ready(
-			function() {
+	$(document).ready(function() {
 
-				$("#attlo > option[value=${tourRetrieve.attLocation}").attr(
-						"selected", "true");
-				$("#attty > option[value=${tourRetrieve.attType}").attr(
-						"selected", "true");
+		$("#xxx").on("click", function(event) {
+			//event.preventDefault();
+			//ajax 지역별 통신
+			$.ajax({
+				type : "get",
+				url : "TourGoodServlet",
+				dataType : "text",
+				data : {
+					attNum : $("#attNum").val()
+				},
+
+				success : function(responseData, status, xhr) {
+					console.log(responseData);
+					
+					$("#result").text(responseData);
+					$("#re1").css("display","none");
+
+					
+
+				},
+				error : function(xhr, status, e) {
+					console.log(status, e);
+
+				}
 
 			});
+
+		});
+
+	});
 </script>
 
 
 <FORM action="TourUpdateServlet" method="post"
 	enctype="multipart/form-data">
-	<input type="hidden" name="attNum" value="${tourRetrieve.attNum}">
-	<input type="hidden" name="attImage" value="${tourRetrieve.attImage}">
-	<input type="hidden" name="entNum" value="${sessionScope.entLogin.entnum}">
+	<input type="hidden" name="attNum" value="${tourRetrieve.attNum}"
+		id="attNum"> <input type="hidden" name="attImage"
+		value="${tourRetrieve.attImage}"> <input type="hidden"
+		name="entNum" value="${sessionScope.entLogin.entnum}">
 	<table align="center" width="100%" cellspacing="0" cellpadding="0"
 		style='margin-left: 18%'>
 		<tr>
@@ -49,7 +73,8 @@
 
 					<tr>
 						<td class="td_default" align="center"><font size="5"><b>업소
-									정보</b></font> &nbsp;</td>
+									정보 </b></font> &nbsp;</td>
+
 					</tr>
 
 					<tr>
@@ -57,15 +82,20 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;등록날짜:${tourRetrieve.attWriteDay}
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							조회수:${tourRetrieve.attReadCnt}
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br> 좋아요수:
+							<span id="re1">${tourRetrieve.attGoods}</span>
+
+								
+
+							 <c:if test="${!empty sessionScope.comLogin}">
+
+								<span id="result"></span>
+								<button type="button" id="xxx" class="btn btn-default btn-xs">
 
 
-							좋아요수:${tourRetrieve.attGoods}
-							 <c:if
-							test="${!empty sessionScope.comLogin}">
-							<a href="TourGoodServlet?attNum=${tourRetrieve.attNum}"> <img src="/project/images/goods.png">
-						</a>
-						</c:if>
+									<img src="/project/images/goods.png">
+								</button>
+							</c:if>
 						</td>
 
 
@@ -99,19 +129,18 @@
 
 									<br>현재파일:${tourRetrieve.attImage}</td>
 						</c:if>
-						<c:if test="${!empty sessionScope.admLogin || !empty sessionScope.comLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum != tourRetrieve.entNum))
+						<c:if
+							test="${!empty sessionScope.admLogin || !empty sessionScope.comLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum != tourRetrieve.entNum))
 						|| (empty sessionScope.entLogin && empty sessionScope.comLogin && empty sessionScope.admLogin)}">
 							<tr>
 								<!-- 이미지 화면부 -->
 								<td rowspan="9"><img
 									src="images/${tourRetrieve.attImageClone}" border="0"
-									align="center" width="300" /><br>
-									<a class="btn btn-primary" href="/project/TourFileDownServlet?attImageClone=${tourRetrieve.attImageClone}&attImage=${tourRetrieve.attImage}"
-									>다운받기</a>
-									
-									</td>
-									
-									
+									align="center" width="300" /><br> <a
+									class="btn btn-primary"
+									href="/project/TourFileDownServlet?attImageClone=${tourRetrieve.attImageClone}&attImage=${tourRetrieve.attImage}">다운받기</a>
+
+								</td>
 						</c:if>
 
 						<td class="td_title">업소 이름</td>
@@ -271,12 +300,12 @@
 
 
 			<input type="submit" class="btn btn-default" value="수정 하기">
-					</c:if>
-			<c:if
+		</c:if>
+		<c:if
 			test="${!empty sessionScope.admLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum))}">
 			<a href="TourDeleteServlet?attNum=${tourRetrieve.attNum}"
 				class="btn btn-default">삭제 하기</a>
-			</c:if>
+		</c:if>
 
 
 		<a href="TourListServlet" class="btn btn-default">목록으로</a>

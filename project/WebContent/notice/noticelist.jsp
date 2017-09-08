@@ -31,7 +31,7 @@
 				dataType:"text",
 				success:function(responseData, status, xhr){
 					console.log(responseData);
-					
+					//$('#aaa').attr(responseData);
 					$('#aaa').submit();
 					
 						 
@@ -52,6 +52,11 @@
 			});
 			
 		});
+		
+		
+		
+		
+		
 
 	});
 </script>

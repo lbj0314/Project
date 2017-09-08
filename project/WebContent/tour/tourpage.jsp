@@ -43,10 +43,7 @@
 
 
 <c:set value="${startPage + perBlock - 1}" var="endPage" />
-<c:if test="${endPage < 0}">
-<c:set value="1" var="endPage"/>
 
-</c:if>
 <div id="conta">
 
 <c:if test="${endPage > totalNum }">
