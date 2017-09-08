@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class StayWriteUIServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		   response.sendRedirect("stay/stay_boardwriteview.jsp");
+		   response.sendRedirect("stay/stay_writeview.jsp");
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

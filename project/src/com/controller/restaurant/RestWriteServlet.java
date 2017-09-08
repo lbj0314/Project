@@ -21,6 +21,7 @@ import com.dto.restaurant.RestDTO;
 import com.exception.MyException;
 import com.service.restaurant.RestService;
 
+
 @WebServlet("/RestWriteServlet")
 public class RestWriteServlet extends HttpServlet {
 
@@ -28,11 +29,14 @@ public class RestWriteServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		long milliSecond = System.currentTimeMillis();
-		
+
 		DiskFileItemFactory factory = new DiskFileItemFactory();
+
+		// Configure a repository (to ensure a secure temp location is used)
 		ServletContext servletContext = this.getServletConfig().getServletContext();
 		File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
 		factory.setRepository(repository);
+
 		// Create a new file upload handler
 		ServletFileUpload upload = new ServletFileUpload(factory);
 
@@ -48,7 +52,6 @@ public class RestWriteServlet extends HttpServlet {
 
 		String restType = null;
 		String restName = null;
-		// String restLocation = request.getParameter("restLocation");
 		String restPrice = null;
 		String restSite = null;
 		String restContent = null;
@@ -57,14 +60,14 @@ public class RestWriteServlet extends HttpServlet {
 		String entNum = null;
 		String restImage = null;
 		String restImageClone = null;
-
+		
 		String target = "RestBoardListServlet";
 		// Parse the request
 		try {
 			List<FileItem> items = upload.parseRequest(request);
 			// Process the uploaded items
 			Iterator<FileItem> iter = items.iterator();
-			entNum = "1";
+			
 			while (iter.hasNext()) {
 				FileItem item = iter.next();
 
@@ -104,6 +107,10 @@ public class RestWriteServlet extends HttpServlet {
 						restTitle = value;
 
 					}
+					else if (name.equals("entNum")) {
+						entNum = value;
+
+					}
 
 					// System.out.println(name+"\t"+value);
 					// System.out.println(contentType+"\t"+isInMemory+"\t"+sizeInBytes);
@@ -113,12 +120,17 @@ public class RestWriteServlet extends HttpServlet {
 
 					fileName = item.getName();
 					restImage = fileName;
-					String[] restSplit = fileName.split("\\");
+					String[] restSplit = fileName.split("\\.");
 					restImageClone = restSplit[0] + milliSecond + "." + restSplit[1];
 					// contentType = item.getContentType(); //이미지가 아니면 업로드 불가능 처리를 할 수 있다. 나중에 구현
 					// sizeInBytes = item.getSize();
 					File uploadedFile = new File("c:\\upload", restImageClone);
 					item.write(uploadedFile);
+					
+					
+
+					
+
 				}
 			}
 
@@ -142,18 +154,18 @@ public class RestWriteServlet extends HttpServlet {
 		dto.setRestContent(restContent);
 		dto.setRestName(restName);
 		dto.setRestImage(restImage);
-		dto.setRestPhone(Integer.parseInt(restPhone));
+		dto.setRestPhone(restPhone);
 		dto.setRestTitle(restTitle);
 		dto.setRestImageClone(restImageClone);
 		RestService service = new RestService();
 		try {
-			service.restBoardWrite(dto);
-			request.setAttribute("restcomp", "정상적으로 입력 완료하였습니다.");
+			service.restWrite(dto);
+			request.setAttribute("Restcomp", "정상적으로 입력 완료하였습니다.");
 		} catch (MyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			target = "error.jsp";
-			request.setAttribute("restcomp", "입력 실패");
+			request.setAttribute("Restcomp", "입력 실패~");
 
 		}
 

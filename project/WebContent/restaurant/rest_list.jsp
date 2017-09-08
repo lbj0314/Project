@@ -50,7 +50,7 @@
 			//ajax 타입별 통신
 			$.ajax({
 				type : "get",
-				url : "RestListServlet",
+				url : "RestBoardListServlet",
 				data : {
 					restType : $("#restty").val()
 				},
@@ -74,9 +74,9 @@
 			//ajax 검색종류별 통신
 			$.ajax({
 				type : "get",
-				url : "RestListServlet",
+				url : "RestBoardListServlet",
 				data : {
-					searchName : $("#restSearch").val()
+					restSearchName : $("#restSearch").val()
 				},
 				dataType : "text",
 				success : function(responseData, status, xhr) {
@@ -102,7 +102,7 @@
 			//ajax 검색종류별 통신
 			$.ajax({
 				type : "get",
-				url : "RestListServlet",
+				url : "RestBoardListServlet",
 				data : {
 					restBtn : $('#rrr').append(desc)
 
@@ -132,7 +132,7 @@
 	});
 </script>
 
-<form action="RestListServlet" id="rrr">
+<form action="RestBoardListServlet" id="rrr">
 	<input type="hidden" name="restBtngo" value="1" id="restBtngo">
 	
 	<div class="form-inline" id="conta">
@@ -170,7 +170,7 @@
 		<select name="restSearchName" class="form-control" id="restSearch">
 			<option value="restTitle">음식점명</option>
 			<option value="restName">음식점제목</option>
-		</select> <input type="text" name="restSearchValue" class="form-control" value = "${restlist.searchValue}"> <input
+		</select> <input type="text" name="restSearchValue" class="form-control" value = "${restlist.restSearchValue}"> <input
 			type="submit" value="검색" class="btn btn-primary">
 		
 		<button class="btn btn-default" id="restBtnGood">좋아요순</button>
@@ -199,7 +199,7 @@
 				<c:choose>
 
 
-					<c:when test="${restlist.getRestList().size()==0}">
+					<c:when test="${restlist.getList().size()==0}">
 
 
 						<tr>
@@ -218,7 +218,7 @@
 								<td>
 									<table style='padding: 15px'>
 										<tr>
-											<td><a href="RestRetrieveServlet?restNum=${rrr.restNum}">
+											<td><a href="RestBoardRetrieveServlet?restNum=${rrr.restNum}">
 													<img src="images/${rrr.restImageClone}" border="0"
 													align="center" width="200">
 
@@ -230,7 +230,7 @@
 										</tr>
 										<tr>
 											<td class="td_default" align="center"><a class="a_black"
-												href="RestRetrieveServlet?restNum=${rrr.restNum}">
+												href="RestBoardRetrieveServlet?restNum=${rrr.restNum}">
 													음식점 제목 : ${rrr.restTitle}<br>
 											</a></td>
 
@@ -267,6 +267,10 @@
 	<tr>
 		<td height="10">
 	</tr>
+	
+	
+
+	
 	<c:if test="${restlist.getList().size()!=0}">
 		<tr>
 			<td colspan="5"><jsp:include page="/restaurant/rest_boardpage.jsp"

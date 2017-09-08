@@ -12,21 +12,25 @@ import com.exception.MyException;
 import com.service.stay.StayService;
 
 
-@WebServlet("/StayDeleteServlet")
-public class StayDeleteServlet extends HttpServlet {
+/**
+ * Servlet implementation class MyBoardDeleteServlet
+ */
+@WebServlet("/StayGoodServlet")
+public class StayGoodServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String stayNum = request.getParameter("stayNum");
 		StayService service = new StayService();
-		String target ="StayListServlet";
+		String target ="StayRetrieveServlet?stayNum="+stayNum;
 		try {
-			service.stayDeleteByNum(Integer.parseInt(stayNum));
-			request.setAttribute("deleok", "삭제 성공");
+			service.stayGoods(Integer.parseInt(stayNum));
+			request.setAttribute("goodok", "좋아요 성공");
 		} catch (MyException e) {
 			target ="error.jsp";
-			request.setAttribute("deleerr", "삭제 실패");
+			request.setAttribute("gooderror", "좋아요 실패");
 		}
 		response.sendRedirect(target);
+
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
