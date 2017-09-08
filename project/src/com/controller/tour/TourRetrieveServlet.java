@@ -20,12 +20,19 @@ public class TourRetrieveServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	String attNum = request.getParameter("attNum");
+	
+	
+	
+	
 		
 		TourService service = new TourService();
-		String target="tour/tourRetrieve.jsp";
+		String target="tour/tourRetrieveView.jsp";
 		try {
 			TourDTO dto = service.selectByTourNum(Integer.parseInt(attNum));
 			request.setAttribute("tourRetrieve", dto);
+			
+			if(request.getAttribute("goodok") != null)
+			request.setAttribute("goodok","좋아요 성공~");
 			
 		} catch (MyException e) {
 			// TODO Auto-generated catch block

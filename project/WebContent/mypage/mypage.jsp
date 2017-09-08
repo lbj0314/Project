@@ -41,6 +41,7 @@
 	<c:if test="${!empty requestScope.reviewmanage }">
 	<jsp:include page="mypageForm/mypageReviewManage.jsp" flush="true" />
 	</c:if>
+
 	
 
 	<jsp:include page="/include/copyright.jsp" flush="true" />

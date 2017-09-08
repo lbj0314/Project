@@ -65,14 +65,14 @@ public class TourWriteServlet extends HttpServlet {
 		String entNum = null;
 		String attImage = null;
 		String attImageClone = null;
-
+		
 		String target = "TourListServlet";
 		// Parse the request
 		try {
 			List<FileItem> items = upload.parseRequest(request);
 			// Process the uploaded items
 			Iterator<FileItem> iter = items.iterator();
-			entNum = "1";
+			
 			while (iter.hasNext()) {
 				FileItem item = iter.next();
 
@@ -113,6 +113,10 @@ public class TourWriteServlet extends HttpServlet {
 
 					} else if (name.equals("attTitle")) {
 						attTitle = value;
+
+					}
+					else if (name.equals("entNum")) {
+						entNum = value;
 
 					}
 

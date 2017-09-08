@@ -19,3 +19,10 @@
 <a href="MemberManageServlet" class="btn btn-default">회원 관리하기</a>
 <a href="ReviewManageServlet" class="btn btn-default">후기글 관리하기</a>
 </c:if>
+<c:if test="${empty sessionScope.comLogin and empty sessionScope.entLogin and empty sessionScope.admLogin}">
+	세션이 만료 되었습니다.세션이 만료 되었습니다.
+	세션이 만료 되었습니다.세션이 만료 되었습니다.
+	세션이 만료 되었습니다.세션이 만료 되었습니다.
+	세션이 만료 되었습니다.세션이 만료 되었습니다.
+	세션이 만료 되었습니다.세션이 만료 되었습니다.
+</c:if>

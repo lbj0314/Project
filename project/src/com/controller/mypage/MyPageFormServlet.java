@@ -22,7 +22,7 @@ public class MyPageFormServlet extends HttpServlet {
 			request.setAttribute("member", "member");
 		}
 		if(session.getAttribute("admLogin")!=null) {
-			request.setAttribute("manage", "manage");
+			request.setAttribute("membermanage", "membermanage");
 		}
 		String target="mypage/mypage.jsp";
 		RequestDispatcher dis = request.getRequestDispatcher(target);

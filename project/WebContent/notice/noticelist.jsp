@@ -14,6 +14,11 @@
 <!-- jQeury문 -->
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+
+		
+		
+		
 		$("#perPage").on("change", function(event) {
 			
 			//ajax 페이지 보여줄 갯수 통신
@@ -122,9 +127,9 @@
 							<option value="10">10</option>
 							</select>
 							<!--  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-							<select name="searchName" class="form-inline">
+							<select name="searchName" class="form-inline" value="${searchNamea}">
 								<option value="title">제목</option>
-							</select> <input type="text" name="searchValue" class="form-control" value=>
+							</select> <input type="text" name="searchValue" class="form-control" value="${searchValuea}">
 							<input type="submit" value="검색" class="btn btn-primary">
 						
 					</form>
@@ -144,7 +149,7 @@
 
 		</table>
 
-<c:if test="${!empty sessionScope.admlogin}">
+<c:if test="${!empty sessionScope.admLogin}">
 
 		<div class="huge-top">
 			<button class="btn btn-normal pull-right"

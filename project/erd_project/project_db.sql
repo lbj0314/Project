@@ -86,11 +86,11 @@ CREATE TABLE PROJECT.COMMEMBER
 	-- 사용자 등급
 	COMGRADE varchar2(10 char) NOT NULL,
 	-- 사용자 이메일
-	COMMEMAIL varchar2(40 char) NOT NULL,
+	COMMEMAIL varchar2(100 char) NOT NULL,
 	-- 사용자 주소1
-	COMADDR1 varchar2(40 char) NOT NULL,
+	COMADDR1 varchar2(400 char) NOT NULL,
 	-- 사용자 주소2
-	COMADDR2 varchar2(40 char) NOT NULL,
+	COMADDR2 varchar2(400 char) NOT NULL,
 	-- 사용자 우편번호1
 	COMPOST1 number(5,0) NOT NULL,
 	-- 사용자 우편번호2
@@ -104,11 +104,11 @@ CREATE TABLE PROJECT.ENTMEMBER
 	-- 기업 번호
 	ENTNUM number(4,0) NOT NULL,
 	-- 기업 아이디
-	ENTID varchar2(10 char) NOT NULL,
+	ENTID varchar2(20 char) NOT NULL,
 	-- 기업 비밀번호
 	ENTPASSWD varchar2(20 char) NOT NULL,
 	-- 기업 이름
-	ENTNAME varchar2(20 char) NOT NULL,
+	ENTNAME varchar2(100 char) NOT NULL,
 	-- 기업 지역위치
 	-- 
 	ENTLOCATION varchar2(500 char) NOT NULL,
@@ -117,11 +117,11 @@ CREATE TABLE PROJECT.ENTMEMBER
 	-- 업주 핸드폰 번호
 	ENTCELLPHONE number(13),
 	-- 기업 팩스번호
-	ENTFAX number(12) NOT NULL,
+	ENTFAX number(13) NOT NULL,
 	-- 기업 사업자등록번호
-	ENTIN number(12) NOT NULL,
+	ENTIN number(13) NOT NULL,
 	-- 기업 종류(명소,맛집,숙박)
-	ENTTYPE varchar2(10 char) NOT NULL,
+	ENTTYPE varchar2(40 char) NOT NULL,
 	CONSTRAINT SYS_C0011035 PRIMARY KEY (ENTNUM)
 );
 
@@ -135,7 +135,7 @@ CREATE TABLE PROJECT.GOODPACKAGE
 	-- 관광지 번호
 	ATTNUM number(7,0) NOT NULL,
 	-- 음식점 번호
-	RESTNUM number(4,0) NOT NULL,
+	RESTNUM number(7,0) NOT NULL,
 	-- 숙박업소 번호
 	STAYNUM number(7,0) NOT NULL,
 	-- GOOD_PACKAGE 시작날짜
@@ -167,7 +167,7 @@ CREATE TABLE PROJECT.NOTICE
 	-- 공지사항 글 내용
 	NOCONTENT varchar2(1000 char) NOT NULL,
 	-- 공지사항 글 조회수
-	NOREADCNT number(4,0) DEFAULT 0,
+	NOREADCNT number(9,0) DEFAULT 0,
 	-- 관리자 번호
 	ADMNUM number(4,0) NOT NULL,
 	CONSTRAINT SYS_C0011061 PRIMARY KEY (NONUM)
@@ -211,9 +211,9 @@ CREATE TABLE PROJECT.QNA
 	-- 질답 번호
 	QNANUM number NOT NULL,
 	-- 질답 글 제목
-	QNATITLE varchar2(20 char) NOT NULL,
+	QNATITLE varchar2(400 char) NOT NULL,
 	-- 질답 글 내용
-	QNACONTENT varchar2(80 char) NOT NULL,
+	QNACONTENT varchar2(500 char) NOT NULL,
 	-- 질답 글 작성 날짜
 	QNAWRITEDAY date DEFAULT SYSDATE,
 	-- 질답 글 조회수
@@ -227,13 +227,13 @@ CREATE TABLE PROJECT.RESTAURANT
 	-- 음식점 번호
 	RESTNUM number(4,0) NOT NULL,
 	-- 음식점 종류
-	RESTTYPE varchar2(20 char) NOT NULL,
+	RESTTYPE varchar2(40 char) NOT NULL,
 	-- 음식점 이름
-	RESTNAME varchar2(20 char) NOT NULL,
+	RESTNAME varchar2(50 char) NOT NULL,
 	-- 음식점 지역위치
-	RESTLOCATION varchar2(20 char) NOT NULL,
+	RESTLOCATION varchar2(400 char) NOT NULL,
 	-- 음식점 가격
-	RESTPRICE number(10,0) DEFAULT 0,
+	RESTPRICE number DEFAULT 0,
 	-- 음식점 전화번호
 	RESTPHONE number(12) NOT NULL,
 	-- 음식점 글 제목
@@ -245,7 +245,7 @@ CREATE TABLE PROJECT.RESTAURANT
 	-- 음식점 글 조회수
 	RESTREADCNT number(10,0) DEFAULT 0,
 	-- 댓글수
-	RESTREPLECNT number(4,0) DEFAULT 0,
+	RESTREPLECNT number(10,0) DEFAULT 0,
 	-- 음식점 이미지
 	RESTIMAGE varchar2(500 char) NOT NULL,
 	-- 음식점 사이트
@@ -283,21 +283,21 @@ CREATE TABLE PROJECT.STAY
 	-- 숙박업소 번호
 	STAYNUM number(7,0) NOT NULL,
 	-- 숙박업소 종류
-	STAYTYPE varchar2(20) NOT NULL,
+	STAYTYPE varchar2(40) NOT NULL,
 	-- 숙박업소 이름
-	STAYNAME varchar2(20) NOT NULL,
+	STAYNAME varchar2(40) NOT NULL,
 	-- 숙박업소 지역위치
-	STAYLOCATION varchar2(20 char) NOT NULL,
+	STAYLOCATION varchar2(400 char) NOT NULL,
 	-- 숙박업소 등급
 	STAYGRADE varchar2(20) NOT NULL,
 	-- 숙박업소 어른 가격
-	STAYADULTPRICE number(10,0) DEFAULT 0,
+	STAYADULTPRICE number DEFAULT 0,
 	-- 숙박업소 어린이 가격
-	STAYKIDPRICE number(10,0),
+	STAYKIDPRICE number DEFAULT 0,
 	-- 숙박업소 전화번호
 	STAYPHONE number(13) NOT NULL,
 	-- 숙박업소 글 제목
-	STAYTITLE varchar2(50 char) NOT NULL,
+	STAYTITLE varchar2(80 char) NOT NULL,
 	-- 숙박업소 글 내용
 	STAYCONTENT varchar2(1000 char) NOT NULL,
 	-- 숙박업소 글 작성 날짜
@@ -305,7 +305,7 @@ CREATE TABLE PROJECT.STAY
 	-- 숙박업소 글 조회수
 	STAYREADCNT number(10,0) DEFAULT 0,
 	-- 숙박업소 댓글수
-	STAYREPLECNT number(5,0) DEFAULT 0,
+	STAYREPLECNT number(10,0) DEFAULT 0,
 	-- 숙박업소 이미지
 	STAYIMAGE varchar2(500 char) NOT NULL,
 	-- 숙박업소 사이트
@@ -323,17 +323,17 @@ CREATE TABLE PROJECT.STAY
 CREATE TABLE PROJECT.TOUR
 (
 	-- 관광지 종류
-	ATTTYPE varchar2(5 char) NOT NULL,
+	ATTTYPE varchar2(30 char) NOT NULL,
 	-- 관광지 이름
-	ATTNAME varchar2(20 char) NOT NULL,
+	ATTNAME varchar2(40 char) NOT NULL,
 	-- 관광지 지역위치
 	ATTLOCATION varchar2(200 char) NOT NULL,
 	-- 관광지 어른 가격
 	ATTADULTPRICE number(10,0) DEFAULT 0,
 	-- 관광지 어린이 가격
-	ATTKIDPRICE number(10,0),
+	ATTKIDPRICE number(10,0) DEFAULT 0,
 	-- 관광지 전화번호
-	ATTPHONE varchar2(20 char) NOT NULL,
+	ATTPHONE number(12,0) NOT NULL,
 	-- 관광지 글 제목
 	ATTTITLE varchar2(50 char) NOT NULL,
 	-- 관광지 번호
