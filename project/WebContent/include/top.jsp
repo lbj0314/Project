@@ -75,7 +75,7 @@ $('.dropdown-toggle').dropdown()
   <ul class="dropdown-menu">
     <li><a href="#">후기</a><br></li>
     <li><a href="#">QnA</a><br></li>
-    <li><a href="#">페이지이용 가이드</a></li>
+    <li><a href="/project/include/guide.jsp">사이트 이용법</a></li>
   </ul>
 </div>
 </div>
