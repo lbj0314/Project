@@ -21,13 +21,13 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="/project/images/cof.gif" alt="..." width=80% height=80%>
+      <img src="/project/images/htea.jpg" alt="..." width=80% height=80%>
       <div class="carousel-caption">
         ...
       </div>
     </div>
     <div class="item">
-      <img src="/project/images/htea.gif" alt="..." width=80% height=80%>
+      <img src="/project/images/cof.gif" alt="..." width=80% height=80%>
       <div class="carousel-caption">
 
       </div>
