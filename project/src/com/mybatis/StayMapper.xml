@@ -14,22 +14,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="searchName == 'stayName' and searchValue!=null">
 				stayName LIKE '%'||#{staySearchValue}||'%'
 			</if>
-			<if	test="stayLocation != '전체' and stayLocation != 'def' and stayLocation != null and stayLocation != ''">
+			<if
+				test="stayLocation != '전체' and stayLocation != 'def' and stayLocation != null and stayLocation != ''">
 				and stayLocation =#{stayLocation}
 			</if>
 			<if test="stayType != 'def' and stayType != null and stayType != ''">
 				and stayType =#{stayType}
+			</if>
+			<if test="stayGrade != 'def' and stayGrade != null and stayGrade != ''">
+				and stayGrade =#{stayGrade}
 			</if>
 		</where>
 	</select>
 	<insert id="stayWrite" parameterType="StayDTO">
 		insert into stay
 		(stayNum,stayName,stayImage,stayPhone,
-		stayLocation,stayAdultPrice,stayKidPrice,stayTitle,stayContent,
+		stayLocation,stayAdultPrice,stayKidPrice,stayGrade,stayTitle,stayContent,
 		staySite,stayType,entNum,stayImageClone)
 		values ( stay_seq.nextval,
 		#{stayName},#{stayImage},#{stayPhone}
-		,#{stayLocation},#{stayPrice},#{stayTitle},#{stayContent},
+		,#{stayLocation},#{stayAdultPrice},#{stayKidPrice},#{stayGrade},
+		#{stayTitle},#{stayContent},
 		#{staySite},#{stayType},#{entNum},#{stayImageClone})
 
 	</insert>
@@ -37,15 +42,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="staySelect" resultType="StayDTO" parameterType="hashmap">
 		select stayNum,stayName,stayImage,stayPhone,
-		stayLocation,stayAdultPrice,stayKidPrice,stayTitle,stayContent,
+		stayLocation,stayAdultPrice,stayKidPrice,stayGrade,stayTitle,stayContent,
 		to_char(stayWriteDay,'YYYY/MM/dd') stayWriteDay,stayReadCnt,
 		stayRepleCnt,staySite,stayGoods,stayType,entNum,stayImageClone
-		from stay
+		from
+		stay
 		<where>
-			<if test="staySearchName == 'stayTitle' and staySearchValue!=null and staySearchValue!=''">
+			<if
+				test="staySearchName == 'stayTitle' and staySearchValue!=null and staySearchValue!=''">
 				stayTitle LIKE '%'||#{staySearchValue}||'%'
 			</if>
-			<if test="staySearchName == 'stayName' and staySearchValue!=null and staySearchValue!=''">
+			<if
+				test="staySearchName == 'stayName' and staySearchValue!=null and staySearchValue!=''">
 				stayName LIKE '%'||#{staySearchValue}||'%'
 			</if>
 			<if
@@ -55,13 +63,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="stayType != 'def' and stayType != null and stayType != ''">
 				and stayType =#{stayType}
 			</if>
-
+			<if test="stayGrade != 'def' and stayGrade != null and stayGrade != ''">
+				and stayGrade =#{stayGrade}
+			</if>
 		</where>
 
 
 
 		<choose>
-		<when test="sortStay == 'stayNoSort' or sortStay == '' or sortStay == null">
+			<when
+				test="sortStay == 'stayNoSort' or sortStay == '' or sortStay == null">
 				order by stayNum desc
 			</when>
 			<when test="sortStay == 'stayGoodSort'">
@@ -78,7 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="StaySelectByNum" resultType="StayDTO" parameterType="int">
 		select stayNum,stayName,stayImage,stayPhone,
-		stayLocation,stayAdultPrice,stayKidPrice,stayTitle,stayContent,
+		stayLocation,stayAdultPrice,stayKidPrice,stayTitle,stayGrade,stayContent,
 		to_char(stayWriteDay,'YYYY/MM/dd') stayWriteDay,stayReadCnt,
 		stayRepleCnt,staySite,stayGoods,stayType,entNum,stayImageClone
 		from stay
@@ -88,14 +99,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<update id="stayReadCnt" parameterType="int">
 		update stay
-		set stayReadCnt
+		set
+		stayReadCnt
 		= stayReadCnt + 1
 		where stayNum = #{stayNum}
 	</update>
 	<update id="stayGoods" parameterType="int">
 		update stay
 		set stayGoods
-		= stayGoods + 1
+		=
+		stayGoods + 1
 		where stayNum = #{stayNum}
 	</update>
 
@@ -108,16 +121,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update stay
 		set
 		<if test="stayImageClone != null">
-		stayImage=#{stayImage},
-		stayImageClone=#{stayImageClone},
+			stayImage=#{stayImage},
+			stayImageClone=#{stayImageClone},
 		</if>
-		
+
 		stayContent=#{stayContent},
 		stayName=#{stayName},
 		stayLocation=#{stayLocation},
 		stayType=#{stayType},
 		stayAdultPrice=#{stayAdultPrice},
 		stayKidPrice=#{stayKidPrice},
+		stayGrade=#{stayGrade},
 		stayPhone=#{stayPhone},
 		staySite=#{staySite},
 		stayTitle=#{stayTitle}
