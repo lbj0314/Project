@@ -24,10 +24,13 @@
 	<jsp:include page="/include/top.jsp" flush="true" />
 	<jsp:include page="mypageForm/mypageForm.jsp" flush="true" />
 	<c:if test="${!empty requestScope.memberAfter }">
-	<jsp:include page="mypageForm/mypageAfterMember.jsp" flush="true" />
+	<jsp:include page="mypageManage/mypageAfterMember.jsp" flush="true" />
 	</c:if>
 	<c:if test="${!empty requestScope.reviewAfter }">
-	<jsp:include page="mypageForm/mypageAfterMember.jsp" flush="true" />
+	<jsp:include page="mypageManage/mypageAfterMember.jsp" flush="true" />
+	</c:if>
+	<c:if test="${!empty requestScope.afterDelete }">
+	<jsp:include page="mypageManage/afterDeleteMember.jsp" flush="true" />
 	</c:if>
 	
 
