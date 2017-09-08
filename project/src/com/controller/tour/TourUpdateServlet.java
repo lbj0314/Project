@@ -133,6 +133,12 @@ public class TourUpdateServlet extends HttpServlet {
 						// contentType = item.getContentType(); //이미지가 아니면 업로드 불가능 처리를 할 수 있다. 나중에 구현
 						// sizeInBytes = item.getSize();
 						File uploadedFile = new File("c:\\upload", attImageClone);
+						//폴더가 없으면 폴더 생성
+						if (!uploadedFile.exists()) {
+							uploadedFile.mkdir();
+						}
+						
+						
 						item.write(uploadedFile);
 
 					}
