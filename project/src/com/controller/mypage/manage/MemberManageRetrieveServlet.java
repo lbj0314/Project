@@ -1,4 +1,4 @@
-package com.controller.mypage;
+package com.controller.mypage.manage;
 
 import java.io.IOException;
 import java.util.HashMap;
