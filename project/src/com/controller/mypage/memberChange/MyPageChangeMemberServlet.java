@@ -46,6 +46,7 @@ public class MyPageChangeMemberServlet extends HttpServlet {
 		try {
 			service.comChange(comdto);
 			target = "mypage/mypage.jsp";
+
 		} catch (MyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,6 +74,7 @@ public class MyPageChangeMemberServlet extends HttpServlet {
 			try {
 				service.entChange(entdto);
 				target = "mypage/mypage.jsp";
+				
 			} catch (MyException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

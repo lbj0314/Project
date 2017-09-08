@@ -36,10 +36,10 @@
 	<jsp:include page="mypageForm/mypageBox.jsp" flush="true" />
 	</c:if>
 	<c:if test="${!empty requestScope.membermanage }">
-	<jsp:include page="mypageForm/mypageMemberManage.jsp" flush="true" />
+	<jsp:include page="mypageManage/mypageMemberManage.jsp" flush="true" />
 	</c:if>
 	<c:if test="${!empty requestScope.reviewmanage }">
-	<jsp:include page="mypageForm/mypageReviewManage.jsp" flush="true" />
+	<jsp:include page="mypageManage/mypageReviewManage.jsp" flush="true" />
 	</c:if>
 
 	

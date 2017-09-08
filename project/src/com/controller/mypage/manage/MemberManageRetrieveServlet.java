@@ -31,6 +31,7 @@ public class MemberManageRetrieveServlet extends HttpServlet {
 		try {
 			ComDTO comdto = service.comLogin(map);
 			session.setAttribute("comdto", comdto);
+			request.setAttribute("commember", "commember");
 		} catch (MyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,6 +40,7 @@ public class MemberManageRetrieveServlet extends HttpServlet {
 			try {
 				EntDTO entdto = service.entLogin(map);
 				session.setAttribute("entdto", entdto);
+				request.setAttribute("entmember", "entmember");
 			} catch (MyException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
