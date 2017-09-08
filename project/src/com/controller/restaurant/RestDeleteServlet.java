@@ -11,18 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.exception.MyException;
 import com.service.restaurant.RestService;
 
+
 @WebServlet("/RestDeleteServlet")
 public class RestDeleteServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String restNum = request.getParameter("restNum");
 		RestService service = new RestService();
-		String target ="RestBoardListServlet";
+		String target ="RestListServlet";
 		try {
 			service.restDeleteByNum(Integer.parseInt(restNum));
-
+			request.setAttribute("deleok", "삭제 성공");
 		} catch (MyException e) {
 			target ="error.jsp";
+			request.setAttribute("deleerr", "삭제 실패");
 		}
 		response.sendRedirect(target);
 	}
@@ -30,4 +32,5 @@ public class RestDeleteServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 }

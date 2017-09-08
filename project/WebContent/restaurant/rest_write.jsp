@@ -26,7 +26,7 @@
 
 				<td align=center>지역 :</td>
 				<td><select name="restLocation" class="form-control">
-						<option>지역선택</option>
+						<option>지역 선택</option>
 						<option value="전체">전체</option>
 						<option value="서울">서울</option>
 						<option value="인천">인천</option>
@@ -46,9 +46,9 @@
 						<option value="전라남도">전라남도</option>
 						<option value="제주도">제주도</option>
 				</select></td>
-				<td align=center>종류 :</td>
+				<td align=center>음식 종류 :</td>
 				<td><select name="attType" class="form-control">
-						<option>타입선택</option>
+						<option>음식종류 선택</option>
 						<option value="한식">한식</option>
 						<option value="일식">일식</option>
 						<option value="중식">중식</option>

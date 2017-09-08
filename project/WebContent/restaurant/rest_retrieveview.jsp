@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>writeView</title>
+<title>restWriteView</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 <script src="//code.jquery.com/jquery.min.js"></script>
@@ -14,7 +14,8 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script type="text/javascript">
-	$(function() {
+// 이미지 다운 구현해야 함
+ 	$(function() {
 		$("#imgInp").on('change', function() {
 			readURL(this);
 		});
@@ -28,7 +29,7 @@
 			}
 			reader.readAsDataURL(input.files[0]);
 		}
-	}
+	} 
 </script>
 </head>
 <body>
@@ -36,9 +37,7 @@
 		<jsp:include page="/login/loginForm.jsp" flush="true" /><br>
 	</div>
 	<jsp:include page="/include/top.jsp" flush="true" /><br>
-	<jsp:include page="/restaurant/rest_boardwrite.jsp" flush="true" /><br>
+	<jsp:include page="/restaurant/rest_retrieve.jsp" flush="true" /><br>
 	<jsp:include page="/include/copyright.jsp" flush="true" /><br>
-
-
 </body>
 </html>

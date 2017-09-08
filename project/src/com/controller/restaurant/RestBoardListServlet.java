@@ -35,7 +35,7 @@ public class RestBoardListServlet extends HttpServlet {
 		
 		
 		System.out.println("att"+restBtn);
-		String target="restaurant/rest_listboardview.jsp";
+		String target="restaurant/rest_listview.jsp";
 		 HashMap<String, String> map = new HashMap<>();
 		 map.put("restSearchName", restSearchName);
 		 map.put("restSearchValue", restSearchValue);

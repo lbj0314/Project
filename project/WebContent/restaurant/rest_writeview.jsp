@@ -14,12 +14,11 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script type="text/javascript">
-	/* $(function() {
+	$(function() {
 		$("#imgInp").on('change', function() {
 			readURL(this);
 		});
 	});
-
 	function readURL(input) {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
@@ -27,10 +26,9 @@
 			reader.onload = function(e) {
 				$('#imgview').attr('src', e.target.result);
 			}
-
 			reader.readAsDataURL(input.files[0]);
 		}
-	} */
+	}
 </script>
 </head>
 <body>
@@ -38,8 +36,9 @@
 		<jsp:include page="/login/loginForm.jsp" flush="true" /><br>
 	</div>
 	<jsp:include page="/include/top.jsp" flush="true" /><br>
-	<jsp:include page="/restaurant/rest_boardlist.jsp" flush="true" /><br>
+	<jsp:include page="/restaurant/rest_write.jsp" flush="true" /><br>
 	<jsp:include page="/include/copyright.jsp" flush="true" /><br>
+
 
 </body>
 </html>
