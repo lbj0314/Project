@@ -20,6 +20,8 @@ public class FesListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		FesService service=new FesService();
 		String target="FesList.jsp";
 		try {

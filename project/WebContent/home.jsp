@@ -57,7 +57,7 @@
 	<jsp:include page="/login/loginForm.jsp" flush="true" /><br>
 	<jsp:include page="/include/top.jsp" flush="true" /><br>
 	<jsp:include page="/include/main.jsp" flush="true" /><br>
-	<jsp:include page="/include/copyright.jsp" flush="true" />
+
 
 
 	<table border="1">
@@ -95,5 +95,11 @@
 				<td><a href="http://www.kma.go.kr/weather/main.jsp">다른 도시</a></td>
 		</tbody>
 	</table>
+	
+	<br>
+	<br>
+	<br>
+	<jsp:include page="/include/copyright.jsp" flush="true" />
+	
 </body>
 </html>
