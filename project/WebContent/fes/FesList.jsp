@@ -13,9 +13,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%
+List<FesDTO> list=(List<FesDTO>)request.getAttribute("list");
+%>
+
+
+<!-- FesNum,FesName,FesPrice,FesTitle,FesContent,FesImage,FesReadCnt,FesSite -->
 </head>
 <body>
 
+<h1>축제 리스트</h1>
+<table border="1">
+<tr>
+<td>축제 번호</td>
+<td>축제 이름</td>
+<td>축제 가격</td>
+<td>축제 내용</td>
+<td>축제 이미지</td>
+<td>축제 사이트</td>
+<td>조회수</td>
+
+
+</tr>
+</table>
 
 
 </body>

@@ -15,6 +15,7 @@ public class FesService {
 		SqlSession session=MybatisTemplate.openSession();
 		FesDAO dao=new FesDAO();
 		List<FesDTO> list=null;
+		
 		try {
 		list=dao.list(session);
 		}catch(Exception e) {
