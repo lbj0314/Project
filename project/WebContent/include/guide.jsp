@@ -16,27 +16,35 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 
-
 <link rel="stylesheet" type="text/css" href="/project/css/style.css">
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("p").hide();
+	});//end hide
+	
+	$(document).ready(function() {
+		$("[href]").css("font-size", "20px");
+	});//end href css
+
+	$(document).ready(function() {
+		$("#oldfashion").on("click", function(event) {
+			$("p").slideToggle("fast");
+		});
+	});//end slideToggle
+</script>
 
 </head>
 <body>
 	<jsp:include page="/login/loginForm.jsp" flush="true" /><br>
 	<jsp:include page="/include/top.jsp" flush="true" /><br>
 
-	<script type="text/javascript">
-	$(document).ready(function(){
-		$("[href]").css("font-size","20px");
-	
-	});
-	</script>
-
-
-
 	<br>
 	<br>
 	<br>
-	<br> 저희 사이트에 오신것을 환영합니다!
+	<br>
+	<button id="oldfashion">사이트에 오신것을 환영합니다!</button>
+	<p>만나서 반가워요</p>
 	<br>
 	<br>
 	<br>
@@ -47,6 +55,8 @@
 	<a href="">음식점 보기</a>
 	<br>
 	<a href="">관광명소 보기</a>
+	<br>
+
 	<br> 마음에 드는 숙박, 음식점, 관광명소를 선택하신 후
 	<br> 자유롭게 패키지를 설정하실 수 있습니다
 	<br>
@@ -57,7 +67,7 @@
 	<br>
 	<br> 업체를 운영중이신 경우
 	<br>
-	<a href="">기업 회원가입 바로가기</a>
+	<a href="/project/JoinFormServlet" target="_blank">기업 회원가입 바로가기</a>
 	<br>
 	<a href="">업체 등록 바로가기</a>
 	<br>
