@@ -16,8 +16,7 @@
 	$(document).ready(function() {
 
 		
-		 var desc = "<input type='hidden' name='restBtn' value='cc'>";
-		 var asc = "<input type='hidden' name='restBtn' value='dd'>";
+		
 		
 		
 		
@@ -26,7 +25,7 @@
 			//ajax 지역별 통신
 			$.ajax({
 				type : "get",
-				url : "RestBoardListServlet",
+				url : "RestListServlet",
 				data : {
 					restLocation : $("#restlo").val()
 				},
@@ -34,7 +33,7 @@
 				success : function(responseData, status, xhr) {
 					console.log(responseData);
 
-					$('#rrr').submit();
+					$('#aaa').submit();
 
 				},
 				error : function(xhr, status, e) {
@@ -50,7 +49,7 @@
 			//ajax 타입별 통신
 			$.ajax({
 				type : "get",
-				url : "RestBoardListServlet",
+				url : "RestListServlet",
 				data : {
 					restType : $("#restty").val()
 				},
@@ -58,7 +57,7 @@
 				success : function(responseData, status, xhr) {
 					console.log(responseData);
 
-					$('#rrr').submit();
+					$('#aaa').submit();
 
 				},
 				error : function(xhr, status, e) {
@@ -69,20 +68,20 @@
 			});
 
 		});
-		$("#restSearch").on("change", function(event) {
+		$("#restsearch").on("change", function(event) {
 
 			//ajax 검색종류별 통신
 			$.ajax({
 				type : "get",
-				url : "RestBoardListServlet",
+				url : "RestListServlet",
 				data : {
-					restSearchName : $("#restSearch").val()
+					searchName : $("#restsearch").val()
 				},
 				dataType : "text",
 				success : function(responseData, status, xhr) {
 					console.log(responseData);
-
-					$('#rrr').submit();
+			
+					$('#aaa').submit();
 
 				},
 				error : function(xhr, status, e) {
@@ -97,14 +96,14 @@
 		
 		
 		// 좋아요,조회순 
-		$("#restBtnGood").on("click", function(event) {
+		$("#restSo").on("change", function(event) {
 
 			//ajax 검색종류별 통신
 			$.ajax({
 				type : "get",
-				url : "RestBoardListServlet",
+				url : "RestListServlet",
 				data : {
-					restBtn : $('#rrr').append(desc)
+					sortREst : $('#restSo').val()
 
 					
 				},
@@ -112,7 +111,8 @@
 				success : function(responseData, status, xhr) {
 					console.log(responseData);
 
-					$('#rrr').submit();
+					$('#aaa').submit();
+					
 
 				},
 				error : function(xhr, status, e) {
@@ -123,17 +123,24 @@
 			});
 
 		});
+		//$('#changeFrm').append(newitem);
+		 //$('#changeFrm').append(newitem2);
+
+		
+		
+		
+		
 		
 		$("#restlo > option[value=${restlist.restLocation}").attr("selected", "true");
-		
 		$("#restty > option[value=${restlist.restType}").attr("selected", "true");
-		$("#restSearch > option[value=${restlist.restSearchName}").attr("selected", "true");
+		$("#restsearch > option[value=${restlist.searchName}").attr("selected", "true");
+		$("#restSo > option[value=${restlist.sortRest}").attr("selected", "true");
 		
 	});
 </script>
 
-<form action="RestBoardListServlet" id="rrr">
-	<input type="hidden" name="restBtngo" value="1" id="restBtngo">
+<form action="RestListServlet" id="aaa">
+	<input type="hidden" name="btngo" value="1" id="btngo">
 	
 	<div class="form-inline" id="conta">
 		<select name="restLocation" class="form-control" id="restlo">
@@ -157,24 +164,26 @@
 			<option value="전라남도">전라남도</option>
 			<option value="제주도">제주도</option>
 		</select> <select name="restType" class="form-control" id="restty">
-			<option value="def">음식종류 선택</option>
-			<option value="한식">한식</option>
-			<option value="일식">일식</option>
-			<option value="중식">중식</option>
-			<option value="양식">양식</option>
-			<option value="패스트푸드">패스트푸드</option>
-			<option value="제과">제과</option>
+			<option value="def">타입선택</option>
+			<option value="자연">자연</option>
+			<option value="체험">체험</option>
+			<option value="역사">역사</option>
+			<option value="테마">테마</option>
+			<option value="쇼핑">쇼핑</option>
 
 		</select>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<select name="restSearchName" class="form-control" id="restSearch">
-			<option value="restTitle">음식점명</option>
-			<option value="restName">음식점제목</option>
-		</select> <input type="text" name="restSearchValue" class="form-control" value = "${restlist.restSearchValue}"> <input
+		<select name="searchName" class="form-control" id="restsearch">
+			<option value="restTitle">업소명</option>
+			<option value="restName">업소제목</option>
+		</select> <input type="text" name="searchValue" class="form-control" value = "${restlist.searchValue}"> <input
 			type="submit" value="검색" class="btn btn-primary">
 		
-		<button class="btn btn-default" id="restBtnGood">좋아요순</button>
-		<button class="btn btn-default" id="restSelect">조회순</button>
+		<select name="sortRest" class="form-control" id="restSo">
+		<option value="restNoSort">선택하세요</option>
+			<option value="restGoodSort">좋아요순</option>
+		<option value="restSysSort">최신순</option>
+		</select>
 	</div>
 
 </form>
@@ -212,14 +221,14 @@
 
 
 						<tr>
-							<c:forEach var="rrr" items="${restlist.getList()}"
+							<c:forEach var="xxx" items="${restlist.getList()}"
 								varStatus="status">
 
 								<td>
 									<table style='padding: 15px'>
 										<tr>
-											<td><a href="RestBoardRetrieveServlet?restNum=${rrr.restNum}">
-													<img src="images/${rrr.restImageClone}" border="0"
+											<td><a href="RestRetrieveServlet?restNum=${xxx.restNum}">
+													<img src="images/${xxx.restImageClone}" border="0"
 													align="center" width="200">
 
 											</a></td>
@@ -230,20 +239,20 @@
 										</tr>
 										<tr>
 											<td class="td_default" align="center"><a class="a_black"
-												href="RestBoardRetrieveServlet?restNum=${rrr.restNum}">
-													음식점 제목 : ${rrr.restTitle}<br>
+												href="RestRetrieveServlet?restNum=${xxx.restNum}">
+													업소제목:${xxx.restTitle}<br>
 											</a></td>
 
 										</tr>
 										<tr>
-											<td class="td_gray" align="center">음식점명 : ${rrr.restName}</td>
+											<td class="td_gray" align="center">업소명:${xxx.restName}</td>
 										</tr>
 										<tr>
-											<td class="td_gray" align="center">지역 : ${rrr.restLocation}</td>
+											<td class="td_gray" align="center">지역:${xxx.restLocation}</td>
 										</tr>
 
 										<tr>
-											<td class="td_gray" align="center">전화번호 : ${rrr.restPhone}
+											<td class="td_gray" align="center">업소전화번호:${xxx.restPhone}
 											</td>
 										</tr>
 									</table>
@@ -267,14 +276,22 @@
 	<tr>
 		<td height="10">
 	</tr>
-	
-	
-
-	
 	<c:if test="${restlist.getList().size()!=0}">
 		<tr>
-			<td colspan="5"><jsp:include page="/restaurant/rest_boardpage.jsp"
+			<td colspan="5"><jsp:include page="/restaurant/restpage.jsp"
 					flush="true" /></td>
 		</tr>
 	</c:if>
+	<tr>
+	<td colspan=8 align=center>
+	<c:if test="${!empty sessionScope.entLogin}">
+		<a href="/project/restaurant/restwriteview.jsp" class="btn btn-primary">글쓰기</a>
+	</c:if>
+	
+	<td>
+	</tr>
+	
 </table>
+
+
+

@@ -2,17 +2,22 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mybatis.RestaurantMapper">
+<mapper namespace="com.mybatis.RestMapper">
 
-	<select id="restTotalCount" resultType="int" parameterType="hashmap">
+
+
+	<!-- <select id="TourtotalCount" resultType="int"> select count(*) from 
+		tour </select> -->
+
+	<select id="ResttotalCount1" resultType="int" parameterType="hashmap">
 		select count(*)
 		from restaurant
 		<where>
-			<if test="restSearchName == 'restTitle' and restSearchValue!=null">
-				restTitle LIKE '%'||#{restSearchValue}||'%'
+			<if test="searchName == 'restTitle' and searchValue!=null">
+				restTitle LIKE '%'||#{searchValue}||'%'
 			</if>
 			<if test="searchName == 'restName' and searchValue!=null">
-				restName LIKE '%'||#{restSearchValue}||'%'
+				restName LIKE '%'||#{searchValue}||'%'
 			</if>
 			<if	test="restLocation != '전체' and restLocation != 'def' and restLocation != null and restLocation != ''">
 				and restLocation =#{restLocation}
@@ -35,18 +40,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 
-	<select id="restSelect" resultType="RestDTO" parameterType="hashmap">
+	<select id="selectRest" resultType="RestDTO" parameterType="hashmap">
 		select restNum,restName,restImage,restPhone,
 		restLocation,restPrice,restTitle,restContent,
 		to_char(restWriteDay,'YYYY/MM/dd') restWriteDay,restReadCnt,
 		restRepleCnt,restSite,restGoods,restType,entNum,restImageClone
 		from restaurant
 		<where>
-			<if test="restSearchName == 'restTitle' and restSearchValue!=null and restSearchValue!=''">
-				restTitle LIKE '%'||#{restSearchValue}||'%'
+			<if test="searchName == 'restTitle' and searchValue!=null and searchValue!=''">
+				restTitle LIKE '%'||#{searchValue}||'%'
 			</if>
-			<if test="restSearchName == 'restName' and restSearchValue!=null and restSearchValue!=''">
-				restName LIKE '%'||#{restSearchValue}||'%'
+			<if test="searchName == 'restName' and searchValue!=null and searchValue!=''">
+				restName LIKE '%'||#{searchValue}||'%'
 			</if>
 			<if
 				test="restLocation != '전체' and restLocation != 'def' and restLocation != null and restLocation != ''">
@@ -76,7 +81,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
-	<select id="RestSelectByNum" resultType="RestDTO" parameterType="int">
+	<select id="selectByRestNum" resultType="RestDTO" parameterType="int">
 		select restNum,restName,restImage,restPhone,
 		restLocation,restPrice,restTitle,restContent,
 		to_char(restWriteDay,'YYYY/MM/dd') restWriteDay,restReadCnt,
@@ -86,25 +91,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
-	<update id="restReadCnt" parameterType="int">
+	<update id="readRestCnt" parameterType="int">
 		update restaurant
 		set restReadCnt
 		= restReadCnt + 1
 		where restNum = #{restNum}
 	</update>
-	<update id="restGoods" parameterType="int">
+	<update id="goodsRest" parameterType="int">
 		update restaurant
 		set restGoods
 		= restGoods + 1
 		where restNum = #{restNum}
 	</update>
 
-	<delete id="RestDeleteByNum" parameterType="int">
+	<delete id="deleteByRestNum" parameterType="int">
 		delete from restaurant
 		where restNum = #{restNum}
 	</delete>
 
-	<update id="restUpdateByNum" parameterType="RestDTO">
+	<update id="updateByRestNum" parameterType="RestDTO">
 		update restaurant
 		set
 		<if test="restImageClone != null">
@@ -122,4 +127,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		restTitle=#{restTitle}
 		where restNum = #{restNum}
 	</update>
+	<!-- <select id="TourList" resultType="int" parameterType="hashmap">
+		select *
+		from notice
+
+		<if test="attLocation != '전체'">
+			where attLocation =#{attLocation}
+		</if>
+
+	</select> -->
+
+	<!-- <select id="search" parameterType="hashmap" resultType="MyBoardDTO"> 
+		select num,title,author, to_char(writeday,'YYYY/MM/dd') writeday, readCnt 
+		from myboard <if test="searchName == 'title'"> where title LIKE '%'||#{searchValue}||'%' 
+		</if> <if test="searchName == 'author'"> where author LIKE '%'||#{searchValue}||'%' 
+		</if> </select> -->
+
+
+
 </mapper>
+
+
+
+
+

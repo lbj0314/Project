@@ -3,7 +3,6 @@ package com.controller.restaurant;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -13,18 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/RestFileDownServlet")
 public class RestFileDownServlet extends HttpServlet {
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 		String restImageClone = request.getParameter("restImageClone");
 		String restImage = request.getParameter("restImage");
 		File fNew = new File("c:\\upload", restImageClone);
 		String sFilePath = fNew.getPath();
+		// String sFilePath = sDownloadPath + fileName;
 
 		byte b[] = new byte[4096];
 		FileInputStream in = new FileInputStream(sFilePath);
+
 		String sMimeType = getServletContext().getMimeType(sFilePath);
 		//System.out.println("sMimeType>>>" + sMimeType);
+
+		
 
 		if (sMimeType == null)
 			sMimeType = "application/octet-stream";
@@ -33,7 +36,7 @@ public class RestFileDownServlet extends HttpServlet {
 
 		String sEncoding = new String(restImage.getBytes("UTF-8"), "8859_1");
 
-		response.setHeader("Content-Disposition", "attachment; filename= " + sEncoding);
+		response.setHeader("Content-Disposition", "restachment; filename= " + sEncoding);
 
 		ServletOutputStream out = response.getOutputStream();
 		int numRead;
@@ -45,10 +48,5 @@ public class RestFileDownServlet extends HttpServlet {
 		out.close();
 		in.close();
 
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
-
-}
+	}// end
+}// end class

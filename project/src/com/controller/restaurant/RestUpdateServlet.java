@@ -18,9 +18,11 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.dto.restaurant.RestDTO;
+import com.dto.tour.TourDTO;
 import com.exception.MyException;
 import com.service.notice.NoticeService;
 import com.service.restaurant.RestService;
+import com.service.tour.TourService;
 
 /**
  * Servlet implementation class MyBoardUpdateServlet
@@ -59,7 +61,7 @@ public class RestUpdateServlet extends HttpServlet {
 		String restPhone = null;
 		String restSite = null;
 		String restTitle = null;
-		String target = "RestBoardListServlet";
+		String target = "RestListServlet";
 		// Parse the request
 		try {
 			List<FileItem> items = upload.parseRequest(request);
@@ -79,13 +81,14 @@ public class RestUpdateServlet extends HttpServlet {
 					if (name.equals("restType")) {
 						restType = value;
 
-					}else if (name.equals("restNum")) {
-						restNum = value;
-
 					}else if (name.equals("entNum")) {
 						entNum = value;
 
+					}else if (name.equals("restNum")) {
+						restNum = value;
+
 					}
+					
 					else if (name.equals("restLocation")) {
 						restLocation = value;
 
@@ -127,7 +130,21 @@ public class RestUpdateServlet extends HttpServlet {
 						restImageClone = restSplit[0] + milliSecond + "." + restSplit[1];
 						// contentType = item.getContentType(); //이미지가 아니면 업로드 불가능 처리를 할 수 있다. 나중에 구현
 						// sizeInBytes = item.getSize();
-						File uploadedFile = new File("c:\\upload", restImageClone);
+						File uploadedFile = new File("c:\\upload"); 
+						
+						//폴더가 없으면 폴더 생성
+						if (!uploadedFile.exists()) {
+							
+							uploadedFile.mkdir();
+							uploadedFile = new File("c:\\upload",restImageClone); 
+							
+						}
+						else {
+							uploadedFile = new File("c:\\upload",restImageClone); 
+							
+						}
+						
+						
 						item.write(uploadedFile);
 
 					}
@@ -135,8 +152,8 @@ public class RestUpdateServlet extends HttpServlet {
 				}
 			}
 
-			// request.setrestribute("fileName", fileName);
-			// request.setrestribute("sizeInBytes", sizeInBytes);
+			// request.setAttribute("fileName", fileName);
+			// request.setAttribute("sizeInBytes", sizeInBytes);
 
 		} catch (FileUploadException e) {
 			// TODO Auto-generated catch block
@@ -167,13 +184,13 @@ public class RestUpdateServlet extends HttpServlet {
 
 		RestService service = new RestService();
 		try {
-			service.restUpdateByNum(dto);
-			request.setAttribute("Restcomp", "정상적으로 수정 완료하였습니다.");
+			service.updateByRestNum(dto);
+			request.setAttribute("restcomp", "정상적으로 수정 완료하였습니다.");
 		} catch (MyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			target = "error.jsp";
-			request.setAttribute("Restcomp", "수정 실패~");
+			request.setAttribute("restcomp", "수정 실패~");
 
 		}
 

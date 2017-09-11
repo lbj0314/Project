@@ -1,27 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+
+
+<%-- <c:if test="${!empty requestScope.goodok}">
+	<script>
+		alert('${requestScope.goodok}');
+	</script>
+
+</c:if> --%>
+
+
 <script type="text/javascript">
-	$(document).ready(
-			function() {
-				$("#restlo > option[value=${restRetrieve.restLocation}").attr(
-						"selected", "true");
-				$("#restty > option[value=${restRetrieve.restType}").attr(
-						"selected", "true");
+	$(document).ready(function() {
+
+		$("#xxx").on("click", function(event) {
+			//event.preventDefault();
+			//ajax 지역별 통신
+			$.ajax({
+				type : "get",
+				url : "RestGoodServlet",
+				dataType : "text",
+				data : {
+					restNum : $("#restNum").val()
+				},
+
+				success : function(responseData, status, xhr) {
+					console.log(responseData);
+					
+					$("#result").text(responseData);
+					$("#re1").css("display","none");
+
+					
+
+				},
+				error : function(xhr, status, e) {
+					console.log(status, e);
+
+				}
+
 			});
+
+		});
+		$("#restlo > option[value=${restRetrieve.restLocation}").attr("selected", "true");
+		$("#restty > option[value=${restRetrieve.restType}").attr("selected", "true");
+
+	});
 </script>
 
 
 <FORM action="RestUpdateServlet" method="post"
 	enctype="multipart/form-data">
-	<input type="hidden" name="restNum" value="${restRetrieve.restNum}">
-	<input type="hidden" name="restImage" value="${restRetrieve.restImage}">
-	<input type="hidden" name="entNum"
-		value="${sessionScope.entLogin.entnum}">
+	<input type="hidden" name="restNum" value="${restRetrieve.restNum}"
+		id="restNum"> <input type="hidden" name="restImage"
+		value="${restRetrieve.restImage}"> <input type="hidden"
+		name="entNum" value="${sessionScope.entLogin.entnum}">
 	<table align="center" width="100%" cellspacing="0" cellpadding="0"
 		style='margin-left: 18%'>
 		<tr>
@@ -36,23 +74,29 @@
 					border="0" style='margin-left: 30px'>
 
 					<tr>
-						<td class="td_default" align="center"><font size="5"><b>음식점
-									정보</b></font> &nbsp;</td>
+						<td class="td_default" align="center"><font size="5"><b>업소
+									정보 </b></font> &nbsp;</td>
+
 					</tr>
 
 					<tr>
-						<td>음식점 번호 : ${restRetrieve.restNum}
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;등록날짜 : ${restRetrieve.restWriteDay}
+						<td>업소 번호:${restRetrieve.restNum}
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;등록날짜:${restRetrieve.restWriteDay}
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							조회수 : ${restRetrieve.restReadCnt}
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+							조회수:${restRetrieve.restReadCnt}
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br> 좋아요수:
+							<span id="re1">${restRetrieve.restGoods}</span>
+
+								
+
+							 <c:if test="${!empty sessionScope.comLogin}">
+
+								<span id="result"></span>
+								<button type="button" id="xxx" class="btn btn-default btn-xs">
 
 
-							좋아요수 : ${restRetrieve.restGoods} <c:if
-								test="${!empty sessionScope.comLogin}">
-								<a href="RestGoodServlet?restNum=${restRetrieve.restNum}"> <img
-									src="/project/images/goods.png">
-								</a>
+									<img src="/project/images/goods.png">
+								</button>
 							</c:if>
 						</td>
 
@@ -101,7 +145,7 @@
 								</td>
 						</c:if>
 
-						<td class="td_title">음식점 이름</td>
+						<td class="td_title">업소 이름</td>
 						<td class="td_default" colspan="2" style='padding-left: 30px'><input
 							type="text" name="restName" value="${restRetrieve.restName}"
 							class="form-control"></td>
@@ -110,7 +154,7 @@
 
 					</div>
 					<div class="form-inline">
-						<td class="td_title">음식점 제목</td>
+						<td class="td_title">업소 제목</td>
 						<td class="td_default" colspan="2" style='padding-left: 30px'><input
 							type="text" name="restTitle" value="${restRetrieve.restTitle}"
 							class="form-control"></td>
@@ -119,7 +163,7 @@
 					<div class="form-inline">
 						<tr>
 
-							<td class="td_title">음식점 지역</td>
+							<td class="td_title">업소 지역</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
 								<select name="restLocation" class="form-control" id="restlo">
 									<option>지역선택</option>
@@ -147,17 +191,16 @@
 					</div>
 					<div class="form-inline">
 						<tr>
-							<td class="td_title">음식점 종류</td>
+							<td class="td_title">업소 타입</td>
 
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
 								<select name="restType" class="form-control" id="restty">
 									<option value="def">타입선택</option>
-									<option value="한식">한식</option>
-									<option value="일식">일식</option>
-									<option value="중식">중식</option>
-									<option value="양식">양식</option>
-									<option value="패스트푸드">패스트푸드</option>
-									<option value="제과">제과</option>
+									<option value="자연">자연</option>
+									<option value="체험">체험</option>
+									<option value="역사">역사</option>
+									<option value="테마">테마</option>
+									<option value="쇼핑">쇼핑</option>
 
 							</select>
 							</td>
@@ -166,18 +209,23 @@
 					</div>
 					<div class="form-inline">
 						<tr>
-							<td class="td_title">음식점 평균 가격</td>
+							<td class="td_title">맛집 가격</td>
+
+
+
+
 							<td class="td_red" colspan="2" style='padding-left: 30px'><fmt:formatNumber
 									type="currency" value="${restRetrieve.restPrice}"
-									prestern="\###,###" var="ap" /> <input type="text"
+									pattern="\###,###" var="aap" /> <input type="text"
 								name="restPrice" value="${restRetrieve.restPrice}"
 								class="form-control"></td>
 						</tr>
 					</div>
+					
 					<div class="form-inline">
 						<tr>
 
-							<td class="td_title">음식점 전화번호</td>
+							<td class="td_title">업소 전화번호</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
 								<input type="text" name="restPhone"
 								value="${restRetrieve.restPhone}" class="form-control">
@@ -187,7 +235,7 @@
 						</tr>
 					</div>
 					<tr>
-						<td class="td_title">음식점 설명</td>
+						<td class="td_title">업소 설명</td>
 						<td class="td_default" colspan="2" style='padding-left: 30px'>
 							<input type="text" name="restContent"
 							value="${restRetrieve.restContent}" class="form-control">
@@ -197,7 +245,7 @@
 					<c:if test="${empty sessionScope.admLogin}">
 
 						<tr>
-							<td class="td_title">음식점사이트 바로가기</td>
+							<td class="td_title">업소사이트 바로가기</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'><a
 								href="${restRetrieve.restSite}">${restRetrieve.restSite}</a></td>
 						</tr>
@@ -206,7 +254,7 @@
 					<c:if
 						test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == restRetrieve.entNum)}">
 						<tr>
-							<td class="td_title">음식점사이트 수정</td>
+							<td class="td_title">업소사이트 수정</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
 
 								<input type="text" name="restSite"
@@ -261,17 +309,24 @@
 <script>
 	function upCount() {
 		var amount = parseInt(document.getElementById("GOODS_AMOUNT").value);
+
 		amount = amount + 1;
 		document.getElementById("GOODS_AMOUNT").value = amount;
+
 	}
+
 	function downCount() {
 		var amount = parseInt(document.getElementById("GOODS_AMOUNT").value);
+
 		amount = amount - 1;
 		if (amount == 0) {
 			amount = 1;
 		}
+
 		document.getElementById("GOODS_AMOUNT").value = amount;
+
 	}
+
 	function cartAdd(f) {
 		f.action = "CartAddServlet";
 	}
