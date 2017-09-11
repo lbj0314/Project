@@ -2,6 +2,7 @@ package com.controller.stay;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +19,7 @@ import com.service.stay.StayService;
  */
 @WebServlet("/StayGoodServlet")
 public class StayGoodServlet extends HttpServlet {
-	
+	 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String stayNum = request.getParameter("stayNum");
 		StayService service = new StayService();
@@ -28,11 +29,14 @@ public class StayGoodServlet extends HttpServlet {
 			StayDTO dto = service.staySelectByNum(Integer.parseInt(stayNum));
 			int cnt = dto.getStayGoods();
 			request.setAttribute("cnt", cnt);
+			System.out.println(cnt);
 		} catch (MyException e) {
 			target ="error.jsp";
 			request.setAttribute("gooderror", "좋아요 실패");
+			
 		}
-		response.sendRedirect(target);
+		RequestDispatcher dis= request.getRequestDispatcher(target);
+		dis.forward(request, response);
 
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -2,6 +2,7 @@ package com.controller.stay;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dto.stay.StayDTO;
 import com.exception.MyException;
 import com.service.stay.StayService;
-
+ 
 @WebServlet("/StayBoardRetrieveServlet")
 public class StayBoardRetrieveServlet extends HttpServlet {
 
@@ -33,6 +34,9 @@ public class StayBoardRetrieveServlet extends HttpServlet {
 				e.printStackTrace();
 				target="error.jsp";
 			}
+			
+			RequestDispatcher dis = request.getRequestDispatcher(target);
+			dis.forward(request, response);
 		}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
