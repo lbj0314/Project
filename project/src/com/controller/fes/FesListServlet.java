@@ -23,7 +23,7 @@ public class FesListServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		FesService service=new FesService();
-		String target="FesList.jsp";
+		String target="/fes/FesList.jsp";
 		try {
 		List<FesDTO> list=service.list();
 		request.setAttribute("list",list);

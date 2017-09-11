@@ -9,7 +9,7 @@ import com.dto.fes.FesDTO;
 public class FesDAO {
 
 	public List<FesDTO> list(SqlSession session){
-		List<FesDTO> list=session.selectList("selectAll");
+		List<FesDTO> list=session.selectList("FesSelectAll");
 		return list;
 	}
 	
