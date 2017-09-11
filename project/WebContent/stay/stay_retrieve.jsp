@@ -1,27 +1,64 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+
+
+<%-- <c:if test="${!empty requestScope.goodok}">
+	<script>
+		alert('${requestScope.goodok}');
+	</script>
+
+</c:if> --%>
+
+
 <script type="text/javascript">
-	$(document).ready(
-			function() {
-				$("#staylo > option[value=${stayRetrieve.stayLocation}").attr(
-						"selected", "true");
-				$("#stayty > option[value=${stayRetrieve.stayType}").attr(
-						"selected", "true");
+	$(document).ready(function() {
+
+		$("#xxx").on("click", function(event) {
+			//event.preventDefault();
+			//ajax 지역별 통신
+			$.ajax({
+				type : "get",
+				url : "StayGoodServlet",
+				dataType : "text",
+				data : {
+					stayNum : $("#stayNum").val()
+				},
+
+				success : function(responseData, status, xhr) {
+					console.log(responseData);
+					
+					$("#result").text(responseData);
+					$("#re1").css("display","none");
+
+					
+
+				},
+				error : function(xhr, status, e) {
+					console.log(status, e);
+
+				}
+
 			});
+
+		});
+		$("#restlo > option[value=${restRetrieve.restLocation}").attr("selected", "true");
+		$("#restty > option[value=${restRetrieve.restType}").attr("selected", "true");
+	});
 </script>
 
 
 <FORM action="StayUpdateServlet" method="post"
 	enctype="multipart/form-data">
-	<input type="hidden" name="stayNum" value="${stayRetrieve.stayNum}">
-	<input type="hidden" name="stayImage" value="${stayRetrieve.stayImage}">
-	<input type="hidden" name="entNum"
-		value="${sessionScope.entLogin.entnum}">
+	<input type="hidden" name="stayNum" value="${stayRetrieve.stayNum}"
+		id="stayNum"> <input type="hidden" name="stayImage"
+		value="${stayRetrieve.stayImage}"> <input type="hidden"
+		name="entNum" value="${sessionScope.entLogin.entnum}">
 	<table align="center" width="100%" cellspacing="0" cellpadding="0"
 		style='margin-left: 18%'>
 		<tr>
@@ -37,20 +74,28 @@
 
 					<tr>
 						<td class="td_default" align="center"><font size="5"><b>숙박업소
-									정보</b></font> &nbsp;</td>
+									정보 </b></font> &nbsp;</td>
+
 					</tr>
 
 					<tr>
-						<td>숙박업소 번호 : ${stayRetrieve.stayNum}
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;등록날짜 :
-							${stayRetrieve.stayWriteDay} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							조회수 : ${stayRetrieve.stayReadCnt}
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br> 좋아요수 :
-							${stayRetrieve.stayGoods} <c:if
-								test="${!empty sessionScope.comLogin}">
-								<a href="StayGoodServlet?stayNum=${stayRetrieve.stayNum}"> <img
-									src="/project/images/goods.png">
-								</a>
+						<td>숙박업소 번호:${stayRetrieve.stayNum}
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;등록날짜:${stayRetrieve.stayWriteDay}
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							조회수:${stayRetrieve.stayReadCnt}
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br> 좋아요수:
+							<span id="re1">${stayRetrieve.stayGoods}</span>
+
+								
+
+							 <c:if test="${!empty sessionScope.comLogin}">
+
+								<span id="result"></span>
+								<button type="button" id="xxx" class="btn btn-default btn-xs">
+
+
+									<img src="/project/images/goods.png">
+								</button>
 							</c:if>
 						</td>
 
@@ -181,11 +226,21 @@
 					</div>
 					<div class="form-inline">
 						<tr>
-							<td class="td_title">숙박업소 평균 가격</td>
+							<td class="td_title">숙박업소 성인가격</td>
 							<td class="td_red" colspan="2" style='padding-left: 30px'><fmt:formatNumber
-									type="currency" value="${stayRetrieve.stayPrice}"
-									pstayern="\###,###" var="ap" /> <input type="text"
-								name="stayPrice" value="${stayRetrieve.stayPrice}"
+									type="currency" value="${stayRetrieve.stayAdultPrice}"
+									pattern="\###,###" var="aap" /> <input type="text"
+								name="stayAdultPrice" value="${stayRetrieve.stayAdultPrice}"
+								class="form-control"></td>
+						</tr>
+					</div>
+					<div class="form-inline">
+						<tr>
+							<td class="td_title">숙박업소 어린이가격</td>
+							<td class="td_red" colspan="2" style='padding-left: 30px'><fmt:formatNumber
+									type="currency" value="${stayRetrieve.stayKidPrice}"
+									pattern="\###,###" var="akp" /> <input type="text"
+								name="stayKidPrice" value="${stayRetrieve.stayKidPrice}"
 								class="form-control"></td>
 						</tr>
 					</div>
@@ -264,7 +319,7 @@
 		</c:if>
 
 
-		<a href="StayListServlet" class="btn btn-default">목록으로</a>
+		<a href="StayBoardListServlet" class="btn btn-default">목록으로</a>
 
 	</div>
 
@@ -276,17 +331,24 @@
 <script>
 	function upCount() {
 		var amount = parseInt(document.getElementById("GOODS_AMOUNT").value);
+
 		amount = amount + 1;
 		document.getElementById("GOODS_AMOUNT").value = amount;
+
 	}
+
 	function downCount() {
 		var amount = parseInt(document.getElementById("GOODS_AMOUNT").value);
+
 		amount = amount - 1;
 		if (amount == 0) {
 			amount = 1;
 		}
+
 		document.getElementById("GOODS_AMOUNT").value = amount;
+
 	}
+
 	function cartAdd(f) {
 		f.action = "CartAddServlet";
 	}

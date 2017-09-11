@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.dto.restaurant.RestDTO;
 import com.dto.restaurant.RestPageDTO;
+import com.dto.tour.TourDTO;
+import com.dto.tour.TourPageDTO;
 
 
 
@@ -22,47 +24,54 @@ public class RestDAO {
 	
 	
 	//3투어 글 자세히 보기
-	public RestDTO restSelectByNum(SqlSession session , int restNum) {
-		RestDTO dto = session.selectOne("restSelectByNum", restNum);
+	public RestDTO selectByRestNum(SqlSession session , int num) {
+		RestDTO dto = session.selectOne("selectByRestNum", num);
 		return dto;
 	}
-	public int restReadCnt(SqlSession session , int restNum) {
-		int n = session.update("restReadCnt",restNum);
+	public int readRestCnt(SqlSession session , int num) {
+		int n = session.update("readRestCnt",num);
 		return n;
 	}
 
 	//4. 글 삭제
-	public int restDeleteByNum(SqlSession session , int restNum) {
-		int n = session.delete("restDeleteByNum",restNum);
+	public int deleteByRestNum(SqlSession session , int num) {
+		int n = session.delete("deleteByRestNum",num);
 		return n;
 	}
 	//5. 글 수정
-		public int restUpdateByNum(SqlSession session , RestDTO dto) {
-			int n = session.update("restUpdateByNum", dto);
+		public int updateByRestNum(SqlSession session , RestDTO dto) {
+			int n = session.update("updateByRestNum", dto);
 			return n;
 		}
+		
+		/*//6. 검색보기
+		public List<NoticeDTO> search(SqlSession session, HashMap<String, String> map){
+	      List<NoticeDTO> list =session.selectList("search", map);
+		  return list;
+		}//end list()	
+		*/
 		//7. 페이징 처리
-		public RestPageDTO restPage(SqlSession session, int restCurPage , HashMap<String, String> map ){
+		public RestPageDTO page(SqlSession session, int curPage , HashMap<String, String> map ){
 			  
 			  RestPageDTO dto = new RestPageDTO();
 			  
-			  int sIndex = (restCurPage - 1)* RestPageDTO.getRestPerPage();
-		      int length  = RestPageDTO.getRestPerPage();
+			  int sIndex = (curPage - 1)* RestPageDTO.getPerPage();
+		      int length  = RestPageDTO.getPerPage();
 			
-		      List<RestDTO> list = session.selectList("restSelect", map ,new RowBounds(sIndex, length));
-			  int restTotalCount=0;
+		      List<RestDTO> list = session.selectList("selectRest", map ,new RowBounds(sIndex, length));
+			  int totalCount=0;
 		      //PageDTO에 4개의 데이터 저장
 			  System.out.println("!!!"+list);
 		      dto.setList(list);
-		      dto.setRestCurPage(restCurPage);
+		      dto.setCurPage(curPage);
 		      System.out.println(">>"+dto.getList());
 		    
-		      restTotalCount = session.selectOne("restTotalCount", map);
+		      totalCount = session.selectOne("ResttotalCount1", map);
 		     
 		      
-		      dto.setRestTotalCount(restTotalCount);
-		      dto.setRestSearchName(map.get("restSearchName"));
-		      dto.setRestSearchValue(map.get("restSearchValue"));
+		      dto.setTotalCount(totalCount);
+		      dto.setSearchName(map.get("searchName"));
+		      dto.setSearchValue(map.get("searchValue"));
 		      dto.setRestLocation(map.get("restLocation"));
 		      dto.setRestType(map.get("restType"));
 		      dto.setSortRest(map.get("sortRest"));
@@ -71,8 +80,18 @@ public class RestDAO {
 		
 		
 		/// 좋아요
-		public int restGoods(SqlSession session , int restNum) {
-			int n = session.update("restGoods",restNum);
+		public int goodsRest(SqlSession session , int num) {
+			int n = session.update("goodsRest",num);
 			return n;
 		}
 }//end class
+
+
+
+
+
+
+
+
+
+

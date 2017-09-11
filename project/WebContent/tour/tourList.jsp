@@ -82,7 +82,7 @@
 				success : function(responseData, status, xhr) {
 					console.log(responseData);
 			
-					//$('#aaa').submit();
+					$('#aaa').submit();
 
 				},
 				error : function(xhr, status, e) {

@@ -46,9 +46,4 @@ public class StayFileDownServlet extends HttpServlet {
 		in.close();
 
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
-
 }

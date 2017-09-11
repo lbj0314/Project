@@ -32,7 +32,7 @@ PUBLIC "-//com.mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<mapper resource="com/mybatis/NoticeMapper.xml" />
 		<mapper resource="com/mybatis/LoginMapper.xml" />
-		<mapper resource="com/mybatis/RestaurantMapper.xml"/>
+		<mapper resource="com/mybatis/RestMapper.xml"/>
 		<mapper resource="com/mybatis/StayMapper.xml"/>
 		<mapper resource="com/mybatis/TourMapper.xml"/>
 		<mapper resource="com/mybatis/JoinMapper.xml"/>

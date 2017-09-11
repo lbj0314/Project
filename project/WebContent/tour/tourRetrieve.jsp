@@ -47,6 +47,8 @@
 			});
 
 		});
+		$("#attlo > option[value=${tourRetrieve.attLocation}").attr("selected", "true");
+		$("#attty > option[value=${tourRetrieve.attType}").attr("selected", "true");
 
 	});
 </script>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>restWriteView</title>
+<title>writeView</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 <script src="//code.jquery.com/jquery.min.js"></script>
@@ -19,6 +19,7 @@
 			readURL(this);
 		});
 	});
+
 	function readURL(input) {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
@@ -26,17 +27,27 @@
 			reader.onload = function(e) {
 				$('#imgview').attr('src', e.target.result);
 			}
+
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
 </script>
+
+
 </head>
 <body>
 	<div id="conright">
 		<jsp:include page="/login/loginForm.jsp" flush="true" /><br>
+
 	</div>
+
 	<jsp:include page="/include/top.jsp" flush="true" /><br>
-	<jsp:include page="/restaurant/rest_write.jsp" flush="true" /><br>
+
+
+
+	<jsp:include page="/restaurant/restWrite.jsp" flush="true" /><br>
+
+
 	<jsp:include page="/include/copyright.jsp" flush="true" /><br>
 
 

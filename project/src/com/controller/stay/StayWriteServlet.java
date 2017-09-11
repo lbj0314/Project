@@ -21,7 +21,6 @@ import com.dto.stay.StayDTO;
 import com.exception.MyException;
 import com.service.stay.StayService;
 
-
 @WebServlet("/StayWriteServlet")
 public class StayWriteServlet extends HttpServlet {
 
@@ -62,14 +61,14 @@ public class StayWriteServlet extends HttpServlet {
 		String entNum = null;
 		String stayImage = null;
 		String stayImageClone = null;
-		
+
 		String target = "StayBoardListServlet";
 		// Parse the request
 		try {
 			List<FileItem> items = upload.parseRequest(request);
 			// Process the uploaded items
 			Iterator<FileItem> iter = items.iterator();
-			
+
 			while (iter.hasNext()) {
 				FileItem item = iter.next();
 
@@ -96,7 +95,6 @@ public class StayWriteServlet extends HttpServlet {
 					} else if (name.equals("stayGrade")) {
 						stayGrade = value;
 
-
 					} else if (name.equals("staySite")) {
 						if (value.equals("")) {
 							staySite = "홈페이지 주소 없음";
@@ -113,8 +111,7 @@ public class StayWriteServlet extends HttpServlet {
 					} else if (name.equals("stayTitle")) {
 						stayTitle = value;
 
-					}
-					else if (name.equals("entNum")) {
+					} else if (name.equals("entNum")) {
 						entNum = value;
 
 					}
@@ -131,12 +128,18 @@ public class StayWriteServlet extends HttpServlet {
 					stayImageClone = staySplit[0] + milliSecond + "." + staySplit[1];
 					// contentType = item.getContentType(); //이미지가 아니면 업로드 불가능 처리를 할 수 있다. 나중에 구현
 					// sizeInBytes = item.getSize();
-					File uploadedFile = new File("c:\\upload", stayImageClone);
-					item.write(uploadedFile);
-					
-					
+					File uploadedFile = new File("c:\\upload");
 
-					
+					// 폴더가 없으면 폴더 생성
+					if (!uploadedFile.exists()) {
+						uploadedFile.mkdir();
+						uploadedFile = new File("c:\\upload", stayImageClone);
+					} else {
+
+						uploadedFile = new File("c:\\upload", stayImageClone);
+					}
+
+					item.write(uploadedFile);
 
 				}
 			}

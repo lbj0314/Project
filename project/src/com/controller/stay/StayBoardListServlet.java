@@ -19,7 +19,6 @@ import com.service.stay.StayService;
 public class StayBoardListServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		request.setCharacterEncoding("UTF-8");
 
 				String stayCurpage = request.getParameter("stayCurpage");

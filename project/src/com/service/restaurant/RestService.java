@@ -1,16 +1,29 @@
 package com.service.restaurant;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.dao.restaurant.RestDAO;
+import com.dao.tour.TourDAO;
 import com.dto.restaurant.RestDTO;
 import com.dto.restaurant.RestPageDTO;
+import com.dto.tour.TourDTO;
+import com.dto.tour.TourPageDTO;
 import com.exception.MyException;
 import com.mybatis.MybatisTemplate;
 
 public class RestService {
+
+	/*
+	 * public List<NoticeDTO> list() throws MyException{ SqlSession session =
+	 * MybatisTemplate.openSession(); NoticeDAO dao = new NoticeDAO();
+	 * List<NoticeDTO> list = null; try { list = dao.list(session); }catch(Exception
+	 * e) { e.printStackTrace(); throw new MyException("list 예외발생"); }finally {
+	 * session.close(); } return list; }//end list()
+	 */
+
 	public void restWrite(RestDTO dto) throws MyException {
 		SqlSession session = MybatisTemplate.openSession();
 		RestDAO dao = new RestDAO();
@@ -28,30 +41,30 @@ public class RestService {
 
 	}// end boardWrite
 
-	public RestDTO restSelectByNum(int restNum) throws MyException {
+	public RestDTO selectByRestNum(int num) throws MyException {
 
 		SqlSession session = MybatisTemplate.openSession();
 		RestDAO dao = new RestDAO();
 		RestDTO dto = null;
 		try {
-			int n = dao.restReadCnt(session, restNum);
+			int n = dao.readRestCnt(session, num);
 			if (n == 1)
 				session.commit();
-			dto = dao.restSelectByNum(session, restNum);
+			dto = dao.selectByRestNum(session, num);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MyException("restSelectByNum 예외발생");
+			throw new MyException("selectByRestNum 예외발생");
 		} finally {
 			session.close();
 		}
 		return dto;
-	}// end restSelectByNum
+	}// end selectByNum
 
-	public void restGoods(int restNum) throws MyException {
+	public void goodsRest(int num) throws MyException {
 		SqlSession session = MybatisTemplate.openSession();
 		RestDAO dao = new RestDAO();
 		try {
-			int n = dao.restGoods(session, restNum);
+			int n = dao.goodsRest(session, num);
 			if (n == 1)
 				session.commit();
 		} catch (Exception e) {
@@ -63,49 +76,57 @@ public class RestService {
 		}
 	}
 
-	public void restDeleteByNum(int restNum) throws MyException {
+	public void deleteByRestNum(int num) throws MyException {
 
 		SqlSession session = MybatisTemplate.openSession();
 		RestDAO dao = new RestDAO();
 		try {
-			int n = dao.restDeleteByNum(session, restNum);
+			int n = dao.deleteByRestNum(session, num);
 			if (n == 1)
 				session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MyException("restDeleteByNum 예외발생");
-		} finally {
-			session.close();
-		}
-
-	}// end restDeleteByNum
-
-	public void restUpdateByNum(RestDTO dto) throws MyException {
-
-		SqlSession session = MybatisTemplate.openSession();
-		RestDAO dao = new RestDAO();
-		try {
-			int n = dao.restUpdateByNum(session, dto);
-			if (n == 1)
-				session.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new MyException("restUpdateByNum 예외발생");
+			throw new MyException("deleteByRestNum 예외발생");
 		} finally {
 			session.close();
 		}
 
 	}// end deleteByNum
 
-	public RestPageDTO restPage(int restCurPage, HashMap<String, String> map) throws MyException {
+	public void updateByRestNum(RestDTO dto) throws MyException {
+
+		SqlSession session = MybatisTemplate.openSession();
+		RestDAO dao = new RestDAO();
+		try {
+			int n = dao.updateByRestNum(session, dto);
+			if (n == 1)
+				session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new MyException("updateByRestNum 예외발생");
+		} finally {
+			session.close();
+		}
+
+	}// end deleteByNum
+
+	/*
+	 * public List<TourDTO> search(HashMap<String, String> map) throws MyException{
+	 * SqlSession session = MybatisTemplate.openSession(); TourDAO dao = new
+	 * TourDAO(); List<NoticeDTO> list = null; try { list = dao.search(session,map);
+	 * }catch(Exception e) { e.printStackTrace(); throw new
+	 * MyException("search 예외발생"); }finally { session.close(); } return list; }//end
+	 * list()
+	 */
+	public RestPageDTO page(int curPage, HashMap<String, String> map) throws MyException {
 		SqlSession session = MybatisTemplate.openSession();
 		RestDAO dao = new RestDAO();
 		RestPageDTO list = null;
 		try {
-			list = dao.restPage(session, restCurPage, map);
+			list = dao.page(session, curPage, map);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MyException("restlist 예외발생");
+			throw new MyException("listrest 예외발생");
 		} finally {
 			session.close();
 		}

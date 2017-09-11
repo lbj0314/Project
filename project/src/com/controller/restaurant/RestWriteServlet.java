@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,10 +19,14 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.dto.restaurant.RestDTO;
+import com.dto.tour.TourDTO;
 import com.exception.MyException;
 import com.service.restaurant.RestService;
+import com.service.tour.TourService;
 
-
+/**
+ * Servlet implementation class MyBoardWriteServlet
+ */
 @WebServlet("/RestWriteServlet")
 public class RestWriteServlet extends HttpServlet {
 
@@ -52,6 +57,7 @@ public class RestWriteServlet extends HttpServlet {
 
 		String restType = null;
 		String restName = null;
+		// String attLocation = request.getParameter("attLocation");
 		String restPrice = null;
 		String restSite = null;
 		String restContent = null;
@@ -60,14 +66,14 @@ public class RestWriteServlet extends HttpServlet {
 		String entNum = null;
 		String restImage = null;
 		String restImageClone = null;
-		
-		String target = "RestBoardListServlet";
+
+		String target = "RestListServlet";
 		// Parse the request
 		try {
 			List<FileItem> items = upload.parseRequest(request);
 			// Process the uploaded items
 			Iterator<FileItem> iter = items.iterator();
-			
+
 			while (iter.hasNext()) {
 				FileItem item = iter.next();
 
@@ -106,8 +112,7 @@ public class RestWriteServlet extends HttpServlet {
 					} else if (name.equals("restTitle")) {
 						restTitle = value;
 
-					}
-					else if (name.equals("entNum")) {
+					} else if (name.equals("entNum")) {
 						entNum = value;
 
 					}
@@ -124,18 +129,25 @@ public class RestWriteServlet extends HttpServlet {
 					restImageClone = restSplit[0] + milliSecond + "." + restSplit[1];
 					// contentType = item.getContentType(); //이미지가 아니면 업로드 불가능 처리를 할 수 있다. 나중에 구현
 					// sizeInBytes = item.getSize();
-					File uploadedFile = new File("c:\\upload", restImageClone);
-					item.write(uploadedFile);
-					
-					
+					File uploadedFile = new File("c:\\upload");
 
-					
+					// 폴더가 없으면 폴더 생성
+					if (!uploadedFile.exists()) {
+
+						uploadedFile.mkdir();
+						uploadedFile = new File("c:\\upload", restImageClone);
+
+					} else {
+						uploadedFile = new File("c:\\upload", restImageClone);
+
+					}
+					item.write(uploadedFile);
 
 				}
 			}
 
-			// request.setrestribute("fileName", fileName);
-			// request.setrestribute("sizeInBytes", sizeInBytes);
+			// request.setAttribute("fileName", fileName);
+			// request.setAttribute("sizeInBytes", sizeInBytes);
 
 		} catch (FileUploadException e) {
 			// TODO Auto-generated catch block
@@ -160,12 +172,12 @@ public class RestWriteServlet extends HttpServlet {
 		RestService service = new RestService();
 		try {
 			service.restWrite(dto);
-			request.setAttribute("Restcomp", "정상적으로 입력 완료하였습니다.");
+			request.setAttribute("restcomp", "정상적으로 입력 완료하였습니다.");
 		} catch (MyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			target = "error.jsp";
-			request.setAttribute("Restcomp", "입력 실패~");
+			request.setAttribute("restcomp", "입력 실패~");
 
 		}
 
