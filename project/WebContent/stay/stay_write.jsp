@@ -3,7 +3,7 @@
 
 
 
-
+ 
 
 <form action="/project/StayWriteServlet" enctype="multipart/form-data"
 	method="post">

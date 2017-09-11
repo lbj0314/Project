@@ -14,7 +14,7 @@ import com.service.stay.StayService;
 
 @WebServlet("/StayDeleteServlet")
 public class StayDeleteServlet extends HttpServlet {
-	
+	 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String stayNum = request.getParameter("stayNum");
 		StayService service = new StayService();

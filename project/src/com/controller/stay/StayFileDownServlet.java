@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class StayFileDownServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+ 
 		String stayImageClone = request.getParameter("stayImageClone");
 		String stayImage = request.getParameter("stayImage");
 		File fNew = new File("c:\\upload", stayImageClone);

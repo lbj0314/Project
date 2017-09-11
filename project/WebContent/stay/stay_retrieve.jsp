@@ -7,7 +7,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
-
+ 
 <%-- <c:if test="${!empty requestScope.goodok}">
 	<script>
 		alert('${requestScope.goodok}');
@@ -31,9 +31,10 @@
 				},
 
 				success : function(responseData, status, xhr) {
-					console.log(responseData);
+					//console.log(responseData);
 					
 					$("#result").text(responseData);
+					//console.log(responseData);
 					$("#re1").css("display","none");
 
 					
@@ -47,8 +48,8 @@
 			});
 
 		});
-		$("#restlo > option[value=${restRetrieve.restLocation}").attr("selected", "true");
-		$("#restty > option[value=${restRetrieve.restType}").attr("selected", "true");
+		$("#staylo > option[value=${stayRetrieve.stayLocation}").attr("selected", "true");
+		$("#stayty > option[value=${stayRetrieve.stayType}").attr("selected", "true");
 	});
 </script>
 
@@ -209,7 +210,7 @@
 						<tr>
 							<td class="td_title">숙박업소 등급</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<select name="stayType" class="form-control" id="stayty">
+								<select name="stayGrade" class="form-control" id="staygd">
 									<option value="def">숙박업소 등급 선택</option>
 									<option value="1성">1성</option>
 									<option value="1.5성">1.5성</option>
