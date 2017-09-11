@@ -50,7 +50,7 @@ $('.dropdown-toggle').dropdown()
   <ul class="dropdown-menu">
     <li><a href="/project/RestListServlet">음식점 정보</a></li>
   </ul>     
-
+</div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <div class="btn-group">
   <a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
@@ -58,7 +58,7 @@ $('.dropdown-toggle').dropdown()
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li><a href="/project/StayBoardListServlet">숙박업소 정보</a><br></li>
+    <li><a href="/project/StayBoardListServlet">숙박업소 정보</a></li>
   </ul>
 </div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
