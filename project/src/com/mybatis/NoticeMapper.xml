@@ -14,8 +14,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    order by nonum desc
 	</select>
 	<insert id="boardWrite" parameterType="NoticeDTO">
-	    insert into notice ( nonum,notitle,nocontent)
-	    values ( notice_seq.nextval, #{notitle},#{nocontent})
+	    insert into notice ( nonum,notitle,nocontent,admnum)
+	    values ( notice_seq.nextval, #{notitle},#{nocontent},#{admnum})
 	</insert>
 	<select id="selectByNum" resultType="NoticeDTO" parameterType="int">
 		select nonum,notitle, nocontent, to_char(nowriteDay,'YYYY/MM/dd') nowriteDay, noreadCnt

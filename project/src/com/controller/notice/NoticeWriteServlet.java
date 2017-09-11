@@ -24,11 +24,11 @@ public class NoticeWriteServlet extends HttpServlet {
 	
 		String notitle = request.getParameter("title");
 		String nocontent = request.getParameter("content");
-		
+		String admnum = request.getParameter("admnum");
 		NoticeDTO dto = new NoticeDTO();
 		dto.setNotitle(notitle);
 		dto.setNocontent(nocontent);
-		
+		dto.setAdmnum(Integer.parseInt(admnum));
 		NoticeService service = new NoticeService();
 		String target="NoticeListServlet";
 		try {

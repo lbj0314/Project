@@ -89,7 +89,7 @@
 
 
 					<tr>
-						<td colspan=4>레코드가 없습니다.</td>
+						<td colspan=4 align=center>레코드가 없습니다.</td>
 					</tr>
 				</c:when>
 
