@@ -6,17 +6,19 @@ public class NoticeDTO {
 	private String nowriteDay;
 	private String nocontent;
 	private int noreadCnt;
+	private int admnum;
 	public NoticeDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public NoticeDTO(int nonum, String notitle, String nowriteDay, String nocontent, int noreadCnt) {
+	public NoticeDTO(int nonum, String notitle, String nowriteDay, String nocontent, int noreadCnt, int admnum) {
 		super();
 		this.nonum = nonum;
 		this.notitle = notitle;
 		this.nowriteDay = nowriteDay;
 		this.nocontent = nocontent;
 		this.noreadCnt = noreadCnt;
+		this.admnum = admnum;
 	}
 	public int getNonum() {
 		return nonum;
@@ -48,10 +50,16 @@ public class NoticeDTO {
 	public void setNoreadCnt(int noreadCnt) {
 		this.noreadCnt = noreadCnt;
 	}
+	public int getAdmnum() {
+		return admnum;
+	}
+	public void setAdmnum(int admnum) {
+		this.admnum = admnum;
+	}
 	@Override
 	public String toString() {
 		return "NoticeDTO [nonum=" + nonum + ", notitle=" + notitle + ", nowriteDay=" + nowriteDay + ", nocontent="
-				+ nocontent + ", noreadCnt=" + noreadCnt + "]";
+				+ nocontent + ", noreadCnt=" + noreadCnt + ", admnum=" + admnum + "]";
 	}
 	
 	

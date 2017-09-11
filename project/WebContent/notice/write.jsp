@@ -5,6 +5,7 @@
 	<div class="container-fluid">
 		
 <form action="/project/NoticeWriteServlet" method="post" >
+<input type="hidden" name="admnum" value="${sessionScope.admLogin.admnum }">
 제목<input type="text" name="title" class="form-control"><br>
 내용<textarea rows="10" cols="10" name="content" class="form-control"></textarea>
  <input type="submit" value="글쓰기" class="form-control">
