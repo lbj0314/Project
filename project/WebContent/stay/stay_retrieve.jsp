@@ -7,7 +7,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
-
+ 
 <%-- <c:if test="${!empty requestScope.goodok}">
 	<script>
 		alert('${requestScope.goodok}');

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dto.stay.StayDTO;
 import com.exception.MyException;
 import com.service.stay.StayService;
-
+ 
 @WebServlet("/StayBoardRetrieveServlet")
 public class StayBoardRetrieveServlet extends HttpServlet {
 

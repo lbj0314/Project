@@ -20,7 +20,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import com.dto.stay.StayDTO;
 import com.exception.MyException;
 import com.service.stay.StayService;
-
+ 
 /**
  * Servlet implementation class MyBoardUpdateServlet
  */

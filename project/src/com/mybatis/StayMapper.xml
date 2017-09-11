@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.mybatis.StayMapper">
 	<select id="stayTotalCount" resultType="int" parameterType="hashmap">
 		select count(*)
-		from stay
+		from stay 
 		<where>
 			<if test="staySearchName == 'stayTitle' and staySearchValue!=null">
 				stayTitle LIKE '%'||#{staySearchValue}||'%'

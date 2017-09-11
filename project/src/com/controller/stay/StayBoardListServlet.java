@@ -25,7 +25,7 @@ public class StayBoardListServlet extends HttpServlet {
 				if(stayCurpage == null) {
 					stayCurpage = "1";
 				}
-	
+	 
 		String staySearchName = request.getParameter( "staySearchName" );
 		String staySearchValue = request.getParameter( "staySearchValue" );
 		String stayLocation=request.getParameter("stayLocation");
