@@ -164,12 +164,13 @@
 			<option value="전라남도">전라남도</option>
 			<option value="제주도">제주도</option>
 		</select> <select name="restType" class="form-control" id="restty">
-			<option value="def">타입선택</option>
-			<option value="자연">자연</option>
-			<option value="체험">체험</option>
-			<option value="역사">역사</option>
-			<option value="테마">테마</option>
-			<option value="쇼핑">쇼핑</option>
+			<option value="def">맛집선택</option>
+			<option value="한식">한식</option>
+			<option value="일식">일식</option>
+			<option value="중식">중식</option>
+			<option value="양식">양식</option>
+			<option value="패스트푸드">패스트푸드</option>
+			<option value="제과">제과</option>
 
 		</select>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

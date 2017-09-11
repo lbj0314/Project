@@ -17,40 +17,41 @@
 
 
 <script type="text/javascript">
-	$(document).ready(function() {
+	$(document).ready(
+			function() {
 
-		$("#xxx").on("click", function(event) {
-			//event.preventDefault();
-			//ajax 지역별 통신
-			$.ajax({
-				type : "get",
-				url : "RestGoodServlet",
-				dataType : "text",
-				data : {
-					restNum : $("#restNum").val()
-				},
+				$("#xxx").on("click", function(event) {
+					//event.preventDefault();
+					//ajax 지역별 통신
+					$.ajax({
+						type : "get",
+						url : "RestGoodServlet",
+						dataType : "text",
+						data : {
+							restNum : $("#restNum").val()
+						},
 
-				success : function(responseData, status, xhr) {
-					console.log(responseData);
-					
-					$("#result").text(responseData);
-					$("#re1").css("display","none");
+						success : function(responseData, status, xhr) {
+							console.log(responseData);
 
-					
+							$("#result").text(responseData);
+							$("#re1").css("display", "none");
 
-				},
-				error : function(xhr, status, e) {
-					console.log(status, e);
+						},
+						error : function(xhr, status, e) {
+							console.log(status, e);
 
-				}
+						}
+
+					});
+
+				});
+				$("#restlo > option[value=${restRetrieve.restLocation}").attr(
+						"selected", "true");
+				$("#restty > option[value=${restRetrieve.restType}").attr(
+						"selected", "true");
 
 			});
-
-		});
-		$("#restlo > option[value=${restRetrieve.restLocation}").attr("selected", "true");
-		$("#restty > option[value=${restRetrieve.restType}").attr("selected", "true");
-
-	});
 </script>
 
 
@@ -84,12 +85,9 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;등록날짜:${restRetrieve.restWriteDay}
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							조회수:${restRetrieve.restReadCnt}
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br> 좋아요수:
-							<span id="re1">${restRetrieve.restGoods}</span>
-
-								
-
-							 <c:if test="${!empty sessionScope.comLogin}">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br> 좋아요수: <span
+							id="re1">${restRetrieve.restGoods}</span> <c:if
+								test="${!empty sessionScope.comLogin}">
 
 								<span id="result"></span>
 								<button type="button" id="xxx" class="btn btn-default btn-xs">
@@ -191,16 +189,18 @@
 					</div>
 					<div class="form-inline">
 						<tr>
-							<td class="td_title">업소 타입</td>
+							<td class="td_title">업소 종류</td>
 
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
 								<select name="restType" class="form-control" id="restty">
-									<option value="def">타입선택</option>
-									<option value="자연">자연</option>
-									<option value="체험">체험</option>
-									<option value="역사">역사</option>
-									<option value="테마">테마</option>
-									<option value="쇼핑">쇼핑</option>
+
+									<option value="def">맛집선택</option>
+									<option value="한식">한식</option>
+									<option value="일식">일식</option>
+									<option value="중식">중식</option>
+									<option value="양식">양식</option>
+									<option value="패스트푸드">패스트푸드</option>
+									<option value="제과">제과</option>
 
 							</select>
 							</td>
@@ -221,7 +221,7 @@
 								class="form-control"></td>
 						</tr>
 					</div>
-					
+
 					<div class="form-inline">
 						<tr>
 

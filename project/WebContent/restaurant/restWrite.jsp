@@ -5,8 +5,10 @@
 
 
 
-<form action="/project/RestWriteServlet" enctype="multipart/form-data" method="post">
-	<input type="hidden" name="entNum" value="${sessionScope.entLogin.entnum}">
+<form action="/project/RestWriteServlet" enctype="multipart/form-data"
+	method="post">
+	<input type="hidden" name="entNum"
+		value="${sessionScope.entLogin.entnum}">
 	${sessionScope.entLogin.entnum }
 	<table align=center>
 		<tr>
@@ -47,14 +49,15 @@
 						<option value="전라남도">전라남도</option>
 						<option value="제주도">제주도</option>
 				</select></td>
-				<td align=center>타입:</td>
+				<td align=center>맛집:</td>
 				<td><select name="restType" class="form-control">
-						<option>타입선택</option>
-						<option value="자연">자연</option>
-						<option value="체험">체험</option>
-						<option value="역사">역사</option>
-						<option value="테마">테마</option>
-						<option value="쇼핑">쇼핑</option>
+						<option value="def">맛집선택</option>
+						<option value="한식">한식</option>
+						<option value="일식">일식</option>
+						<option value="중식">중식</option>
+						<option value="양식">양식</option>
+						<option value="패스트푸드">패스트푸드</option>
+						<option value="제과">제과</option>
 
 				</select></td>
 			</div>
@@ -62,9 +65,8 @@
 		<tr>
 			<div class="form-inline">
 				<td align=center>가격:</td>
-				<td><input type="text" name="restPrice"
-					class="form-control"></td>
-				
+				<td><input type="text" name="restPrice" class="form-control"></td>
+
 			</div>
 		</tr>
 		<tr>
