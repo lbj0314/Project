@@ -15,14 +15,57 @@ $(document).ready(function() {
 	$("#userid").on("blur", function(){
 		$.ajax({
 			type:"get",
-			url:"IdCheckServlet",
+			url:"MemberCheckServlet",
 			data:{
 				category:$("#category").val(),
 				userid:$("#userid").val()
 			},
 			dataType:"text",
 			success:function(responseData, status, xhr){
-				$("#result").text(responseData);
+				if($.trim(responseData)=="Y"){
+					$("#result").css("color","blue");
+					$("#result").text("사용 가능한 아이디 입니다.");
+				}
+				if($.trim(responseData)=="N"){
+					$("#result").css("color","red");
+					$("#result").text("이미 사용중인 아이디 입니다.");
+				}
+				if($.trim(responseData)=="Z"){
+					$("#result").css("color","black");
+					$("#result").text("아이디를 입력 하세요.")
+				}
+				
+
+			},
+			error:function(xhr,status, e){
+				console.log(status, e)
+			}
+
+		});
+	});
+});
+$(document).ready(function() {
+	$("#userid").on("keyup", function(){
+		$.ajax({
+			type:"get",
+			url:"MemberCheckServlet",
+			data:{
+				category:$("#category").val(),
+				userid:$("#userid").val()
+			},
+			dataType:"text",
+			success:function(responseData, status, xhr){
+				if($.trim(responseData)=="Y"){
+					$("#result").css("color","blue");
+					$("#result").text("사용 가능한 아이디 입니다.");
+					
+				}
+				if($.trim(responseData)=="N"){
+					$("#result").css("color","red");
+					$("#result").text("이미 사용중인 아이디 입니다.");
+					
+				}
+				
 
 			},
 			error:function(xhr,status, e){
@@ -105,7 +148,7 @@ $(document).ready(function() {
 		<tr>
 			<td>아이디</td>
 			<td><input type="text" name="userid" id="userid"><em
-				id="result" style="color:red;"></em></td>
+				id="result" ></em></td>
 		</tr>
 		<tr>
 			<td>비밀 번호</td>

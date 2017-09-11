@@ -16,8 +16,8 @@ import com.dto.login.EntDTO;
 import com.exception.MyException;
 import com.service.login.LoginService;
 
-@WebServlet("/IdCheckServlet")
-public class IdCheckServlet extends HttpServlet {
+@WebServlet("/MemberCheckServlet")
+public class MemberCheckServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String category = request.getParameter("category");
@@ -25,16 +25,19 @@ public class IdCheckServlet extends HttpServlet {
 		HashMap<String, String> map = new HashMap<>();
 		map.put("userid", userid);
 		LoginService service = new LoginService();
-		String mesg="";
+		String idMesg="";
+		String target="";
 		if(category.equals("com")&&userid.length()!=0) {
 			try {
 
 				ComDTO dto = service.comLogin(map);
+				target="mesg/idMesg.jsp";
 				if (dto == null) {
-					mesg="사용가능한 아이디 입니다.";
+					idMesg="Y";
 				} else {
-					mesg="이미 사용중인 아이디 입니다.";
+					idMesg="N";
 				}
+				
 			} catch (MyException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -44,11 +47,13 @@ public class IdCheckServlet extends HttpServlet {
 			try {
 
 				AdmDTO dto = service.admLogin(map);
+				target="mesg/idMesg.jsp";
 				if (dto == null) {
-					mesg="사용가능한 아이디 입니다.";
+					idMesg="Y";
 				} else {
-					mesg="이미 사용중인 아이디 입니다.";
+					idMesg="N";
 				}
+				
 			} catch (MyException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -56,21 +61,24 @@ public class IdCheckServlet extends HttpServlet {
 		}else if (category.equals("ent")&&userid.length()!=0) {
 			try {
 				EntDTO dto = service.entLogin(map);
+				target="mesg/idMesg.jsp";
 				if (dto == null) {
-					mesg="사용가능한 아이디 입니다.";
+					idMesg="Y";
 				} else {
-					mesg="이미 사용중인 아이디 입니다.";
+					idMesg="N";
 				}
+				
 			} catch (MyException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		if(category.equals("ent")) {
-			
+		if(userid.length()==0) {
+			target="mesg/idMesg.jsp";
+			idMesg="Z";
 		}
-		String target="mesg/mesg.jsp";
-		request.setAttribute("mesg", mesg);
+
+		request.setAttribute("idMesg", idMesg);
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
 	}
