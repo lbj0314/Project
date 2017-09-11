@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dto.stay.StayDTO;
 import com.exception.MyException;
 import com.service.stay.StayService;
 
@@ -21,10 +22,12 @@ public class StayGoodServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String stayNum = request.getParameter("stayNum");
 		StayService service = new StayService();
-		String target ="StayRetrieveServlet?stayNum="+stayNum;
+		String target ="stay/stay_goods.jsp";
 		try {
 			service.stayGoods(Integer.parseInt(stayNum));
-			request.setAttribute("goodok", "좋아요 성공");
+			StayDTO dto = service.staySelectByNum(Integer.parseInt(stayNum));
+			int cnt = dto.getStayGoods();
+			request.setAttribute("cnt", cnt);
 		} catch (MyException e) {
 			target ="error.jsp";
 			request.setAttribute("gooderror", "좋아요 실패");

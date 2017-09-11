@@ -20,10 +20,10 @@ public class StayBoardRetrieveServlet extends HttpServlet {
 		
 		String stayNum = request.getParameter("stayNum");
 			StayService service = new StayService();
-			String target="restaurant/stay_retrieveview.jsp";
+			String target="stay/stay_retrieveview.jsp";
 			try {
 				StayDTO dto = service.staySelectByNum(Integer.parseInt(stayNum));
-				request.setAttribute("stayretrieve", dto);
+				request.setAttribute("stayRetrieve", dto);
 				
 				if(request.getAttribute("goodok") != null)
 				request.setAttribute("goodok","좋아요 성공~");

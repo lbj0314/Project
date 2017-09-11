@@ -3,7 +3,6 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.StayMapper">
-
 	<select id="stayTotalCount" resultType="int" parameterType="hashmap">
 		select count(*)
 		from stay
@@ -36,10 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		,#{stayLocation},#{stayAdultPrice},#{stayKidPrice},#{stayGrade},
 		#{stayTitle},#{stayContent},
 		#{staySite},#{stayType},#{entNum},#{stayImageClone})
-
 	</insert>
-
-
 	<select id="staySelect" resultType="StayDTO" parameterType="hashmap">
 		select stayNum,stayName,stayImage,stayPhone,
 		stayLocation,stayAdultPrice,stayKidPrice,stayGrade,stayTitle,stayContent,
@@ -67,9 +63,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and stayGrade =#{stayGrade}
 			</if>
 		</where>
-
-
-
 		<choose>
 			<when
 				test="sortStay == 'stayNoSort' or sortStay == '' or sortStay == null">
@@ -82,11 +75,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				order by stayWriteDay desc
 			</when>
 		</choose>
-
-
 	</select>
-
-
 	<select id="StaySelectByNum" resultType="StayDTO" parameterType="int">
 		select stayNum,stayName,stayImage,stayPhone,
 		stayLocation,stayAdultPrice,stayKidPrice,stayTitle,stayGrade,stayContent,
@@ -95,8 +84,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from stay
 		where stayNum = #{stayNum}
 	</select>
-
-
 	<update id="stayReadCnt" parameterType="int">
 		update stay
 		set
@@ -111,12 +98,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		stayGoods + 1
 		where stayNum = #{stayNum}
 	</update>
-
 	<delete id="StayDeleteByNum" parameterType="int">
 		delete from stay
 		where stayNum = #{stayNum}
 	</delete>
-
 	<update id="stayUpdateByNum" parameterType="StayDTO">
 		update stay
 		set
@@ -124,7 +109,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			stayImage=#{stayImage},
 			stayImageClone=#{stayImageClone},
 		</if>
-
 		stayContent=#{stayContent},
 		stayName=#{stayName},
 		stayLocation=#{stayLocation},

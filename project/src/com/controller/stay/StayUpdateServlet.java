@@ -131,7 +131,19 @@ public class StayUpdateServlet extends HttpServlet {
 						stayImageClone = staySplit[0] + milliSecond + "." + staySplit[1];
 						// contentType = item.getContentType(); //이미지가 아니면 업로드 불가능 처리를 할 수 있다. 나중에 구현
 						// sizeInBytes = item.getSize();
-						File uploadedFile = new File("c:\\upload", stayImageClone);
+						File uploadedFile = new File("c:\\upload");
+						
+						
+						//폴더가 없으면 폴더 생성
+						if (!uploadedFile.exists()) {
+							uploadedFile.mkdir();
+							uploadedFile = new File("c:\\upload",stayImageClone);
+						} else {
+							
+							uploadedFile = new File("c:\\upload",stayImageClone);
+						}
+						
+						
 						item.write(uploadedFile);
 
 					}
