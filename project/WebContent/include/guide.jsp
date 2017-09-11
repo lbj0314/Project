@@ -50,11 +50,11 @@
 	<br>
 	<br>
 	<br>
-	<a href="">숙박 보기</a>
+	<a href="/project/StayBoardListServlet">숙박 보기</a>
 	<br>
-	<a href="">음식점 보기</a>
+	<a href="/project/RestBoardListServlet">음식점 보기</a>
 	<br>
-	<a href="">관광명소 보기</a>
+	<a href="/project/TourListServlet">관광명소 보기</a>
 	<br>
 
 	<br> 마음에 드는 숙박, 음식점, 관광명소를 선택하신 후
