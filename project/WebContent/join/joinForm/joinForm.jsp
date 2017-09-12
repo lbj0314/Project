@@ -75,18 +75,22 @@
 	});
 	$(document).ready(function() {
 		
-
+		$('#passwd').keyup(function() {
+			if ($('#passwd').val().length < 8) {
+				$('font[name=check]').css("color", "red");
+				$('font[name=check]').text("암호 길이가 맞지 않습니다.");
+			}
+			else {
+				$('font[name=check]').css("color", "blue");
+				$('font[name=check]').text("길이가 적합합니다.");
+			}	
+		});
 		$('#passwd2').keyup(function() {
 			if ($('#passwd').val() != $('#passwd2').val()) {
 				$('font[name=check2]').css("color", "red");
-				$('font[name=check2]').text("암호가 맞지 않습니다."); 
-			}/* else if (passwd.length < 8) {
-					$('font[name=check]').css("color", "red");
-					$('font[name=check]').text("암호 길이가 맞지 않습니다.");
-
-			
-			} */ else {
-			
+				$('font[name=check2]').text("암호가 맞지 않습니다.");
+			}
+			else {
 				$('font[name=check2]').css("color", "blue");
 				$('font[name=check2]').text("암호가 일치합니다.");
 			}
@@ -96,17 +100,17 @@
 		/* $('#passwd').keyup(function(){
 		}); */
 
-		/* $('#ssn').keyup(function() {
+	/* $('#ssn').keyup(function() {
+	
 		
-			
-			if ($('#ssn').val() = !$('#ssn').val()) {
-				$('font[name=check2]').css("color", "red");
-				$('font[name=check2]').text("주민등록번호 길이가 맞지 않습니다.");
-			} else {
-				$('font[name=check2]').css("color", "blue");
-				$('font[name=check2]').text("주민등록번호 길이가 일치합니다.");
-			}
-		});
+		if ($('#ssn').val() = !$('#ssn').val()) {
+			$('font[name=check2]').css("color", "red");
+			$('font[name=check2]').text("주민등록번호 길이가 맞지 않습니다.");
+		} else {
+			$('font[name=check2]').css("color", "blue");
+			$('font[name=check2]').text("주민등록번호 길이가 일치합니다.");
+		}
+	});
 	}); */
 
 	/* function fnssnCheck(ssn) // 주민등록번호유효성검사.
@@ -268,9 +272,9 @@
 		</tr>
 		<tr>
 			<td>비밀 번호</td>
-			<td><input type="password" name="passwd" id="passwd" /></td>
-			<font
-				name="check" size="2"></font></td>
+			<td><input type="password" name="passwd" id="passwd" />
+			<font name="check" size="2"></font>
+			</td>
 		</tr>
 		<tr>
 			<td>비밀 번호 확인</td>
@@ -280,7 +284,7 @@
 		<tr>
 			<td>주민 번호</td>
 			<td><input type="text" placeholder="주민 번호(-제외)" id="ssn"
-				name="ssn" > <!-- <font name="check3" size="2"></font> --></td>
+				name="ssn"> <!-- <font name="check3" size="2"></font> --></td>
 		</tr>
 		<tr>
 			<td>핸드폰 번호</td>
