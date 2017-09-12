@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.mybatis.FesMapper">
 
 	<select id="FesSelectAll" resultType="FesDTO">
-	select FesNum,FesName,FesPrice,FesTitle,FesContent,FesReadCnt,FesImage,FesSite
+	select FesNum,FesName,FesPrice,FesTitle,FesContent,FesImage,FesSite
 	from festival
 	</select>
 
