@@ -76,43 +76,97 @@
 	$(document).ready(function() {
 		
 		$('#passwd').keyup(function() {
-			if ($('#passwd').val().length < 8) {
+			if ($('#passwd').val().length < 8 ) {
 				$('font[name=check]').css("color", "red");
-				$('font[name=check]').text("암호 길이가 맞지 않습니다.");
-			}
-			else {
+				$('font[name=check]').text("8자리 이상으로 입력하세요");
+			/* 
+			else if(!passwd.match(/^.*(?=^.{8,12}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/))  {   
+				 //(?=^.{8,12}$) = 8자에서 12자 체크 
+				 //(?=.*\d)      = 숫자포함
+				 //(?=.*[a-zA-Z]) = 알파벳 대소문자 포함
+				 //(?=.*[!@#$%^&+=]).*$/) = 특수문자 포함
+				 $('font[name=check]').css("color", "red");
+				$('font[name=check]').text("비밀번호는 문자, 숫자, 특수문자의 조합 8~12자리이상으로 입력해주세요."); */
+				 } else {
 				$('font[name=check]').css("color", "blue");
-				$('font[name=check]').text("길이가 적합합니다.");
-			}	
+				$('font[name=check]').text("8자리 이상으로 입력하세요");
+			}
 		});
+		
+		
+		
 		$('#passwd2').keyup(function() {
 			if ($('#passwd').val() != $('#passwd2').val()) {
 				$('font[name=check2]').css("color", "red");
-				$('font[name=check2]').text("암호가 맞지 않습니다.");
+				$('font[name=check2]').text("암호가 맞지 않습니다");
 			}
 			else {
 				$('font[name=check2]').css("color", "blue");
-				$('font[name=check2]').text("암호가 일치합니다.");
+				$('font[name=check2]').text("암호가 일치합니다");
 			}
 		});
 	});
-	/* $(document).ready(function() {
-		/* $('#passwd').keyup(function(){
-		}); */
-
-	/* $('#ssn').keyup(function() {
-	
-		
-		if ($('#ssn').val() = !$('#ssn').val()) {
-			$('font[name=check2]').css("color", "red");
-			$('font[name=check2]').text("주민등록번호 길이가 맞지 않습니다.");
-		} else {
-			$('font[name=check2]').css("color", "blue");
-			$('font[name=check2]').text("주민등록번호 길이가 일치합니다.");
-		}
+	$(document).ready(function() {
+		$('#ssn').keyup(function() {
+			if ($('#ssn').val().length < 13) {
+				$('font[name=check3]').css("color", "red");
+				$('font[name=check3]').text("숫자 13자리로 입력해주세요");
+			}
+			else {
+				$('font[name=check3]').css("color", "blue");
+				$('font[name=check3]').text("숫자 13자리로 입력해주세요");
+			}
+		});
 	});
-	}); */
-
+	$(document).ready(function() {
+		$('#phone1').keyup(function() {
+			if ($('#phone1').val().length < 10) {
+				$('font[name=check4]').css("color", "red");
+				$('font[name=check4]').text("숫자 10-11자리로 입력해주세요");
+			}
+			else {
+				$('font[name=check4]').css("color", "blue");
+				$('font[name=check4]').text("숫자 10-11자리로 입력해주세요");
+			}
+		});
+	});
+	$(document).ready(function() {
+		$('#phone2').keyup(function() {
+			if ($('#phone2').val().length < 10) {
+				$('font[name=check5]').css("color", "red");
+				$('font[name=check5]').text("숫자 10-11자리로 입력해주세요");
+			}
+			else {
+				$('font[name=check5]').css("color", "blue");
+				$('font[name=check5]').text("숫자 10-11자리로 입력해주세요");
+			}
+		});
+	});
+	$(document).ready(function() {
+		$('#fax').keyup(function() {
+			if ($('#fax').val().length < 9) {
+				$('font[name=check6]').css("color", "red");
+				$('font[name=check6]').text("숫자 9-11자리로 입력해주세요");
+			}
+			else {
+				$('font[name=check6]').css("color", "blue");
+				$('font[name=check6]').text("숫자 9-11자리로 입력해주세요");
+			}
+		});
+	});
+	$(document).ready(function() {
+		$('#in').keyup(function() {
+			if ($('#in').val().length < 10) {
+				$('font[name=check7]').css("color", "red");
+				$('font[name=check7]').text("숫자 10자리로 입력해주세요");
+			}
+			else {
+				$('font[name=check7]').css("color", "blue");
+				$('font[name=check7]').text("숫자 10자리로 입력해주세요");
+			}
+		});
+	});
+	
 	/* function fnssnCheck(ssn) // 주민등록번호유효성검사.
 	 {
 	 var sum = 0;
@@ -284,12 +338,12 @@
 		<tr>
 			<td>주민 번호</td>
 			<td><input type="text" placeholder="주민 번호(-제외)" id="ssn"
-				name="ssn"> <!-- <font name="check3" size="2"></font> --></td>
+				name="ssn"> <font name="check3" size="2"></font></td>
 		</tr>
 		<tr>
 			<td>핸드폰 번호</td>
 			<td><input type="text" placeholder="휴대폰 번호(-제외)" id="phone1"
-				name="phone1"></td>
+				name="phone1"><font name="check4" size="2"></font></td>
 		</tr>
 		<tr>
 			<td>이메일 주소</td>
@@ -342,15 +396,15 @@
 		</tr>
 		<tr>
 			<td>업소 전화번호</td>
-			<td><input type="text" id="phone2" disabled="true" name="phone2"></td>
+			<td><input type="text" placeholder="전화번호(-제외)" id="phone2" disabled="true" name="phone2"><font name="check5" size="2"></td>
 		</tr>
 		<tr>
 			<td>업소 팩스번호</td>
-			<td><input type="text" id="fax" disabled="true" name="fax"></td>
+			<td><input type="text" placeholder="팩스 번호(-제외)" id="fax"disabled="true" name="fax"><font name="check6" size="2"></td>
 		</tr>
 		<tr>
-			<td>사업장 등록번호</td>
-			<td><input type="text" id="in" disabled="true" name="in"></td>
+			<td>사업자 등록번호</td>
+			<td><input type="text" id="in" placeholder="사업자 등록번호(-제외)" disabled="true" name="in"><font name="check7" size="2"></td>
 		</tr>
 		<tr>
 			<td>업소 종류</td>
