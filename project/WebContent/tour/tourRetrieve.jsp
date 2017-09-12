@@ -293,14 +293,15 @@
 
 		<c:if test="${!empty sessionScope.comLogin}">
 
-			<button onclick="" class="btn btn-default">패키지 등록하러 가기</button>
+			<a href="orderFormServlet" class="btn btn-default">패키지 등록하러 가기</a>
+			<c:set var="attNum" value="${tourRetrieve.attNum}" scope="request" />
 	&nbsp;&nbsp;
 </c:if>
 
 		<c:if
 			test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum)}">
 
-
+	
 			<input type="submit" class="btn btn-default" value="수정 하기">
 		</c:if>
 		<c:if

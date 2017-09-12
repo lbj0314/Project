@@ -28,8 +28,8 @@ public class orderFormServlet extends HttpServlet {
 		TourService service = new TourService();
 		if(attNum!=null) {
 			try {
-				TourDTO dto = service.selectByTourNum(Integer.parseInt(attNum));
-				session.setAttribute("", dto);
+				TourDTO attDto = service.selectByTourNum(Integer.parseInt(attNum));
+				request.setAttribute("attDto", attDto);
 			}catch (MyException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -39,7 +39,6 @@ public class orderFormServlet extends HttpServlet {
 		String target = "order/orderForm.jsp";
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
