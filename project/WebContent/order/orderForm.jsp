@@ -19,12 +19,12 @@
 <link rel="stylesheet" type="text/css" href="/project/css/style.css">
 </head>
 <body>
-
+	
 	<jsp:include page="/login/loginForm.jsp" flush="true" /><br>
 	<jsp:include page="/include/top.jsp" flush="true" />
 	<jsp:include page="orderForm/orderForm.jsp" flush="true" />
 	<c:if test="${!empty requestScope.attList }">
-		<jsp:include page="../tour/tourList.jsp" flush="true" />
+		<jsp:include page="../tour/tourListView.jsp" flush="true" />
 	</c:if>
 	<c:if test="${!empty requestScope.resList }">
 		<jsp:include page="../restaurant/restList.jsp" flush="true" />

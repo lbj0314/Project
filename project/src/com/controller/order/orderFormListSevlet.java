@@ -14,19 +14,21 @@ public class orderFormListSevlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String attAdd = request.getParameter("attAdd");
-		String resAdd = request.getParameter("resAdd");
-		String stayAdd = request.getParameter("stayAdd");
-		if(attAdd!=null) {
+		String kind = request.getParameter("kind");
+		
+		System.out.println(kind);
+
+		if(kind.equals("attAdd")) {
 			request.setAttribute("attList", "attList");
 		}
-		if(resAdd!=null) {
+		if(kind.equals("resAdd")) {
 			request.setAttribute("resList", "resList");
 		}
-		if(stayAdd!=null) {
+		if(kind.equals("stayAdd")) {
 			request.setAttribute("stayList", "stayList");
 		}
-		String target="order/orderForm.jsp";
+		String target="TourListServlet";
+		request.setAttribute("orderList", "orderList");
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
 		
