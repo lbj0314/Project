@@ -8,37 +8,30 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.session.SqlSession;
-
-import com.dto.tour.TourDTO;
-import com.exception.MyException;
-import com.service.tour.TourService;
-
-@WebServlet("/orderFormServlet")
-public class orderFormServlet extends HttpServlet {
+@WebServlet("/orderFormListSevlet")
+public class orderFormListSevlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String attNum = request.getParameter("attNum");
+		String kind = request.getParameter("kind");
 		
-		
-		HttpSession session = request.getSession();
-		TourService service = new TourService();
-		if(attNum!=null) {
-			try {
-				TourDTO attDto = service.selectByTourNum(Integer.parseInt(attNum));
-				request.setAttribute("attDto", attDto);
-			}catch (MyException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		System.out.println(kind);
+
+		if(kind.equals("attAdd")) {
+			request.setAttribute("attList", "attList");
 		}
-		
-		String target = "order/orderForm.jsp";
+		if(kind.equals("resAdd")) {
+			request.setAttribute("resList", "resList");
+		}
+		if(kind.equals("stayAdd")) {
+			request.setAttribute("stayList", "stayList");
+		}
+		String target="TourListServlet";
+		request.setAttribute("orderList", "orderList");
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
