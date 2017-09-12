@@ -28,6 +28,7 @@ public class FesListServlet extends HttpServlet {
 		List<FesDTO> list=service.list();
 		request.setAttribute("list",list);
 		}catch(MyException e){
+			e.printStackTrace();
 			target="error.jsp";
 		}
 		
