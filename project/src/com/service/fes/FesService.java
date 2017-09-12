@@ -19,6 +19,7 @@ public class FesService {
 		try {
 		list=dao.list(session);
 		}catch(Exception e) {
+			e.printStackTrace();
 			throw new MyException("FesList 불러오기 실패");
 		}finally {
 			session.close();

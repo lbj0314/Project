@@ -8,6 +8,66 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+<style>
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+</style>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
 <link rel="stylesheet"
@@ -19,19 +79,16 @@
 <link rel="stylesheet" type="text/css" href="/project/css/style.css">
 
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("p").hide();
-	});//end hide
-	
-	$(document).ready(function() {
-		$("[href]").css("font-size", "20px");
-	});//end href css
 
 	$(document).ready(function() {
-		$("#oldfashion").on("click", function(event) {
-			$("p").slideToggle("fast");
-		});
-	});//end slideToggle
+		$("body").find("[href]").css("font-size", "20px");
+	});//end href css
+
+	function myFunction() {
+		var popup = document.getElementById("myPopup");
+		popup.classList.toggle("show");
+	}//팝업 함수
+
 </script>
 
 </head>
@@ -43,18 +100,21 @@
 	<br>
 	<br>
 	<br>
-	<button id="oldfashion">사이트에 오신것을 환영합니다!</button>
-	<p>만나서 반가워요</p>
+
+	<div class="popup" onclick="myFunction()">
+		사이트 방문을 환영합니다! <span class="popuptext" id="myPopup">만나서 반가워요</span>
+	</div>
+
 	<br>
 	<br>
 	<br>
 	<br>
 	<br>
-	<a href="">숙박 보기</a>
+	<a href="/project/StayBoardListServlet">숙박 보기</a>
 	<br>
-	<a href="">음식점 보기</a>
+	<a href="/project/RestBoardListServlet">음식점 보기</a>
 	<br>
-	<a href="">관광명소 보기</a>
+	<a href="/project/TourListServlet">관광명소 보기</a>
 	<br>
 
 	<br> 마음에 드는 숙박, 음식점, 관광명소를 선택하신 후
