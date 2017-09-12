@@ -112,7 +112,7 @@
 	<br>
 	<a href="/project/StayBoardListServlet">숙박 보기</a>
 	<br>
-	<a href="/project/RestBoardListServlet">음식점 보기</a>
+	<a href="/project/RestListServlet">음식점 보기</a>
 	<br>
 	<a href="/project/TourListServlet">관광명소 보기</a>
 	<br>
