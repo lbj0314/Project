@@ -23,7 +23,7 @@
 				<c:choose>
 
 
-					<c:when test="${tourlist.getList().size()==0}">
+					<c:when test="${staylist.getList().size()==0}">
 
 
 						<tr>
@@ -36,14 +36,14 @@
 
 
 						<tr>
-							<c:forEach var="xxx" items="${tourlist.getList()}"
+							<c:forEach var="xxx" items="${staylist.getList()}"
 								varStatus="status">
 
 								<td>
 									<table style='padding: 15px'>
 										<tr>
-											<td><a href="TourRetrieveServlet?attNum=${xxx.attNum}">
-													<img src="images/${xxx.attImageClone}" border="0"
+											<td><a href="StayBoardRetrieveServlet?stayNum=${xxx.stayNum}">
+													<img src="images/${xxx.stayImageClone}" border="0"
 													align="center" width="200">
 
 											</a></td>
@@ -54,20 +54,20 @@
 										</tr>
 										<tr>
 											<td class="td_default" align="center"><a class="a_black"
-												href="TourRetrieveServlet?attNum=${xxx.attNum}">
-													업소제목:${xxx.attTitle}<br>
+												href="StayBoardRetrieveServlet?stayNum=${xxx.stayNum}">
+													숙박업소제목:${xxx.stayTitle}<br>
 											</a></td>
 
 										</tr>
 										<tr>
-											<td class="td_gray" align="center">업소명:${xxx.attName}</td>
+											<td class="td_gray" align="center">숙박업소명:${xxx.stayName}</td>
 										</tr>
 										<tr>
-											<td class="td_gray" align="center">지역:${xxx.attLocation}</td>
+											<td class="td_gray" align="center">지역:${xxx.stayLocation}</td>
 										</tr>
 
 										<tr>
-											<td class="td_gray" align="center">업소전화번호:${xxx.attPhone}
+											<td class="td_gray" align="center">숙박업소전화번호:${xxx.stayPhone}
 											</td>
 										</tr>
 									</table>
@@ -91,17 +91,16 @@
 	<tr>
 		<td height="10">
 	</tr>
-	<c:if test="${tourlist.getList().size()!=0}">
+	<c:if test="${staylist.getList().size()!=0}">
 		<tr>
-			<td colspan="5"><jsp:include page="/tour/tourpage.jsp"
+			<td colspan="5"><jsp:include page="/stay/stay_boardpage.jsp"
 					flush="true" /></td>
 		</tr>
 	</c:if>
-
 	<tr>
 	<td colspan=8 align=center>
 	<c:if test="${!empty sessionScope.entLogin}">
-		<a href="/project/tour/tourwriteview.jsp" class="btn btn-primary">글쓰기</a>
+		<a href="/project/stay/stay_writeview.jsp" class="btn btn-primary">글쓰기</a>
 	</c:if>
 	
 	<td>
