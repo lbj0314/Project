@@ -52,6 +52,7 @@ public class JoinService {
 				session.commit();
 			}
 		}catch(Exception e) {
+			e.printStackTrace();
 			throw new MyException("기업회원 가입 예외");
 		}finally {
 			session.close();

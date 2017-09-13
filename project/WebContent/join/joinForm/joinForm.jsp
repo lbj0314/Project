@@ -371,7 +371,7 @@
 		<!-- 다음주소 끝 -->
 		<tr>
 			<td>업소 지역</td>
-			<td><select name="Location" disabled="true" class="form-control"
+			<td><select name="location" disabled="true" class="form-control"
 				id="location">
 					<option value="def">지역선택</option>
 					<option value="전체">전체</option>
