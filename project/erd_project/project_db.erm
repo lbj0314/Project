@@ -10,9 +10,9 @@
 		<right_margin>30</right_margin>
 	</page_setting>
 	<category_index>0</category_index>
-	<zoom>0.8</zoom>
-	<x>0</x>
-	<y>355</y>
+	<zoom>1.0</zoom>
+	<x>518</x>
+	<y>621</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -73,10 +73,10 @@
 			</export_ddl_setting>
 			<export_excel_setting>
 				<category_id>null</category_id>
-				<output_path></output_path>
+				<output_path>C:\Users\acorn\Desktop\project_db.xls</output_path>
 				<template></template>
 				<template_path></template_path>
-				<used_default_template_lang></used_default_template_lang>
+				<used_default_template_lang>en</used_default_template_lang>
 				<image_output></image_output>
 				<is_open_after_saved>true</is_open_after_saved>
 				<is_put_diagram>true</is_put_diagram>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2017-09-05 12:44:34</creation_date>
-			<updated_date>2017-09-11 16:42:52</updated_date>
+			<updated_date>2017-09-13 10:13:21</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -2123,8 +2123,8 @@
 			</color>
 			<connections>
 			</connections>
-			<physical_name>ADMINATOR</physical_name>
-			<logical_name>ADMINATOR</logical_name>
+			<physical_name>ADMINISTRATOR</physical_name>
+			<logical_name>ADMINISTRATOR</logical_name>
 			<description></description>
 			<constraint></constraint>
 			<primary_key_name>ADMINNUM_PK</primary_key_name>
@@ -6569,7 +6569,7 @@
 			<connections>
 			</connections>
 			<physical_name>FESTIVAL</physical_name>
-			<logical_name>새 테이블</logical_name>
+			<logical_name>FESTIVAL</logical_name>
 			<description></description>
 			<constraint></constraint>
 			<primary_key_name></primary_key_name>
