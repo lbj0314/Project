@@ -40,6 +40,21 @@ public class StayBoardListServlet extends HttpServlet {
 		 map.put("stayType", stayType);
 		 map.put("sortStay", sortStay);
 		StayService service = new StayService();
+		
+		
+		if(!(staySearchValue == null)) {
+			target="stay/stay_listview.jsp";
+			
+		}
+		
+		else if(!(stayLocation == null) || !(staySearchName == null) ||  !(stayType == null) || !(sortStay == null)) {
+			target="stay/stayAjax.jsp";
+			
+			
+			
+		}
+		
+		
 		try {
 			StayPageDTO list=service.stayPage(Integer.parseInt(stayCurpage),map);
 			request.setAttribute("staylist", list);

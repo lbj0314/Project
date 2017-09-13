@@ -124,7 +124,7 @@
 							test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == stayRetrieve.entNum)}">
 							<tr>
 								<!-- 이미지 수정부 -->
-								<td rowspan="10"><input type="file" name="stayImage"
+								<td rowspan="11"><input type="file" name="stayImage"
 									id="imgInp"> <img id="imgview"
 									src="images/${stayRetrieve.stayImageClone}"
 									alt="사진을 바꾸시려면 눌러주세요." border="0" align="center" width="300" />
@@ -136,7 +136,7 @@
 						|| (empty sessionScope.entLogin && empty sessionScope.comLogin && empty sessionScope.admLogin)}">
 							<tr>
 								<!-- 이미지 화면부 -->
-								<td rowspan="9"><img
+								<td rowspan="10"><img
 									src="images/${stayRetrieve.stayImageClone}" border="0"
 									align="center" width="300" /><br> <a
 									class="btn btn-primary"
@@ -269,8 +269,19 @@
 
 						<tr>
 							<td class="td_title">숙박업소사이트 바로가기</td>
-							<td class="td_default" colspan="2" style='padding-left: 30px'><a
-								href="${stayRetrieve.staySite}">${stayRetrieve.staySite}</a></td>
+							
+							
+							<c:if test="${stayRetrieve.staySite == '홈페이지 주소 없음'}">
+							<td class="td_default" colspan="2" style='padding-left: 30px'>
+								${stayRetrieve.staySite}</td>
+							</c:if>
+							 <c:if test="${stayRetrieve.staySite != '홈페이지 주소 없음'}">
+								<td class="td_default" colspan="2" style='padding-left: 30px'>
+									<a href="${stayRetrieve.staySite}">${stayRetrieve.staySite}</a></td>
+								
+						     </c:if>
+							
+							
 						</tr>
 					</c:if>
 

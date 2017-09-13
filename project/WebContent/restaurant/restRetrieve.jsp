@@ -245,9 +245,17 @@
 					<c:if test="${empty sessionScope.admLogin}">
 
 						<tr>
-							<td class="td_title">업소사이트 바로가기</td>
-							<td class="td_default" colspan="2" style='padding-left: 30px'><a
-								href="${restRetrieve.restSite}">${restRetrieve.restSite}</a></td>
+							<td class="td_title">맛집사이트 바로가기</td>
+							
+							<c:if test="${restRetrieve.restSite == '홈페이지 주소 없음'}">
+							<td class="td_default" colspan="2" style='padding-left: 30px'>
+								${restRetrieve.restSite}</td>
+							</c:if>
+							 <c:if test="${restRetrieve.restSite != '홈페이지 주소 없음'}">
+								<td class="td_default" colspan="2" style='padding-left: 30px'>
+									<a href="${restRetrieve.restSite}">${restRetrieve.restSite}</a></td>
+								
+						     </c:if>
 						</tr>
 					</c:if>
 

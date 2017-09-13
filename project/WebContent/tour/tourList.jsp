@@ -16,9 +16,7 @@
 	$(document).ready(function() {
 
 		
-		 var desc = "<input type='hidden' name='attBtn' value='cc'>";
-		 var asc = "<input type='hidden' name='attBtn' value='dd'>";
-		
+	
 		
 		
 		$("#attlo").on("change", function(event) {
@@ -28,14 +26,17 @@
 				type : "get",
 				url : "TourListServlet",
 				data : {
-					attLocation : $("#attlo").val()
+					attLocation : $("#attlo").val(),
+					attType : $("#attty").val(),
+					sortAtt : $('#attSo').val(),
+					searchName : $("#attsearch").val()
+					
+					
 				},
 				dataType : "text",
 				success : function(responseData, status, xhr) {
-					console.log(responseData);
-
-					$('#aaa').submit();
-
+					$('#toajax').html(responseData);
+					return false;
 				},
 				error : function(xhr, status, e) {
 					console.log(status, e);
@@ -52,14 +53,16 @@
 				type : "get",
 				url : "TourListServlet",
 				data : {
-					attType : $("#attty").val()
+					attLocation : $("#attlo").val(),
+					attType : $("#attty").val(),
+					sortAtt : $('#attSo').val(),
+					searchName : $("#attsearch").val()
 				},
 				dataType : "text",
 				success : function(responseData, status, xhr) {
-					console.log(responseData);
-
-					$('#aaa').submit();
-
+					$('#toajax').html(responseData);
+					return false;
+					
 				},
 				error : function(xhr, status, e) {
 					console.log(status, e);
@@ -76,13 +79,15 @@
 				type : "get",
 				url : "TourListServlet",
 				data : {
+					attLocation : $("#attlo").val(),
+					attType : $("#attty").val(),
+					sortAtt : $('#attSo').val(),
 					searchName : $("#attsearch").val()
 				},
 				dataType : "text",
 				success : function(responseData, status, xhr) {
-					console.log(responseData);
-			
-					$('#aaa').submit();
+					$('#toajax').html(responseData);
+					return false;
 
 				},
 				error : function(xhr, status, e) {
@@ -104,15 +109,17 @@
 				type : "get",
 				url : "TourListServlet",
 				data : {
-					sortAtt : $('#attSo').val()
+					attLocation : $("#attlo").val(),
+					attType : $("#attty").val(),
+					sortAtt : $('#attSo').val(),
+					searchName : $("#attsearch").val()
 
 					
 				},
 				dataType : "text",
 				success : function(responseData, status, xhr) {
-					console.log(responseData);
-
-					$('#aaa').submit();
+					$('#toajax').html(responseData);
+					return false;
 					
 
 				},
@@ -124,18 +131,15 @@
 			});
 
 		});
-		//$('#changeFrm').append(newitem);
-		 //$('#changeFrm').append(newitem2);
 
 		
 		
 		
-		
-		
-		$("#attlo > option[value=${tourlist.attLocation}").attr("selected", "true");
-		$("#attty > option[value=${tourlist.attType}").attr("selected", "true");
-		$("#attsearch > option[value=${tourlist.searchName}").attr("selected", "true");
-		$("#attSo > option[value=${tourlist.sortAtt}").attr("selected", "true");
+		$("#attlo > option[value=${tourlist.attLocation}]").attr("selected", "true");
+	
+		$("#attty > option[value=${tourlist.attType}]").attr("selected", "true");
+		$("#attsearch > option[value=${tourlist.searchName}]").attr("selected", "true");
+		$("#attSo > option[value=${tourlist.sortAtt}]").attr("selected", "true");
 		
 	});
 </script>
@@ -189,6 +193,8 @@
 
 </form>
 
+
+	<div id="toajax">
 <table width="100%" cellspacing="0" cellpadding="0">
 
 	<tr>
@@ -283,6 +289,7 @@
 					flush="true" /></td>
 		</tr>
 	</c:if>
+
 	<tr>
 	<td colspan=8 align=center>
 	<c:if test="${!empty sessionScope.entLogin}">
@@ -294,5 +301,4 @@
 	
 </table>
 
-
-
+</div>

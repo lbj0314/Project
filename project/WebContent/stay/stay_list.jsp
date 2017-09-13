@@ -17,12 +17,16 @@
 				type : "get",
 				url : "StayBoardListServlet",
 				data : {
-					stayLocation : $("#staylo").val()
+					stayLocation : $("#staylo").val(),
+					stayType : $("#stayty").val(),
+					staySearchName : $("#staySearch").val(),
+					sortStay : $('#staySo').val()
+					
 				},
 				dataType : "text",
 				success : function(responseData, status, xhr) {
-					console.log(responseData);
-					$('#aaa').submit();
+					$('#stajax').html(responseData);
+					return false;
 				},
 				error : function(xhr, status, e) {
 					console.log(status, e);
@@ -39,9 +43,8 @@
 				},
 				dataType : "text",
 				success : function(responseData, status, xhr) {
-					console.log(responseData);
-
-					$('#aaa').submit();
+					$('#stajax').html(responseData);
+					return false;
 
 				},
 				error : function(xhr, status, e) {
@@ -63,9 +66,8 @@
 				},
 				dataType : "text",
 				success : function(responseData, status, xhr) {
-					console.log(responseData);
-			
-					$('#aaa').submit();
+					$('#stajax').html(responseData);
+					return false;
 
 				},
 				error : function(xhr, status, e) {
@@ -93,9 +95,8 @@
 				},
 				dataType : "text",
 				success : function(responseData, status, xhr) {
-					console.log(responseData);
-
-					$('#aaa').submit();
+					$('#stajax').html(responseData);
+					return false;
 					
 
 				},
@@ -107,18 +108,15 @@
 			});
 
 		});
-		//$('#changeFrm').append(newitem);
-		 //$('#changeFrm').append(newitem2);
 
 		
 		
 		
 		
-		
-		$("#staylo > option[value=${staylist.stayLocation}").attr("selected", "true");
-		$("#stayty > option[value=${staylist.stayType}").attr("selected", "true");
-		$("#staysearch > option[value=${staylist.staySearchName}").attr("selected", "true");
-		$("#staySo > option[value=${staylist.sortStay}").attr("selected", "true");
+		$("#staylo > option[value=${staylist.stayLocation}]").attr("selected", "true");
+		$("#stayty > option[value=${staylist.stayType}]").attr("selected", "true");
+		$("#staysearch > option[value=${staylist.staySearchName}]").attr("selected", "true");
+		$("#staySo > option[value=${staylist.sortStay}]").attr("selected", "true");
 		
 	});
 </script>
@@ -174,7 +172,7 @@
 	</div>
 
 </form>
-
+<div id="stajax">
 <table width="100%" cellspacing="0" cellpadding="0">
 
 	<tr>
@@ -280,5 +278,5 @@
 	
 </table>
 
-
+</div>
 

@@ -17,40 +17,41 @@
 
 
 <script type="text/javascript">
-	$(document).ready(function() {
+	$(document).ready(
+			function() {
 
-		$("#xxx").on("click", function(event) {
-			//event.preventDefault();
-			//ajax 지역별 통신
-			$.ajax({
-				type : "get",
-				url : "TourGoodServlet",
-				dataType : "text",
-				data : {
-					attNum : $("#attNum").val()
-				},
+				$("#xxx").on("click", function(event) {
+					//event.preventDefault();
+					//ajax 지역별 통신
+					$.ajax({
+						type : "get",
+						url : "TourGoodServlet",
+						dataType : "text",
+						data : {
+							attNum : $("#attNum").val()
+						},
 
-				success : function(responseData, status, xhr) {
-					console.log(responseData);
-					
-					$("#result").text(responseData);
-					$("#re1").css("display","none");
+						success : function(responseData, status, xhr) {
+							console.log(responseData);
 
-					
+							$("#result").text(responseData);
+							$("#re1").css("display", "none");
 
-				},
-				error : function(xhr, status, e) {
-					console.log(status, e);
+						},
+						error : function(xhr, status, e) {
+							console.log(status, e);
 
-				}
+						}
+
+					});
+
+				});
+				$("#attlo > option[value=${tourRetrieve.attLocation}").attr(
+						"selected", "true");
+				$("#attty > option[value=${tourRetrieve.attType}").attr(
+						"selected", "true");
 
 			});
-
-		});
-		$("#attlo > option[value=${tourRetrieve.attLocation}").attr("selected", "true");
-		$("#attty > option[value=${tourRetrieve.attType}").attr("selected", "true");
-
-	});
 </script>
 
 
@@ -84,12 +85,9 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;등록날짜:${tourRetrieve.attWriteDay}
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							조회수:${tourRetrieve.attReadCnt}
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br> 좋아요수:
-							<span id="re1">${tourRetrieve.attGoods}</span>
-
-								
-
-							 <c:if test="${!empty sessionScope.comLogin}">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br> 좋아요수: <span
+							id="re1">${tourRetrieve.attGoods}</span> <c:if
+								test="${!empty sessionScope.comLogin}">
 
 								<span id="result"></span>
 								<button type="button" id="xxx" class="btn btn-default btn-xs">
@@ -259,11 +257,19 @@
 
 						<tr>
 							<td class="td_title">업소사이트 바로가기</td>
-							<td class="td_default" colspan="2" style='padding-left: 30px'><a
-								href="${tourRetrieve.attSite}">${tourRetrieve.attSite}</a></td>
-						</tr>
+							
+							<c:if test="${tourRetrieve.attSite == '홈페이지 주소 없음'}">
+							<td class="td_default" colspan="2" style='padding-left: 30px'>
+								${tourRetrieve.attSite}</td>
+							</c:if>
+							 <c:if test="${tourRetrieve.attSite != '홈페이지 주소 없음'}">
+								<td class="td_default" colspan="2" style='padding-left: 30px'>
+									<a href="${tourRetrieve.attSite}">${tourRetrieve.attSite}</a></td>
+								
+						     </c:if>
+							</tr>
 					</c:if>
-
+					
 					<c:if
 						test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum)}">
 						<tr>
@@ -300,7 +306,7 @@
 		<c:if
 			test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum)}">
 
-	
+
 			<input type="submit" class="btn btn-default" value="수정 하기">
 		</c:if>
 		<c:if

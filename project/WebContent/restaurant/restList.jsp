@@ -27,13 +27,17 @@
 				type : "get",
 				url : "RestListServlet",
 				data : {
-					restLocation : $("#restlo").val()
+					restLocation : $("#restlo").val(),
+					restType : $("#restty").val(),
+					searchName : $("#restsearch").val(),
+					sortRest : $('#restSo').val()
+					
+					
 				},
 				dataType : "text",
 				success : function(responseData, status, xhr) {
-					console.log(responseData);
-
-					$('#aaa').submit();
+					$('#reajax').html(responseData);
+					return false;
 
 				},
 				error : function(xhr, status, e) {
@@ -51,13 +55,15 @@
 				type : "get",
 				url : "RestListServlet",
 				data : {
-					restType : $("#restty").val()
+					restLocation : $("#restlo").val(),
+					restType : $("#restty").val(),
+					searchName : $("#restsearch").val(),
+					sortRest : $('#restSo').val()
 				},
 				dataType : "text",
 				success : function(responseData, status, xhr) {
-					console.log(responseData);
-
-					$('#aaa').submit();
+					$('#reajax').html(responseData);
+					return false;
 
 				},
 				error : function(xhr, status, e) {
@@ -75,13 +81,15 @@
 				type : "get",
 				url : "RestListServlet",
 				data : {
-					searchName : $("#restsearch").val()
+					restLocation : $("#restlo").val(),
+					restType : $("#restty").val(),
+					searchName : $("#restsearch").val(),
+					sortRest : $('#restSo').val()
 				},
 				dataType : "text",
 				success : function(responseData, status, xhr) {
-					console.log(responseData);
-			
-					$('#aaa').submit();
+					$('#reajax').html(responseData);
+					return false;
 
 				},
 				error : function(xhr, status, e) {
@@ -103,15 +111,17 @@
 				type : "get",
 				url : "RestListServlet",
 				data : {
-					sortREst : $('#restSo').val()
+					restLocation : $("#restlo").val(),
+					restType : $("#restty").val(),
+					searchName : $("#restsearch").val(),
+					sortRest : $('#restSo').val()
 
 					
 				},
 				dataType : "text",
 				success : function(responseData, status, xhr) {
-					console.log(responseData);
-
-					$('#aaa').submit();
+					$('#reajax').html(responseData);
+					return false;
 					
 
 				},
@@ -123,18 +133,17 @@
 			});
 
 		});
-		//$('#changeFrm').append(newitem);
-		 //$('#changeFrm').append(newitem2);
+	;
 
 		
 		
 		
 		
 		
-		$("#restlo > option[value=${restlist.restLocation}").attr("selected", "true");
-		$("#restty > option[value=${restlist.restType}").attr("selected", "true");
-		$("#restsearch > option[value=${restlist.searchName}").attr("selected", "true");
-		$("#restSo > option[value=${restlist.sortRest}").attr("selected", "true");
+		$("#restlo > option[value=${restlist.restLocation}]").attr("selected", "true");
+		$("#restty > option[value=${restlist.restType}]").attr("selected", "true");
+		$("#restsearch > option[value=${restlist.searchName}]").attr("selected", "true");
+		$("#restSo > option[value=${restlist.sortRest}]").attr("selected", "true");
 		
 	});
 </script>
@@ -188,7 +197,7 @@
 	</div>
 
 </form>
-
+<div id="reajax">
 <table width="100%" cellspacing="0" cellpadding="0">
 
 	<tr>
@@ -294,5 +303,5 @@
 	
 </table>
 
-
+</div>
 

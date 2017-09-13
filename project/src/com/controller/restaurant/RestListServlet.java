@@ -67,7 +67,17 @@ public class RestListServlet extends HttpServlet {
 		
 		RestService service = new RestService();
 		
-		 
+		if(!(searchValue == null)) {
+			target="restaurant/restListView.jsp";
+			
+		}
+		
+		else if(!(restLocation == null) || !(searchName == null) ||  !(restType == null) || !(sortRest == null)) {
+			target="restaurant/restAjax.jsp";
+			
+			
+			
+		}
 		
 		try {
 			RestPageDTO list=service.page(Integer.parseInt(curPage),map);
