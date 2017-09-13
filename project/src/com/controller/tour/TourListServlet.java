@@ -29,28 +29,18 @@ public class TourListServlet extends HttpServlet {
 				if(curPage == null) {
 					curPage = "1";
 				}
-		//String cc="1";
-		//String dd = "2";
 		String searchName = request.getParameter( "searchName" );
 		String searchValue = request.getParameter( "searchValue" );
 		String attLocation=request.getParameter("attLocation");
 		String attType=request.getParameter("attType");
-		
 		String sortAtt = request.getParameter("sortAtt");
-	/*	
-		System.out.println("al"+attLocation);
-		System.out.println("at"+attType);*/
-		
+	
 		
 		String target="tour/tourListView.jsp";
+		System.out.println(attLocation);
 		
 		
 		
-		//String dd = request.getParameter("dd");
-		//if(dd==null) dd="2";
-		//System.out.println("!!!!"+cc);
-		//System.out.println(aa);
-		//System.out.println(bb);
 		
 		
 		
@@ -65,8 +55,18 @@ public class TourListServlet extends HttpServlet {
 		 map.put("sortAtt", sortAtt);
 		
 		TourService service = new TourService();
+		if(!(searchValue == null)) {
+			target="tour/tourListView.jsp";
+			
+		}
 		
-		 
+		else if(!(attLocation == null) || !(searchName == null) ||  !(attType == null) || !(sortAtt == null)) {
+			target="tour/tourAjax.jsp";
+			
+			
+			
+		}
+		
 		
 		try {
 			TourPageDTO list=service.page(Integer.parseInt(curPage),map);
