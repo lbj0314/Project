@@ -111,4 +111,20 @@ public class StayService {
 		}
 		return list;
 	}
+	
+	public StayDTO staySelectByNumTwo(int stayNum) throws MyException {
+
+		SqlSession session = MybatisTemplate.openSession();
+		StayDAO dao = new StayDAO();
+		StayDTO dto = null;
+		try {
+			dto = dao.staySelectByNum(session, stayNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new MyException("staySelectByNum 예외발생");
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
 }

@@ -17,17 +17,20 @@ public class orderFormListSevlet extends HttpServlet {
 		String kind = request.getParameter("kind");
 		
 		System.out.println(kind);
-
+		String target = "";
 		if(kind.equals("attAdd")) {
 			request.setAttribute("attList", "attList");
+			target="TourListServlet";
 		}
 		if(kind.equals("resAdd")) {
 			request.setAttribute("resList", "resList");
+			target="RestListServlet";
 		}
 		if(kind.equals("stayAdd")) {
 			request.setAttribute("stayList", "stayList");
+			target="StayBoardListServlet";
 		}
-		String target="TourListServlet";
+
 		request.setAttribute("orderList", "orderList");
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);

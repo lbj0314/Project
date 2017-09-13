@@ -132,4 +132,20 @@ public class RestService {
 		}
 		return list;
 	}
+	
+	public RestDTO selectByRestNumTwo(int num) throws MyException {
+
+		SqlSession session = MybatisTemplate.openSession();
+		RestDAO dao = new RestDAO();
+		RestDTO dto = null;
+		try {
+			dto = dao.selectByRestNum(session, num);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new MyException("selectByRestNum 예외발생");
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
 }

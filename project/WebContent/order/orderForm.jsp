@@ -22,17 +22,18 @@
 	
 	<jsp:include page="/login/loginForm.jsp" flush="true" /><br>
 	<jsp:include page="/include/top.jsp" flush="true" />
-	<jsp:include page="orderForm/orderForm.jsp" flush="true" />
+	<jsp:include page="orderForm/orderTestForm.jsp" flush="true" />
 	<c:if test="${!empty requestScope.attList }">
-		<jsp:include page="../tour/tourListView.jsp" flush="true" />
+		<jsp:include page="/tour/tourList.jsp" flush="true" />
 	</c:if>
 	<c:if test="${!empty requestScope.resList }">
-		<jsp:include page="../restaurant/restList.jsp" flush="true" />
+		<jsp:include page="/restaurant/restList.jsp" flush="true" />
 	</c:if>
 	<c:if test="${!empty requestScope.stayList }">
-		<jsp:include page="../stay/stay_list.jsp" flush="true" />
+		<jsp:include page="/stay/stay_list.jsp" flush="true" />
 	</c:if>
 	<jsp:include page="/include/copyright.jsp" flush="true" />
+
 
 </body>
 </html>

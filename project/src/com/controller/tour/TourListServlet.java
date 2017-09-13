@@ -85,7 +85,7 @@ public class TourListServlet extends HttpServlet {
 		
 		
 		if(request.getAttribute("orderList")!=null) {
-			target="order/orderListAtt";
+			target="order/orderForm.jsp";
 		}
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);

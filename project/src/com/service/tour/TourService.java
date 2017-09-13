@@ -130,4 +130,20 @@ public class TourService {
 		}
 		return list;
 	}
+	
+	public TourDTO selectByTourNumTwo(int num) throws MyException {
+
+		SqlSession session = MybatisTemplate.openSession();
+		TourDAO dao = new TourDAO();
+		TourDTO dto = null;
+		try {
+			dto = dao.selectByTourNum(session, num);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new MyException("selectByTourNum 예외발생");
+		} finally {
+			session.close();
+		}
+		return dto;
+	}
 }

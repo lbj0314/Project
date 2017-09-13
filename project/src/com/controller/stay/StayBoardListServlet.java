@@ -48,6 +48,11 @@ public class StayBoardListServlet extends HttpServlet {
 			e.printStackTrace();
 			target="error.jsp";
 		}
+		
+		if(request.getAttribute("orderList")!=null) {
+			target="order/orderForm.jsp";
+		}
+		
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);
 	}

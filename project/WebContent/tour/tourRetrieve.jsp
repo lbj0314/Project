@@ -292,9 +292,8 @@
 	<div id="conta">
 
 		<c:if test="${!empty sessionScope.comLogin}">
-
-			<a href="orderFormServlet" class="btn btn-default">패키지 등록하러 가기</a>
-			<c:set var="attNum" value="${tourRetrieve.attNum}" scope="request" />
+			<a href="orderFormServlet?attNum=${tourRetrieve.attNum}" class="btn btn-default">패키지에 추가하기</a>
+			
 	&nbsp;&nbsp;
 </c:if>
 

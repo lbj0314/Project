@@ -218,7 +218,7 @@
 				$("#fax").attr("disabled", false);
 				$("#in").attr("disabled", false);
 				$("#kind").attr("disabled", false);
-				$("#button").attr("disabled", false);
+				$("#button").attr("disabled", true);
 			} else if ($("#category option:selected").val() == "com") {
 				$("#name").attr("disabled", false);
 				$("#ssn").attr("disabled", false);

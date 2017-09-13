@@ -27,7 +27,7 @@ $(document).ready(function() {
 <table border='1'>
 <tr><td>공백</td><td>관광명소</td><td>맛집</td><td>숙박업소</td><td>공백</td>
 </tr>
-<tr><td>업소명</td><td>관광명소명</td><td>맛집명</td><td>숙박업소명</td><td>공백</td>
+<tr><td>업소명</td><td>${requestScope.attDto.attName }</td><td>맛집명</td><td>숙박업소명</td><td>공백</td>
 </tr>
 <tr><td>공백</td><td>관광명소 가격 총합</td><td>맛집 가격 총합</td><td>숙박 가격 총합</td><td>총 패키지 가격</td>
 </tr>

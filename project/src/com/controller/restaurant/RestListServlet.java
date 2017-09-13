@@ -79,12 +79,11 @@ public class RestListServlet extends HttpServlet {
 			
 		}
 		
+
 		
-		
-		
-		
-		
-		
+		if(request.getAttribute("orderList")!=null) {
+			target="order/orderForm.jsp";
+		}
 
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		dis.forward(request, response);

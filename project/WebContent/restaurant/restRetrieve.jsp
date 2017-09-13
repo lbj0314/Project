@@ -280,7 +280,7 @@
 
 		<c:if test="${!empty sessionScope.comLogin}">
 
-			<button onclick="" class="btn btn-default">패키지 등록하러 가기</button>
+			<a href="orderFormServlet?restNum=${restRetrieve.restNum}" class="btn btn-default">패키지에 추가하기</a>
 	&nbsp;&nbsp;
 </c:if>
 
