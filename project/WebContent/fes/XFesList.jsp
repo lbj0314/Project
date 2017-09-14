@@ -15,26 +15,16 @@
 <script type="text/javascript" src="../jquery-3.2.1.js"></script>
 <script type="text/javascript">
 	// Script to open and close sidebar
-	$(document).ready(function() {
-		$("#open")
-		on("click", function(event) {
-			$("#mySidebar").show(2000);
+	$(document).ready(()=> {
+		$("#open").on("click", event=> {
+			$("#mySidebar").show();
 		});//open
-		$(".w3-bar-item w3-button")
-		on("click", function(event) {
-			$("#mySidebar").hide(2000);
+		$("#close").on("click", event=> {
+			$("#mySidebar").hide();
 		});//hide
 
 	});//w3school jquery로 변환
 
-	/*  function w3_open() {
-		document.getElementById("mySidebar").style.display = "block";
-	}
-
-	function w3_close() {
-		document.getElementById("mySidebar").style.display = "none";
-	} */
-	//w3school 원래 코드
 	/* 
 	$(document).ready(function(){
 		$("#mySidebar").on("change",function(event){
@@ -112,8 +102,7 @@ body, h1, h2, h3, h4, h5, h6 {
 		</c:when>
 		<c:otherwise>
 			<tr>
-				<c:forEach var="xxx" items="${FesList.getList()}"
-					varStatus="status">
+				<c:forEach var="xxx" items="${FesList.getList()}" varStatus="status">
 				</c:forEach>
 			</tr>
 		</c:otherwise>
