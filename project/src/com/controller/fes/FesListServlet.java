@@ -20,6 +20,8 @@ public class FesListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		String FesSeason = request.getParameter("FesSeason");
+		
 		request.setCharacterEncoding("UTF-8");
 		
 		FesService service=new FesService();

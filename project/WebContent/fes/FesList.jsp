@@ -15,11 +15,11 @@
 <script type="text/javascript" src="../jquery-3.2.1.js"></script>
 <script type="text/javascript">
 	// Script to open and close sidebar
-	$(document).ready(()=> {
+	$(document).ready( ()=> {
 		$("#open").on("click", event=> {
 			$("#mySidebar").show();
 		});//open
-		$("#close").on("click", event=> {
+		$("#close").on("click", function(event) {
 			$("#mySidebar").hide();
 		});//hide
 
@@ -75,10 +75,10 @@ body, h1, h2, h3, h4, h5, h6 {
 			class="w3-sidebar w3-bar-block w3-card-2 w3-top w3-xlarge w3-animate-left"
 			style="display: none; z-index: 2; width: 40%; min-width: 300px"
 			id="mySidebar">
-			<a href="" id="spring" class="w3-bar-item w3-button">Spring</a> <a
-				href="" id="summer" class="w3-bar-item w3-button">Summer</a> <a
-				href="" id="fall" class="w3-bar-item w3-button">Fall</a> <a href=""
-				id="winter" class="w3-bar-item w3-button">Winter</a> <a
+			<a href="FesListServlet?FesSeason=spring" id="spring" class="w3-bar-item w3-button">Spring</a> <a
+				href="FesListServlet?FesSeason=summer" id="summer" class="w3-bar-item w3-button">Summer</a> <a
+				href="FesListServlet?FesSeason=fall" id="fall" class="w3-bar-item w3-button">Fall</a> <a 
+				href="FesListServlet?FesSeason=winter"	id="winter" class="w3-bar-item w3-button">Winter</a> <a
 				href="javascript:void(0)" id="close" class="w3-bar-item w3-button">Close
 				Menu</a>
 		</div>
