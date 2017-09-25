@@ -9,10 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	from festival
 	</select> -->
 	
-	<select id="FesList" parameterType="string" resultType="GoodsDTO">
+	<select id="FesSelectAll" resultType="FesDTO">
 	   select FesNum,FesName,FesPrice,FesTitle,FesContent,FesImage,FesSite
 	   from festival
-	   where fesSeason = #{fesSeason} 
 	</select>
 
 	<!-- <select id="goodsRetrieve" resultType="GoodsDTO" parameterType="string">
