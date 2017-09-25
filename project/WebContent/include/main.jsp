@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 
 <!-- jQeury문 -->
@@ -7,45 +7,42 @@
 	$(document).ready(function() {
 		$('.carousel').carousel()
 
-
 	});
 </script>
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
+<div id="carousel-example-generic" class="carousel slide"
+	data-ride="carousel">
+	<!-- Indicators -->
+	<ol class="carousel-indicators">
+		<li data-target="#carousel-example-generic" data-slide-to="0"
+			class="active"></li>
+		<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+		<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	</ol>
 
-  <!-- Wrapper for slides -->
-  <center>
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="/project/images/cR.gif" alt="..." width=56% height=42%>
-      <div class="carousel-caption">
-        ...
-      </div>
-    </div>
-    <div class="item">
-    
-      <img src="/project/images/tw2.gif" alt="..." width=55% height=55%>
-      
-      <div class="carousel-caption">
-	...
-      </div>
- 
-    </div>
+	<!-- Wrapper for slides -->
+	<div align="center" class="carousel-inner" role="listbox">
+		<div class="item active">
+			<img src="/project/images/catcute.gif" alt="..." width=* height=*>
+			<div class="carousel-caption">...</div>
+		</div>
+		<div class="item">
+			<img src="/project/images/cat.jpg" alt="..." width=* height=*>
+			<div class="carousel-caption">...</div>
+		</div>
+		<div class="item">
+			<img src="/project/images/sul.gif" alt="..." width=* height=*>
+			<div class="carousel-caption">...</div>
+		</div>
 
-  </div>
-</center>
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+	</div>
+	<!-- Controls -->
+	<a class="left carousel-control" href="#carousel-example-generic"
+		role="button" data-slide="prev"> <span
+		class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
+		class="sr-only">Previous</span>
+	</a> <a class="right carousel-control" href="#carousel-example-generic"
+		role="button" data-slide="next"> <span
+		class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span
+		class="sr-only">Next</span>
+	</a>
 </div>
