@@ -20,13 +20,17 @@ public class FesListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		String FesSeason = request.getParameter("FesSeason");
+		
 		request.setCharacterEncoding("UTF-8");
 		
 		FesService service=new FesService();
 		String target="/fes/FesList.jsp";
 		try {
 		List<FesDTO> list=service.list();
-		request.setAttribute("list",list);
+		request.setAttribute("FesSelectAll",list);
+		
+		System.out.println(list);
 		}catch(MyException e){
 			e.printStackTrace();
 			target="error.jsp";

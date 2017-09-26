@@ -13,12 +13,14 @@ public class FesDTO {
 	private String FesWriteday;
 	private String FesImage;
 	private String FesSite;
+	private String FesSeason;
+	
 	public FesDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public FesDTO(int fesNum, int fesPhone, int fesPrice, int fesReadCnt, String fesName, String fesLocation,
-			String fesTitle, String fesContent, String fesWriteday, String fesImage, String fesSite) {
+			String fesTitle, String fesContent, String fesWriteday, String fesImage, String fesSite, String fesSeason) {
 		super();
 		FesNum = fesNum;
 		FesPhone = fesPhone;
@@ -31,6 +33,7 @@ public class FesDTO {
 		FesWriteday = fesWriteday;
 		FesImage = fesImage;
 		FesSite = fesSite;
+		FesSeason = fesSeason;
 	}
 	public int getFesNum() {
 		return FesNum;
@@ -98,14 +101,20 @@ public class FesDTO {
 	public void setFesSite(String fesSite) {
 		FesSite = fesSite;
 	}
+	public String getFesSeason() {
+		return FesSeason;
+	}
+	public void setFesSeason(String fesSeason) {
+		FesSeason = fesSeason;
+	}
 	@Override
 	public String toString() {
 		return "FesDTO [FesNum=" + FesNum + ", FesPhone=" + FesPhone + ", FesPrice=" + FesPrice + ", FesReadCnt="
 				+ FesReadCnt + ", FesName=" + FesName + ", FesLocation=" + FesLocation + ", FesTitle=" + FesTitle
 				+ ", FesContent=" + FesContent + ", FesWriteday=" + FesWriteday + ", FesImage=" + FesImage
-				+ ", FesSite=" + FesSite + "]";
+				+ ", FesSite=" + FesSite + ", FesSeason=" + FesSeason + "]";
 	}
 	
 	
-
+	
 }

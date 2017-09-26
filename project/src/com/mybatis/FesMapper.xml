@@ -4,10 +4,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.FesMapper">
 
-	<select id="FesSelectAll" resultType="FesDTO">
+	<!-- <select id="FesSelectAll" resultType="FesDTO">
 	select FesNum,FesName,FesPrice,FesTitle,FesContent,FesImage,FesSite
 	from festival
+	</select> -->
+	
+	<select id="FesSelectAll" resultType="FesDTO">
+	   select FesNum,FesName,FesPrice,FesTitle,FesContent,FesImage,FesSite
+	   from festival
 	</select>
+
+	<!-- <select id="goodsRetrieve" resultType="GoodsDTO" parameterType="string">
+		select FesNum,FesName,FesPrice,FesTitle,FesContent,FesImage,FesSite
+		from festival
+		where fesSeason = #{fesSeason}
+	</select> -->
 
 </mapper>
 
