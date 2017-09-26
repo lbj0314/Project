@@ -31,11 +31,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into restaurant
 		(restNum,restName,restImage,restPhone,
 		restLocation,restPrice,restTitle,restContent,
-		restSite,restType,entNum,restImageClone)
+		restSite,restType,entNum,restImageClone,restAddr1,restAddr2)
 		values ( restaurant_seq.nextval,
 		#{restName},#{restImage},#{restPhone}
 		,#{restLocation},#{restPrice},#{restTitle},#{restContent},
-		#{restSite},#{restType},#{entNum},#{restImageClone})
+		#{restSite},#{restType},#{entNum},#{restImageClone},#{restAddr1},#{restAddr2})
 
 	</insert>
 
@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select restNum,restName,restImage,restPhone,
 		restLocation,restPrice,restTitle,restContent,
 		to_char(restWriteDay,'YYYY/MM/dd') restWriteDay,restReadCnt,
-		restRepleCnt,restSite,restGoods,restType,entNum,restImageClone
+		restRepleCnt,restSite,restGoods,restType,entNum,restImageClone,restAddr1,restAddr2
 		from restaurant
 		<where>
 			<if test="searchName == 'restTitle' and searchValue!=null and searchValue!=''">
@@ -85,7 +85,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select restNum,restName,restImage,restPhone,
 		restLocation,restPrice,restTitle,restContent,
 		to_char(restWriteDay,'YYYY/MM/dd') restWriteDay,restReadCnt,
-		restRepleCnt,restSite,restGoods,restType,entNum,restImageClone
+		restRepleCnt,restSite,restGoods,restType,entNum,restImageClone,restAddr1,restAddr2
 		from restaurant
 		where restNum = #{restNum}
 	</select>
@@ -124,7 +124,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		restPrice=#{restPrice},
 		restPhone=#{restPhone},
 		restSite=#{restSite},
-		restTitle=#{restTitle}
+		restTitle=#{restTitle},
+		restAddr1=#{restAddr1},
+		restAddr2=#{restAddr2}
 		where restNum = #{restNum}
 	</update>
 	<!-- <select id="TourList" resultType="int" parameterType="hashmap">

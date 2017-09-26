@@ -2,7 +2,10 @@
 	pageEncoding="UTF-8"%>
 
 
-
+	<!-- DAUM 주소 라이브러리 시작 -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="/project/js_daumaddress/daum.js"></script>
+<!-- DAUM 주소 라이브러리 끝 -->
 
 
 <form action="/project/TourWriteServlet" enctype="multipart/form-data" method="post">
@@ -59,13 +62,37 @@
 				</select></td>
 			</div>
 		</tr>
+		<!-- 다음주소 시작-->
+		<tr>
+		<div class="form-inline">
+			<td  align=center>우편 번호:</td>
+			<td colspan=3><input name="post1" id="post1" size="5" readonly="" class="form-inline">
+				- <input name="post2" id="post2" size="5" readonly="" class="form-inline"> <input
+				onclick="openDaumPostcode()" type="button" value="우편번호찾기"
+				id="button" class="btn btn-default btn-xs"></td>
+				</div>
+		</tr>
+		<tr>
+		<div class="form-inline">
+			<td align=center>도로명 주소:</td>
+			<td><input name="attAddr1" id="addr1"  readonly=""
+				placeholder="도로명주소" class="form-control"></td>
+				
+		
+		
+			<td align=center>지번 주소:</td>
+			<td><input name="attAddr2" id="addr2"  readonly=""
+				placeholder="지번주소(기업회원의 경우 업소 지역)" class="form-control"></td>
+			</div>
+		</tr>
+		<!-- 다음주소 끝 -->
 		<tr>
 			<div class="form-inline">
 				<td align=center>성인가격:</td>
 				<td><input type="text" name="attAdultPrice"
 					class="form-control"></td>
 				<td align=center>어린이가격:</td>
-				<td><input type="text" name="attKidPrice" class="form-control"></td>
+				<td><input type="text" name="attKidPrice" class="form-control" ></td>
 			</div>
 		</tr>
 		<tr>
@@ -107,6 +134,7 @@
 
 			</td>
 		</tr>
+		
 		<tr>
 			<div class="form-inline">
 				<td colspan=2 align=center><input type="submit" value="등록"

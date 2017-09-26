@@ -31,11 +31,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into tour
 		(attNum,attName,attImage,attPhone,
 		attLocation,attAdultPrice,attKidPrice,attTitle,attContent,
-		attSite,attType,entNum,attImageClone)
+		attSite,attType,entNum,attImageClone,attAddr1,attAddr2)
 		values ( tour_seq.nextval,
 		#{attName},#{attImage},#{attPhone}
 		,#{attLocation},#{attAdultPrice},#{attKidPrice},#{attTitle},#{attContent},
-		#{attSite},#{attType},#{entNum},#{attImageClone})
+		#{attSite},#{attType},#{entNum},#{attImageClone},#{attAddr1},#{attAddr2})
 
 	</insert>
 
@@ -85,7 +85,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select attNum,attName,attImage,attPhone,
 		attLocation,attAdultPrice,attKidPrice,attTitle,attContent,
 		to_char(attWriteDay,'YYYY/MM/dd') attWriteDay,attReadCnt,
-		attRepleCnt,attSite,attGoods,attType,entNum,attImageClone
+		attRepleCnt,attSite,attGoods,attType,entNum,attImageClone,attAddr1,attAddr2
 		from tour
 		where attNum = #{attNum}
 	</select>
@@ -125,7 +125,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		attKidPrice=#{attKidPrice},
 		attPhone=#{attPhone},
 		attSite=#{attSite},
-		attTitle=#{attTitle}
+		attTitle=#{attTitle},
+		attAddr1=#{attAddr1},
+		attAddr2=#{attAddr2}
 		where attNum = #{attNum}
 	</update>
 	<!-- <select id="TourList" resultType="int" parameterType="hashmap">

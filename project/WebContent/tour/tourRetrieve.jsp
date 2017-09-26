@@ -6,7 +6,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-
+<!-- DAUM 주소 라이브러리 시작 -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="/project/js_daumaddress/daum.js"></script>
+<!-- DAUM 주소 라이브러리 끝 -->
 
 <%-- <c:if test="${!empty requestScope.goodok}">
 	<script>
@@ -122,7 +125,7 @@
 							test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum)}">
 							<tr>
 								<!-- 이미지 수정부 -->
-								<td rowspan="10"><input type="file" name="attImage"
+								<td rowspan="13"><input type="file" name="attImage"
 									id="imgInp"> <img id="imgview"
 									src="images/${tourRetrieve.attImageClone}"
 									alt="사진을 바꾸시려면 눌러주세요." border="0" align="center" width="300" />
@@ -134,7 +137,7 @@
 						|| (empty sessionScope.entLogin && empty sessionScope.comLogin && empty sessionScope.admLogin)}">
 							<tr>
 								<!-- 이미지 화면부 -->
-								<td rowspan="9"><img
+								<td rowspan="12"><img
 									src="images/${tourRetrieve.attImageClone}" border="0"
 									align="center" width="300" /><br> <a
 									class="btn btn-primary"
@@ -203,7 +206,45 @@
 							</select>
 							</td>
 						</tr>
-
+						<!-- 다음주소 시작-->
+						<c:if test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum)}">
+						<tr>
+							<div class="form-inline">
+								<div class="form-group">
+								<td class="td_title">우편 번호:</td>
+								
+								<td class="td_default" colspan="2" style='padding-left: 30px'>
+								
+								<input name="post1" id="post1" size="5" readonly=""
+									class="form-inline"> - <input name="post2" id="post2"
+									size="5" readonly="" class="form-inline"> <input
+									onclick="openDaumPostcode()" type="button" value="우편번호찾기"
+									id="button" class="btn btn-default btn-xs"></td>
+								</div>
+						
+						</div>
+					</tr>
+					</c:if>
+					<tr>
+						<div class="form-group">
+							<td class="td_title">도로명 주소</td>
+							
+						<td class="td_default" colspan="2" style='padding-left: 30px'><input
+							type="text" name="attAddr1" value="${tourRetrieve.attAddr1}" placeholder="도로명주소" id="addr1" size="40" readonly=""
+							class="form-control"></td>
+							
+					
+						</div>
+					</tr>
+					<tr>
+						<div class="form-group">
+							<td class="td_title">지번 주소</td>
+							<td class="td_default" colspan="2" style='padding-left: 30px'><input
+							type="text" name="attAddr2" value="${tourRetrieve.attAddr2}" placeholder="지번주소" id="addr2" size="40" readonly=""
+							class="form-control"></td>
+						</div>
+					</tr>
+					<!-- 다음주소 끝 -->
 					</div>
 					<div class="form-inline">
 						<tr>
@@ -257,19 +298,20 @@
 
 						<tr>
 							<td class="td_title">업소사이트 바로가기</td>
-							
+
 							<c:if test="${tourRetrieve.attSite == '홈페이지 주소 없음'}">
-							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								${tourRetrieve.attSite}</td>
-							</c:if>
-							 <c:if test="${tourRetrieve.attSite != '홈페이지 주소 없음'}">
 								<td class="td_default" colspan="2" style='padding-left: 30px'>
-									<a href="${tourRetrieve.attSite}">${tourRetrieve.attSite}</a></td>
-								
-						     </c:if>
-							</tr>
+									${tourRetrieve.attSite}</td>
+							</c:if>
+							<c:if test="${tourRetrieve.attSite != '홈페이지 주소 없음'}">
+								<td class="td_default" colspan="2" style='padding-left: 30px'>
+									<a href="${tourRetrieve.attSite}">${tourRetrieve.attSite}</a>
+								</td>
+
+							</c:if>
+						</tr>
 					</c:if>
-					
+
 					<c:if
 						test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum)}">
 						<tr>
@@ -289,16 +331,28 @@
 			</td>
 
 		</tr>
+
 	</table>
 
+
+	<!-- 구글맵 위치정보  -->
 	<br>
+	<jsp:include page="/include/tourgooglemap.jsp" flush="true" />
 
 
+	<h3 align=center>위치</h3>
+
+	<div id="myMap" style="width: 50%; height: 450px; margin: auto">
+
+	<!-- 구글맵 끝 -->
+
+	</div>
 
 	<div id="conta">
 
 		<c:if test="${!empty sessionScope.comLogin}">
-			<a href="orderFormServlet?attNum=${tourRetrieve.attNum}" class="btn btn-default">패키지에 추가하기</a>
+			<a href="orderFormServlet?attNum=${tourRetrieve.attNum}"
+				class="btn btn-default">패키지에 추가하기</a>
 			
 	&nbsp;&nbsp;
 </c:if>

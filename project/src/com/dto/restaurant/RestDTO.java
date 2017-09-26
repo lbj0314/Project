@@ -17,13 +17,16 @@ public class RestDTO {
 	private String restType;
 	private int entNum;
 	private String restImageClone;
+	private String restAddr1;
+	private String restAddr2;
 	public RestDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public RestDTO(int restNum, String restName, String restImage, String restPhone, String restLocation, int restPrice,
 			String restTitle, String restContent, String restWriteDay, int restReadCnt, int restRepleCnt,
-			String restSite, int restGoods, String restType, int entNum, String restImageClone) {
+			String restSite, int restGoods, String restType, int entNum, String restImageClone, String restAddr1,
+			String restAddr2) {
 		super();
 		this.restNum = restNum;
 		this.restName = restName;
@@ -41,6 +44,8 @@ public class RestDTO {
 		this.restType = restType;
 		this.entNum = entNum;
 		this.restImageClone = restImageClone;
+		this.restAddr1 = restAddr1;
+		this.restAddr2 = restAddr2;
 	}
 	public int getRestNum() {
 		return restNum;
@@ -138,14 +143,28 @@ public class RestDTO {
 	public void setRestImageClone(String restImageClone) {
 		this.restImageClone = restImageClone;
 	}
+	public String getRestAddr1() {
+		return restAddr1;
+	}
+	public void setRestAddr1(String restAddr1) {
+		this.restAddr1 = restAddr1;
+	}
+	public String getRestAddr2() {
+		return restAddr2;
+	}
+	public void setRestAddr2(String restAddr2) {
+		this.restAddr2 = restAddr2;
+	}
 	@Override
 	public String toString() {
 		return "RestDTO [restNum=" + restNum + ", restName=" + restName + ", restImage=" + restImage + ", restPhone="
 				+ restPhone + ", restLocation=" + restLocation + ", restPrice=" + restPrice + ", restTitle=" + restTitle
 				+ ", restContent=" + restContent + ", restWriteDay=" + restWriteDay + ", restReadCnt=" + restReadCnt
 				+ ", restRepleCnt=" + restRepleCnt + ", restSite=" + restSite + ", restGoods=" + restGoods
-				+ ", restType=" + restType + ", entNum=" + entNum + ", restImageClone=" + restImageClone + "]";
+				+ ", restType=" + restType + ", entNum=" + entNum + ", restImageClone=" + restImageClone
+				+ ", restAddr1=" + restAddr1 + ", restAddr2=" + restAddr2 + "]";
 	}
+	
 	
 
 	

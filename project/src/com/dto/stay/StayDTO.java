@@ -19,6 +19,8 @@ public class StayDTO {
 	private String stayType;
 	private int entNum;
 	private String stayImageClone;
+	private String stayAddr1;
+	private String stayAddr2;
 	public StayDTO() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -26,7 +28,7 @@ public class StayDTO {
 	public StayDTO(int stayNum, String stayName, String stayImage, String stayPhone, String stayLocation,
 			String stayGrade, int stayKidPrice, int stayAdultPrice, String stayTitle, String stayContent,
 			String stayWriteDay, int stayReadCnt, int stayRepleCnt, String staySite, int stayGoods, String stayType,
-			int entNum, String stayImageClone) {
+			int entNum, String stayImageClone, String stayAddr1, String stayAddr2) {
 		super();
 		this.stayNum = stayNum;
 		this.stayName = stayName;
@@ -46,6 +48,8 @@ public class StayDTO {
 		this.stayType = stayType;
 		this.entNum = entNum;
 		this.stayImageClone = stayImageClone;
+		this.stayAddr1 = stayAddr1;
+		this.stayAddr2 = stayAddr2;
 	}
 	public int getStayNum() {
 		return stayNum;
@@ -155,6 +159,18 @@ public class StayDTO {
 	public void setStayImageClone(String stayImageClone) {
 		this.stayImageClone = stayImageClone;
 	}
+	public String getStayAddr1() {
+		return stayAddr1;
+	}
+	public void setStayAddr1(String stayAddr1) {
+		this.stayAddr1 = stayAddr1;
+	}
+	public String getStayAddr2() {
+		return stayAddr2;
+	}
+	public void setStayAddr2(String stayAddr2) {
+		this.stayAddr2 = stayAddr2;
+	}
 	@Override
 	public String toString() {
 		return "StayDTO [stayNum=" + stayNum + ", stayName=" + stayName + ", stayImage=" + stayImage + ", stayPhone="
@@ -162,8 +178,10 @@ public class StayDTO {
 				+ stayKidPrice + ", stayAdultPrice=" + stayAdultPrice + ", stayTitle=" + stayTitle + ", stayContent="
 				+ stayContent + ", stayWriteDay=" + stayWriteDay + ", stayReadCnt=" + stayReadCnt + ", stayRepleCnt="
 				+ stayRepleCnt + ", staySite=" + staySite + ", stayGoods=" + stayGoods + ", stayType=" + stayType
-				+ ", entNum=" + entNum + ", stayImageClone=" + stayImageClone + "]";
+				+ ", entNum=" + entNum + ", stayImageClone=" + stayImageClone + ", stayAddr1=" + stayAddr1
+				+ ", stayAddr2=" + stayAddr2 + "]";
 	}
+	
 	
 	
 

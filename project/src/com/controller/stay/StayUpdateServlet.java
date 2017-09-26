@@ -20,7 +20,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import com.dto.stay.StayDTO;
 import com.exception.MyException;
 import com.service.stay.StayService;
- 
+
 /**
  * Servlet implementation class MyBoardUpdateServlet
  */
@@ -60,13 +60,15 @@ public class StayUpdateServlet extends HttpServlet {
 		String stayPhone = null;
 		String staySite = null;
 		String stayTitle = null;
+		String stayAddr1 = null;
+		String stayAddr2 = null;
 		String target = "StayBoardListServlet";
 		// Parse the request
 		try {
 			List<FileItem> items = upload.parseRequest(request);
 			// Process the uploaded items
 			Iterator<FileItem> iter = items.iterator();
-		
+
 			while (iter.hasNext()) {
 				FileItem item = iter.next();
 
@@ -80,14 +82,13 @@ public class StayUpdateServlet extends HttpServlet {
 					if (name.equals("stayType")) {
 						stayType = value;
 
-					}else if (name.equals("stayNum")) {
+					} else if (name.equals("stayNum")) {
 						stayNum = value;
 
-					}else if (name.equals("entNum")) {
+					} else if (name.equals("entNum")) {
 						entNum = value;
 
-					}
-					else if (name.equals("stayLocation")) {
+					} else if (name.equals("stayLocation")) {
 						stayLocation = value;
 
 					} else if (name.equals("stayName")) {
@@ -115,6 +116,12 @@ public class StayUpdateServlet extends HttpServlet {
 					} else if (name.equals("stayTitle")) {
 						stayTitle = value;
 
+					} else if (name.equals("stayAddr1")) {
+						stayAddr1 = value;
+
+					} else if (name.equals("stayAddr2")) {
+						stayAddr2 = value;
+
 					}
 
 					// System.out.println(name+"\t"+value);
@@ -122,7 +129,7 @@ public class StayUpdateServlet extends HttpServlet {
 
 				} else {
 					// type="file"인 경우
-					
+
 					fileName = item.getName();
 					// 이미지 파일을 수정했을 경우
 					if (!fileName.equals("")) {
@@ -132,18 +139,16 @@ public class StayUpdateServlet extends HttpServlet {
 						// contentType = item.getContentType(); //이미지가 아니면 업로드 불가능 처리를 할 수 있다. 나중에 구현
 						// sizeInBytes = item.getSize();
 						File uploadedFile = new File("c:\\upload");
-						
-						
-						//폴더가 없으면 폴더 생성
+
+						// 폴더가 없으면 폴더 생성
 						if (!uploadedFile.exists()) {
 							uploadedFile.mkdir();
-							uploadedFile = new File("c:\\upload",stayImageClone);
+							uploadedFile = new File("c:\\upload", stayImageClone);
 						} else {
-							
-							uploadedFile = new File("c:\\upload",stayImageClone);
+
+							uploadedFile = new File("c:\\upload", stayImageClone);
 						}
-						
-						
+
 						item.write(uploadedFile);
 
 					}
@@ -173,9 +178,11 @@ public class StayUpdateServlet extends HttpServlet {
 		dto.setStayContent(stayContent);
 		dto.setStayName(stayName);
 		dto.setStayNum(Integer.parseInt(stayNum));
-		System.out.println("staynum"+stayNum);
-		
-		//이미지 파일이 수정되었을 때
+		dto.setStayAddr1(stayAddr1);
+		dto.setStayAddr2(stayAddr2);
+		System.out.println("staynum" + stayNum);
+
+		// 이미지 파일이 수정되었을 때
 		if (!fileName.equals("")) {
 			dto.setStayImage(stayImage);
 			dto.setStayImageClone(stayImageClone);

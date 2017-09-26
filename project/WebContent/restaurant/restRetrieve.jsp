@@ -8,6 +8,11 @@
 
 
 
+<!-- DAUM 주소 라이브러리 시작 -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="/project/js_daumaddress/daum.js"></script>
+<!-- DAUM 주소 라이브러리 끝 -->
+
 <%-- <c:if test="${!empty requestScope.goodok}">
 	<script>
 		alert('${requestScope.goodok}');
@@ -122,7 +127,7 @@
 							test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == restRetrieve.entNum)}">
 							<tr>
 								<!-- 이미지 수정부 -->
-								<td rowspan="10"><input type="file" name="restImage"
+								<td rowspan="12"><input type="file" name="restImage"
 									id="imgInp"> <img id="imgview"
 									src="images/${restRetrieve.restImageClone}"
 									alt="사진을 바꾸시려면 눌러주세요." border="0" align="center" width="300" />
@@ -134,7 +139,7 @@
 						|| (empty sessionScope.entLogin && empty sessionScope.comLogin && empty sessionScope.admLogin)}">
 							<tr>
 								<!-- 이미지 화면부 -->
-								<td rowspan="9"><img
+								<td rowspan="11"><img
 									src="images/${restRetrieve.restImageClone}" border="0"
 									align="center" width="300" /><br> <a
 									class="btn btn-primary"
@@ -207,6 +212,69 @@
 						</tr>
 
 					</div>
+					
+					
+					
+					
+					
+					
+					<!-- 다음주소 시작-->
+					<c:if
+						test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == restRetrieve.entNum)}">
+						<tr>
+							<div class="form-inline">
+								<div class="form-group">
+									<td class="td_title">우편 번호:</td>
+
+									<td class="td_default" colspan="2" style='padding-left: 30px'>
+
+										<input name="post1" id="post1" size="5" readonly=""
+										class="form-inline"> - <input name="post2" id="post2"
+										size="5" readonly="" class="form-inline"> <input
+										onclick="openDaumPostcode()" type="button" value="우편번호찾기"
+										id="button" class="btn btn-default btn-xs">
+									</td>
+								</div>
+
+							</div>
+						</tr>
+					</c:if>
+					<tr>
+						<div class="form-group">
+							<td class="td_title">도로명 주소</td>
+
+							<td class="td_default" colspan="2" style='padding-left: 30px'><input
+								type="text" name="restAddr1" value="${restRetrieve.restAddr1}"
+								placeholder="도로명주소" id="addr1" size="40" readonly=""
+								class="form-control"></td>
+
+
+						</div>
+					</tr>
+					<tr>
+						<div class="form-group">
+							<td class="td_title">지번 주소</td>
+							<td class="td_default" colspan="2" style='padding-left: 30px'><input
+								type="text" name="restAddr2" value="${restRetrieve.restAddr2}"
+								placeholder="지번주소" id="addr2" size="40" readonly=""
+								class="form-control"></td>
+						</div>
+					</tr>
+					<!-- 다음주소 끝 -->
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 					<div class="form-inline">
 						<tr>
 							<td class="td_title">맛집 가격</td>
@@ -280,9 +348,18 @@
 		</tr>
 	</table>
 
+	<!-- 구글맵 위치정보  -->
 	<br>
+	<jsp:include page="/include/restgooglemap.jsp" flush="true" />
 
 
+	<h3 align=center>위치</h3>
+
+	<div id="myMap" style="width: 50%; height: 450px; margin: auto">
+
+		<!-- 구글맵 끝 -->
+
+	</div>
 
 	<div id="conta">
 

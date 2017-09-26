@@ -6,8 +6,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<!-- DAUM 주소 라이브러리 시작 -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="/project/js_daumaddress/daum.js"></script>
+<!-- DAUM 주소 라이브러리 끝 -->
 
- 
 <%-- <c:if test="${!empty requestScope.goodok}">
 	<script>
 		alert('${requestScope.goodok}');
@@ -17,40 +20,41 @@
 
 
 <script type="text/javascript">
-	$(document).ready(function() {
+	$(document).ready(
+			function() {
 
-		$("#xxx").on("click", function(event) {
-			//event.preventDefault();
-			//ajax 지역별 통신
-			$.ajax({
-				type : "get",
-				url : "StayGoodServlet",
-				dataType : "text",
-				data : {
-					stayNum : $("#stayNum").val()
-				},
+				$("#xxx").on("click", function(event) {
+					//event.preventDefault();
+					//ajax 지역별 통신
+					$.ajax({
+						type : "get",
+						url : "StayGoodServlet",
+						dataType : "text",
+						data : {
+							stayNum : $("#stayNum").val()
+						},
 
-				success : function(responseData, status, xhr) {
-					//console.log(responseData);
-					
-					$("#result").text(responseData);
-					//console.log(responseData);
-					$("#re1").css("display","none");
+						success : function(responseData, status, xhr) {
+							//console.log(responseData);
 
-					
+							$("#result").text(responseData);
+							//console.log(responseData);
+							$("#re1").css("display", "none");
 
-				},
-				error : function(xhr, status, e) {
-					console.log(status, e);
+						},
+						error : function(xhr, status, e) {
+							console.log(status, e);
 
-				}
+						}
 
+					});
+
+				});
+				$("#staylo > option[value=${stayRetrieve.stayLocation}").attr(
+						"selected", "true");
+				$("#stayty > option[value=${stayRetrieve.stayType}").attr(
+						"selected", "true");
 			});
-
-		});
-		$("#staylo > option[value=${stayRetrieve.stayLocation}").attr("selected", "true");
-		$("#stayty > option[value=${stayRetrieve.stayType}").attr("selected", "true");
-	});
 </script>
 
 
@@ -84,12 +88,9 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;등록날짜:${stayRetrieve.stayWriteDay}
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							조회수:${stayRetrieve.stayReadCnt}
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br> 좋아요수:
-							<span id="re1">${stayRetrieve.stayGoods}</span>
-
-								
-
-							 <c:if test="${!empty sessionScope.comLogin}">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br> 좋아요수: <span
+							id="re1">${stayRetrieve.stayGoods}</span> <c:if
+								test="${!empty sessionScope.comLogin}">
 
 								<span id="result"></span>
 								<button type="button" id="xxx" class="btn btn-default btn-xs">
@@ -124,7 +125,7 @@
 							test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == stayRetrieve.entNum)}">
 							<tr>
 								<!-- 이미지 수정부 -->
-								<td rowspan="11"><input type="file" name="stayImage"
+								<td rowspan="14"><input type="file" name="stayImage"
 									id="imgInp"> <img id="imgview"
 									src="images/${stayRetrieve.stayImageClone}"
 									alt="사진을 바꾸시려면 눌러주세요." border="0" align="center" width="300" />
@@ -136,7 +137,7 @@
 						|| (empty sessionScope.entLogin && empty sessionScope.comLogin && empty sessionScope.admLogin)}">
 							<tr>
 								<!-- 이미지 화면부 -->
-								<td rowspan="10"><img
+								<td rowspan="13"><img
 									src="images/${stayRetrieve.stayImageClone}" border="0"
 									align="center" width="300" /><br> <a
 									class="btn btn-primary"
@@ -225,6 +226,59 @@
 							</td>
 						</tr>
 					</div>
+
+
+
+
+
+					<!-- 다음주소 시작-->
+					<c:if
+						test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == stayRetrieve.entNum)}">
+						<tr>
+							<div class="form-inline">
+								<div class="form-group">
+									<td class="td_title">우편 번호:</td>
+
+									<td class="td_default" colspan="2" style='padding-left: 30px'>
+
+										<input name="post1" id="post1" size="5" readonly=""
+										class="form-inline"> - <input name="post2" id="post2"
+										size="5" readonly="" class="form-inline"> <input
+										onclick="openDaumPostcode()" type="button" value="우편번호찾기"
+										id="button" class="btn btn-default btn-xs">
+									</td>
+								</div>
+
+							</div>
+						</tr>
+					</c:if>
+					<tr>
+						<div class="form-group">
+							<td class="td_title">도로명 주소</td>
+
+							<td class="td_default" colspan="2" style='padding-left: 30px'><input
+								type="text" name="stayAddr1" value="${stayRetrieve.stayAddr1}"
+								placeholder="도로명주소" id="addr1" size="40" readonly=""
+								class="form-control"></td>
+
+
+						</div>
+					</tr>
+					<tr>
+						<div class="form-group">
+							<td class="td_title">지번 주소</td>
+							<td class="td_default" colspan="2" style='padding-left: 30px'><input
+								type="text" name="stayAddr2" value="${stayRetrieve.stayAddr2}"
+								placeholder="지번주소" id="addr2" size="40" readonly=""
+								class="form-control"></td>
+						</div>
+					</tr>
+					<!-- 다음주소 끝 -->
+					</div>
+
+
+
+
 					<div class="form-inline">
 						<tr>
 							<td class="td_title">숙박업소 성인가격</td>
@@ -269,19 +323,20 @@
 
 						<tr>
 							<td class="td_title">숙박업소사이트 바로가기</td>
-							
-							
+
+
 							<c:if test="${stayRetrieve.staySite == '홈페이지 주소 없음'}">
-							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								${stayRetrieve.staySite}</td>
-							</c:if>
-							 <c:if test="${stayRetrieve.staySite != '홈페이지 주소 없음'}">
 								<td class="td_default" colspan="2" style='padding-left: 30px'>
-									<a href="${stayRetrieve.staySite}">${stayRetrieve.staySite}</a></td>
-								
-						     </c:if>
-							
-							
+									${stayRetrieve.staySite}</td>
+							</c:if>
+							<c:if test="${stayRetrieve.staySite != '홈페이지 주소 없음'}">
+								<td class="td_default" colspan="2" style='padding-left: 30px'>
+									<a href="${stayRetrieve.staySite}">${stayRetrieve.staySite}</a>
+								</td>
+
+							</c:if>
+
+
 						</tr>
 					</c:if>
 
@@ -306,15 +361,25 @@
 		</tr>
 	</table>
 
+	<!-- 구글맵 위치정보  -->
 	<br>
+	<jsp:include page="/include/staygooglemap.jsp" flush="true" />
 
+
+	<h3 align=center>위치</h3>
+
+	<div id="myMap" style="width: 50%; height: 450px; margin: auto">
+
+	</div>
+	<!-- 구글맵 끝 -->
 
 
 	<div id="conta">
 
 		<c:if test="${!empty sessionScope.comLogin}">
 
-			<a href="orderFormServlet?stayNum=${stayRetrieve.stayNum}" class="btn btn-default">패키지에 추가하기</a>
+			<a href="orderFormServlet?stayNum=${stayRetrieve.stayNum}"
+				class="btn btn-default">패키지에 추가하기</a>
 	&nbsp;&nbsp;
 </c:if>
 
@@ -334,10 +399,6 @@
 		<a href="StayBoardListServlet" class="btn btn-default">목록으로</a>
 
 	</div>
-
-
-
-
 </FORM>
 <!-- 
 <script>

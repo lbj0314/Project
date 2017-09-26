@@ -66,7 +66,8 @@ public class RestWriteServlet extends HttpServlet {
 		String entNum = null;
 		String restImage = null;
 		String restImageClone = null;
-
+		String restAddr1 = null;
+		String restAddr2 = null;
 		String target = "RestListServlet";
 		// Parse the request
 		try {
@@ -114,6 +115,14 @@ public class RestWriteServlet extends HttpServlet {
 
 					} else if (name.equals("entNum")) {
 						entNum = value;
+
+					}
+					else if (name.equals("restAddr1")) {
+						restAddr1 = value;
+
+					}
+					else if (name.equals("restAddr2")) {
+						restAddr2 = value;
 
 					}
 
@@ -169,6 +178,8 @@ public class RestWriteServlet extends HttpServlet {
 		dto.setRestPhone(restPhone);
 		dto.setRestTitle(restTitle);
 		dto.setRestImageClone(restImageClone);
+		dto.setRestAddr1(restAddr1);
+		dto.setRestAddr2(restAddr2);
 		RestService service = new RestService();
 		try {
 			service.restWrite(dto);

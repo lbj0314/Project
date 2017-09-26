@@ -61,6 +61,8 @@ public class RestUpdateServlet extends HttpServlet {
 		String restPhone = null;
 		String restSite = null;
 		String restTitle = null;
+		String restAddr1 = null;
+		String restAddr2 = null;
 		String target = "RestListServlet";
 		// Parse the request
 		try {
@@ -113,6 +115,14 @@ public class RestUpdateServlet extends HttpServlet {
 
 					} else if (name.equals("restTitle")) {
 						restTitle = value;
+
+					}
+					else if (name.equals("restAddr1")) {
+						restAddr1 = value;
+
+					}
+					else if (name.equals("restAddr2")) {
+						restAddr2 = value;
 
 					}
 
@@ -172,6 +182,8 @@ public class RestUpdateServlet extends HttpServlet {
 		dto.setRestContent(restContent);
 		dto.setRestName(restName);
 		dto.setRestNum(Integer.parseInt(restNum));
+		dto.setRestAddr1(restAddr1);
+		dto.setRestAddr2(restAddr2);
 		System.out.println("restnum"+restNum);
 		
 		//이미지 파일이 수정되었을 때

@@ -18,24 +18,16 @@ public class TourDTO {
 	private String attType;
 	private int entNum;
 	private String attImageClone;
-	public String getAttImageClone() {
-		return attImageClone;
-	}
-	public void setAttImageClone(String attImageClone) {
-		this.attImageClone = attImageClone;
-	}
+	private String attAddr1;
+	private String attAddr2;
 	public TourDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	
-	
-	
-	
 	public TourDTO(int attNum, String attName, String attImage, String attPhone, String attLocation, int attAdultPrice,
 			int attKidPrice, String attTitle, String attContent, String attWriteDay, int attReadCnt, int attRepleCnt,
-			String attSite, int attGoods, String attType, int entNum, String attImageClone) {
+			String attSite, int attGoods, String attType, int entNum, String attImageClone, String attAddr1,
+			String attAddr2) {
 		super();
 		this.attNum = attNum;
 		this.attName = attName;
@@ -54,6 +46,8 @@ public class TourDTO {
 		this.attType = attType;
 		this.entNum = entNum;
 		this.attImageClone = attImageClone;
+		this.attAddr1 = attAddr1;
+		this.attAddr2 = attAddr2;
 	}
 	public int getAttNum() {
 		return attNum;
@@ -151,15 +145,34 @@ public class TourDTO {
 	public void setEntNum(int entNum) {
 		this.entNum = entNum;
 	}
+	public String getAttImageClone() {
+		return attImageClone;
+	}
+	public void setAttImageClone(String attImageClone) {
+		this.attImageClone = attImageClone;
+	}
+	public String getAttAddr1() {
+		return attAddr1;
+	}
+	public void setAttAddr1(String attAddr1) {
+		this.attAddr1 = attAddr1;
+	}
+	public String getAttAddr2() {
+		return attAddr2;
+	}
+	public void setAttAddr2(String attAddr2) {
+		this.attAddr2 = attAddr2;
+	}
 	@Override
 	public String toString() {
 		return "TourDTO [attNum=" + attNum + ", attName=" + attName + ", attImage=" + attImage + ", attPhone="
 				+ attPhone + ", attLocation=" + attLocation + ", attAdultPrice=" + attAdultPrice + ", attKidPrice="
 				+ attKidPrice + ", attTitle=" + attTitle + ", attContent=" + attContent + ", attWriteDay=" + attWriteDay
 				+ ", attReadCnt=" + attReadCnt + ", attRepleCnt=" + attRepleCnt + ", attSite=" + attSite + ", attGoods="
-				+ attGoods + ", attType=" + attType + ", entNum=" + entNum + ", attImageClone=" + attImageClone + "]";
+				+ attGoods + ", attType=" + attType + ", entNum=" + entNum + ", attImageClone=" + attImageClone
+				+ ", attAddr1=" + attAddr1 + ", attAddr2=" + attAddr2 + "]";
 	}
-	
+
 	
 
 	

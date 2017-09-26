@@ -61,7 +61,8 @@ public class StayWriteServlet extends HttpServlet {
 		String entNum = null;
 		String stayImage = null;
 		String stayImageClone = null;
-
+		String stayAddr1 = null;
+		String stayAddr2 = null;
 		String target = "StayBoardListServlet";
 		// Parse the request
 		try {
@@ -113,6 +114,14 @@ public class StayWriteServlet extends HttpServlet {
 
 					} else if (name.equals("entNum")) {
 						entNum = value;
+
+					}
+					else if (name.equals("stayAddr1")) {
+						stayAddr1 = value;
+
+					}
+					else if (name.equals("stayAddr2")) {
+						stayAddr2 = value;
 
 					}
 
@@ -169,6 +178,8 @@ public class StayWriteServlet extends HttpServlet {
 		dto.setStayPhone(stayPhone);
 		dto.setStayTitle(stayTitle);
 		dto.setStayImageClone(stayImageClone);
+		dto.setStayAddr1(stayAddr1);
+		dto.setStayAddr2(stayAddr2);
 		StayService service = new StayService();
 		try {
 			service.stayWrite(dto);

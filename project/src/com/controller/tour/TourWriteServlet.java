@@ -65,7 +65,8 @@ public class TourWriteServlet extends HttpServlet {
 		String entNum = null;
 		String attImage = null;
 		String attImageClone = null;
-
+		String attAddr1 = null;
+		String attAddr2 = null;
 		String target = "TourListServlet";
 		// Parse the request
 		try {
@@ -117,6 +118,12 @@ public class TourWriteServlet extends HttpServlet {
 					} else if (name.equals("entNum")) {
 						entNum = value;
 
+					} else if (name.equals("attAddr1")) {
+						attAddr1 = value;
+
+					} else if (name.equals("attAddr2")) {
+						attAddr2 = value;
+
 					}
 
 					// System.out.println(name+"\t"+value);
@@ -131,18 +138,17 @@ public class TourWriteServlet extends HttpServlet {
 					attImageClone = attSplit[0] + milliSecond + "." + attSplit[1];
 					// contentType = item.getContentType(); //이미지가 아니면 업로드 불가능 처리를 할 수 있다. 나중에 구현
 					// sizeInBytes = item.getSize();
-					File uploadedFile = new File("c:\\upload"); 
-					
-					//폴더가 없으면 폴더 생성
+					File uploadedFile = new File("c:\\upload");
+
+					// 폴더가 없으면 폴더 생성
 					if (!uploadedFile.exists()) {
-						
+
 						uploadedFile.mkdir();
-						uploadedFile = new File("c:\\upload",attImageClone); 
-						
-					}
-					else {
-						uploadedFile = new File("c:\\upload",attImageClone); 
-						
+						uploadedFile = new File("c:\\upload", attImageClone);
+
+					} else {
+						uploadedFile = new File("c:\\upload", attImageClone);
+
 					}
 
 					item.write(uploadedFile);
@@ -174,6 +180,8 @@ public class TourWriteServlet extends HttpServlet {
 		dto.setAttPhone(attPhone);
 		dto.setAttTitle(attTitle);
 		dto.setAttImageClone(attImageClone);
+		dto.setAttAddr1(attAddr1);
+		dto.setAttAddr2(attAddr2);
 		TourService service = new TourService();
 		try {
 			service.tourWrite(dto);

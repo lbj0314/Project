@@ -29,18 +29,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into stay
 		(stayNum,stayName,stayImage,stayPhone,
 		stayLocation,stayAdultPrice,stayKidPrice,stayGrade,stayTitle,stayContent,
-		staySite,stayType,entNum,stayImageClone)
+		staySite,stayType,entNum,stayImageClone,stayAddr1,stayAddr2)
 		values ( stay_seq.nextval,
 		#{stayName},#{stayImage},#{stayPhone}
 		,#{stayLocation},#{stayAdultPrice},#{stayKidPrice},#{stayGrade},
 		#{stayTitle},#{stayContent},
-		#{staySite},#{stayType},#{entNum},#{stayImageClone})
+		#{staySite},#{stayType},#{entNum},#{stayImageClone},#{stayAddr1},#{stayAddr2})
 	</insert>
 	<select id="staySelect" resultType="StayDTO" parameterType="hashmap">
 		select stayNum,stayName,stayImage,stayPhone,
 		stayLocation,stayAdultPrice,stayKidPrice,stayGrade,stayTitle,stayContent,
 		to_char(stayWriteDay,'YYYY/MM/dd') stayWriteDay,stayReadCnt,
-		stayRepleCnt,staySite,stayGoods,stayType,entNum,stayImageClone
+		stayRepleCnt,staySite,stayGoods,stayType,entNum,stayImageClone,stayAddr1,stayAddr2
 		from
 		stay
 		<where>
@@ -80,7 +80,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select stayNum,stayName,stayImage,stayPhone,
 		stayLocation,stayAdultPrice,stayKidPrice,stayTitle,stayGrade,stayContent,
 		to_char(stayWriteDay,'YYYY/MM/dd') stayWriteDay,stayReadCnt,
-		stayRepleCnt,staySite,stayGoods,stayType,entNum,stayImageClone
+		stayRepleCnt,staySite,stayGoods,stayType,entNum,stayImageClone,stayAddr1,stayAddr2
 		from stay
 		where stayNum = #{stayNum}
 	</select>
@@ -118,7 +118,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		stayGrade=#{stayGrade},
 		stayPhone=#{stayPhone},
 		staySite=#{staySite},
-		stayTitle=#{stayTitle}
+		stayTitle=#{stayTitle},
+		stayAddr1=#{stayAddr1},
+		stayAddr2=#{stayAddr2}
 		where stayNum = #{stayNum}
 	</update>
 </mapper>

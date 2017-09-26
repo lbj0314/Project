@@ -60,13 +60,15 @@ public class TourUpdateServlet extends HttpServlet {
 		String attPhone = null;
 		String attSite = null;
 		String attTitle = null;
+		String attAddr1 = null;
+		String attAddr2 = null;
 		String target = "TourListServlet";
 		// Parse the request
 		try {
 			List<FileItem> items = upload.parseRequest(request);
 			// Process the uploaded items
 			Iterator<FileItem> iter = items.iterator();
-		
+
 			while (iter.hasNext()) {
 				FileItem item = iter.next();
 
@@ -80,14 +82,14 @@ public class TourUpdateServlet extends HttpServlet {
 					if (name.equals("attType")) {
 						attType = value;
 
-					}else if (name.equals("attNum")) {
+					} else if (name.equals("attNum")) {
 						attNum = value;
 
-					}else if (name.equals("entNum")) {
+					} else if (name.equals("entNum")) {
 						entNum = value;
 
 					}
-					
+
 					else if (name.equals("attLocation")) {
 						attLocation = value;
 
@@ -116,6 +118,12 @@ public class TourUpdateServlet extends HttpServlet {
 					} else if (name.equals("attTitle")) {
 						attTitle = value;
 
+					} else if (name.equals("attAddr1")) {
+						attAddr1 = value;
+
+					} else if (name.equals("attAddr2")) {
+						attAddr2 = value;
+
 					}
 
 					// System.out.println(name+"\t"+value);
@@ -123,7 +131,7 @@ public class TourUpdateServlet extends HttpServlet {
 
 				} else {
 					// type="file"인 경우
-					
+
 					fileName = item.getName();
 					// 이미지 파일을 수정했을 경우
 					if (!fileName.equals("")) {
@@ -132,20 +140,19 @@ public class TourUpdateServlet extends HttpServlet {
 						attImageClone = attSplit[0] + milliSecond + "." + attSplit[1];
 						// contentType = item.getContentType(); //이미지가 아니면 업로드 불가능 처리를 할 수 있다. 나중에 구현
 						// sizeInBytes = item.getSize();
-						File uploadedFile = new File("c:\\upload"); 
-						
-						//폴더가 없으면 폴더 생성
+						File uploadedFile = new File("c:\\upload");
+
+						// 폴더가 없으면 폴더 생성
 						if (!uploadedFile.exists()) {
-							
+
 							uploadedFile.mkdir();
-							uploadedFile = new File("c:\\upload",attImageClone); 
-							
+							uploadedFile = new File("c:\\upload", attImageClone);
+
+						} else {
+							uploadedFile = new File("c:\\upload", attImageClone);
+
 						}
-						else {
-							uploadedFile = new File("c:\\upload",attImageClone); 
-							
-						}
-						
+
 						item.write(uploadedFile);
 
 					}
@@ -156,7 +163,9 @@ public class TourUpdateServlet extends HttpServlet {
 			// request.setAttribute("fileName", fileName);
 			// request.setAttribute("sizeInBytes", sizeInBytes);
 
-		} catch (FileUploadException e) {
+		} catch (
+
+		FileUploadException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -174,9 +183,11 @@ public class TourUpdateServlet extends HttpServlet {
 		dto.setAttContent(attContent);
 		dto.setAttName(attName);
 		dto.setAttNum(Integer.parseInt(attNum));
-		System.out.println("attnum"+attNum);
-		
-		//이미지 파일이 수정되었을 때
+		dto.setAttAddr1(attAddr1);
+		dto.setAttAddr2(attAddr2);
+		System.out.println("attnum" + attNum);
+
+		// 이미지 파일이 수정되었을 때
 		if (!fileName.equals("")) {
 			dto.setAttImage(attImage);
 			dto.setAttImageClone(attImageClone);
