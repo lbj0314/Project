@@ -161,7 +161,7 @@
 		<select name="staySearchName" class="form-control" id="staySearch">
 			<option value="stayTitle">숙박업소명</option>
 			<option value="stayName">숙박업소제목</option>
-		</select> <input type="text" name="searchValue" class="form-control" value = "${staylist.staySearchValue}"> <input
+		</select> <input type="text" name="staySearchValue" class="form-control" value = "${staylist.staySearchValue}"> <input
 			type="submit" value="검색" class="btn btn-primary">
 		
 		<select name="sortStay" class="form-control" id="staySo">
@@ -261,12 +261,13 @@
 	<tr>
 		<td height="10">
 	</tr>
+	
 	<c:if test="${staylist.getList().size()!=0}">
 		<tr>
 			<td colspan="5"><jsp:include page="/stay/stay_boardpage.jsp"
 					flush="true" /></td>
 		</tr>
-	</c:if>
+	</c:if> 
 	<tr>
 	<td colspan=8 align=center>
 	<c:if test="${!empty sessionScope.entLogin}">

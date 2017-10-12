@@ -20,7 +20,7 @@
 <c:set value="${dto.getStayPerBlock()}" var="stayPerBlock" />
 <c:set value="${dto.getSortStay()}" var="sortStay" />
 
-<fmt:parseNumber value="${totalCount/stayPerPage}" integerOnly="true"
+<fmt:parseNumber value="${stayTotalCount/stayPerPage}" integerOnly="true"
 	var="stayTotalNum" />
 <c:if test="${stayTotalCount%stayPerPage!=0}">
 	<c:set var="stayTotalNum" value="${stayTotalNum+1}" />
@@ -60,7 +60,7 @@
 
 <c:if test="${stayCurPage != 1}">
 	<a
-		href='StayListServlet?stayCurPage=1&staySearchName=${staySearchName}&staySearchValue=${staySearchValue}&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">처음</a>
+		href='StayBoardListServlet?stayCurPage=1&staySearchName=${staySearchName}&staySearchValue=${staySearchValue}&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">처음</a>
 &nbsp;
 </c:if>
 
@@ -73,7 +73,7 @@
 
 <c:if test="${stayStartPage != 1}">
 	<a
-		href='StayListServlet?curPage=${stayStartPage -1}&staySearchName=${staySearchName }&staySearchValue= ${staySearchValue}&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">&lt;&lt;</a>
+		href='StayBoardListServlet?curPage=${stayStartPage -1}&staySearchName=${staySearchName }&staySearchValue= ${staySearchValue}&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">&lt;&lt;</a>
 	 
 &nbsp;
 </c:if>
@@ -86,7 +86,7 @@
 
 <c:if test="${stayCurPage != 1}">
 	<a
-		href='StayListServlet?curPage=${stayCurPage -1}&staySearchName=${staySearchName}&staySearchValue=${staySearchValue}&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">&lt;</a>
+		href='StayBoardListServlet?curPage=${stayCurPage -1}&staySearchName=${staySearchName}&staySearchValue=${staySearchValue}&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">&lt;</a>
 
 &nbsp;
 </c:if>
@@ -102,7 +102,7 @@
 </c:if>
 	<c:if test="${stayCurPage != aa}">
 		<a
-			href='StayListServlet?stayCurPage=${aa}&staySearchName=${staySearchName }&staySearchValue=${staySearchValue }&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">${aa}</a> 
+			href='StayBoardListServlet?stayCurPage=${aa}&staySearchName=${staySearchName }&staySearchValue=${staySearchValue }&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">${aa}</a> 
 		&nbsp;
 		</c:if>
 </c:forEach>
@@ -114,7 +114,7 @@
 </c:if>
 <c:if test="${stayCurPage != stayEndPage }">
 	<a
-		href='StayListServlet?stayCurPage=${stayEndPage }&staySearchName=${staySearchName }&staySearchValue=${staySearchValue}&stayLocation=${stayLocation}&stayType=${StayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">${stayEndPage}</a>
+		href='StayBoardListServlet?stayCurPage=${stayEndPage }&staySearchName=${staySearchName }&staySearchValue=${staySearchValue}&stayLocation=${stayLocation}&stayType=${StayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">${stayEndPage}</a>
 
 
 </c:if>
@@ -126,7 +126,7 @@
 </c:if>
 <c:if test="${stayCurPage != stayTotalNum }">
 	<a
-		href='StayListServlet?stayCurPage=${stayCurPage +1 }&staySearchName=${staySearchName }&staySearchValue=${staySearchValue }&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">&gt;</a>
+		href='StayBoardListServlet?stayCurPage=${stayCurPage +1 }&staySearchName=${staySearchName }&staySearchValue=${staySearchValue }&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">&gt;</a>
 </c:if>
 
 &nbsp;
@@ -135,7 +135,7 @@
 </c:if>
 <c:if test="${stayEndPage != stayTotalNum }">
 	<a
-		href='StayListServlet?stayCurPage=${stayEndPage +1 }&staySearchName=${staySearchName }&staySearchValue= ${staySearchValue }&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">&gt;&gt;</a>
+		href='StayBoardListServlet?stayCurPage=${stayEndPage +1 }&staySearchName=${staySearchName }&staySearchValue= ${staySearchValue }&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">&gt;&gt;</a>
 </c:if>
 &nbsp;
 <c:if test="${stayCurPage == stayTotalNum }">
@@ -143,7 +143,7 @@
 </c:if>
 <c:if test="${stayCurPage != stayTotalNum }">
 	<a
-		href='StayListServlet?stayCurPage=${stayTotalNum}&staySearchName=${staySearchName }&staySearchValue=${staySearchValue }&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">마지막</a>
+		href='StayBoardListServlet?stayCurPage=${stayTotalNum}&staySearchName=${staySearchName }&staySearchValue=${staySearchValue }&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">마지막</a>
 </c:if>
 
 </div>

@@ -21,13 +21,13 @@ public class StayBoardListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
-				String stayCurpage = request.getParameter("stayCurpage");
+				String stayCurpage = request.getParameter("stayCurPage");
 				if(stayCurpage == null) {
 					stayCurpage = "1";
 				}
 	 
 		String staySearchName = request.getParameter( "staySearchName" );
-		String staySearchValue = request.getParameter( "staySearchValue" );
+		String staySearchValue = request.getParameter("staySearchValue");
 		String stayLocation=request.getParameter("stayLocation");
 		String stayType=request.getParameter("stayType");
 		String sortStay = request.getParameter("sortStay");
