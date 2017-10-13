@@ -32,10 +32,18 @@
      </property>
      <property name="typeAliases">
        <list>
-        <value>com.dto.CartDTO</value>
-        <value>com.dto.GoodsDTO</value>
-        <value>com.dto.MemberDTO</value>
-        <value>com.dto.OrderDTO</value>
+        <value>com.dto.fes.FesDTO</value>
+        <value>com.dto.login.AdmDTO</value>
+        <value>com.dto.login.ComDTO</value>
+        <value>com.dto.login.EntDTO</value>
+        <value>com.dto.notice.NoticeDTO</value>
+        <value>com.dto.notice.PageDTO</value>
+        <value>com.dto.restaurant.RestDTO</value>
+        <value>com.dto.restaurant.RestPageDTO</value>
+        <value>com.dto.stay.StayDTO</value>
+        <value>com.dto.stay.StayPageDTO</value>
+        <value>com.dto.tour.TourDTO</value>
+        <value>com.dto.tour.TourPageDTO</value>
        </list>
      </property>
    </bean>
