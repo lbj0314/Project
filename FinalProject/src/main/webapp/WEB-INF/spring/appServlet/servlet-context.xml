@@ -9,9 +9,8 @@
 
     
    <mvc:default-servlet-handler/>
-   <mvc:resources location="/WEB-INF/image/" mapping="/image/**" />
    <mvc:resources location="/WEB-INF/images/" mapping="/images/**" />
-   <mvc:resources location="/WEB-INF/js/" mapping="/js/**" />
+   <mvc:resources location="/WEB-INF/css/" mapping="/css/**" />
    
    <mvc:view-resolvers>
     <mvc:jsp  prefix="/WEB-INF/"  suffix=".jsp" />
