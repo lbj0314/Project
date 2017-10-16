@@ -6,7 +6,7 @@
 <br><br>
 
 <c:if test="${!empty sessionScope.comLogin }">
-	<form action="MyPageChangeMemberServlet" method="get">
+	<form action="changeMember" method="get">
 		<table border='1'>
 			<tr>
 				<td>아이디</td>
@@ -66,7 +66,7 @@
 	</form>
 </c:if>
 <c:if test="${!empty sessionScope.entLogin }">
-	<form action="MyPageChangeMemberServlet" method="get">
+	<form action="changeMember" method="get">
 		<table border='1'>
 			<tr>
 				<td>

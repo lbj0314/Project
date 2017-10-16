@@ -10,26 +10,26 @@
 <c:if
 	test="${!empty sessionScope.comLogin}">
 	${sessionScope.comLogin.comname }님 안녕하세요&nbsp;
-	<a href="/project/LogoutServlet" class="btn btn-default">로그아웃</a>&nbsp;
-	<a href="/project/MyPageFormServlet" class="btn btn-default">마이페이지</a>&nbsp;
+	<a href="logout" class="btn btn-default">로그아웃</a>&nbsp;
+	<a href="myPageForm" class="btn btn-default">마이페이지</a>&nbsp;
 </c:if>
 <c:if
 	test="${!empty sessionScope.entLogin}">
 	${sessionScope.entLogin.entname }님 안녕하세요&nbsp;
-	<a href="/project/LogoutServlet" class="btn btn-default">로그아웃</a>&nbsp;
-	<a href="/project/MyPageFormServlet" class="btn btn-default">마이페이지</a>&nbsp;
+	<a href="logout" class="btn btn-default">로그아웃</a>&nbsp;
+	<a href="myPageForm" class="btn btn-default">마이페이지</a>&nbsp;
 </c:if>
 <c:if
 	test="${!empty sessionScope.admLogin}">
 	관리자님 안녕하세요&nbsp;
-	<a href="/project/LogoutServlet" class="btn btn-default">로그아웃</a>&nbsp;
-	<a href="/project/MyPageFormServlet" class="btn btn-default">DB관리</a>&nbsp;
+	<a href="logout" class="btn btn-default">로그아웃</a>&nbsp;
+	<a href="myPageForm" class="btn btn-default">DB관리</a>&nbsp;
 </c:if>
 
 <c:if
 	test="${empty sessionScope.entLogin and empty sessionScope.comLogin and empty sessionScope.admLogin}">
 	<div id="conright" class="form-group">
-		<form action="LoginServlet" method="get" class="form-inline">
+		<form action="login" method="get" class="form-inline">
 			<select name="wholog" class="form-control">
 				<option value="com">일반회원</option>
 				<option value="ent">기업회원</option>
