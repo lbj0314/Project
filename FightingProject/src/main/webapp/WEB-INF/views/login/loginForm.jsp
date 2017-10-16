@@ -10,6 +10,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="/views/login/loginForm/loginForm.jsp" flush="true" />
+	<jsp:include page="/WEB-INF/views/login/loginForm/loginForm.jsp" flush="true" />
 </body>
 </html>

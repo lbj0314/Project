@@ -54,11 +54,11 @@
 
 </head>
 <body>
-	<jsp:include page="/views/login/loginForm.jsp" flush="true" /><br>
-	<jsp:include page="/views/include/top.jsp" flush="true" /><br>
-	<jsp:include page="/views/include/main.jsp" flush="true" /><br>
-	<jsp:include page="/views/include/bottom.jsp" flush="true" /><br>
-	<jsp:include page="/views/include/copyright.jsp" flush="true" />
+	<jsp:include page="/WEB-INF/views/login/loginForm.jsp" flush="true" /><br>
+	<jsp:include page="/WEB-INF/views/include/top.jsp" flush="true" /><br>
+	<jsp:include page="/WEB-INF/views/include/main.jsp" flush="true" /><br>
+	<jsp:include page="/WEB-INF/views/include/bottom.jsp" flush="true" /><br>
+	<jsp:include page="/WEB-INF/views/include/copyright.jsp" flush="true" />
 	
 	
 	
