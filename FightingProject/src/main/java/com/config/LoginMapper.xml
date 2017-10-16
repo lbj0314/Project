@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.LoginMapper">
+
+	<select id="comLogin" parameterType="hashmap" resultType="ComDTO">
+		select comnum, comid, compasswd, comname, comssn, comphone, comgrade,
+		comemail, comaddr1, comaddr2, compost1, compost2
+		from commember
+		where
+		comid = #{userid}
+		<if test="passwd != null">
+			and compasswd = #{passwd}
+		</if>
+
+	</select>
+
+	<select id="entLogin" parameterType="hashmap" resultType="EntDTO">
+		select
+		entnum, entid, entpasswd, entname, entlocation, entphone,
+		entcellphone, entfax, entin, enttype
+		from entmember
+		where entid =
+		#{userid}
+		<if test="passwd != null">
+			and entpasswd = #{passwd}
+		</if>
+	</select>
+
+	<select id="admLogin" parameterType="hashmap" resultType="AdmDTO">
+		select
+		admnum, admid, admpasswd
+		from adminator
+		where admid = #{userid}
+		<if test="passwd != null">
+			and admpasswd = #{passwd}
+		</if>
+	</select>
+
+	<update id="comChange" parameterType="ComDTO">
+		update commember
+		set
+		compasswd=#{compasswd}, comname=#{comname}, comphone=#{comphone},
+		comemail=#{comemail},
+		comaddr1=#{comaddr1}, comaddr2=#{comaddr2},
+		compost1=#{compost1}, compost2=#{compost2}
+		where comnum=#{comnum}
+
+	</update>
+
+	<delete id="comDelete" parameterType="int">
+		delete from commember
+		where
+		comnum=#{comnum}
+	</delete>
+
+	<update id="entChange" parameterType="EntDTO">
+		update entmember
+		set entpasswd=#{entpasswd}, entname=#{entname},
+		entlocation=#{entlocation}, entphone=#{entphone},
+		entcellphone=#{entcellphone}, entfax=#{entfax}, entin=#{entin},
+		enttype=#{enttype}
+		where entnum=#{entnum}
+	</update>
+
+	<delete id="entDelete" parameterType="int">
+		delete from entmember
+		where entnum=#{entnum}
+	</delete>
+</mapper>
+
+
+
+
+

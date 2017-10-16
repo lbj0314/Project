@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- //////////////////////////////////////////////// -->
+  <!--  jdbc.properties -->
+   <context:property-placeholder 
+       location="classpath:com/config/jdbc.properties"/>
+  <!--  DataSource로 연결 -->
+   <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+    <property name="driverClassName" value="${jdbc.driver}" />
+    <property name="url" value="${jdbc.url}" />
+    <property name="username" value="${jdbc.userid}" />
+    <property name="password" value="${jdbc.passwd}" />
+   </bean>
+  <!-- SqlSessionFactoryBean 등록 -->
+   <bean id="factoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+     <property name="dataSource"  ref="dataSource"></property>
+     <property name="mapperLocations">
+       <list>
+        <value>classpath:com/config/FesMapper.xml</value>
+        <value>classpath:com/config/JoinMapper.xml</value>
+        <value>classpath:com/config/LoginMapper.xml</value>
+        <value>classpath:com/config/NoticeMapper.xml</value>
+        <value>classpath:com/config/RestMapper.xml</value> 
+        <value>classpath:com/config/StayMapper.xml</value> 
+        <value>classpath:com/config/TourMapper.xml</value>  
+       </list>
+     </property>
+     <property name="typeAliases">
+       <list>
+        <value>com.dto.fes.FesDTO</value>
+        <value>com.dto.login.AdmDTO</value>
+        <value>com.dto.login.ComDTO</value>
+        <value>com.dto.login.EntDTO</value>
+        <value>com.dto.notice.NoticeDTO</value>
+        <value>com.dto.notice.PageDTO</value>
+        <value>com.dto.restaurant.RestDTO</value>
+        <value>com.dto.restaurant.RestPageDTO</value>
+        <value>com.dto.stay.StayDTO</value>
+        <value>com.dto.stay.StayPageDTO</value>
+        <value>com.dto.tour.TourDTO</value>
+        <value>com.dto.tour.TourPageDTO</value>
+       </list>
+     </property>
+   </bean>
+   <!--  SqlSessionTemplate -->
+   <bean id="sessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+     <constructor-arg ref="factoryBean" />  
+   </bean>
+  <!-- //////////////////////////////////////////////// --> 
+  
+		
+		
+</beans>
