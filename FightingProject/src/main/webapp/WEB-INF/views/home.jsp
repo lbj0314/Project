@@ -50,7 +50,7 @@
 	src="//netdna.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="/project/css/style.css">
+<link rel="stylesheet" type="text/css" href="/test/css/style.css">
 
 </head>
 <body>

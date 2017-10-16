@@ -22,15 +22,15 @@
 	<!-- Wrapper for slides -->
 	<div align="center" class="carousel-inner" role="listbox">
 		<div class="item active">
-			<img src="/WEB-INF/views/images/catcute.gif" alt="..." width=* height=*>
+			<img src="/test/images/catcute.gif" alt="..." width=* height=*>
 			<div class="carousel-caption">...</div>
 		</div>
 		<div class="item">
-			<img src="/WEB-INF/views/images/cat.jpg" alt="..." width=* height=*>
+			<img src="/test/images/cat.jpg" alt="..." width=* height=*>
 			<div class="carousel-caption">...</div>
 		</div>
 		<div class="item">
-			<img src="/WEB-INF/views/images/sul.gif" alt="..." width=* height=*>
+			<img src="/test/images/sul.gif" alt="..." width=* height=*>
 			<div class="carousel-caption">...</div>
 		</div>
 
