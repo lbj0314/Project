@@ -1,41 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-	
 
-   <mvc:annotation-driven />
-   <mvc:default-servlet-handler/>
-   <mvc:resources location="/WEB-INF/views/images/" mapping="/images/**" />
-   <mvc:resources location="/WEB-INF/views/css/" mapping="/css/**" />
-   <mvc:resources location="file:///C:/upload/" mapping="/image/**" />
-     <mvc:resources location="/WEB-INF/views/js_daumaddress/" mapping="/js_daumaddress/**" />
-   <mvc:view-resolvers>
-    <mvc:jsp  prefix="/WEB-INF/views/"  suffix=".jsp" />
-   </mvc:view-resolvers>
-   
-   <mvc:view-controller path="/" view-name="home"/>
+
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+	<mvc:resources location="/WEB-INF/views/images/" mapping="/images/**" />
+	<mvc:resources location="/WEB-INF/views/css/" mapping="/css/**" />
+	<mvc:resources location="file:///C:/upload/" mapping="/image/**" />
+	<mvc:resources location="/WEB-INF/views/js_daumaddress/"
+		mapping="/js_daumaddress/**" />
+	<mvc:view-resolvers>
+		<mvc:jsp prefix="/WEB-INF/views/" suffix=".jsp" />
+	</mvc:view-resolvers>
+
+	<mvc:view-controller path="/" view-name="home" />
 	<!-- 요청 단위 -->
 
 	<context:component-scan base-package="com.*" />
-	
-	
+
 	<!-- 반드시 id는 multipartResolver로 줘야 사용 가능함. -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-
 		<!-- one of the properties available; the maximum file size in bytes -->
 		<property name="maxUploadSize" value="-1" />
 		<!-- 한글파일 이름 설정 -->
 		<property name="defaultEncoding" value="UTF-8" />
-
-
 	</bean>
-	
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>message</value>
+			</list>
+		</property>
+	</bean>
+
 </beans>
