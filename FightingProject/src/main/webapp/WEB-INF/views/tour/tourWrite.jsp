@@ -8,7 +8,7 @@
 <!-- DAUM 주소 라이브러리 끝 -->
 
 
-<form action="/project/TourWriteServlet" enctype="multipart/form-data" method="post">
+<form action="loginX/tourWrite" enctype="multipart/form-data" method="post">
 	<input type="hidden" name="entNum" value="${sessionScope.entLogin.entnum}">
 	${sessionScope.entLogin.entnum }
 	<table align=center>

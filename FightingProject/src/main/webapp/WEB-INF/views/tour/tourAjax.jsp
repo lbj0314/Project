@@ -43,7 +43,7 @@
 									<table style='padding: 15px'>
 										<tr>
 											<td><a href="TourRetrieveServlet?attNum=${xxx.attNum}">
-													<img src="images/${xxx.attImageClone}" border="0"
+													<img src="image/${xxx.attImageClone}" border="0"
 													align="center" width="200">
 
 											</a></td>
@@ -93,7 +93,7 @@
 	</tr>
 	<c:if test="${tourlist.getList().size()!=0}">
 		<tr>
-			<td colspan="5"><jsp:include page="/tour/tourpage.jsp"
+			<td colspan="5"><jsp:include page="/WEB-INF/views/tour/tourpage.jsp"
 					flush="true" /></td>
 		</tr>
 	</c:if>

@@ -24,7 +24,7 @@
 			//ajax 지역별 통신
 			$.ajax({
 				type : "get",
-				url : "TourListServlet",
+				url : "tourList",
 				data : {
 					attLocation : $("#attlo").val(),
 					attType : $("#attty").val(),
@@ -51,7 +51,7 @@
 			//ajax 타입별 통신
 			$.ajax({
 				type : "get",
-				url : "TourListServlet",
+				url : "tourList",
 				data : {
 					attLocation : $("#attlo").val(),
 					attType : $("#attty").val(),
@@ -77,7 +77,7 @@
 			//ajax 검색종류별 통신
 			$.ajax({
 				type : "get",
-				url : "TourListServlet",
+				url : "tourList",
 				data : {
 					attLocation : $("#attlo").val(),
 					attType : $("#attty").val(),
@@ -107,7 +107,7 @@
 			//ajax 검색종류별 통신
 			$.ajax({
 				type : "get",
-				url : "TourListServlet",
+				url : "tourList",
 				data : {
 					attLocation : $("#attlo").val(),
 					attType : $("#attty").val(),
@@ -144,7 +144,7 @@
 	});
 </script>
 
-<form action="TourListServlet" id="aaa">
+<form action="tourList" id="aaa">
 	<input type="hidden" name="btngo" value="1" id="btngo">
 	
 	<div class="form-inline" id="conta">
@@ -234,8 +234,8 @@
 								<td>
 									<table style='padding: 15px'>
 										<tr>
-											<td><a href="TourRetrieveServlet?attNum=${xxx.attNum}">
-													<img src="images/${xxx.attImageClone}" border="0"
+											<td><a href="tourRetrieve?attNum=${xxx.attNum}">
+													<img src="image/${xxx.attImageClone}" border="0"
 													align="center" width="200">
 
 											</a></td>
@@ -246,7 +246,7 @@
 										</tr>
 										<tr>
 											<td class="td_default" align="center"><a class="a_black"
-												href="TourRetrieveServlet?attNum=${xxx.attNum}">
+												href="tourRetrieve?attNum=${xxx.attNum}">
 													업소제목:${xxx.attTitle}<br>
 											</a></td>
 
@@ -285,7 +285,7 @@
 	</tr>
 	<c:if test="${tourlist.getList().size()!=0}">
 		<tr>
-			<td colspan="5"><jsp:include page="/tour/tourpage.jsp"
+			<td colspan="5"><jsp:include page="/WEB-INF/views/tour/tourpage.jsp"
 					flush="true" /></td>
 		</tr>
 	</c:if>
@@ -293,7 +293,7 @@
 	<tr>
 	<td colspan=8 align=center>
 	<c:if test="${!empty sessionScope.entLogin}">
-		<a href="/project/tour/tourwriteview.jsp" class="btn btn-primary">글쓰기</a>
+		<a href="loginX/tourWriteUI" class="btn btn-primary">글쓰기</a>
 	</c:if>
 	
 	<td>

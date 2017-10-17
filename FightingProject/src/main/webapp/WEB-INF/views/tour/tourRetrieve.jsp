@@ -58,7 +58,7 @@
 </script>
 
 
-<FORM action="TourUpdateServlet" method="post"
+<FORM action="loginX/tourUpdate" method="post"
 	enctype="multipart/form-data">
 	<input type="hidden" name="attNum" value="${tourRetrieve.attNum}"
 		id="attNum"> <input type="hidden" name="attImage"
@@ -138,7 +138,7 @@
 							<tr>
 								<!-- 이미지 화면부 -->
 								<td rowspan="12"><img
-									src="images/${tourRetrieve.attImageClone}" border="0"
+									src="image/${tourRetrieve.attImageClone}" border="0"
 									align="center" width="300" /><br> <a
 									class="btn btn-primary"
 									href="/project/TourFileDownServlet?attImageClone=${tourRetrieve.attImageClone}&attImage=${tourRetrieve.attImage}">다운받기</a>
@@ -337,7 +337,7 @@
 
 	<!-- 구글맵 위치정보  -->
 	<br>
-	<jsp:include page="/include/tourgooglemap.jsp" flush="true" />
+	<jsp:include page="/WEB-INF/views/include/tourgooglemap.jsp" flush="true" />
 
 
 	<h3 align=center>위치</h3>
@@ -365,12 +365,12 @@
 		</c:if>
 		<c:if
 			test="${!empty sessionScope.admLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum))}">
-			<a href="TourDeleteServlet?attNum=${tourRetrieve.attNum}"
+			<a href="loginX/tourDelete?attNum=${tourRetrieve.attNum}"
 				class="btn btn-default">삭제 하기</a>
 		</c:if>
 
 
-		<a href="TourListServlet" class="btn btn-default">목록으로</a>
+		<a href="tourList" class="btn btn-default">목록으로</a>
 
 	</div>
 
