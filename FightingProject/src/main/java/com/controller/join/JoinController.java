@@ -30,7 +30,12 @@ public class JoinController {
 		if(category.equals("com")) {
 			ComDTO dto = new ComDTO(userid, passwd, name, Long.parseLong(ssn), Long.parseLong(phone1),
 					email, addr1, addr2, Integer.parseInt(post1), Integer.parseInt(post2));
+			try {
 			service.comJoin(dto);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
 		}else if(category.equals("ent")){
 			EntDTO dto = new EntDTO(userid, passwd, name, location, Long.parseLong(phone2), 
 					Long.parseLong(phone1), Integer.parseInt(fax), Integer.parseInt(in), kind);
