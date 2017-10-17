@@ -8,7 +8,7 @@ $('.dropdown-toggle').dropdown()
 
 <div id="conta">
 
- <a class="btn dropdown-toggle btn-lg" href="/project/home.jsp">
+ <a class="btn dropdown-toggle btn-lg" href="/test/">
     홈으로
   </a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

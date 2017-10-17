@@ -146,7 +146,7 @@
 
 <form action="tourList" id="aaa">
 	<input type="hidden" name="btngo" value="1" id="btngo">
-	
+	<input type="hidden" name="ImageClone" value="${xxx.attImageClone}" id="btngo">
 	<div class="form-inline" id="conta">
 		<select name="attLocation" class="form-control" id="attlo">
 			<option value="def">지역선택</option>

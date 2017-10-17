@@ -4,12 +4,14 @@
 
 	<!-- DAUM 주소 라이브러리 시작 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="/project/js_daumaddress/daum.js"></script>
+<script src="/test/js_daumaddress/daum.js"></script>
 <!-- DAUM 주소 라이브러리 끝 -->
 
 
-<form action="loginX/tourWrite" enctype="multipart/form-data" method="post">
+<form action="/test/loginX/tourWrite" enctype="multipart/form-data" method="post">
 	<input type="hidden" name="entNum" value="${sessionScope.entLogin.entnum}">
+	<!-- <input type="hidden" name="attCloneImage" value="2"> -->
+	<!-- <input type="hidden" name="ImageClone" value="2"> -->
 	${sessionScope.entLogin.entnum }
 	<table align=center>
 		<tr>
@@ -66,8 +68,8 @@
 		<tr>
 		<div class="form-inline">
 			<td  align=center>우편 번호:</td>
-			<td colspan=3><input name="post1" id="post1" size="5" readonly="" class="form-inline">
-				- <input name="post2" id="post2" size="5" readonly="" class="form-inline"> <input
+			<td colspan=3><input id="post1" size="5" readonly="" class="form-inline">
+				- <input id="post2" size="5" readonly="" class="form-inline"> <input
 				onclick="openDaumPostcode()" type="button" value="우편번호찾기"
 				id="button" class="btn btn-default btn-xs"></td>
 				</div>

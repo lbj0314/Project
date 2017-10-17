@@ -96,7 +96,7 @@
 								<button type="button" id="xxx" class="btn btn-default btn-xs">
 
 
-									<img src="/project/images/goods.png">
+									<img src="/test/images/goods.png">
 								</button>
 							</c:if>
 						</td>
@@ -127,7 +127,7 @@
 								<!-- 이미지 수정부 -->
 								<td rowspan="13"><input type="file" name="attImage"
 									id="imgInp"> <img id="imgview"
-									src="images/${tourRetrieve.attImageClone}"
+									src="image/${tourRetrieve.attImageClone}"
 									alt="사진을 바꾸시려면 눌러주세요." border="0" align="center" width="300" />
 
 									<br>현재파일:${tourRetrieve.attImage}</td>
@@ -141,7 +141,7 @@
 									src="image/${tourRetrieve.attImageClone}" border="0"
 									align="center" width="300" /><br> <a
 									class="btn btn-primary"
-									href="/project/TourFileDownServlet?attImageClone=${tourRetrieve.attImageClone}&attImage=${tourRetrieve.attImage}">다운받기</a>
+									href="/test/do?attImageClone=${tourRetrieve.attImageClone}&attImage=${tourRetrieve.attImage}">다운받기</a>
 
 								</td>
 						</c:if>
@@ -215,8 +215,8 @@
 								
 								<td class="td_default" colspan="2" style='padding-left: 30px'>
 								
-								<input name="post1" id="post1" size="5" readonly=""
-									class="form-inline"> - <input name="post2" id="post2"
+								<input id="post1" size="5" readonly=""
+									class="form-inline"> - <input id="post2"
 									size="5" readonly="" class="form-inline"> <input
 									onclick="openDaumPostcode()" type="button" value="우편번호찾기"
 									id="button" class="btn btn-default btn-xs"></td>
