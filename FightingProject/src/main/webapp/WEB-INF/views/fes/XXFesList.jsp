@@ -7,11 +7,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>계절별 축제 보기</title>
+<title>계절별 축제</title>
 <script type="text/javascript" src="../jquery-3.2.1.js"></script>
 <script type="text/javascript">
 	// Script to open and close sidebar
