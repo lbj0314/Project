@@ -27,5 +27,12 @@ public class MemberService {
 	public AdmDTO admLogin(HashMap<String, String> map) {
 		return dao.admLogin(map);
 	}
-
+	
+	public void comDelete(int comnum) {
+		dao.comDelete(comnum);
+	}
+	
+	public void entDelete(int entnum) {
+		dao.entDelete(entnum);
+	}
 }

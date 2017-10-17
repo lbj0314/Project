@@ -21,11 +21,11 @@
 </head>
 <body>
 
-	<jsp:include page="/login/loginForm.jsp" flush="true" /><br>
-	<jsp:include page="/include/top.jsp" flush="true" />
+	<jsp:include page="../login/loginForm.jsp" flush="true" /><br>
+	<jsp:include page="../include/top.jsp" flush="true" />
 	<jsp:include page="joinForm/joinForm.jsp" flush="true" />
 
-	<jsp:include page="/include/copyright.jsp" flush="true" />
+	<jsp:include page="../include/copyright.jsp" flush="true" />
 
 </body>
 </html>

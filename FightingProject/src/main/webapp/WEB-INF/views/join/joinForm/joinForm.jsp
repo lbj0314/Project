@@ -7,7 +7,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- DAUM 주소 라이브러리 시작 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="js_daumaddress/daum.js"></script>
+<script src="/test/js_daumaddress/daum.js"></script>
 <!-- DAUM 주소 라이브러리 끝 -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
@@ -308,7 +308,7 @@
 
 	});
 </script>
-<form action="JoinServlet" method="get">
+<form action="join" method="get">
 	<select id="category" name="category">
 		<option value="com">일반회원</option>
 		<option value="ent">기업회원</option>

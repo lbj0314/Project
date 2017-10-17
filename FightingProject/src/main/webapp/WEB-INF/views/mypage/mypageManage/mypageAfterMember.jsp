@@ -4,7 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:if test="${!empty sessionScope.comdto and !empty requestScope.commember }">
-	<form action="MemberManageDeleteServlet" method="get">
+	<form action="memberManageDelete" method="get">
+	<input type="hidden" name="category" value="com">
 		<table border='1'>
 			<tr>
 				<td>아이디</td>
@@ -58,12 +59,13 @@
 					type="text" readonly="" value="${sessionScope.comdto.compost2 }"></td>
 			</tr>
 			<input type="submit" value="탈퇴 시키기" class="btn btn-default">
-			<a href="MemberManageServlet" class="btn btn-default">회원 관리로 돌아가기</a>
+			<a href="memberManage" class="btn btn-default">회원 관리로 돌아가기</a>
 		</table>
 	</form>
 </c:if>
 <c:if test="${!empty sessionScope.entdto and !empty requestScope.entmember }">
-	<form action="MemberManageDeleteServlet" method="get">
+	<form action="memberManageDelete" method="get">
+	<input type="hidden" name="category" value="ent">
 		<table border='1'>
 			<tr>
 				<td>
@@ -113,6 +115,6 @@
 			</tr>
 		</table>
 		<input type="submit" value="탈퇴 시키기" class="btn btn-default">
-		<a href="ReviewManageServlet" class="btn btn-default">후기글 관리로 돌아가기</a>
+		<a href="reviewManage" class="btn btn-default">후기글 관리로 돌아가기</a>
 	</form>
 </c:if>

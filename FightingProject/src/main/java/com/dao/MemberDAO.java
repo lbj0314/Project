@@ -28,4 +28,11 @@ public class MemberDAO {
 		return template.selectOne("admLogin", map);
 	}
 	
+	public void comDelete(int comnum) {
+		template.delete("comDelete", comnum);
+	}
+	
+	public void entDelete(int entnum) {
+		template.delete("entDelete", entnum);
+	}
 }

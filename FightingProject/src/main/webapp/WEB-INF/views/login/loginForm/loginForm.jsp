@@ -38,7 +38,7 @@
 				placeholder="아이디를 입력하세요."> 비밀번호<input type="password"
 				name="passwd" class="form-control" placeholder="비밀번호를 입력하세요.">
 			<input type="submit" value="로그인" class="btn btn-default"> <a
-				href="JoinFormServlet" class="btn btn-default">회원가입</a>
+				href="joinForm" class="btn btn-default">회원가입</a>
 		</form>
 	</div>
 </c:if>
