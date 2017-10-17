@@ -8,7 +8,7 @@ $('.dropdown-toggle').dropdown()
 
 <div id="conta">
 
- <a class="btn dropdown-toggle btn-lg" href="/project/home.jsp">
+ <a class="btn dropdown-toggle btn-lg" href="/WEB-INF/views/home.jsp">
     홈으로
   </a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -70,7 +70,7 @@ $('.dropdown-toggle').dropdown()
   <ul class="dropdown-menu">
     <li><a href="#">후기</a><br></li>
     <li><a href="#">QnA</a><br></li>
-    <li><a href="/project/include/guide.jsp">사이트 이용법</a></li>
+    <li><a href="/WEB-INF/views/guide.jsp">사이트 이용법</a></li>
   </ul>
 </div>
 </div>

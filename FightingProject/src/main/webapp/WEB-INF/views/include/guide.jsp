@@ -117,8 +117,8 @@ to {
 
 </head>
 <body>
-	<jsp:include page="/login/loginForm.jsp" flush="true" /><br>
-	<jsp:include page="/include/top.jsp" flush="true" /><br>
+	<jsp:include page="/WEB-INF/views/login/loginForm.jsp" flush="true" /><br>
+	<jsp:include page="/WEB-INF/views/include/top.jsp" flush="true" /><br>
 
 	<br>
 	<br>
@@ -153,7 +153,6 @@ to {
 	<br>
 	<a href="/project/JoinFormServlet" target="_blank">기업 회원가입 바로가기</a>
 	<br>
-	<a href="">업체 등록 바로가기</a>
 	<br>
 	<br>
 	<br>
@@ -161,7 +160,7 @@ to {
 	<br>
 
 
-	<jsp:include page="/include/copyright.jsp" flush="true" />
+	<jsp:include page="/WEB-INF/views/include/copyright.jsp" flush="true" />
 
 </body>
 </html>
