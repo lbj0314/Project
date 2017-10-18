@@ -41,7 +41,7 @@ public class RestController extends HttpServlet  {
 	public String restList(@RequestParam HashMap<String,String> map,Model m,
 			String restForm) throws MyException {
 		
-		
+		m.addAttribute("restOrderForm", "restOrderForm");
 		
 		
 		if(map.get("curPage") == null) {

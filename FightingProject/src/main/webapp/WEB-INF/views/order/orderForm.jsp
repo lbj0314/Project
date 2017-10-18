@@ -26,10 +26,10 @@
 	<c:if test="${!empty tourOrderForm}">
 		<jsp:include page="../tour/tourList.jsp" flush="true" />
 	</c:if>
-	<c:if test="${}">
+	<c:if test="${!empty restOrderForm}">
 		<jsp:include page="../restaurant/restList.jsp" flush="true" />
 	</c:if>
-	<c:if test="${}">
+	<c:if test="${!empty stayOrderForm}">
 		<jsp:include page="../stay/stay_list.jsp" flush="true" />
 	</c:if>
 	<jsp:include page="../include/copyright.jsp" flush="true" />
