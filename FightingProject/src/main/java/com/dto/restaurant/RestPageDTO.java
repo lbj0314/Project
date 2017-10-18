@@ -2,6 +2,10 @@ package com.dto.restaurant;
 
 import java.util.List;
 
+import org.apache.ibatis.type.Alias;
+
+
+@Alias("RestPageDTO")
 public class RestPageDTO {
 	// 전체 데이터
 	private List<RestDTO> list;

@@ -2,6 +2,10 @@ package com.dto.tour;
 
 import java.util.List;
 
+import org.apache.ibatis.type.Alias;
+
+
+@Alias("TourPageDTO")
 public class TourPageDTO {
 	// 전체 데이터
 	private List<TourDTO> list;

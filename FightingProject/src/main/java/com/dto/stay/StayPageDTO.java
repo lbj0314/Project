@@ -2,8 +2,12 @@ package com.dto.stay;
 
 import java.util.List;
 
+import org.apache.ibatis.type.Alias;
+
 import com.dto.stay.StayDTO;
 
+
+@Alias("StayPageDTO")
 public class StayPageDTO {
 
 	private List<StayDTO> list;

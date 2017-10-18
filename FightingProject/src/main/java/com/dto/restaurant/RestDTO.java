@@ -1,5 +1,8 @@
 package com.dto.restaurant;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("RestDTO")
 public class RestDTO {
 	private int restNum;
 	private String restName;

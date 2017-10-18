@@ -120,7 +120,7 @@ public class TourController extends HttpServlet  {
 			e.printStackTrace();
 			throw new MyException("tourRetrieve 예외");
 		}
-		return "/test/tourList";
+		return "redirect:/tourList";
 		
 	}
 	
@@ -144,7 +144,7 @@ public class TourController extends HttpServlet  {
 		tdto.setAttSite(dto.getAttSite());
 		tdto.setAttContent(dto.getAttContent());
 		tdto.setAttName(dto.getAttName());
-		
+		tdto.setAttNum(dto.getAttNum());
 		tdto.setAttPhone(dto.getAttPhone());
 		tdto.setAttTitle(dto.getAttTitle());
 		if (!attImage.equals("")) {
@@ -203,6 +203,9 @@ public class TourController extends HttpServlet  {
 		
 		String[] attSplit = attImage.split("\\.");
 		String attImageClone = attSplit[0] + milliSecond + "." + attSplit[1];
+		String attSite = dto.getAttSite();
+		if(attSite.equals("")) attSite="홈페이지 주소 없음";
+		System.out.println("site!!"+attSite);
 		
 		System.out.println(attImageClone);
 		// contentType = item.getContentType(); //이미지가 아니면 업로드 불가능 처리를 할 수 있다. 나중에 구현
@@ -220,7 +223,7 @@ public class TourController extends HttpServlet  {
 		tdto.setAttType(dto.getAttType());
 		tdto.setAttAdultPrice(dto.getAttAdultPrice());
 		tdto.setAttKidPrice(dto.getAttKidPrice());
-		tdto.setAttSite(dto.getAttSite());
+		tdto.setAttSite(attSite);
 		tdto.setAttContent(dto.getAttContent());
 		tdto.setAttName(dto.getAttName());
 		tdto.setAttImage(attImage);

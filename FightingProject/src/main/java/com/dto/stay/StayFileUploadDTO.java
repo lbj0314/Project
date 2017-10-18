@@ -1,12 +1,12 @@
-package com.dto.tour;
+package com.dto.stay;
 
 import org.apache.ibatis.type.Alias;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 
 
-@Alias("TourFileUploadDTO")
-public class TourFileUploadDTO {
+@Alias("StayFileUploadDTO")
+public class StayFileUploadDTO {
 	
 	
 	private CommonsMultipartFile attImage;//
@@ -27,11 +27,11 @@ public class TourFileUploadDTO {
 
 	private String attAddr1;//
 	private String attAddr2;///
-	public TourFileUploadDTO() {
+	public StayFileUploadDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public TourFileUploadDTO(CommonsMultipartFile attImage, String attName, int attNum, String attPhone,
+	public StayFileUploadDTO(CommonsMultipartFile attImage, String attName, int attNum, String attPhone,
 			String attLocation, int attAdultPrice, int attKidPrice, String attTitle, String attContent, String attSite,
 			String attType, int entNum, String attAddr1, String attAddr2) {
 		super();

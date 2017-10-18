@@ -1,5 +1,8 @@
 package com.dto.tour;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("TourDTO")
 public class TourDTO {
 	private int attNum;
 	private String attName;

@@ -1,5 +1,8 @@
 package com.dto.stay;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("StayDTO")
 public class StayDTO {
 	private int stayNum;
 	private String stayName;
