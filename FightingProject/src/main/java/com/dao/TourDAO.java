@@ -8,6 +8,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dto.tour.TourDTO;
 import com.dto.tour.TourPageDTO;
@@ -84,8 +85,14 @@ public class TourDAO {
 			/// 좋아요
 			public void goodsTour(int num) {
 				template.update("goodsTour",num);
-			
+		
 			}
+			
+			public TourDTO updateGoodsByTourNum(int num) {
+				TourDTO dto = template.selectOne("updateGoodsByTourNum",num);
+				return dto;
+			}
+			
 	
 
 }

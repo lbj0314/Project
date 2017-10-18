@@ -32,9 +32,10 @@ public class TourService {
 		return dto;
 	}// end selectByNum
 
-	public void goodsTour(int num) {
+	@Transactional
+	public TourDTO goodsTour(int num) {
 			dao.goodsTour(num);
-
+			return dao.updateGoodsByTourNum(num);
 	}
 
 	public void deleteByTourNum(int num){

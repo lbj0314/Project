@@ -21,17 +21,17 @@
 	src="//netdna.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="/project/css/style.css">
+<link rel="stylesheet" type="text/css" href="/test/css/style.css">
 
 
 
 </head>
 <body>
-<jsp:include page="/login/loginForm.jsp" flush="true" /><br>
-<jsp:include page="/include/top.jsp" flush="true"/><br>
-<jsp:include page="/tour/mustgo100.jsp"/><br>
+<jsp:include page="/WEB-INF/views/login/loginForm.jsp" flush="true" /><br>
+<jsp:include page="/WEB-INF/views/include/top.jsp" flush="true"/><br>
+<jsp:include page="/WEB-INF/views/tour/mustgo100.jsp"/><br>
 
-<jsp:include page="/include/copyright.jsp" flush="true"/>
+<jsp:include page="/WEB-INF/views/include/copyright.jsp" flush="true"/>
 
 </body>
 </html>

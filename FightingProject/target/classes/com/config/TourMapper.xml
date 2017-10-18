@@ -79,6 +79,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	</select>
+	
+	<select id="updateGoodsByTourNum" resultType="TourDTO" parameterType="int">
+		select attNum,attName,attImage,attPhone,
+		attLocation,attAdultPrice,attKidPrice,attTitle,attContent,
+		to_char(attWriteDay,'YYYY/MM/dd') attWriteDay,attReadCnt,
+		attRepleCnt,attSite,attGoods,attType,entNum,attImageClone,attAddr1,attAddr2
+		from tour
+		where attNum = #{attNum}
+	</select>
+	
 
 
 	<select id="selectByTourNum" resultType="TourDTO" parameterType="int">

@@ -28,7 +28,7 @@
 					//ajax 지역별 통신
 					$.ajax({
 						type : "get",
-						url : "TourGoodServlet",
+						url : "loginX/tourGoods",
 						dataType : "text",
 						data : {
 							attNum : $("#attNum").val()
