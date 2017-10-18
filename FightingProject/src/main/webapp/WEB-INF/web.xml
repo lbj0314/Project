@@ -71,4 +71,52 @@ org.springframework.web.filter.CharacterEncodingFilter
 		<url-pattern>/do</url-pattern>
 
 	</servlet-mapping>
+	
+	
+	
+	
+	
+	<servlet>
+
+		<servlet-name>fileDown1</servlet-name>
+
+		<servlet-class>com.controller.stay.StayFileDownServlet</servlet-class>
+
+	</servlet>
+
+	
+
+	<servlet-mapping> 
+
+		<servlet-name>fileDown1</servlet-name>
+
+		<url-pattern>/do1</url-pattern>
+
+	</servlet-mapping>
+	
+	
+	
+	
+	
+	<servlet>
+
+		<servlet-name>fileDown2</servlet-name>
+
+		<servlet-class>com.controller.rest.RestFileDownServlet</servlet-class>
+
+	</servlet>
+
+	
+
+	<servlet-mapping> 
+
+		<servlet-name>fileDown2</servlet-name>
+
+		<url-pattern>/do2</url-pattern>
+
+	</servlet-mapping>
+	
+	
+	
+	
 </web-app>

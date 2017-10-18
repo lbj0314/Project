@@ -24,7 +24,7 @@
 			//ajax 지역별 통신
 			$.ajax({
 				type : "get",
-				url : "tourList",
+				url : "/test/tourList",
 				data : {
 					attLocation : $("#attlo").val(),
 					attType : $("#attty").val(),
@@ -51,7 +51,7 @@
 			//ajax 타입별 통신
 			$.ajax({
 				type : "get",
-				url : "tourList",
+				url : "/test/tourList",
 				data : {
 					attLocation : $("#attlo").val(),
 					attType : $("#attty").val(),
@@ -77,7 +77,7 @@
 			//ajax 검색종류별 통신
 			$.ajax({
 				type : "get",
-				url : "tourList",
+				url : "/test/tourList",
 				data : {
 					attLocation : $("#attlo").val(),
 					attType : $("#attty").val(),
@@ -107,7 +107,7 @@
 			//ajax 검색종류별 통신
 			$.ajax({
 				type : "get",
-				url : "tourList",
+				url : "/test/tourList",
 				data : {
 					attLocation : $("#attlo").val(),
 					attType : $("#attty").val(),

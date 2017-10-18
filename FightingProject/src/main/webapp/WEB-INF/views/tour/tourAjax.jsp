@@ -101,7 +101,7 @@
 	<tr>
 	<td colspan=8 align=center>
 	<c:if test="${!empty sessionScope.entLogin}">
-		<a href="/project/tour/tourwriteview.jsp" class="btn btn-primary">글쓰기</a>
+		<a href="/test/loginX/tourWrite" class="btn btn-primary">글쓰기</a>
 	</c:if>
 	
 	<td>

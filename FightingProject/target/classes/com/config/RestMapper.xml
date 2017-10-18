@@ -81,6 +81,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
+	<select id="updateGoodsByRestNum" resultType="RestDTO" parameterType="int">
+		select restNum,restName,restImage,restPhone,
+		restLocation,restPrice,restTitle,restContent,
+		to_char(restWriteDay,'YYYY/MM/dd') restWriteDay,restReadCnt,
+		restRepleCnt,restSite,restGoods,restType,entNum,restImageClone,restAddr1,restAddr2
+		from restaurant
+		where restNum = #{restNum}
+	</select>
+
+
+
 	<select id="selectByRestNum" resultType="RestDTO" parameterType="int">
 		select restNum,restName,restImage,restPhone,
 		restLocation,restPrice,restTitle,restContent,
@@ -129,6 +140,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		restAddr2=#{restAddr2}
 		where restNum = #{restNum}
 	</update>
+	
+	
+	
+	
 	<!-- <select id="TourList" resultType="int" parameterType="hashmap">
 		select *
 		from notice

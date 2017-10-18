@@ -10,7 +10,7 @@
 
 <!-- DAUM 주소 라이브러리 시작 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="/project/js_daumaddress/daum.js"></script>
+<script src="/test/js_daumaddress/daum.js"></script>
 <!-- DAUM 주소 라이브러리 끝 -->
 
 <%-- <c:if test="${!empty requestScope.goodok}">
@@ -30,7 +30,7 @@
 					//ajax 지역별 통신
 					$.ajax({
 						type : "get",
-						url : "RestGoodServlet",
+						url : "/test/loginX/restGoods",
 						dataType : "text",
 						data : {
 							restNum : $("#restNum").val()
@@ -60,7 +60,7 @@
 </script>
 
 
-<FORM action="RestUpdateServlet" method="post"
+<FORM action="/test/loginX/restUpdate" method="post"
 	enctype="multipart/form-data">
 	<input type="hidden" name="restNum" value="${restRetrieve.restNum}"
 		id="restNum"> <input type="hidden" name="restImage"
@@ -98,7 +98,7 @@
 								<button type="button" id="xxx" class="btn btn-default btn-xs">
 
 
-									<img src="/project/images/goods.png">
+									<img src="/test/images/goods.png">
 								</button>
 							</c:if>
 						</td>
@@ -129,7 +129,7 @@
 								<!-- 이미지 수정부 -->
 								<td rowspan="12"><input type="file" name="restImage"
 									id="imgInp"> <img id="imgview"
-									src="images/${restRetrieve.restImageClone}"
+									src="image/${restRetrieve.restImageClone}"
 									alt="사진을 바꾸시려면 눌러주세요." border="0" align="center" width="300" />
 
 									<br>현재파일:${restRetrieve.restImage}</td>
@@ -140,10 +140,10 @@
 							<tr>
 								<!-- 이미지 화면부 -->
 								<td rowspan="11"><img
-									src="images/${restRetrieve.restImageClone}" border="0"
+									src="image/${restRetrieve.restImageClone}" border="0"
 									align="center" width="300" /><br> <a
 									class="btn btn-primary"
-									href="/project/RestFileDownServlet?restImageClone=${restRetrieve.restImageClone}&restImage=${restRetrieve.restImage}">다운받기</a>
+									href="/test/do2?restImageClone=${restRetrieve.restImageClone}&restImage=${restRetrieve.restImage}">다운받기</a>
 
 								</td>
 						</c:if>
@@ -350,7 +350,7 @@
 
 	<!-- 구글맵 위치정보  -->
 	<br>
-	<jsp:include page="/include/restgooglemap.jsp" flush="true" />
+	<jsp:include page="/WEB-INF/views/include/restgooglemap.jsp" flush="true" />
 
 
 	<h3 align=center>위치</h3>
@@ -377,12 +377,12 @@
 		</c:if>
 		<c:if
 			test="${!empty sessionScope.admLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == restRetrieve.entNum))}">
-			<a href="RestDeleteServlet?restNum=${restRetrieve.restNum}"
+			<a href="/test/loginX/restDelete?restNum=${restRetrieve.restNum}"
 				class="btn btn-default">삭제 하기</a>
 		</c:if>
 
 
-		<a href="RestListServlet" class="btn btn-default">목록으로</a>
+		<a href="/test/restList" class="btn btn-default">목록으로</a>
 
 	</div>
 

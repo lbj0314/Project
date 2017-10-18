@@ -43,7 +43,7 @@
 									<table style='padding: 15px'>
 										<tr>
 											<td><a href="StayBoardRetrieveServlet?stayNum=${xxx.stayNum}">
-													<img src="images/${xxx.stayImageClone}" border="0"
+													<img src="image/${xxx.stayImageClone}" border="0"
 													align="center" width="200">
 
 											</a></td>
@@ -93,14 +93,14 @@
 	</tr>
 	<c:if test="${staylist.getList().size()!=0}">
 		<tr>
-			<td colspan="5"><jsp:include page="/stay/stay_boardpage.jsp"
+			<td colspan="5"><jsp:include page="/WEB-INF/views/stay/stay_boardpage.jsp"
 					flush="true" /></td>
 		</tr>
 	</c:if>
 	<tr>
 	<td colspan=8 align=center>
 	<c:if test="${!empty sessionScope.entLogin}">
-		<a href="/project/stay/stay_writeview.jsp" class="btn btn-primary">글쓰기</a>
+		<a href="/test/loginX/stayWrite" class="btn btn-primary">글쓰기</a>
 	</c:if>
 	
 	<td>

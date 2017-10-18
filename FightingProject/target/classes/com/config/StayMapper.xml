@@ -3,6 +3,17 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.StayMapper">
+	
+	<select id="updateGoodsStaySelectByNum" resultType="StayDTO" parameterType="int">
+		select stayNum,stayName,stayImage,stayPhone,
+		stayLocation,stayAdultPrice,stayKidPrice,stayTitle,stayGrade,stayContent,
+		to_char(stayWriteDay,'YYYY/MM/dd') stayWriteDay,stayReadCnt,
+		stayRepleCnt,staySite,stayGoods,stayType,entNum,stayImageClone,stayAddr1,stayAddr2
+		from stay
+		where stayNum = #{stayNum}
+	</select>
+	
+
 	<select id="stayTotalCount" resultType="int" parameterType="hashmap">
 		select count(*)
 		from stay 

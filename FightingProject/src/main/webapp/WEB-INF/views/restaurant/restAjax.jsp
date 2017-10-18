@@ -93,14 +93,14 @@
 	</tr>
 	<c:if test="${restlist.getList().size()!=0}">
 		<tr>
-			<td colspan="5"><jsp:include page="/restaurant/restpage.jsp"
+			<td colspan="5"><jsp:include page="/WEB-INF/views/restaurant/restpage.jsp"
 					flush="true" /></td>
 		</tr>
 	</c:if>
 	<tr>
 	<td colspan=8 align=center>
 	<c:if test="${!empty sessionScope.entLogin}">
-		<a href="/project/restaurant/restwriteview.jsp" class="btn btn-primary">글쓰기</a>
+		<a href="/test/loginX/restWriteUI" class="btn btn-primary">글쓰기</a>
 	</c:if>
 	
 	<td>

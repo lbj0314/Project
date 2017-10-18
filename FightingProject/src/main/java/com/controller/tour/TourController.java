@@ -254,8 +254,10 @@ public class TourController extends HttpServlet  {
 		String cnt=null;
 		
 		try {
+		
 			TourDTO dto = service.goodsTour(attNum);
 			cnt = String.valueOf(dto.getAttGoods());
+			System.out.println("cnt!!"+cnt);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new MyException("tourGoods예외");

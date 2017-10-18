@@ -9,112 +9,112 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 public class StayFileUploadDTO {
 	
 	
-	private CommonsMultipartFile attImage;//
+	private CommonsMultipartFile stayImage;//
 	
-	private String attName; //
-	private int attNum;
-	private String attPhone;//
-	private String attLocation; //
-	private int attAdultPrice;//
-	private int attKidPrice;//
-	private String attTitle; //
-	private String attContent;//
+	private String stayName; //
+	private int stayNum;
+	private String stayPhone;//
+	private String stayLocation; //
+	private int stayAdultPrice;//
+	private int stayKidPrice;//
+	private String stayTitle; //
+	private String stayContent;//
 	
-	private String attSite;//
+	private String staySite;//
 	
-	private String attType; //
+	private String stayType; //
 	private int entNum; //
 
-	private String attAddr1;//
-	private String attAddr2;///
+	private String stayAddr1;//
+	private String stayAddr2;///
 	public StayFileUploadDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public StayFileUploadDTO(CommonsMultipartFile attImage, String attName, int attNum, String attPhone,
-			String attLocation, int attAdultPrice, int attKidPrice, String attTitle, String attContent, String attSite,
-			String attType, int entNum, String attAddr1, String attAddr2) {
+	public StayFileUploadDTO(CommonsMultipartFile stayImage, String stayName, int stayNum, String stayPhone,
+			String stayLocation, int stayAdultPrice, int stayKidPrice, String stayTitle, String stayContent,
+			String staySite, String stayType, int entNum, String stayAddr1, String stayAddr2) {
 		super();
-		this.attImage = attImage;
-		this.attName = attName;
-		this.attNum = attNum;
-		this.attPhone = attPhone;
-		this.attLocation = attLocation;
-		this.attAdultPrice = attAdultPrice;
-		this.attKidPrice = attKidPrice;
-		this.attTitle = attTitle;
-		this.attContent = attContent;
-		this.attSite = attSite;
-		this.attType = attType;
+		this.stayImage = stayImage;
+		this.stayName = stayName;
+		this.stayNum = stayNum;
+		this.stayPhone = stayPhone;
+		this.stayLocation = stayLocation;
+		this.stayAdultPrice = stayAdultPrice;
+		this.stayKidPrice = stayKidPrice;
+		this.stayTitle = stayTitle;
+		this.stayContent = stayContent;
+		this.staySite = staySite;
+		this.stayType = stayType;
 		this.entNum = entNum;
-		this.attAddr1 = attAddr1;
-		this.attAddr2 = attAddr2;
+		this.stayAddr1 = stayAddr1;
+		this.stayAddr2 = stayAddr2;
 	}
-	public CommonsMultipartFile getAttImage() {
-		return attImage;
+	public CommonsMultipartFile getStayImage() {
+		return stayImage;
 	}
-	public void setAttImage(CommonsMultipartFile attImage) {
-		this.attImage = attImage;
+	public void setStayImage(CommonsMultipartFile stayImage) {
+		this.stayImage = stayImage;
 	}
-	public String getAttName() {
-		return attName;
+	public String getStayName() {
+		return stayName;
 	}
-	public void setAttName(String attName) {
-		this.attName = attName;
+	public void setStayName(String stayName) {
+		this.stayName = stayName;
 	}
-	public int getAttNum() {
-		return attNum;
+	public int getStayNum() {
+		return stayNum;
 	}
-	public void setAttNum(int attNum) {
-		this.attNum = attNum;
+	public void setStayNum(int stayNum) {
+		this.stayNum = stayNum;
 	}
-	public String getAttPhone() {
-		return attPhone;
+	public String getStayPhone() {
+		return stayPhone;
 	}
-	public void setAttPhone(String attPhone) {
-		this.attPhone = attPhone;
+	public void setStayPhone(String stayPhone) {
+		this.stayPhone = stayPhone;
 	}
-	public String getAttLocation() {
-		return attLocation;
+	public String getStayLocation() {
+		return stayLocation;
 	}
-	public void setAttLocation(String attLocation) {
-		this.attLocation = attLocation;
+	public void setStayLocation(String stayLocation) {
+		this.stayLocation = stayLocation;
 	}
-	public int getAttAdultPrice() {
-		return attAdultPrice;
+	public int getStayAdultPrice() {
+		return stayAdultPrice;
 	}
-	public void setAttAdultPrice(int attAdultPrice) {
-		this.attAdultPrice = attAdultPrice;
+	public void setStayAdultPrice(int stayAdultPrice) {
+		this.stayAdultPrice = stayAdultPrice;
 	}
-	public int getAttKidPrice() {
-		return attKidPrice;
+	public int getStayKidPrice() {
+		return stayKidPrice;
 	}
-	public void setAttKidPrice(int attKidPrice) {
-		this.attKidPrice = attKidPrice;
+	public void setStayKidPrice(int stayKidPrice) {
+		this.stayKidPrice = stayKidPrice;
 	}
-	public String getAttTitle() {
-		return attTitle;
+	public String getStayTitle() {
+		return stayTitle;
 	}
-	public void setAttTitle(String attTitle) {
-		this.attTitle = attTitle;
+	public void setStayTitle(String stayTitle) {
+		this.stayTitle = stayTitle;
 	}
-	public String getAttContent() {
-		return attContent;
+	public String getStayContent() {
+		return stayContent;
 	}
-	public void setAttContent(String attContent) {
-		this.attContent = attContent;
+	public void setStayContent(String stayContent) {
+		this.stayContent = stayContent;
 	}
-	public String getAttSite() {
-		return attSite;
+	public String getStaySite() {
+		return staySite;
 	}
-	public void setAttSite(String attSite) {
-		this.attSite = attSite;
+	public void setStaySite(String staySite) {
+		this.staySite = staySite;
 	}
-	public String getAttType() {
-		return attType;
+	public String getStayType() {
+		return stayType;
 	}
-	public void setAttType(String attType) {
-		this.attType = attType;
+	public void setStayType(String stayType) {
+		this.stayType = stayType;
 	}
 	public int getEntNum() {
 		return entNum;
@@ -122,25 +122,25 @@ public class StayFileUploadDTO {
 	public void setEntNum(int entNum) {
 		this.entNum = entNum;
 	}
-	public String getAttAddr1() {
-		return attAddr1;
+	public String getStayAddr1() {
+		return stayAddr1;
 	}
-	public void setAttAddr1(String attAddr1) {
-		this.attAddr1 = attAddr1;
+	public void setStayAddr1(String stayAddr1) {
+		this.stayAddr1 = stayAddr1;
 	}
-	public String getAttAddr2() {
-		return attAddr2;
+	public String getStayAddr2() {
+		return stayAddr2;
 	}
-	public void setAttAddr2(String attAddr2) {
-		this.attAddr2 = attAddr2;
+	public void setStayAddr2(String stayAddr2) {
+		this.stayAddr2 = stayAddr2;
 	}
 	@Override
 	public String toString() {
-		return "TourFileUploadDTO [attImage=" + attImage + ", attName=" + attName + ", attNum=" + attNum + ", attPhone="
-				+ attPhone + ", attLocation=" + attLocation + ", attAdultPrice=" + attAdultPrice + ", attKidPrice="
-				+ attKidPrice + ", attTitle=" + attTitle + ", attContent=" + attContent + ", attSite=" + attSite
-				+ ", attType=" + attType + ", entNum=" + entNum + ", attAddr1=" + attAddr1 + ", attAddr2=" + attAddr2
-				+ "]";
+		return "StayFileUploadDTO [stayImage=" + stayImage + ", stayName=" + stayName + ", stayNum=" + stayNum
+				+ ", stayPhone=" + stayPhone + ", stayLocation=" + stayLocation + ", stayAdultPrice=" + stayAdultPrice
+				+ ", stayKidPrice=" + stayKidPrice + ", stayTitle=" + stayTitle + ", stayContent=" + stayContent
+				+ ", staySite=" + staySite + ", stayType=" + stayType + ", entNum=" + entNum + ", stayAddr1="
+				+ stayAddr1 + ", stayAddr2=" + stayAddr2 + "]";
 	}
 	
 	

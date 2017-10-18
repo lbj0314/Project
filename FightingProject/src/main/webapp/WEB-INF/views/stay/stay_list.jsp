@@ -15,7 +15,7 @@
 			//ajax 지역별 통신
 			$.ajax({
 				type : "get",
-				url : "StayBoardListServlet",
+				url : "/test/stayList",
 				data : {
 					stayLocation : $("#staylo").val(),
 					stayType : $("#stayty").val(),
@@ -37,7 +37,7 @@
 			//ajax 타입별 통신
 			$.ajax({
 				type : "get",
-				url : "StayBoardListServlet",
+				url : "/test/stayList",
 				data : {
 					stayType : $("#stayty").val()
 				},
@@ -60,7 +60,7 @@
 			//ajax 검색종류별 통신
 			$.ajax({
 				type : "get",
-				url : "StayBoardListServlet",
+				url : "/test/stayList",
 				data : {
 					staySearchName : $("#staySearch").val()
 				},
@@ -87,7 +87,7 @@
 			//ajax 검색종류별 통신
 			$.ajax({
 				type : "get",
-				url : "StayBoardListServlet",
+				url : "/test/stayList",
 				data : {
 					sortStay : $('#staySo').val()
 
@@ -121,7 +121,7 @@
 	});
 </script>
 
-<form action="StayBoardListServlet" id="aaa">
+<form action="/test/stayList" id="aaa">
 	<input type="hidden" name="btngo" value="1" id="btngo">
 	
 	<div class="form-inline" id="conta">
@@ -264,14 +264,14 @@
 	
 	<c:if test="${staylist.getList().size()!=0}">
 		<tr>
-			<td colspan="5"><jsp:include page="/stay/stay_boardpage.jsp"
+			<td colspan="5"><jsp:include page="/WEB-INF/views/stay/stay_boardpage.jsp"
 					flush="true" /></td>
 		</tr>
 	</c:if> 
 	<tr>
 	<td colspan=8 align=center>
 	<c:if test="${!empty sessionScope.entLogin}">
-		<a href="/project/stay/stay_writeview.jsp" class="btn btn-primary">글쓰기</a>
+		<a href="/test/stayWrite" class="btn btn-primary">글쓰기</a>
 	</c:if>
 	
 	<td>

@@ -5,10 +5,10 @@
 
  	<!-- DAUM 주소 라이브러리 시작 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="/project/js_daumaddress/daum.js"></script>
+<script src="/test/js_daumaddress/daum.js"></script>
 <!-- DAUM 주소 라이브러리 끝 -->
 
-<form action="/project/StayWriteServlet" enctype="multipart/form-data"
+<form action="/test/loginX/stayWrite" enctype="multipart/form-data"
 	method="post">
 	<input type="hidden" name="entNum"
 		value="${sessionScope.entLogin.entnum}">

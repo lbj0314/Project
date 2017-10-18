@@ -10,7 +10,7 @@
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/project/css/style.css">
+<link rel="stylesheet" type="text/css" href="/test/css/style.css">
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script type="text/javascript">
@@ -37,18 +37,18 @@
 </head>
 <body>
 	<div id="conright">
-		<jsp:include page="/login/loginForm.jsp" flush="true" /><br>
+		<jsp:include page="/WEB-INF/views/login/loginForm.jsp" flush="true" /><br>
 
 	</div>
 
-	<jsp:include page="/include/top.jsp" flush="true" /><br>
+	<jsp:include page="/WEB-INF/views/include/top.jsp" flush="true" /><br>
 
 
 
-	<jsp:include page="/restaurant/restList.jsp" flush="true" /><br>
+	<jsp:include page="/WEB-INF/views/restaurant/restList.jsp" flush="true" /><br>
 	
 
-	<jsp:include page="/include/copyright.jsp" flush="true" /><br>
+	<jsp:include page="/WEB-INF/views/include/copyright.jsp" flush="true" /><br>
 
 
 </body>

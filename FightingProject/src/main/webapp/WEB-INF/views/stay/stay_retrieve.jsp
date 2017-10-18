@@ -8,7 +8,7 @@
 
 <!-- DAUM 주소 라이브러리 시작 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="/project/js_daumaddress/daum.js"></script>
+<script src="/test/js_daumaddress/daum.js"></script>
 <!-- DAUM 주소 라이브러리 끝 -->
 
 <%-- <c:if test="${!empty requestScope.goodok}">
@@ -28,7 +28,7 @@
 					//ajax 지역별 통신
 					$.ajax({
 						type : "get",
-						url : "StayGoodServlet",
+						url : "loginX/stayGoods",
 						dataType : "text",
 						data : {
 							stayNum : $("#stayNum").val()
@@ -58,7 +58,7 @@
 </script>
 
 
-<FORM action="StayUpdateServlet" method="post"
+<FORM action="/test/loginX/stayUpdate" method="post"
 	enctype="multipart/form-data">
 	<input type="hidden" name="stayNum" value="${stayRetrieve.stayNum}"
 		id="stayNum"> <input type="hidden" name="stayImage"
@@ -96,7 +96,7 @@
 								<button type="button" id="xxx" class="btn btn-default btn-xs">
 
 
-									<img src="/project/images/goods.png">
+									<img src="/test/images/goods.png">
 								</button>
 							</c:if>
 						</td>
@@ -127,7 +127,7 @@
 								<!-- 이미지 수정부 -->
 								<td rowspan="14"><input type="file" name="stayImage"
 									id="imgInp"> <img id="imgview"
-									src="images/${stayRetrieve.stayImageClone}"
+									src="image/${stayRetrieve.stayImageClone}"
 									alt="사진을 바꾸시려면 눌러주세요." border="0" align="center" width="300" />
 
 									<br>현재파일:${stayRetrieve.stayImage}</td>
@@ -138,10 +138,10 @@
 							<tr>
 								<!-- 이미지 화면부 -->
 								<td rowspan="13"><img
-									src="images/${stayRetrieve.stayImageClone}" border="0"
+									src="image/${stayRetrieve.stayImageClone}" border="0"
 									align="center" width="300" /><br> <a
 									class="btn btn-primary"
-									href="/project/StayFileDownServlet?stayImageClone=${stayRetrieve.stayImageClone}&stayImage=${stayRetrieve.stayImage}">다운받기</a>
+									href="/test/do1?stayImageClone=${stayRetrieve.stayImageClone}&stayImage=${stayRetrieve.stayImage}">다운받기</a>
 
 								</td>
 						</c:if>
@@ -363,7 +363,7 @@
 
 	<!-- 구글맵 위치정보  -->
 	<br>
-	<jsp:include page="/include/staygooglemap.jsp" flush="true" />
+	<jsp:include page="/WEB-INF/views/include/staygooglemap.jsp" flush="true" />
 
 
 	<h3 align=center>위치</h3>
@@ -391,12 +391,12 @@
 		</c:if>
 		<c:if
 			test="${!empty sessionScope.admLogin || (!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == stayRetrieve.entNum))}">
-			<a href="StayDeleteServlet?stayNum=${stayRetrieve.stayNum}"
+			<a href="loginX/stayDelete?stayNum=${stayRetrieve.stayNum}"
 				class="btn btn-default">삭제 하기</a>
 		</c:if>
 
 
-		<a href="StayBoardListServlet" class="btn btn-default">목록으로</a>
+		<a href="stayList" class="btn btn-default">목록으로</a>
 
 	</div>
 </FORM>

@@ -9,112 +9,104 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 public class RestFileUploadDTO {
 	
 	
-	private CommonsMultipartFile attImage;//
+	private CommonsMultipartFile restImage;//
 	
-	private String attName; //
-	private int attNum;
-	private String attPhone;//
-	private String attLocation; //
-	private int attAdultPrice;//
-	private int attKidPrice;//
-	private String attTitle; //
-	private String attContent;//
+	private String restName; //
+	private int restNum;
+	private String restPhone;//
+	private String restLocation; //
+	private int restPrice;//
+	private String restTitle; //
+	private String restContent;//
 	
-	private String attSite;//
+	private String restSite;//
 	
-	private String attType; //
+	private String restType; //
 	private int entNum; //
 
-	private String attAddr1;//
-	private String attAddr2;///
+	private String restAddr1;//
+	private String restAddr2;///
 	public RestFileUploadDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public RestFileUploadDTO(CommonsMultipartFile attImage, String attName, int attNum, String attPhone,
-			String attLocation, int attAdultPrice, int attKidPrice, String attTitle, String attContent, String attSite,
-			String attType, int entNum, String attAddr1, String attAddr2) {
+	public RestFileUploadDTO(CommonsMultipartFile restImage, String restName, int restNum, String restPhone,
+			String restLocation, int restPrice, String restTitle, String restContent, String restSite, String restType,
+			int entNum, String restAddr1, String restAddr2) {
 		super();
-		this.attImage = attImage;
-		this.attName = attName;
-		this.attNum = attNum;
-		this.attPhone = attPhone;
-		this.attLocation = attLocation;
-		this.attAdultPrice = attAdultPrice;
-		this.attKidPrice = attKidPrice;
-		this.attTitle = attTitle;
-		this.attContent = attContent;
-		this.attSite = attSite;
-		this.attType = attType;
+		this.restImage = restImage;
+		this.restName = restName;
+		this.restNum = restNum;
+		this.restPhone = restPhone;
+		this.restLocation = restLocation;
+		this.restPrice = restPrice;
+		this.restTitle = restTitle;
+		this.restContent = restContent;
+		this.restSite = restSite;
+		this.restType = restType;
 		this.entNum = entNum;
-		this.attAddr1 = attAddr1;
-		this.attAddr2 = attAddr2;
+		this.restAddr1 = restAddr1;
+		this.restAddr2 = restAddr2;
 	}
-	public CommonsMultipartFile getAttImage() {
-		return attImage;
+	public CommonsMultipartFile getRestImage() {
+		return restImage;
 	}
-	public void setAttImage(CommonsMultipartFile attImage) {
-		this.attImage = attImage;
+	public void setRestImage(CommonsMultipartFile restImage) {
+		this.restImage = restImage;
 	}
-	public String getAttName() {
-		return attName;
+	public String getRestName() {
+		return restName;
 	}
-	public void setAttName(String attName) {
-		this.attName = attName;
+	public void setRestName(String restName) {
+		this.restName = restName;
 	}
-	public int getAttNum() {
-		return attNum;
+	public int getRestNum() {
+		return restNum;
 	}
-	public void setAttNum(int attNum) {
-		this.attNum = attNum;
+	public void setRestNum(int restNum) {
+		this.restNum = restNum;
 	}
-	public String getAttPhone() {
-		return attPhone;
+	public String getRestPhone() {
+		return restPhone;
 	}
-	public void setAttPhone(String attPhone) {
-		this.attPhone = attPhone;
+	public void setRestPhone(String restPhone) {
+		this.restPhone = restPhone;
 	}
-	public String getAttLocation() {
-		return attLocation;
+	public String getRestLocation() {
+		return restLocation;
 	}
-	public void setAttLocation(String attLocation) {
-		this.attLocation = attLocation;
+	public void setRestLocation(String restLocation) {
+		this.restLocation = restLocation;
 	}
-	public int getAttAdultPrice() {
-		return attAdultPrice;
+	public int getRestPrice() {
+		return restPrice;
 	}
-	public void setAttAdultPrice(int attAdultPrice) {
-		this.attAdultPrice = attAdultPrice;
+	public void setRestPrice(int restPrice) {
+		this.restPrice = restPrice;
 	}
-	public int getAttKidPrice() {
-		return attKidPrice;
+	public String getRestTitle() {
+		return restTitle;
 	}
-	public void setAttKidPrice(int attKidPrice) {
-		this.attKidPrice = attKidPrice;
+	public void setRestTitle(String restTitle) {
+		this.restTitle = restTitle;
 	}
-	public String getAttTitle() {
-		return attTitle;
+	public String getRestContent() {
+		return restContent;
 	}
-	public void setAttTitle(String attTitle) {
-		this.attTitle = attTitle;
+	public void setRestContent(String restContent) {
+		this.restContent = restContent;
 	}
-	public String getAttContent() {
-		return attContent;
+	public String getRestSite() {
+		return restSite;
 	}
-	public void setAttContent(String attContent) {
-		this.attContent = attContent;
+	public void setRestSite(String restSite) {
+		this.restSite = restSite;
 	}
-	public String getAttSite() {
-		return attSite;
+	public String getRestType() {
+		return restType;
 	}
-	public void setAttSite(String attSite) {
-		this.attSite = attSite;
-	}
-	public String getAttType() {
-		return attType;
-	}
-	public void setAttType(String attType) {
-		this.attType = attType;
+	public void setRestType(String restType) {
+		this.restType = restType;
 	}
 	public int getEntNum() {
 		return entNum;
@@ -122,29 +114,25 @@ public class RestFileUploadDTO {
 	public void setEntNum(int entNum) {
 		this.entNum = entNum;
 	}
-	public String getAttAddr1() {
-		return attAddr1;
+	public String getRestAddr1() {
+		return restAddr1;
 	}
-	public void setAttAddr1(String attAddr1) {
-		this.attAddr1 = attAddr1;
+	public void setRestAddr1(String restAddr1) {
+		this.restAddr1 = restAddr1;
 	}
-	public String getAttAddr2() {
-		return attAddr2;
+	public String getRestAddr2() {
+		return restAddr2;
 	}
-	public void setAttAddr2(String attAddr2) {
-		this.attAddr2 = attAddr2;
+	public void setRestAddr2(String restAddr2) {
+		this.restAddr2 = restAddr2;
 	}
 	@Override
 	public String toString() {
-		return "TourFileUploadDTO [attImage=" + attImage + ", attName=" + attName + ", attNum=" + attNum + ", attPhone="
-				+ attPhone + ", attLocation=" + attLocation + ", attAdultPrice=" + attAdultPrice + ", attKidPrice="
-				+ attKidPrice + ", attTitle=" + attTitle + ", attContent=" + attContent + ", attSite=" + attSite
-				+ ", attType=" + attType + ", entNum=" + entNum + ", attAddr1=" + attAddr1 + ", attAddr2=" + attAddr2
-				+ "]";
+		return "RestFileUploadDTO [restImage=" + restImage + ", restName=" + restName + ", restNum=" + restNum
+				+ ", restPhone=" + restPhone + ", restLocation=" + restLocation + ", restPrice=" + restPrice
+				+ ", restTitle=" + restTitle + ", restContent=" + restContent + ", restSite=" + restSite + ", restType="
+				+ restType + ", entNum=" + entNum + ", restAddr1=" + restAddr1 + ", restAddr2=" + restAddr2 + "]";
 	}
-	
-	
-	
 
 	
 	

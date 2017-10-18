@@ -25,7 +25,7 @@
 			//ajax 지역별 통신
 			$.ajax({
 				type : "get",
-				url : "RestListServlet",
+				url : "/test/restList",
 				data : {
 					restLocation : $("#restlo").val(),
 					restType : $("#restty").val(),
@@ -53,7 +53,7 @@
 			//ajax 타입별 통신
 			$.ajax({
 				type : "get",
-				url : "RestListServlet",
+				url : "/test/restList",
 				data : {
 					restLocation : $("#restlo").val(),
 					restType : $("#restty").val(),
@@ -79,7 +79,7 @@
 			//ajax 검색종류별 통신
 			$.ajax({
 				type : "get",
-				url : "RestListServlet",
+				url : "/test/restList",
 				data : {
 					restLocation : $("#restlo").val(),
 					restType : $("#restty").val(),
@@ -109,7 +109,7 @@
 			//ajax 검색종류별 통신
 			$.ajax({
 				type : "get",
-				url : "RestListServlet",
+				url : "/test/restList",
 				data : {
 					restLocation : $("#restlo").val(),
 					restType : $("#restty").val(),
@@ -148,7 +148,7 @@
 	});
 </script>
 
-<form action="RestListServlet" id="aaa">
+<form action="/test/restList" id="aaa">
 	<input type="hidden" name="btngo" value="1" id="btngo">
 	
 	<div class="form-inline" id="conta">
@@ -237,8 +237,8 @@
 								<td>
 									<table style='padding: 15px'>
 										<tr>
-											<td><a href="RestRetrieveServlet?restNum=${xxx.restNum}">
-													<img src="images/${xxx.restImageClone}" border="0"
+											<td><a href="/test/restRetrieve?restNum=${xxx.restNum}">
+													<img src="image/${xxx.restImageClone}" border="0"
 													align="center" width="200">
 
 											</a></td>
@@ -249,7 +249,7 @@
 										</tr>
 										<tr>
 											<td class="td_default" align="center"><a class="a_black"
-												href="RestRetrieveServlet?restNum=${xxx.restNum}">
+												href="/test/restRetrieve?restNum=${xxx.restNum}">
 													업소제목:${xxx.restTitle}<br>
 											</a></td>
 
@@ -288,14 +288,14 @@
 	</tr>
 	<c:if test="${restlist.getList().size()!=0}">
 		<tr>
-			<td colspan="5"><jsp:include page="/restaurant/restpage.jsp"
+			<td colspan="5"><jsp:include page="/WEB-INF/views/restaurant/restpage.jsp"
 					flush="true" /></td>
 		</tr>
 	</c:if>
 	<tr>
 	<td colspan=8 align=center>
 	<c:if test="${!empty sessionScope.entLogin}">
-		<a href="/project/restaurant/restwriteview.jsp" class="btn btn-primary">글쓰기</a>
+		<a href="/test/loginX/restWriteUI" class="btn btn-primary">글쓰기</a>
 	</c:if>
 	
 	<td>
