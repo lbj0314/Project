@@ -61,8 +61,5 @@
 	<jsp:include page="/WEB-INF/views/include/copyright.jsp" flush="true" />
 	
 	
-	
-	
-	
 </body>
 </html>

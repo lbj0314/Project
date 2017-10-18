@@ -17,30 +17,20 @@ public class MesCont {
 		this.messages = messages;
 	}
 
-	@RequestMapping("/kr")
+	@RequestMapping("/MesCont")
 	public String kr() {
-		String message = this.messages.getMessage("spring.mesg", 
-				new String[] { "마음에 드는 숙박, 음식점, 관광명소를 선택하신 후", "자유롭게 패키지를 설정하실 수 있습니다" }, "Required",
-				Locale.KOREA);
+		String message = this.messages.getMessage("spring.mesg",
+				new String[] { "마음에 드는 숙박, 음식점, 관광명소를 선택하신 후", "자유롭게 패키지를 설정하실 수 있습니다" }, "Required", Locale.KOREA);
 		System.out.println(message);
-		return "guide";
-	}
-	
-	@RequestMapping("/us")
-	public String us() {
-		String message2 = this.messages.getMessage("spring.mesg", 
+		
+		String message2 = this.messages.getMessage("spring.mesg",
 				new String[] { "you can make", "own your own package" }, "Required", Locale.US);
 		System.out.println(message2);
-		return "guide";
-	}
-	
-	@RequestMapping("/ch")
-	public String ch() {
-		String message2 = this.messages.getMessage("spring.mesg", 
-				new String[] { "糖醋猪肉", "我想吃" }, "Required", Locale.CHINA);
-		System.out.println(message2);
-		return "guide";
-	}
-	
+		
+		String message3 = this.messages.getMessage("spring.mesg", new String[] { "糖醋猪肉", "我想吃" }, "Required",
+				Locale.CHINA);
+		System.out.println(message3);
+		return "home";
 
+	}
 }
