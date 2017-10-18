@@ -378,7 +378,7 @@
 
 		<c:if test="${!empty sessionScope.comLogin}">
 
-			<a href="orderFormServlet?stayNum=${stayRetrieve.stayNum}"
+			<a href="packageOrderForm?stayNum=${stayRetrieve.stayNum}"
 				class="btn btn-default">패키지에 추가하기</a>
 	&nbsp;&nbsp;
 </c:if>

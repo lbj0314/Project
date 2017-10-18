@@ -365,8 +365,8 @@
 
 		<c:if test="${!empty sessionScope.comLogin}">
 
-			<a href="orderFormServlet?restNum=${restRetrieve.restNum}" class="btn btn-default">패키지에 추가하기</a>
-	&nbsp;&nbsp;
+			<a href="packageOrderForm?restNum=${restRetrieve.restNum}" class="btn btn-default">패키지에 추가하기</a>
+	&nbsp;&nbsp;	
 </c:if>
 
 		<c:if

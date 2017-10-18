@@ -31,27 +31,21 @@ import com.service.TourService;
 @Controller
 public class TourController extends HttpServlet  {
 	
-	@Autowired
+	@Autowired 
 	TourService service;
 	
 	
 	
 	@RequestMapping("/tourList")
-	public String tourList(@RequestParam HashMap<String,String> map,Model m) throws MyException {
+	public String tourList(@RequestParam HashMap<String,String> map,Model m,
+			String tourForm) throws MyException {
 		
-		
-		
-		System.out.println(map.get("searchName"));
-		System.out.println(map.get("searchValue"));
-		System.out.println(map.get("attLocation"));
-		System.out.println(map.get("attType"));
-		System.out.println(map.get("sortAtt"));
-		System.out.println("cc");
-		System.out.println("!!!!"+map.get("curPage"));
+		m.addAttribute("tourOrderForm", "tourOrderForm");
+	
 		if(map.get("curPage") == null) {
 			map.put("curPage", "1");
 		}
-		System.out.println(map.get("curPage"));
+
 		
 		try {
 			TourPageDTO list=service.page(map);
@@ -75,6 +69,8 @@ public class TourController extends HttpServlet  {
 			
 			
 			
+		}else if(tourForm!=null) {
+			return "order/orderForm";
 		}
 		
 		return "tour/tourListView";

@@ -351,7 +351,7 @@
 	<div id="conta">
 
 		<c:if test="${!empty sessionScope.comLogin}">
-			<a href="orderFormServlet?attNum=${tourRetrieve.attNum}"
+			<a href="packageOrderForm?attNum=${tourRetrieve.attNum}"
 				class="btn btn-default">패키지에 추가하기</a>
 			
 	&nbsp;&nbsp;
