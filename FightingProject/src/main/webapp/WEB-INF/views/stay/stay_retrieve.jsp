@@ -50,10 +50,14 @@
 					});
 
 				});
-				$("#staylo > option[value=${stayRetrieve.stayLocation}").attr(
+				
+				$("#staylo > option[value=${stayRetrieve.stayLocation}]").attr(
 						"selected", "true");
-				$("#stayty > option[value=${stayRetrieve.stayType}").attr(
+				$("#stayty > option[value=${stayRetrieve.stayType}]").attr(
 						"selected", "true");
+				$("#staygd > option[value=${stayRetrieve.stayGrade}]").attr(
+						"selected", "true");
+				
 			});
 </script>
 
@@ -208,6 +212,8 @@
 							</select>
 							</td>
 						</tr>
+					</div>
+					<div class="form-inline">
 						<tr>
 							<td class="td_title">숙박업소 등급</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>

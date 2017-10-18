@@ -58,7 +58,7 @@
 
 <c:if test="${curPage != 1}">
 	<a
-		href='NoticeListServlet?curPage=1&searchName=${searchName}&searchValue=${searchValue}' class="btn btn-primary btn-sm active" role="button">처음</a>
+		href='noticeList?curPage=1&searchName=${searchName}&searchValue=${searchValue}' class="btn btn-primary btn-sm active" role="button">처음</a>
 &nbsp;
 </c:if>
 
@@ -71,7 +71,7 @@
 
 <c:if test="${startPage != 1}">
 	<a
-		href='NoticeListServlet?curPage=${startPage -1}&searchName=${searchName }&searchValue= ${searchValue}' class="btn btn-primary btn-sm active" role="button">&lt;&lt;</a>
+		href='noticeList?curPage=${startPage -1}&searchName=${searchName }&searchValue= ${searchValue}' class="btn btn-primary btn-sm active" role="button">&lt;&lt;</a>
 	 
 &nbsp;
 </c:if>
@@ -84,7 +84,7 @@
 
 <c:if test="${curPage != 1}">
 	<a
-		href='NoticeListServlet?curPage=${curPage -1}&searchName=${searchName}&searchValue=${searchValue}' class="btn btn-primary btn-sm active" role="button">&lt;</a>
+		href='noticeList?curPage=${curPage -1}&searchName=${searchName}&searchValue=${searchValue}' class="btn btn-primary btn-sm active" role="button">&lt;</a>
 
 &nbsp;
 </c:if>
@@ -100,7 +100,7 @@
 </c:if>
 	<c:if test="${curPage != aa}">
 		<a
-			href='NoticeListServlet?curPage=${aa}&searchName=${searchName }&searchValue=${searchValue }' class="btn btn-primary btn-sm active" role="button">${aa}</a> 
+			href='noticeList?curPage=${aa}&searchName=${searchName }&searchValue=${searchValue }' class="btn btn-primary btn-sm active" role="button">${aa}</a> 
 		&nbsp;
 		</c:if>
 </c:forEach>
@@ -112,7 +112,7 @@
 </c:if>
 <c:if test="${curPage != endPage }">
 	<a
-		href='NoticeListServlet?curPage=${endPage }&searchName=${searchName }&searchValue=${searchValue}' class="btn btn-primary btn-sm active" role="button">${endPage}</a>
+		href='noticeList?curPage=${endPage }&searchName=${searchName }&searchValue=${searchValue}' class="btn btn-primary btn-sm active" role="button">${endPage}</a>
 
 
 </c:if>
@@ -124,7 +124,7 @@
 </c:if>
 <c:if test="${curPage != totalNum }">
 	<a
-		href='NoticeListServlet?curPage=${curPage +1 }&searchName=${searchName }&searchValue=${searchValue }' class="btn btn-primary btn-sm active" role="button">&gt;</a>
+		href='noticeList?curPage=${curPage +1 }&searchName=${searchName }&searchValue=${searchValue }' class="btn btn-primary btn-sm active" role="button">&gt;</a>
 </c:if>
 
 &nbsp;
@@ -133,7 +133,7 @@
 </c:if>
 <c:if test="${endPage != totalNum }">
 	<a
-		href='NoticeListServlet?curPage=${endPage +1 }&searchName=${searchName }&searchValue= ${searchValue }' class="btn btn-primary btn-sm active" role="button">&gt;&gt;</a>
+		href='noticeList?curPage=${endPage +1 }&searchName=${searchName }&searchValue= ${searchValue }' class="btn btn-primary btn-sm active" role="button">&gt;&gt;</a>
 </c:if>
 &nbsp;
 <c:if test="${curPage == totalNum }">
@@ -141,7 +141,7 @@
 </c:if>
 <c:if test="${curPage != totalNum }">
 	<a
-		href='NoticeListServlet?curPage=${totalNum}&searchName=${searchName }&searchValue=${searchValue }' class="btn btn-primary btn-sm active" role="button">마지막</a>
+		href='noticeList?curPage=${totalNum}&searchName=${searchName }&searchValue=${searchValue }' class="btn btn-primary btn-sm active" role="button">마지막</a>
 </c:if>
 
 </div>

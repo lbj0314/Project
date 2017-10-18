@@ -133,7 +133,7 @@
 			<td colspan=4 align=center><input type="file" name="attImage"
 				id="imgInp"> <img id="imgview" src="#" alt="사진을 넣어주세요." />
 
-
+			
 			</td>
 		</tr>
 		

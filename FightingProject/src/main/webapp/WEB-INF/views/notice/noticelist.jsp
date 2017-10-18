@@ -158,7 +158,7 @@
 
 		<div class="huge-top">
 			<button class="btn btn-normal pull-right"
-				onclick="location.href='NoticeWriteUIServlet';">글쓰기</button>
+				onclick="location.href='/test/loginX/noticeWriteUI';">글쓰기</button>
 		</div>
 		</c:if>
 	</div>

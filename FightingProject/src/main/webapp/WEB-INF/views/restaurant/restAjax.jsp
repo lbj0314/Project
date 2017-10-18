@@ -42,8 +42,8 @@
 								<td>
 									<table style='padding: 15px'>
 										<tr>
-											<td><a href="RestRetrieveServlet?restNum=${xxx.restNum}">
-													<img src="images/${xxx.restImageClone}" border="0"
+											<td><a href="/test/restRetrieve?restNum=${xxx.restNum}">
+													<img src="image/${xxx.restImageClone}" border="0"
 													align="center" width="200">
 
 											</a></td>
@@ -54,7 +54,7 @@
 										</tr>
 										<tr>
 											<td class="td_default" align="center"><a class="a_black"
-												href="RestRetrieveServlet?restNum=${xxx.restNum}">
+												href="/test/restRetrieve?restNum=${xxx.restNum}">
 													업소제목:${xxx.restTitle}<br>
 											</a></td>
 

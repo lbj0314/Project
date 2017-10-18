@@ -1,5 +1,8 @@
 package com.dto.notice;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("NoticeDTO")
 public class NoticeDTO {
 	private int nonum;
 	private String notitle;

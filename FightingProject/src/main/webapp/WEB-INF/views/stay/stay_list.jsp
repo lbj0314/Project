@@ -212,8 +212,8 @@
 								<td>
 									<table style='padding: 15px'>
 										<tr>
-											<td><a href="StayBoardRetrieveServlet?stayNum=${xxx.stayNum}">
-													<img src="images/${xxx.stayImageClone}" border="0"
+											<td><a href="/test/stayRetrieve?stayNum=${xxx.stayNum}">
+													<img src="image/${xxx.stayImageClone}" border="0"
 													align="center" width="200">
 
 											</a></td>
@@ -224,7 +224,7 @@
 										</tr>
 										<tr>
 											<td class="td_default" align="center"><a class="a_black"
-												href="StayBoardRetrieveServlet?stayNum=${xxx.stayNum}">
+												href="/test/stayRetrieve?stayNum=${xxx.stayNum}">
 													숙박업소제목:${xxx.stayTitle}<br>
 											</a></td>
 
@@ -271,7 +271,7 @@
 	<tr>
 	<td colspan=8 align=center>
 	<c:if test="${!empty sessionScope.entLogin}">
-		<a href="/test/stayWrite" class="btn btn-primary">글쓰기</a>
+		<a href="/test/loginX/stayWriteUI" class="btn btn-primary">글쓰기</a>
 	</c:if>
 	
 	<td>

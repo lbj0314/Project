@@ -148,7 +148,7 @@
 	});
 </script>
 
-<form action="/test/restList" id="aaa">
+<form action="restList" id="aaa">
 	<input type="hidden" name="btngo" value="1" id="btngo">
 	
 	<div class="form-inline" id="conta">

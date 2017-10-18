@@ -53,8 +53,8 @@ public class StayDAO {
 			public StayPageDTO page(Map<String, String> map){
 				  
 				  StayPageDTO dto = new StayPageDTO();
-				  System.out.println("dao!!!"+map.get("curPage"));
-				  int sIndex = (Integer.parseInt(map.get("curPage")) - 1)* StayPageDTO.getStayPerPage();
+				  System.out.println("dao!!!"+map.get("stayCurPage"));
+				  int sIndex = (Integer.parseInt(map.get("stayCurPage")) - 1)* StayPageDTO.getStayPerPage();
 			      int length  = StayPageDTO.getStayPerPage();
 				
 			      List<StayDTO> list = template.selectList("staySelect", map ,new RowBounds(sIndex, length));
@@ -62,7 +62,7 @@ public class StayDAO {
 			      //PageDTO에 4개의 데이터 저장
 				  System.out.println("!!!"+list);
 			      dto.setList(list);
-			      dto.setStayCurPage(Integer.parseInt(map.get("curPage")));
+			      dto.setStayCurPage(Integer.parseInt(map.get("stayCurPage")));
 			      System.out.println(">>"+dto.getList());
 			    
 			      totalCount = template.selectOne("stayTotalCount", map);
@@ -71,9 +71,9 @@ public class StayDAO {
 			      dto.setStayTotalCount(totalCount);
 			      dto.setStaySearchName(map.get("searchName"));
 			      dto.setStaySearchValue(map.get("searchValue"));
-			      dto.setStayLocation(map.get("attLocation"));
-			      dto.setStayType(map.get("attType"));
-			      dto.setSortStay(map.get("sortAtt"));
+			      dto.setStayLocation(map.get("stayLocation"));
+			      dto.setStayType(map.get("stayType"));
+			      dto.setSortStay(map.get("sortStay"));
 			      return dto;
 			}//end list()
 			

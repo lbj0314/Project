@@ -27,13 +27,14 @@ public class StayFileUploadDTO {
 
 	private String stayAddr1;//
 	private String stayAddr2;///
+	private String stayGrade;
 	public StayFileUploadDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public StayFileUploadDTO(CommonsMultipartFile stayImage, String stayName, int stayNum, String stayPhone,
 			String stayLocation, int stayAdultPrice, int stayKidPrice, String stayTitle, String stayContent,
-			String staySite, String stayType, int entNum, String stayAddr1, String stayAddr2) {
+			String staySite, String stayType, int entNum, String stayAddr1, String stayAddr2, String stayGrade) {
 		super();
 		this.stayImage = stayImage;
 		this.stayName = stayName;
@@ -49,6 +50,7 @@ public class StayFileUploadDTO {
 		this.entNum = entNum;
 		this.stayAddr1 = stayAddr1;
 		this.stayAddr2 = stayAddr2;
+		this.stayGrade = stayGrade;
 	}
 	public CommonsMultipartFile getStayImage() {
 		return stayImage;
@@ -134,13 +136,19 @@ public class StayFileUploadDTO {
 	public void setStayAddr2(String stayAddr2) {
 		this.stayAddr2 = stayAddr2;
 	}
+	public String getStayGrade() {
+		return stayGrade;
+	}
+	public void setStayGrade(String stayGrade) {
+		this.stayGrade = stayGrade;
+	}
 	@Override
 	public String toString() {
 		return "StayFileUploadDTO [stayImage=" + stayImage + ", stayName=" + stayName + ", stayNum=" + stayNum
 				+ ", stayPhone=" + stayPhone + ", stayLocation=" + stayLocation + ", stayAdultPrice=" + stayAdultPrice
 				+ ", stayKidPrice=" + stayKidPrice + ", stayTitle=" + stayTitle + ", stayContent=" + stayContent
 				+ ", staySite=" + staySite + ", stayType=" + stayType + ", entNum=" + entNum + ", stayAddr1="
-				+ stayAddr1 + ", stayAddr2=" + stayAddr2 + "]";
+				+ stayAddr1 + ", stayAddr2=" + stayAddr2 + ", stayGrade=" + stayGrade + "]";
 	}
 	
 	

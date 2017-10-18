@@ -2,6 +2,10 @@ package com.dto.notice;
 
 import java.util.List;
 
+import org.apache.ibatis.type.Alias;
+
+
+@Alias("PageDTO")
 public class PageDTO {
 	//전체 데이터
 		private List<NoticeDTO> list;

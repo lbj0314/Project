@@ -19,7 +19,7 @@ $('.dropdown-toggle').dropdown()
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li><a href="/project/NoticeListServlet">공지사항</a><br></li>
+    <li><a href="/test/noticeList">공지사항</a><br></li>
     
     <li><a href="#">이벤트</a><br></li>
     <li><a href="#">추천패키지</a></li>
@@ -58,7 +58,7 @@ $('.dropdown-toggle').dropdown()
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li><a href="/test/tourList">숙박업소 정보</a></li>
+    <li><a href="/test/stayList">숙박업소 정보</a></li>
   </ul>
 </div>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

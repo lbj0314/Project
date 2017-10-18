@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<form action="NoticeWriteServlet">
+<form action="/test/noticeWrite">
 	<input type="hidden" name="author" value="${sessionScope.login.username}">
 	<input type="hidden" name="userid" value="${sessionScope.login.userid}">
 	제목:<input type="text" name="title"><br>

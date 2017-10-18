@@ -51,12 +51,12 @@ public class StayController {
 		}
 		
 	
-		if(!(map.get("searchValue") == null)) {
+		if(!(map.get("staySearchValue") == null)) {
 			return "stay/stay_listview";
 			
 		}
 		
-		else if(!(map.get("stayLocation") == null) || !(map.get("searchName") == null) ||  !(map.get("attType") == null) || !(map.get("sortStay") == null)) {
+		else if(!(map.get("stayLocation") == null) || !(map.get("staySearchName") == null) ||  !(map.get("stayType") == null) || !(map.get("sortStay") == null)) {
 			return "stay/stayAjax";
 			
 			
@@ -135,6 +135,7 @@ public class StayController {
 		tdto.setStayNum(dto.getStayNum());
 		tdto.setStayPhone(dto.getStayPhone());
 		tdto.setStayTitle(dto.getStayTitle());
+		tdto.setStayGrade(dto.getStayGrade());
 		if (!stayImage.equals("")) {
 			String[] staySplit = stayImage.split("\\.");
 			String stayImageClone = staySplit[0] + milliSecond + "." + staySplit[1];
@@ -179,7 +180,7 @@ public class StayController {
 	
 	
 	@RequestMapping(value="/loginX/stayWrite", method=RequestMethod.POST)
-	public String tourWrite(StayFileUploadDTO dto) throws MyException {
+	public String stayWrite(StayFileUploadDTO dto) throws MyException {
 		
 		
 		
@@ -215,6 +216,7 @@ public class StayController {
 		tdto.setStayContent(dto.getStayContent());
 		tdto.setStayName(dto.getStayName());
 		tdto.setStayImage(stayImage);
+		tdto.setStayGrade(dto.getStayGrade());
 		tdto.setStayPhone(dto.getStayPhone());
 		tdto.setStayTitle(dto.getStayTitle());
 		tdto.setStayImageClone(stayImageClone);
@@ -226,11 +228,11 @@ public class StayController {
 		service.stayWrite(tdto);
 		}catch(Exception e) {
 			e.printStackTrace();
-			throw new MyException("tourWrite예외");
+			throw new MyException("stayWrite예외");
 		}
 		
 		
-		return "redirect:/tourList";
+		return "redirect:/stayList";
 	}
 	
 	

@@ -11,7 +11,7 @@
 
 <h1>글자세히 화면</h1>
 
-<form action="NoticeUpdateServlet" method="post">
+<form action="/test/loginX/noticeUpdate" method="post">
 <input type="hidden" name="num" value="${retrieve.nonum }">
 <div class="form-group">
 <b>글번호:&nbsp;</b>${retrieve.nonum }> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>작성일:&nbsp;</b>${retrieve.nowriteDay }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>조회수:&nbsp;</b>${retrieve.noreadCnt}<br>
@@ -28,9 +28,9 @@
 </div>
 </form>
 
-<a href="NoticeListServlet" class="btn btn-primary">목록</a>
+<a href="/test/noticeList" class="btn btn-primary">목록</a>
 <c:if test="${!empty sessionScope.admLogin}">
-<a href="NoticeDeleteServlet?nonum=${retrieve.nonum }" class="btn btn-primary"> 삭제</a>
+<a href="/test/loginX/noticeDelete?nonum=${retrieve.nonum }" class="btn btn-primary"> 삭제</a>
 </c:if>
 
 

@@ -73,7 +73,7 @@
 
 <c:if test="${stayStartPage != 1}">
 	<a
-		href='stayList?curPage=${stayStartPage -1}&staySearchName=${staySearchName }&staySearchValue= ${staySearchValue}&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">&lt;&lt;</a>
+		href='stayList?stayCurPage=${stayStartPage -1}&staySearchName=${staySearchName }&staySearchValue= ${staySearchValue}&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">&lt;&lt;</a>
 	 
 &nbsp;
 </c:if>
@@ -86,7 +86,7 @@
 
 <c:if test="${stayCurPage != 1}">
 	<a
-		href='stayList?curPage=${stayCurPage -1}&staySearchName=${staySearchName}&staySearchValue=${staySearchValue}&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">&lt;</a>
+		href='stayList?stayCurPage=${stayCurPage -1}&staySearchName=${staySearchName}&staySearchValue=${staySearchValue}&stayLocation=${stayLocation}&stayType=${stayType}&sortStay=${sortStay}' class="btn btn-primary btn-sm active" role="button">&lt;</a>
 
 &nbsp;
 </c:if>

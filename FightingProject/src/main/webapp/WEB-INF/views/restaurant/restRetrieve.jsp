@@ -51,9 +51,9 @@
 					});
 
 				});
-				$("#restlo > option[value=${restRetrieve.restLocation}").attr(
+				$("#restlo > option[value=${restRetrieve.restLocation}]").attr(
 						"selected", "true");
-				$("#restty > option[value=${restRetrieve.restType}").attr(
+				$("#restty > option[value=${restRetrieve.restType}]").attr(
 						"selected", "true");
 
 			});

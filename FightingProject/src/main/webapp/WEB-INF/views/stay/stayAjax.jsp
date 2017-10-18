@@ -42,7 +42,7 @@
 								<td>
 									<table style='padding: 15px'>
 										<tr>
-											<td><a href="StayBoardRetrieveServlet?stayNum=${xxx.stayNum}">
+											<td><a href="/test/stayRetrieve?stayNum=${xxx.stayNum}">
 													<img src="image/${xxx.stayImageClone}" border="0"
 													align="center" width="200">
 
@@ -54,7 +54,7 @@
 										</tr>
 										<tr>
 											<td class="td_default" align="center"><a class="a_black"
-												href="StayBoardRetrieveServlet?stayNum=${xxx.stayNum}">
+												href="/test/stayRetrieve?stayNum=${xxx.stayNum}">
 													숙박업소제목:${xxx.stayTitle}<br>
 											</a></td>
 
