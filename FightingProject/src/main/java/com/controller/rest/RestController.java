@@ -38,17 +38,12 @@ public class RestController extends HttpServlet  {
 	
 	
 	@RequestMapping("/restList")
-	public String restList(@RequestParam HashMap<String,String> map,Model m) throws MyException {
+	public String restList(@RequestParam HashMap<String,String> map,Model m,
+			String restForm) throws MyException {
 		
 		
 		
-		System.out.println(map.get("searchName"));
-		System.out.println(map.get("searchValue"));
-		System.out.println(map.get("restLocation"));
-		System.out.println(map.get("restType"));
-		System.out.println(map.get("sortRest"));
-		System.out.println("cc");
-		System.out.println("!!!!"+map.get("curPage"));
+		
 		if(map.get("curPage") == null) {
 			map.put("curPage", "1");
 		}
@@ -76,6 +71,8 @@ public class RestController extends HttpServlet  {
 			
 			
 			
+		}else if(restForm!=null) {
+			return "order/orderForm";
 		}
 		
 		return "restaurant/restListView";

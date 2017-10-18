@@ -159,8 +159,8 @@
 	</table>
 	<a href="tourList?tourForm=tourForm" 
 	class="btn btn-default">관광지 추가하기</a> 
-		<a href="packageOrderForm?restForm=restForm"
-		class="btn btn-default">맛집 추가하기</a>
-		<a href="packageOrderForm?stayForm=stayForm}" 
-		class="btn btn-default">숙박업소 추가하기</a>
+	<a href="restList?restForm=restForm" 
+	class="btn btn-default">음식점 추가하기</a> 
+	<a href="stayList?stayForm=stayForm" 
+	class="btn btn-default">숙박업소 추가하기</a> 
 </form>

@@ -29,17 +29,11 @@ public class StayController {
 	
 	
 	@RequestMapping("/stayList")
-	public String stayList(@RequestParam HashMap<String,String> map,Model m) throws MyException {
+	public String stayList(@RequestParam HashMap<String,String> map,Model m,
+			String stayForm) throws MyException {
 		
-		
-		
-		System.out.println(map.get("staySearchName"));
-		System.out.println(map.get("staySearchValue"));
-		System.out.println(map.get("stayLocation"));
-		System.out.println(map.get("stayType"));
-		System.out.println(map.get("sortStay"));
-		System.out.println("cc");
-		System.out.println("!!!!"+map.get("stayCurPage"));
+		m.addAttribute("stayOrderForm", "stayOrderForm");
+
 		if(map.get("stayCurPage") == null) {
 			map.put("stayCurPage", "1");
 		}
@@ -67,6 +61,8 @@ public class StayController {
 			
 			
 			
+		}else if(stayForm!=null) {
+			return "order/orderForm";
 		}
 		
 		return "stay/stay_listview";
