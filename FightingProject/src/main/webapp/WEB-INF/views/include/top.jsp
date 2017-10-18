@@ -1,21 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <script type="text/javascript">
 	$('.dropdown-toggle').dropdown()
+</script>
+<!-- 	
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#ko").on("click", function(event) {
+			$.ajax({
+				type : "get",
+				/* url : "MesCont",
+				dataType : "text",
+				data : {
+				}, */
 
-	</script>
+				success : function returnmsg(){
+					return "<spring:message code='spring.mesg'/>";
+					},
+				error : function(xhr, status, e) {
+					console.log(status, e);
+
+				}
+
+			});
+	});
+	</script> -->
 
 <!-- i18 적용 실험 버튼 -->
-<form action="MesCont" method="post">
 
-	<a href="<spring:message code="spring.mesg"/>">한국어</a>
+<%-- <spring:message code='spring.mesg'/> --%>
+<div>
+<spring:message code="spring.mesg"/>
+</div>
+
+<a href="/test/setChangeLocale.do?locale=ko">한국어</a>
+<a href="/test/setChangeLocale.do?locale=en">ENGLISH</a>
+
+<!-- 
+	<button id="ko">한국어</button>
 	<button id="us" >English</button>
-	<button id="ch" value="ch">中国</button>
+	<button id="ch">中国</button>
 	<br />
+ -->
+<!-- i18181818i181818코드 -->
+<%--     
+<span style="float: right">   
+    <a href="?lang=en">en</a>   
+    |   
+    <a href="?lang=de">de</a>   
+    
+    <input type="submit" value="<spring:message code="spring.mesg"/>"/>
+</span>  
 
-</form>
+ --%>
 
 <div id="conta">
 

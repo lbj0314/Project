@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MesCont {
@@ -17,20 +18,62 @@ public class MesCont {
 		this.messages = messages;
 	}
 
-	@RequestMapping("/MesCont")
-	public String kr() {
-		String message = this.messages.getMessage("spring.mesg",
-				new String[] { "마음에 드는 숙박, 음식점, 관광명소를 선택하신 후", "자유롭게 패키지를 설정하실 수 있습니다" }, "Required", Locale.KOREA);
-		System.out.println(message);
+	@RequestMapping("/setChangeLocale.do")
+	public String aaa(@RequestParam(required = false) String locale) {
+	/*	String message = this.messages.getMessage("spring.mesg",
+				null, "Required", Locale.KOREA);
+		System.out.println(message);*/
 		
-		String message2 = this.messages.getMessage("spring.mesg",
-				new String[] { "you can make", "own your own package" }, "Required", Locale.US);
-		System.out.println(message2);
-		
-		String message3 = this.messages.getMessage("spring.mesg", new String[] { "糖醋猪肉", "我想吃" }, "Required",
-				Locale.CHINA);
-		System.out.println(message3);
+		Locale locales = null;
+		if (locale.matches("ko")) {
+			 locales = Locale.KOREAN;
+			 } else {
+			 locales = Locale.ENGLISH;
+			 }
+			
+	
 		return "home";
 
 	}
 }
+
+
+/*public class MesCont {
+	 @RequestMapping(value = "/setChangeLocale.do")
+	 public String changeLocale(@RequestParam(required = false) String locale,) {
+	 HttpSession session = request.getSession();
+	 Locale locales = null;
+	 // 넘어온 파라미터에 ko가 있으면 Locale의 언어를 한국어로 바꿔준다.
+	 // 그렇지 않을 경우 영어로 설정한다.
+	 if (locale.matches("ko")) {
+	 locales = Locale.KOREAN;
+	 } else {
+	 locales = Locale.ENGLISH;
+	 }
+	
+	 // 해당 컨트롤러에게 요청을 보낸 주소로 돌아간다.
+	 String redirectURL = "redirect:" + request.getHeader("referer");
+	 return redirectURL;
+	 }
+}
+*/
+	
+/*public class MesCont {
+
+	private MessageSource messages;
+
+	@Autowired
+	public void setMessages(MessageSource messages) {
+		this.messages = messages;
+	}
+
+	@RequestMapping("/setChangeLocale.do")
+	public String aaa() {
+		String message = this.messages.getMessage("spring.mesg",
+				null, "Required", Locale.KOREA);
+		System.out.println(message);
+	
+		return "home";
+
+	}
+}*/
