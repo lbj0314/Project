@@ -1,59 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <script type="text/javascript">
 	$('.dropdown-toggle').dropdown()
 
-	//i18 적용 jquery
-	$(document).ready(function() {
-		$("#kr").on("click", function() {
-			$.ajax({
-				type : "post",
-				url : "MesCont/kr",
-				dataType : "text",
-				success : function(responseData, status, xhr) {
-					console.log(responseData);
-				},
-				error : function(xhr, status, e) {
-					console.log(status, e);
-				}
-			});
-		});
-		$("#us").on("click", function() {
-			$.ajax({
-				type : "post",
-				url : "MesCont/us",
-				dataType : "text",
-				success : function(responseData, status, xhr) {
-					console.log(responseData);
-				},
-				error : function(xhr, status, e) {
-					console.log(status, e);
-				}
-			});
-		});
-		$("#ch").on("click", function() {
-			$.ajax({
-				type : "post",
-				url : "MesCont/ch",
-				dataType : "text",
-				success : function(responseData, status, xhr) {
-					console.log(responseData);
-				},
-				error : function(xhr, status, e) {
-					console.log(status, e);
-				}
-			});
-		});
-	});
-</script>
-
+	</script>
 
 <!-- i18 적용 실험 버튼 -->
 <form action="MesCont" method="post">
-	<button id="kr" value="kr">한국어</button>
-	<button id="us" value="us">English</button>
+
+	<a href="<spring:message code="spring.mesg"/>">한국어</a>
+	<button id="us" >English</button>
 	<button id="ch" value="ch">中国</button>
 	<br />
 
