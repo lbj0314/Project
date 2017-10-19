@@ -242,6 +242,7 @@ $(document).ready(function() {
             $("#addr1").focus();
 		return false;	 
     	} */
+    	
 		else if ($("#entLocation").val() == "def") {
             alert("업소 지역을 선택해주세요.");
             $("#entLocation").focus();

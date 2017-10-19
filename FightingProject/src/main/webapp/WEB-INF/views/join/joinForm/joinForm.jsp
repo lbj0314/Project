@@ -78,7 +78,7 @@
 		var RegEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i; //이메일 유효성검사
 		var RegPhone2 = /^[0-9]{9,11}$/; //전화번호 유효성 검사
 		var RegIn = /^[0-9]{10}$/; //사업자등록번호 유효성 검사
-		
+		 
 		$("form").submit(function(){
 			if ( !RegName.test($.trim($("#name").val())) )
 			{
