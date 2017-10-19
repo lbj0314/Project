@@ -15,7 +15,7 @@
 		$("#userid").on("blur", function() {
 			$.ajax({
 				type : "get",
-				url : "MemberCheckServlet",
+				url : "/test/joinForm",
 				data : {
 					category : $("#category").val(),
 					userid : $("#userid").val()
@@ -45,7 +45,7 @@
 		$("#userid").on("keyup", function() {
 			$.ajax({
 				type : "get",
-				url : "MemberCheckServlet",
+				url : "/test/joinForm",
 				data : {
 					category : $("#category").val(),
 					userid : $("#userid").val()
@@ -67,25 +67,25 @@
 			});
 		});
 	});
+	
 	$(document).ready(function() {
 		
 		var RegName = /^[가-힣a-zA-Z]{2,6}$/; //이름 유효성 검사 2~6자 사이
 		var RegId =  /^[a-z0-9_-]{4,12}$/;  //아이디 유효성 검사 4~12자 사이
-		var RegPasswd = /^.*(?=.{8,16})(?=.*[0-9])(?=.*[a-zA-Z]).*$/; // 비밀번호 유효성 검사 영문자 숫자 혼합하여 특수문자 가능 8~16자리
+		var RegPasswd = /^.*(?=.{8,16})(?=.*[0-9])(?=.*[a-zA-Z]).*$/; // 비밀번호 유효성 검사 영문 숫자 혼합하여 특수문자 가능 8~16자리
 		var RegSsn = /^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))|[1-4][0-9]{6}$/; //주민등록 번호 유효성 검사
 		var RegPhone = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/; //핸드폰 유효성 검사
 		var RegEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i; //이메일 유효성검사
 		var RegPhone2 = /^[0-9]{9,11}$/; //전화번호 유효성 검사
-		
 		var RegIn = /^[0-9]{10}$/; //사업자등록번호 유효성 검사
+		
 		$("form").submit(function(){
 			if ( !RegName.test($.trim($("#name").val())) )
 			{
-				alert("이름에 영문자 또는 한글 2~6자로 입력해주세요.");
+				alert("이름에 영문 또는 한글 2~6자로 입력해주세요.");
 				$("#name").focus();
 				return false;
 			}
-			
 			else if ( !RegId.test($.trim($("#userid").val())) )
 			{
 				alert("아이디에 영문자와 숫자만으로 4~12자로 입력해주세요.");
@@ -94,51 +94,52 @@
 			}
 			else if ( !RegPasswd.test($.trim($("#passwd").val())) )
 			{
-				alert("비밀번호에 영문자와 숫자 포함해서 입력해주세요.");
-				$("#name").focus();
+				alert("비밀번호에 영문과 숫자 포함해서 입력해주세요.");
+				$("#passwd").focus();
 				return false;
 			}
-			
-			else if ( !RegPhone.test($.trim($("#phone1").val())) )
-			{
-				alert("핸드폰 입력란에 10~11자리와 숫자만 입력해주세요.");
-				$("#phone1").focus();
-				return false;
-			}
-			else if ( !RegPhone2.test($.trim($("#phone2").val())))
-			{
-				alert("전화번호 입력란에 9~11자리와 숫자만 입력해주세요.");
-				$("#phone2").focus();
-				return false;
-			}
-			else if ( !RegEmail.test($.trim($("#email").val())) )
-			{
-				alert("이메일 입력란에 영문자와 숫자만 입력해주세요.");
-				$("#email").focus();
-				return false;
-			}
-			else if ($("#addr1").val() == "") {
-                alert("주소를 입력해주세요.");
-                $("#addr1").focus();
-			return false;	 
-        	}
 			else if ( !RegSsn.test($.trim($("#ssn").val())) )
 			{
 				alert("주민 번호 입력란에 13자리와 숫자만 입력해주세요.");
 				$("#ssn").focus();
 				return false;
 			}
+			else if ( !RegPhone.test($.trim($("#phone1").val())) )
+			{
+				alert("핸드폰 입력란에 10~11자리와 숫자만 입력해주세요.");
+				$("#phone1").focus();
+				return false;
+			}
+			else if ( !RegEmail.test($.trim($("#email").val())) )
+			{
+				alert("이메일 입력란에 영문과 숫자만 입력해주세요.");
+				$("#email").focus();
+				return false;
+			} 
+			else if ($("#addr1").val() == "") {
+                alert("주소를 입력해주세요.");
+                $("#addr1").focus();
+			return false;	 
+        	}
+			else if ($("#location").val() == "def") {
+                alert("업소 지역을 선택해주세요.");
+                $("#location").focus();
+			return false;	 
+        	}
+			else if ( !RegPhone2.test($.trim($("#phone2").val())))
+			{
+				alert("전화번호 입력란에 9~11자리와 숫자만 입력해주세요.");
+				$("#phone2").focus();
+				return false;
+			}
+			
 			else if ( !RegIn.test($.trim($("#in").val())) )
 			{
 				alert("사업자 등록번호 입력란에 10자리와 숫자만 입력해주세요.");
 				$("#in").focus();
 				return false;
 			}
-			else if ($("#location").val() == "def") {
-                alert("업소 지역을 선택해주세요.");
-                $("#location").focus();
-			return false;	 
-        	}
+		
 			else if ($("#kind").val() == "def2") {
 	                alert("업소 종류를 선택해주세요.");
 	                $("#kind").focus();
@@ -147,6 +148,21 @@
 		});
 	});
 	
+	$(document).ready(function() {
+		$('#name').keyup(function() {
+		
+			
+		 if ($('#name').val().length < 2 ) {
+				$('font[name=check8]').css("color", "red");
+				$('font[name=check8]').text("영문 또는 한글 2-6자리로 입력해주세요");
+				}
+			  else {
+				$('font[name=check8]').css("color", "blue");
+				$('font[name=check8]').text("영문 또는 한글 2-6자리로 입력해주세요");
+			}
+		});
+	});
+		
 		$(document).ready(function() {
 		$('#passwd').keyup(function() {
 		
@@ -160,9 +176,7 @@
 				$('font[name=check]').text("8자리 이상으로 입력하세요");
 			}
 		});
-		
-		
-		
+
 		$('#passwd2').keyup(function() {
 			if ($('#passwd').val() != $('#passwd2').val()) {
 				$('font[name=check2]').css("color", "red");
@@ -300,22 +314,22 @@
 	<table border='1'>
 		<tr>
 			<td>이름</td>
-			<td><input type="text" id="name" name="name" maxlength="6"></td>
+			<td><input type="text" id="name" name="name" placeholder="영문 또는 한글 2 - 6자" maxlength="6"><font name="check8" size="2"></font></td>
 		</tr>
 		<tr>
 			<td>아이디</td>
-			<td><input type="text" name="userid" id="userid" maxlength="12"><em
+			<td><input type="text" name="userid" id="userid" placeholder="영문 또는 숫자 4 - 12자" maxlength="12"><em
 				id="result"></em></td>
 		</tr>
 		<tr>
 			<td>비밀 번호</td>
-			<td><input type="password" name="passwd" id="passwd" maxlength="16" />
+			<td><input type="password" name="passwd" id="passwd" placeholder="영문+숫자  8 - 16자" maxlength="16" />
 			<font name="check" size="2"></font>
 			</td>
 		</tr>
 		<tr>
 			<td>비밀 번호 확인</td>
-			<td><input type="password" name="passwd2" id="passwd2" maxlength="16" /> <font
+			<td><input type="password" name="passwd2" id="passwd2" placeholder="특수 문자 가능" maxlength="16" /> <font
 				name="check2" size="2"></font></td>
 		</tr>
 		<tr>
@@ -330,7 +344,7 @@
 		</tr>
 		<tr>
 			<td>이메일 주소</td>
-			<td><input type="text" id="email" name="email"></td>
+			<td><input type="text" id="email" name="email" placeholder="ex) nonamed@korea.com " maxlength="30"></td>
 		</tr>
 
 		<!-- 다음주소 시작-->
@@ -379,15 +393,15 @@
 		</tr>
 		<tr>
 			<td>업소 전화번호</td>
-			<td><input type="text" placeholder="전화번호(-제외)" id="phone2" disabled="true" name="phone2" maxlength="11"><font name="check5" size="2"></td>
+			<td><input type="text" placeholder="전화번호(-제외)" id="phone2" disabled="true" name="phone2" maxlength="11"><font name="check5" size="2"></font></td>
 		</tr>
 		<tr>
 			<td>업소 팩스번호</td>
-			<td><input type="text" placeholder="팩스 번호(-제외)" id="fax"disabled="true" name="fax" maxlength="11"><font name="check6" size="2"></td>
+			<td><input type="text" placeholder="팩스 번호(-제외)" id="fax"disabled="true" name="fax" maxlength="11"><font name="check6" size="2"></font></td>
 		</tr>
 		<tr>
 			<td>사업자 등록번호</td>
-			<td><input type="text" id="in" placeholder="사업자 등록번호(-제외)" disabled="true" name="in" maxlength="10"><font name="check7" size="2"></td>
+			<td><input type="text" id="in" placeholder="사업자 등록번호(-제외)" disabled="true" name="in" maxlength="10"><font name="check7" size="2"></font></td>
 		</tr>
 		<tr>
 			<td>업소 종류</td>
