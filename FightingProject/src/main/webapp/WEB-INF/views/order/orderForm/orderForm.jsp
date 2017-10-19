@@ -5,60 +5,48 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
+	$(document).ready(function() {
+		$("#plus").on("click", function() {
+		
+			if (parseInt($("#term").val().substring(2, 3)) <= 8) {
+				var one = parseInt($("#term").val().substring(0, 1)) + 1;
+				var two = parseInt($("#term").val().substring(2, 3)) + 1;
+				$("#term").val(one + "박" + two + "일");
+				$("#termTable").append('<tr><td>'+(one + 1)+'일</td><td id="'+(one + 1)+'-1td'+'"></td><td id="'+(one + 1)+'-2td'+'"></td><td id="'+(one + 1)+'-3td'+'"></td><td id="'+(one + 1)+'-4td'+'"></td><td id="'+(one + 1)+'-5td'+'"></td><td id="'+(one + 1)+'-6td'+'"></td><td id="'+(one + 1)+'-7td'+'"></td></tr>');
+			} else {
+				$("#span").text("값이 8박9일보다 높습니다.");
+			}
+		});
 
-						$("#plus")
-								.on(
-										"click",
-										function() {
-											if (parseInt($("#term").val()
-													.substring(2, 3)) <= 8) {
-												var one = parseInt($("#term")
-														.val().substring(0, 1)) + 1;
-												var two = parseInt($("#term")
-														.val().substring(2, 3)) + 1;
-												$("#term").val(
-														one + "박" + two + "일");
-												$("#termTable")
-														.append(
-																'<tr><td>'
-																		+ (one + 1)
-																		+ '일</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
-											} else {
-												$("#span").text(
-														"값이 8박9일보다 높습니다.");
-											}
-										});
-
-						$("#minus")
-								.on(
-										"click",
-										function() {
-											if (parseInt($("#term").val()
-													.substring(0, 1)) >= 2) {
-												var one2 = parseInt($("#term")
-														.val().substring(0, 1)) - 1;
-												var two2 = parseInt($("#term")
-														.val().substring(2, 3)) - 1;
-												$("#term")
-														.val(
-																one2 + "박"
-																		+ two2
-																		+ "일");
-												$("#termTable tr:last-child")
-														.remove();
-
-											} else {
-												$("#span").text(
-														"값이 1박2일보다 낮습니다.");
-											}
-										});
-
-					});
+	$("#minus").on("click",function() {
+		if (parseInt($("#term").val().substring(0, 1)) >= 2) {
+			var one2 = parseInt($("#term").val().substring(0, 1)) - 1;
+			var two2 = parseInt($("#term").val().substring(2, 3)) - 1;
+			$("#term").val(one2 + "박"+ two2+ "일");
+			$("#termTable tr:last-child").remove();
+		} else {
+			$("#span").text("값이 1박2일보다 낮습니다.");
+		}
+	});
+	
+	$("#goodsTable tr").not("#notDragTr").draggable({
+		start: function(event,ui) {
+			$(this).draggable( "option", "revert", true );
+		}
+	});
+	$("#goodsTable tr").not("#notDragTr").on("click",function(){
+		console.log("야");
+	});
+	
+	
+	
+});
 </script>
+
 <form action="" method="get" name="myForm" id="myForm">
 	<input type="hidden" name="kind" value="" id="kind"> <input
 		type="hidden" name="attAdd" value="attAdd" id="attAdd"> <input
@@ -82,29 +70,29 @@
 		</tr>
 		<tr>
 			<td>1일</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td id="1-1td"></td>
+			<td id="1-2td"></td>
+			<td id="1-3td"></td>
+			<td id="1-4td"></td>
+			<td id="1-5td"></td>
+			<td id="1-6td"></td>
+			<td id="1-7td"></td>
 		</tr>
 		<tr>
 			<td>2일</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td id="2-1td"></td>
+			<td id="2-2td"></td>
+			<td id="2-3td"></td>
+			<td id="2-4td"></td>
+			<td id="2-5td"></td>
+			<td id="2-6td"></td>
+			<td id="2-7td"></td>
 		</tr>
 
 	</table>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<table border='1' id="goodTable">
-		<tr>
+	<table border='1' id="goodsTable">
+		<tr id="notDragTr">
 			<td>업소 분류</td>
 			<td>업소명</td>
 			<td>업소 지역</td>
@@ -116,51 +104,48 @@
 		<c:forEach var="item" items="${sessionScope.orderTourList}"
 			varStatus="status">
 			<c:if test="${!empty item.attNum }">
-				<tr>
-					<td>관광지</td>
-					<td>${item.attName }</td>
-					<td>${item.attLocation }</td>
-					<td>${item.attType }</td>
-					<td>${item.attAdultPrice }</td>
-					<td>${item.attKidPrice }</td>
-					<td>${item.attPhone }</td>
+				<tr id="${item.attNum }+attTr">
+					<td id="${item.attNum }+att1td">관광지</td>
+					<td id="${item.attNum }+att2td">${item.attName }</td>
+					<td id="${item.attNum }+att3td">${item.attLocation }</td>
+					<td id="${item.attNum }+att4td">${item.attType }</td>
+					<td id="${item.attNum }+att5td">${item.attAdultPrice }</td>
+					<td id="${item.attNum }+att6td">${item.attKidPrice }</td>
+					<td id="${item.attNum }+att7td">${item.attPhone }</td>
 				</tr>
 			</c:if>
 		</c:forEach>
 		<c:forEach var="item" items="${sessionScope.orderRestList}"
 			varStatus="status">
 			<c:if test="${!empty item.restNum }">
-				<tr>
-					<td>음식점</td>
-					<td>${item.restName }</td>
-					<td>${item.restLocation }</td>
-					<td>${item.restType }</td>
-					<td>${item.restPrice }</td>
-					<td>성인가격 어린이가격으로 구분해서 추가바람</td>
-					<td>${item.restPhone }</td>
+				<tr id="${item.restNum }+restTr">
+					<td id="${item.restNum }+rest1td">음식점</td>
+					<td id="${item.restNum }+rest2td">${item.restName }</td>
+					<td id="${item.restNum }+rest3td">${item.restLocation }</td>
+					<td id="${item.restNum }+rest4td">${item.restType }</td>
+					<td id="${item.restNum }+rest5td">${item.restPrice }</td>
+					<td id="${item.restNum }+rest6td">성인가격 어린이가격으로 구분해서 추가바람</td>
+					<td id="${item.restNum }+rest7td">${item.restPhone }</td>
 				</tr>
 			</c:if>
 		</c:forEach>
 		<c:forEach var="item" items="${sessionScope.orderStayList}"
 			varStatus="status">
 			<c:if test="${!empty item.stayNum }">
-				<tr>
-					<td>숙박소</td>
-					<td>${item.stayName }</td>
-					<td>${item.stayLocation }</td>
-					<td>${item.stayType }</td>
-					<td>${item.stayAdultPrice }</td>
-					<td>${item.stayKidPrice }</td>
-					<td>${item.stayPhone }</td>
+				<tr id="${item.stayNum }+stayTr">
+					<td id="${item.stayNum }+stay1td">숙박소</td>
+					<td id="${item.stayNum }+stay2td">${item.stayName }</td>
+					<td id="${item.stayNum }+stay3td">${item.stayLocation }</td>
+					<td id="${item.stayNum }+stay4td">${item.stayType }</td>
+					<td id="${item.stayNum }+stay5td">${item.stayAdultPrice }</td>
+					<td id="${item.stayNum }+stay6td">${item.stayKidPrice }</td>
+					<td id="${item.stayNum }+stay7td">${item.stayPhone }</td>
 				</tr>
 			</c:if>
 		</c:forEach>
 
 	</table>
-	<a href="tourList?tourForm=tourForm" 
-	class="btn btn-default">관광지 추가하기</a> 
-	<a href="restList?restForm=restForm" 
-	class="btn btn-default">음식점 추가하기</a> 
-	<a href="stayList?stayForm=stayForm" 
-	class="btn btn-default">숙박업소 추가하기</a> 
+	<a href="tourList?tourForm=tourForm" class="btn btn-default">관광지	추가하기</a>
+	<a href="restList?restForm=restForm" class="btn btn-default">음식점 추가하기</a>
+	<a href="stayList?stayForm=stayForm" class="btn btn-default">숙박업소 추가하기</a>
 </form>
