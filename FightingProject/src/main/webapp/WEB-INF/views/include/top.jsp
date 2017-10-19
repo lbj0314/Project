@@ -2,42 +2,54 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-
-<!-- <link rel="stylesheet" type="text/css" href="/WEB-INF/views/css/style.css"> -->
 
 <script type="text/javascript">
 	$('.dropdown-toggle').dropdown()
-	
 </script>
 
 <style>
-h1 { 
-    display: block;
-    font-size: 2em;
-    margin-top: 0.67em;
-    margin-bottom: 0.67em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-    text-align: center;
+h1 {
+	display: block;
+	font-size: 2em;
+	margin-top: 0.67em;
+	margin-bottom: 0.67em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
+	text-align: center;
 }
 
-h5 { 
-    display: block;
-   /*  font-size: 2em; */
-    margin-top: 0.67em;
-    margin-bottom: 0.67em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-    text-align: center;
+h5 {
+	display: block;
+	/*  font-size: 2em; */
+	margin-top: 0.67em;
+	margin-bottom: 0.67em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
+	text-align: center;
 }
+
+/* a:link {
+    color: #99994d;
+}
+
+/* mouse over link */
+/* a:hover {
+    color: #994d00;
+} */
+*
 
 </style>
 
 <!-- 타이틀은 대한민국 구석구석 짭 -->
-<h1 id="jjab"><strong>대한민국 방방곡곡</strong></h1>
+<h1 id="jjab">
+	<strong>대한민국 방방곡곡</strong>
+</h1>
 
 <!-- 	
 <script type="text/javascript">
@@ -63,12 +75,24 @@ h5 {
 	</script> -->
 
 
-<a href="/test/setChangeLocale.do?locale=ko">한국어</a>
-<a href="/test/setChangeLocale.do?locale=en">ENGLISH</a>
+
+<a href="/test/setChangeLocale.do?locale=ko">한국어</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=en">ENGLISH</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=zh">中国</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=de">Deutsch</a> &nbsp;&nbsp;
+<!-- <a href="/test/setChangeLocale.do?locale=jp">日本人</a> &nbsp;&nbsp; -->
+<a href="/test/setChangeLocale.do?locale=fr">Français</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=it">italiano</a> &nbsp;&nbsp;
+
+
+
+<%-- <c:out value="<spring:message code='spring.mesg'/>" var="xx"></c:out> --%>
 
 <h5 id="i1818">
-<spring:message code="spring.mesg"/>
+<spring:message code="spring.mesg" var="xx"/>
 </h5>
+
+${xx}<br>
 
 <!-- 
 	<button id="ko">한국어</button>

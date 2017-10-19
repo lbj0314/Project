@@ -43,11 +43,20 @@
 		</property>
 	</bean>
 
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="ko" />
+	</bean>
+
 	<mvc:interceptors>
 		<bean id="localeChangeInterceptor"
 			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-			<property name="paramName" value="lang" />
+			<property name="paramName" value="locale" />
 		</bean>
 	</mvc:interceptors>
 
+	<bean id="mesCont" class="com.controller.ms.MesCont">
+	<property name="localeResolver" ref="localeResolver"/>
+	</bean>
+	
 </beans>
