@@ -25,6 +25,7 @@ public class MesCont {
 		System.out.println(message);*/
 		
 		Locale locales = null;
+		
 		if (locale.matches("ko")) {
 			 locales = Locale.KOREAN;
 			 } else {

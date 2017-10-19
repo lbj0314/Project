@@ -3,9 +3,42 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+
+<!-- <link rel="stylesheet" type="text/css" href="/WEB-INF/views/css/style.css"> -->
+
 <script type="text/javascript">
 	$('.dropdown-toggle').dropdown()
+	
 </script>
+
+<style>
+h1 { 
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+h5 { 
+    display: block;
+   /*  font-size: 2em; */
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+</style>
+
+<!-- 타이틀은 대한민국 구석구석 짭 -->
+<h1 id="jjab"><strong>대한민국 방방곡곡</strong></h1>
+
 <!-- 	
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -29,15 +62,13 @@
 	});
 	</script> -->
 
-<!-- i18 적용 실험 버튼 -->
-
-<%-- <spring:message code='spring.mesg'/> --%>
-<div>
-<spring:message code="spring.mesg"/>
-</div>
 
 <a href="/test/setChangeLocale.do?locale=ko">한국어</a>
 <a href="/test/setChangeLocale.do?locale=en">ENGLISH</a>
+
+<h5 id="i1818">
+<spring:message code="spring.mesg"/>
+</h5>
 
 <!-- 
 	<button id="ko">한국어</button>
