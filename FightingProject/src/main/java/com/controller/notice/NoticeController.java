@@ -55,13 +55,74 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/loginX/noticeWrite")
-	@ResponseBody
-	public String noticeWrite(NoticeDTO dto) {
-		System.out.println(dto.getAdmnum());
-		System.out.println(dto.getNotitle());
-		System.out.println(dto.getNotitle());
-		return "aa";
+	public String noticeWrite(NoticeDTO dto) throws MyException{
+		
+
+		NoticeDTO dto1 = new NoticeDTO();
+		dto1.setNotitle(dto.getNotitle());
+		dto1.setNocontent(dto.getNocontent());
+		dto1.setAdmnum(dto.getAdmnum());
+		try {
+			service.boardWrite(dto1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new MyException("noticeWrite예외");
+		}
+		
+		
+		return "redirect:/noticeList";
 	}
+	
+	@RequestMapping("/noticeRetrieve")
+	public String noticeRetrieve(int nonum,Model m) throws MyException {
+		
+		
+		try {
+			m.addAttribute("retrieve", service.selectByNum(nonum));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new MyException("noticeRetrieve예외");
+		}
+
+		 
+		 return "notice/retrieveview";
+	}
+	@RequestMapping("/loginX/noticeUpdate")
+	public String noticeUpdate(NoticeDTO dto)throws MyException{
+	
+		
+		NoticeDTO dto1 = new NoticeDTO();
+		dto1.setNonum(dto.getNonum());
+		dto1.setNotitle(dto.getNotitle());
+		dto1.setNocontent(dto.getNocontent());
+		
+		
+		try {
+			service.updateByNum(dto1);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new MyException("noticeUpdate예외");
+		}
+		
+		return "redirect:/noticeList";
+	}
+	@RequestMapping("/loginX/noticeDelete")
+	public String noticeDelete(int nonum) throws MyException {
+		try {
+			service.deleteByNum(nonum);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new MyException("noticeDelete예외");
+		}
+		
+		return "redirect:/noticeList";
+		
+	}
+	
 
 	@ExceptionHandler(MyException.class)
 	public String xxxx2() {
