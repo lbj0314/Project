@@ -24,7 +24,7 @@
 			//ajax 페이지 보여줄 갯수 통신
 			$.ajax({
 				type:"get",
-				url:"NoticePerPageServlet",
+				url:"/test/noticePerPage",
 				data:{
 					perPage:$("#perPage").val()
 				},
@@ -102,7 +102,7 @@
 
 						<tr>
 							<td>${xx.nonum}</td>
-							<td><a href="NoticeRetrieveServlet?nonum=${xx.nonum}">${xx.notitle}</a></td>
+							<td><a href="/test/noticeRetrieve?nonum=${xx.nonum}">${xx.notitle}</a></td>
 							<td>${xx.nowriteDay}</td>
 							<td>${xx.noreadCnt}</td>
 						</tr>
@@ -124,7 +124,7 @@
 					
 					
 					<!-- 검색 -->
-					<form action="NoticeListServlet" class="form-inline" id="aaa">
+					<form action="/test/noticeList" class="form-inline" id="aaa">
 						페이지에서 보여줄 갯수 <select name="perPage" class="form-inline" id="perPage">
 							<option value="def">선택하세요</option>
 							<option value="3">3</option>
