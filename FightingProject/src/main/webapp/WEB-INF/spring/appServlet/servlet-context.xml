@@ -10,32 +10,55 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 
-   <mvc:annotation-driven />
-   <mvc:default-servlet-handler/>
-   <mvc:resources location="/WEB-INF/views/images/" mapping="/images/**" />
-   <mvc:resources location="/WEB-INF/views/css/" mapping="/css/**" />
-   <mvc:resources location="file:///C:/upload/" mapping="/image/**" />
-     <mvc:resources location="/WEB-INF/views/js_daumaddress/" mapping="/js_daumaddress/**" />
-   <mvc:view-resolvers>
-    <mvc:jsp  prefix="/WEB-INF/views/"  suffix=".jsp" />
-   </mvc:view-resolvers>
-   
-   <mvc:view-controller path="/" view-name="home"/>
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+	<mvc:resources location="/WEB-INF/views/images/" mapping="/images/**" />
+	<mvc:resources location="/WEB-INF/views/css/" mapping="/css/**" />
+	<mvc:resources location="file:///C:/upload/" mapping="/image/**" />
+	<mvc:resources location="/WEB-INF/views/js_daumaddress/"
+		mapping="/js_daumaddress/**" />
+	<mvc:view-resolvers>
+		<mvc:jsp prefix="/WEB-INF/views/" suffix=".jsp" />
+	</mvc:view-resolvers>
+
+	<mvc:view-controller path="/" view-name="home" />
+	<mvc:view-controller path="/guide" view-name="guide" />
 	<!-- 요청 단위 -->
 
 	<context:component-scan base-package="com.*" />
-	
-	
+
 	<!-- 반드시 id는 multipartResolver로 줘야 사용 가능함. -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-
 		<!-- one of the properties available; the maximum file size in bytes -->
 		<property name="maxUploadSize" value="-1" />
 		<!-- 한글파일 이름 설정 -->
 		<property name="defaultEncoding" value="UTF-8" />
-
-
 	</bean>
-		
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>message</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="ko" />
+	</bean>
+
+	<mvc:interceptors>
+		<bean id="localeChangeInterceptor"
+			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="locale" />
+		</bean>
+	</mvc:interceptors>
+
+	<bean id="mesCont" class="com.controller.ms.MesCont">
+	<property name="localeResolver" ref="localeResolver"/>
+	</bean>
+	
 </beans>
