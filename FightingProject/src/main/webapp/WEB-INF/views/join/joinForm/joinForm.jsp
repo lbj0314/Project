@@ -34,12 +34,10 @@
 						$("#result").css("color", "black");
 						$("#result").text("아이디를 입력 하세요.")
 					}
-
 				},
 				error : function(xhr, status, e) {
 					console.log(status, e)
 				}
-
 			});
 		});
 	});
@@ -57,37 +55,107 @@
 					if ($.trim(responseData) == "Y") {
 						$("#result").css("color", "blue");
 						$("#result").text("사용 가능한 아이디 입니다.");
-
 					}
 					if ($.trim(responseData) == "N") {
 						$("#result").css("color", "red");
 						$("#result").text("이미 사용중인 아이디 입니다.");
-
 					}
-
 				},
 				error : function(xhr, status, e) {
 					console.log(status, e)
 				}
-
 			});
 		});
 	});
 	$(document).ready(function() {
 		
+		var RegName = /^[가-힣a-zA-Z]{2,6}$/; //이름 유효성 검사 2~6자 사이
+		var RegId =  /^[a-z0-9_-]{4,12}$/;  //아이디 유효성 검사 4~12자 사이
+		var RegPasswd = /^.*(?=.{8,16})(?=.*[0-9])(?=.*[a-zA-Z]).*$/; // 비밀번호 유효성 검사 영문자 숫자 혼합하여 특수문자 가능 8~16자리
+		var RegSsn = /^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))|[1-4][0-9]{6}$/; //주민등록 번호 유효성 검사
+		var RegPhone = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/; //핸드폰 유효성 검사
+		var RegEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i; //이메일 유효성검사
+		var RegPhone2 = /^[0-9]{9,11}$/; //전화번호 유효성 검사
+		
+		var RegIn = /^[0-9]{10}$/; //사업자등록번호 유효성 검사
+		$("form").submit(function(){
+			if ( !RegName.test($.trim($("#name").val())) )
+			{
+				alert("이름에 영문자 또는 한글 2~6자로 입력해주세요.");
+				$("#name").focus();
+				return false;
+			}
+			
+			else if ( !RegId.test($.trim($("#userid").val())) )
+			{
+				alert("아이디에 영문자와 숫자만으로 4~12자로 입력해주세요.");
+				$("#userid").focus();
+				return false;
+			}
+			else if ( !RegPasswd.test($.trim($("#passwd").val())) )
+			{
+				alert("비밀번호에 영문자와 숫자 포함해서 입력해주세요.");
+				$("#name").focus();
+				return false;
+			}
+			
+			else if ( !RegPhone.test($.trim($("#phone1").val())) )
+			{
+				alert("핸드폰 입력란에 10~11자리와 숫자만 입력해주세요.");
+				$("#phone1").focus();
+				return false;
+			}
+			else if ( !RegPhone2.test($.trim($("#phone2").val())))
+			{
+				alert("전화번호 입력란에 9~11자리와 숫자만 입력해주세요.");
+				$("#phone2").focus();
+				return false;
+			}
+			else if ( !RegEmail.test($.trim($("#email").val())) )
+			{
+				alert("이메일 입력란에 영문자와 숫자만 입력해주세요.");
+				$("#email").focus();
+				return false;
+			}
+			else if ($("#addr1").val() == "") {
+                alert("주소를 입력해주세요.");
+                $("#addr1").focus();
+			return false;	 
+        	}
+			else if ( !RegSsn.test($.trim($("#ssn").val())) )
+			{
+				alert("주민 번호 입력란에 13자리와 숫자만 입력해주세요.");
+				$("#ssn").focus();
+				return false;
+			}
+			else if ( !RegIn.test($.trim($("#in").val())) )
+			{
+				alert("사업자 등록번호 입력란에 10자리와 숫자만 입력해주세요.");
+				$("#in").focus();
+				return false;
+			}
+			else if ($("#location").val() == "def") {
+                alert("업소 지역을 선택해주세요.");
+                $("#location").focus();
+			return false;	 
+        	}
+			else if ($("#kind").val() == "def2") {
+	                alert("업소 종류를 선택해주세요.");
+	                $("#kind").focus();
+				return false;	 
+            }
+		});
+	});
+	
+		$(document).ready(function() {
 		$('#passwd').keyup(function() {
-			if ($('#passwd').val().length < 8 ) {
+		
+			
+		 if ($('#passwd').val().length < 8 ) {
 				$('font[name=check]').css("color", "red");
 				$('font[name=check]').text("8자리 이상으로 입력하세요");
-			/* 
-			else if(!passwd.match(/^.*(?=^.{8,12}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/))  {   
-				 //(?=^.{8,12}$) = 8자에서 12자 체크 
-				 //(?=.*\d)      = 숫자포함
-				 //(?=.*[a-zA-Z]) = 알파벳 대소문자 포함
-				 //(?=.*[!@#$%^&+=]).*$/) = 특수문자 포함
-				 $('font[name=check]').css("color", "red");
-				$('font[name=check]').text("비밀번호는 문자, 숫자, 특수문자의 조합 8~12자리이상으로 입력해주세요."); */
-				 } else {
+				}
+			  else {
 				$('font[name=check]').css("color", "blue");
 				$('font[name=check]').text("8자리 이상으로 입력하세요");
 			}
@@ -105,7 +173,8 @@
 				$('font[name=check2]').text("암호가 일치합니다");
 			}
 		});
-	});
+	});//passwd
+		
 	$(document).ready(function() {
 		$('#ssn').keyup(function() {
 			if ($('#ssn').val().length < 13) {
@@ -117,7 +186,8 @@
 				$('font[name=check3]').text("숫자 13자리로 입력해주세요");
 			}
 		});
-	});
+	});//ssn
+	
 	$(document).ready(function() {
 		$('#phone1').keyup(function() {
 			if ($('#phone1').val().length < 10) {
@@ -129,19 +199,21 @@
 				$('font[name=check4]').text("숫자 10-11자리로 입력해주세요");
 			}
 		});
-	});
+	});//phone1
+	
 	$(document).ready(function() {
 		$('#phone2').keyup(function() {
-			if ($('#phone2').val().length < 10) {
+			if ($('#phone2').val().length < 9) {
 				$('font[name=check5]').css("color", "red");
-				$('font[name=check5]').text("숫자 10-11자리로 입력해주세요");
+				$('font[name=check5]').text("숫자 9-11자리로 입력해주세요");
 			}
 			else {
 				$('font[name=check5]').css("color", "blue");
-				$('font[name=check5]').text("숫자 10-11자리로 입력해주세요");
+				$('font[name=check5]').text("숫자 9-11자리로 입력해주세요");
 			}
 		});
-	});
+	});//phone2
+	
 	$(document).ready(function() {
 		$('#fax').keyup(function() {
 			if ($('#fax').val().length < 9) {
@@ -153,7 +225,8 @@
 				$('font[name=check6]').text("숫자 9-11자리로 입력해주세요");
 			}
 		});
-	});
+	});//fax
+	
 	$(document).ready(function() {
 		$('#in').keyup(function() {
 			if ($('#in').val().length < 10) {
@@ -165,98 +238,9 @@
 				$('font[name=check7]').text("숫자 10자리로 입력해주세요");
 			}
 		});
-	});
+	});//EIN
 	
-	/* function fnssnCheck(ssn) // 주민등록번호유효성검사.
-	 {
-	 var sum = 0;
-	 if (ssn.length != 13) {
-	 return false;
-	 } else if (ssn.substr(6, 1) != 1 && ssn.substr(6, 1) != 2 && ssn.substr(6, 1) != 3 && ssn.substr(6, 1) != 4) {
-	 return false;
-	 }
-
-	 for (var i = 0; i < 12; i++) {
-	 sum += Number(ssn.substr(i, 1)) * ((i % 8) + 2);
-	 }
-	 if (((11 - (sum % 11)) % 10) == Number(ssn.substr(12, 1))) {
-	 return true;
-	 }
-	 return false;
-	 }  */
-
-	/* 
-	 function chkPassWord (userid,passwd) { 
-	 if(passwd.length < 8) {      //길이체크
-	 alert("비밀번호는 문자, 숫자, 특수문자의 조합 8~12자리이상으로 입력해주세요.");
-	 $("#passwd").val("");
-	 $("#passwd2").val("");
-	 $("#passwd").focus();
-	 return false;         
-	 }
-	 if(!passwd.match(/^.*(?=^.{8,12}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/))  {   
-	 //(?=^.{8,12}$) = 8자에서 12자 체크 
-	 //(?=.*\d)      = 숫자포함
-	 //(?=.*[a-zA-Z]) = 알파벳 대소문자 포함
-	 //(?=.*[!@#$%^&+=]).*$/) = 특수문자 포함
-	 alert("비밀번호는 문자, 숫자, 특수문자의 조합 8~12자리이상으로 입력해주세요.");
-	 $("#passwd").val("");
-	 $("#passwd2").val("");
-	 $("#passwd").focus();
-	 return false;         
-	 } 
-	 if(passwd.indexOf(userid) > -1) {      
-	 alert("비밀번호에 아이디를 사용할 수 없습니다.");
-	 $("#passwd").val("");
-	 $("#passwd2").val("");
-	 $("#passwd").focus();
-	 return false;        
-	
-	 } 
-	 var SamePass_0 = 0; //동일문자 카운트
-	 var SamePass_1 = 0; //연속성(+) 카운드
-	 var SamePass_2 = 0; //연속성(-) 카운드
-	
-	 var chr_pass_0;
-	 var chr_pass_1;
-	
-	 for(var i=0; i < passwd.length; i++) {       
-	 chr_pass_0 = passwd.charAt(i);
-	 chr_pass_1 = passwd.charAt(i+1);
-	 //동일문자 카운트
-	 if(chr_pass_0 == chr_pass_1) {
-	 SamePass_0 = SamePass_0 + 1;
-	 } // if
-	 //연속성(+) 카운드
-	 if(chr_pass_0.charCodeAt(0) - chr_pass_1.charCodeAt(0) == 1) {
-	 SamePass_1 = SamePass_1 + 1;
-	 } // if
-	 //연속성(-) 카운드
-	 if(chr_pass_0.charCodeAt(0) - chr_pass_1.charCodeAt(0) == -1) {
-	 SamePass_2 = SamePass_2 + 1;
-	 }
-	 } // for
-	 if(SamePass_0 > 1) {
-	 alert("동일문자를 3번 이상 사용할 수 없습니다.");
-	 $("#passwd").val("");
-	 $("#passwd2").val("");
-	 $("#passwd").focus();
-	 return false;
-	 } // if
-	
-	 if(SamePass_1 > 1 || SamePass_2 > 1 )  {
-	 alert("연속된 문자열(123 또는 321, abc, cba 등)을\n 3자 이상 사용 할 수 없습니다.");
-	 $("#passwd").val("");
-	 $("#passwd2").val("");
-	 $("#passwd").focus();
-	 return false;
-	 } // if
-	 return true;          
-	 });
-	 */
-
 	$(document).ready(function() {
-
 		$("#category").on("change", function() {
 			if ($("#category option:selected").val() == "ent") {
 				$("#name").attr("disabled", false);
@@ -305,10 +289,9 @@
 				$("#button").attr("disabled", true);
 			}
 		});
-
 	});
 </script>
-<form action="join" method="get">
+<form action="" method="get">
 	<select id="category" name="category">
 		<option value="com">일반회원</option>
 		<option value="ent">기업회원</option>
@@ -317,33 +300,33 @@
 	<table border='1'>
 		<tr>
 			<td>이름</td>
-			<td><input type="text" id="name" name="name"></td>
+			<td><input type="text" id="name" name="name" maxlength="6"></td>
 		</tr>
 		<tr>
 			<td>아이디</td>
-			<td><input type="text" name="userid" id="userid"><em
+			<td><input type="text" name="userid" id="userid" maxlength="12"><em
 				id="result"></em></td>
 		</tr>
 		<tr>
 			<td>비밀 번호</td>
-			<td><input type="password" name="passwd" id="passwd" />
+			<td><input type="password" name="passwd" id="passwd" maxlength="16" />
 			<font name="check" size="2"></font>
 			</td>
 		</tr>
 		<tr>
 			<td>비밀 번호 확인</td>
-			<td><input type="password" name="passwd2" id="passwd2" /> <font
+			<td><input type="password" name="passwd2" id="passwd2" maxlength="16" /> <font
 				name="check2" size="2"></font></td>
 		</tr>
 		<tr>
 			<td>주민 번호</td>
 			<td><input type="text" placeholder="주민 번호(-제외)" id="ssn"
-				name="ssn"> <font name="check3" size="2"></font></td>
+				name="ssn" maxlength="13"> <font name="check3" size="2"></font></td>
 		</tr>
 		<tr>
 			<td>핸드폰 번호</td>
 			<td><input type="text" placeholder="휴대폰 번호(-제외)" id="phone1"
-				name="phone1"><font name="check4" size="2"></font></td>
+				name="phone1" maxlength="11"><font name="check4" size="2"></font></td>
 		</tr>
 		<tr>
 			<td>이메일 주소</td>
@@ -353,20 +336,20 @@
 		<!-- 다음주소 시작-->
 		<tr>
 			<td>우편 번호</td>
-			<td><input name="post1" id="post1" size="5" readonly="">
-				- <input name="post2" id="post2" size="5" readonly=""> <input
+			<td><input name="post1" id="post1" size="5" readonly="" value="">
+				- <input name="post2" id="post2" size="5" readonly="" value=""> <input
 				onclick="openDaumPostcode()" type="button" value="우편번호찾기"
 				id="button"></td>
 		</tr>
 		<tr>
 			<td>도로명 주소</td>
 			<td><input name="addr1" id="addr1" size="40" readonly=""
-				placeholder="도로명주소"></td>
+				placeholder="도로명주소" value=""></td>
 		</tr>
 		<tr>
 			<td>지번 주소</td>
 			<td><input name="addr2" id="addr2" size="40"
-				placeholder="지번주소(기업회원의 경우 업소 지역)"></td>
+				placeholder="지번주소(기업회원의 경우 업소 지역)" value=""></td>
 		</tr>
 		<!-- 다음주소 끝 -->
 		<tr>
@@ -396,20 +379,21 @@
 		</tr>
 		<tr>
 			<td>업소 전화번호</td>
-			<td><input type="text" placeholder="전화번호(-제외)" id="phone2" disabled="true" name="phone2"><font name="check5" size="2"></td>
+			<td><input type="text" placeholder="전화번호(-제외)" id="phone2" disabled="true" name="phone2" maxlength="11"><font name="check5" size="2"></td>
 		</tr>
 		<tr>
 			<td>업소 팩스번호</td>
-			<td><input type="text" placeholder="팩스 번호(-제외)" id="fax"disabled="true" name="fax"><font name="check6" size="2"></td>
+			<td><input type="text" placeholder="팩스 번호(-제외)" id="fax"disabled="true" name="fax" maxlength="11"><font name="check6" size="2"></td>
 		</tr>
 		<tr>
 			<td>사업자 등록번호</td>
-			<td><input type="text" id="in" placeholder="사업자 등록번호(-제외)" disabled="true" name="in"><font name="check7" size="2"></td>
+			<td><input type="text" id="in" placeholder="사업자 등록번호(-제외)" disabled="true" name="in" maxlength="10"><font name="check7" size="2"></td>
 		</tr>
 		<tr>
 			<td>업소 종류</td>
-			<td><select id="kind" disabled="true" name="kind"><option
-						value="tour">관광 명소</option>
+			<td><select id="kind" disabled="true" name="kind">
+			<option value="def2">업소 종류 선택</option>
+			<option value="tour">관광 명소</option>
 					<option value="restaurant">음식점</option>
 					<option value="stay">숙박 업소</option></select></td>
 		</tr>
@@ -417,4 +401,3 @@
 	<input type="submit" value="가입하기" class="btn btn-default">
 
 </form>
-
