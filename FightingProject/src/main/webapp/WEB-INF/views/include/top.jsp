@@ -12,6 +12,8 @@
 </script>
 
 <style>
+body,head { text-align: center;  }
+
 h1 {
 	display: block;
 	font-size: 2em;
