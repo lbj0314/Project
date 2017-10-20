@@ -269,5 +269,10 @@ public class TourController extends HttpServlet  {
 	public String xxxx2() {
 		return "error";
 	}
+	
+	@RequestMapping("/mustgo100")
+	public String must() {
+		return "tour/mustgo100";
+	}
 
 }

@@ -69,24 +69,6 @@ h5 {
 
 ${xx}<br>
 
-<!-- 
-	<button id="ko">한국어</button>
-	<button id="us" >English</button>
-	<button id="ch">中国</button>
-	<br />
- -->
-<!-- i18181818i181818코드 -->
-<%--     
-<span style="float: right">   
-    <a href="?lang=en">en</a>   
-    |   
-    <a href="?lang=de">de</a>   
-    
-    <input type="submit" value="<spring:message code="spring.mesg"/>"/>
-</span>  
-
- --%>
-
 <div id="conta">
 
 	<a class="btn dropdown-toggle btn-lg" href="<c:url value="/"/>">
@@ -116,8 +98,8 @@ ${xx}<br>
 		</a>
 		<ul class="dropdown-menu">
 			<li><a href="tourList">관광 명소</a><br></li>
-			<li><a href="/project/tour/mustgo100view.jsp">관광100</a></li>
-			<li><a href="/project/FesListServlet">축제</a></li>
+			<li><a href="mustgo100">관광100</a></li>
+			<li><a href="fesList">축제</a></li>
 		</ul>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
