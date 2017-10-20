@@ -8,6 +8,7 @@
 <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type="text/javascript" src="/test/js_daumaddress/jquery.tablednd.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#plus").on("click", function() {
@@ -16,7 +17,7 @@
 				var one = parseInt($("#term").val().substring(0, 1)) + 1;
 				var two = parseInt($("#term").val().substring(2, 3)) + 1;
 				$("#term").val(one + "박" + two + "일");
-				$("#termTable").append('<tr><td>'+(one + 1)+'일</td><td id="'+(one + 1)+'-1td'+'"></td><td id="'+(one + 1)+'-2td'+'"></td><td id="'+(one + 1)+'-3td'+'"></td><td id="'+(one + 1)+'-4td'+'"></td><td id="'+(one + 1)+'-5td'+'"></td><td id="'+(one + 1)+'-6td'+'"></td><td id="'+(one + 1)+'-7td'+'"></td></tr>');
+				$("#termGoodsTable tr:nth-child("+(one + 1)+")").after('<tr id="'+(one + 1)+'-termTr'+'" class="nodrag"><td>'+(one + 1)+'일</td><td id="'+(one + 1)+'-1td'+'"></td><td id="'+(one + 1)+'-2td'+'"></td><td id="'+(one + 1)+'-3td'+'"></td><td id="'+(one + 1)+'-4td'+'"></td><td id="'+(one + 1)+'-5td'+'"></td><td id="'+(one + 1)+'-6td'+'"></td><td id="'+(one + 1)+'-7td'+'"></td></tr>');
 			} else {
 				$("#span").text("값이 8박9일보다 높습니다.");
 			}
@@ -27,25 +28,28 @@
 			var one2 = parseInt($("#term").val().substring(0, 1)) - 1;
 			var two2 = parseInt($("#term").val().substring(2, 3)) - 1;
 			$("#term").val(one2 + "박"+ two2+ "일");
-			$("#termTable tr:last-child").remove();
+			$("#termGoodsTable tr:nth-child("+(one2+3)+")").remove();
 		} else {
 			$("#span").text("값이 1박2일보다 낮습니다.");
 		}
-	});
-	
-	$("#goodsTable tr").not("#notDragTr").draggable({
-		start: function(event,ui) {
-			$(this).draggable( "option", "revert", true );
-		}
-	});
-	$("#goodsTable tr").not("#notDragTr").on("click",function(){
-		console.log("야");
-	});
-	
-	
-	
+		
+		
+	});	
 });
+	$(function() {
+		$("#termGoodsTable").tableDnD({onDrop: function(table, row) {
+			
+		}});
+		
+	});
 </script>
+<style type="text/css">
+
+tr.noDrag{
+cursor:point;
+}
+
+</style>
 
 <form action="" method="get" name="myForm" id="myForm">
 	<input type="hidden" name="kind" value="" id="kind"> <input
@@ -57,18 +61,18 @@
 	<input type="button" id="plus" value="+"> <input type="button"
 		id="minus" value="-"> <span id="span" style="color: red;">8박9일
 		까지만 가능</span><br>
-	<table border='1' id="termTable">
-		<tr>
+	<table border='1' id="termGoodsTable" >
+		<tr class="nodrag">
 			<td>시간</td>
 			<td>아침</td>
 			<td>오전</td>
 			<td>점심</td>
 			<td>오후</td>
 			<td>저녁</td>
-			<td>&nbsp;밤&nbsp;</td>
+			<td>밤</td>
 			<td>숙박</td>
 		</tr>
-		<tr>
+		<tr id="1-termTr" class="nodrag">
 			<td>1일</td>
 			<td id="1-1td"></td>
 			<td id="1-2td"></td>
@@ -78,7 +82,7 @@
 			<td id="1-6td"></td>
 			<td id="1-7td"></td>
 		</tr>
-		<tr>
+		<tr id="2-termTr" class="nodrag">
 			<td>2일</td>
 			<td id="2-1td"></td>
 			<td id="2-2td"></td>
@@ -88,11 +92,14 @@
 			<td id="2-6td"></td>
 			<td id="2-7td"></td>
 		</tr>
-
-	</table>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<table border='1' id="goodsTable">
-		<tr id="notDragTr">
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		<tr id="notDragTr" class="nodrag">
+			<td>상품 리스트</td>
 			<td>업소 분류</td>
 			<td>업소명</td>
 			<td>업소 지역</td>
@@ -105,6 +112,7 @@
 			varStatus="status">
 			<c:if test="${!empty item.attNum }">
 				<tr id="${item.attNum }+attTr">
+					<td></td>
 					<td id="${item.attNum }+att1td">관광지</td>
 					<td id="${item.attNum }+att2td">${item.attName }</td>
 					<td id="${item.attNum }+att3td">${item.attLocation }</td>
@@ -119,6 +127,7 @@
 			varStatus="status">
 			<c:if test="${!empty item.restNum }">
 				<tr id="${item.restNum }+restTr">
+					<td></td>
 					<td id="${item.restNum }+rest1td">음식점</td>
 					<td id="${item.restNum }+rest2td">${item.restName }</td>
 					<td id="${item.restNum }+rest3td">${item.restLocation }</td>
@@ -133,6 +142,7 @@
 			varStatus="status">
 			<c:if test="${!empty item.stayNum }">
 				<tr id="${item.stayNum }+stayTr">
+					<td></td>
 					<td id="${item.stayNum }+stay1td">숙박소</td>
 					<td id="${item.stayNum }+stay2td">${item.stayName }</td>
 					<td id="${item.stayNum }+stay3td">${item.stayLocation }</td>
