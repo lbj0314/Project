@@ -48,7 +48,7 @@ h5 {
 
 <!-- 타이틀은 대한민국 구석구석 짭 -->
 <h1 id="jjab">
-	<strong>대한민국 방방곡곡</strong>
+	<strong>맛집, 숙소, 관광지 정보를 제공해주고 자유롭게 패키지를 설정하면 할인해주는 사이트. 기업인이 직접 업소를 등록할 수도 있습니다. 이거 너무 기니까 빨리 사이트 이름 정해봐요</strong>
 </h1>
 
 
@@ -87,7 +87,7 @@ ${xx}<br>
 
 <div id="conta">
 
-	<a class="btn dropdown-toggle btn-lg" href="/WEB-INF/views/home.jsp">
+	<a class="btn dropdown-toggle btn-lg" href="<c:url value="/"/>">
 		홈으로 </a>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -145,7 +145,7 @@ ${xx}<br>
 		<ul class="dropdown-menu">
 			<li><a href="#">후기</a><br></li>
 			<li><a href="#">QnA</a><br></li>
-			<li><a href="/WEB-INF/views/guide.jsp">사이트 이용법</a></li>
+			<li><a href="<c:url value="/guide"/>">사이트 이용법</a></li>
 		</ul>
 	</div>
 </div>
