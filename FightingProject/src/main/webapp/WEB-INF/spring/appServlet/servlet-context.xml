@@ -22,7 +22,7 @@
 	</mvc:view-resolvers>
 
 	<mvc:view-controller path="/" view-name="home" />
-	<mvc:view-controller path="/guide" view-name="guide" />
+	<mvc:view-controller path="/guide" view-name="include/guide" />
 	<!-- 요청 단위 -->
 
 	<context:component-scan base-package="com.*" />
