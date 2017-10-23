@@ -7,7 +7,6 @@
     
     <div id="conta">
 <!-- <img src="/project/images/mustgo100.jpg" width=80% height=80%><br> -->
-
 <html>
 <head>
 <title>mustgo100</title>
@@ -24,7 +23,7 @@
 	</tr>
 	<tr>
 		<td colspan="3" rowspan="6">
-			<img src="/images/mustgoimages/mustgo100_0lotte.jpg" width="442" height="828" alt=""></td>
+			<img src="images/mustgo100_02.jpg" width="442" height="828" alt=""></td>
 		<td colspan="3">
 			<a href="https://mticket.lotteworld.com/web/pdt/productList.do?ei_gsber=1210&ei_bukrs=1200">
 				<img src="images/mustgo100_0lotte.jpg" width="179" height="108" border="0" alt=""></a></td>
@@ -199,5 +198,4 @@
 <!-- End Save for Web Slices -->
 </body>
 </html>
-
 </div>
