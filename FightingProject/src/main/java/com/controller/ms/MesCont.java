@@ -54,10 +54,10 @@ public class MesCont {
 		if("zh".equals(locale.toString())) {
 	 		localeResolver.setLocale(request, response, Locale.CHINA);
 			}
-		/*if("jp".equals(locale.toString())) {
-	 		localeResolver.setLocale(request, response, Locale.JAPAN);
+		if("jp".equals(locale.toString())) {
+	 		localeResolver.setLocale(request, response, Locale.JAPANESE);
 	 		System.out.println(locale);
-			}*/
+			}
 		if("fr".equals(locale.toString())) {
 	 		localeResolver.setLocale(request, response, Locale.FRANCE);
 			}
@@ -65,7 +65,7 @@ public class MesCont {
 	 		localeResolver.setLocale(request, response, Locale.ITALIAN);
 			}
 	
-		return "home";
+		return "home_en";
 
 	}
 }
