@@ -60,6 +60,7 @@
 
 <FORM action="loginX/tourUpdate" method="post"
 	enctype="multipart/form-data">
+	
 	<input type="hidden" name="attNum" value="${tourRetrieve.attNum}"
 		id="attNum"> <input type="hidden" name="attImage"
 		value="${tourRetrieve.attImage}"> <input type="hidden"
@@ -351,7 +352,7 @@
 	<div id="conta">
 
 		<c:if test="${!empty sessionScope.comLogin}">
-			<a href="packageOrderForm?attNum=${tourRetrieve.attNum}"
+			<a href="packageOrderForm?attNum=${tourRetrieve.attNum}&betweenDay=${sessionScope.betweenDay}&startDay=${sessionScope.startDay}&endDay=${sessionScope.endDay}"
 				class="btn btn-default">패키지에 추가하기</a>
 			
 	&nbsp;&nbsp;

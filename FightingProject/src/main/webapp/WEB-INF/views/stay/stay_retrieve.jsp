@@ -64,6 +64,7 @@
 
 <FORM action="/test/loginX/stayUpdate" method="post"
 	enctype="multipart/form-data">
+	
 	<input type="hidden" name="stayNum" value="${stayRetrieve.stayNum}"
 		id="stayNum"> <input type="hidden" name="stayImage"
 		value="${stayRetrieve.stayImage}"> <input type="hidden"
@@ -384,7 +385,7 @@
 
 		<c:if test="${!empty sessionScope.comLogin}">
 
-			<a href="packageOrderForm?stayNum=${stayRetrieve.stayNum}"
+			<a href="packageOrderForm?stayNum=${stayRetrieve.stayNum}&betweenDay=${sessionScope.betweenDay}&startDay=${sessionScope.startDay}&endDay=${sessionScope.endDay}"
 				class="btn btn-default">패키지에 추가하기</a>
 	&nbsp;&nbsp;
 </c:if>
