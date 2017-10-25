@@ -82,7 +82,7 @@ ${xx}<br>
 			소개 <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="/project/NoticeListServlet">공지사항</a><br></li>
+			<li><a href="/test/noticeList">공지사항</a><br></li>
 
 			<li><a href="#">이벤트</a><br></li>
 			<li><a href="#">추천패키지</a></li>
@@ -97,7 +97,7 @@ ${xx}<br>
 			관광명소 <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="tourList">관광 명소</a><br></li>
+			<li><a href="/test/tourList">관광 명소</a><br></li>
 			<li><a href="mustgo100">관광100</a></li>
 			<li><a href="fesList">축제</a></li>
 		</ul>
@@ -109,7 +109,7 @@ ${xx}<br>
 			맛집 <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="/project/RestListServlet">음식점 정보</a></li>
+			<li><a href="/test/restList">음식점 정보</a></li>
 		</ul>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -118,7 +118,7 @@ ${xx}<br>
 			숙소 <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="/project/StayBoardListServlet">숙박업소 정보</a></li>
+			<li><a href="/test/stayList">숙박업소 정보</a></li>
 		</ul>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
