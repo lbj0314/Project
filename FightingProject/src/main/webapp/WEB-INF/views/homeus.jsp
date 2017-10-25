@@ -22,7 +22,7 @@
 
 </head>
 <body>
-sorry, we will provide service to join our website for foreign people soon.
+sorry, we will service to join our website for foreign people soon.
 
 	<jsp:include page="/WEB-INF/views/include/topus.jsp" flush="true" /><br>
 	<jsp:include page="/WEB-INF/views/include/main.jsp" flush="true" /><br>
