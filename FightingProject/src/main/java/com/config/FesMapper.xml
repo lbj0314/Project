@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	from festival
 	</select> -->
 	
-	<select id="FesSelectAll" resultType="FesDTO">
+	<select id="fesList" parameterType="string" resultType="FesDTO">
 	   select FesNum,FesName,FesPrice,FesTitle,FesContent,FesImage,FesSite
 	   from festival
 	</select>
