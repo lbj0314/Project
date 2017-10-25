@@ -50,7 +50,7 @@ h5 {
 
 <!-- 타이틀은 대한민국 구석구석 짭 -->
 <h1 id="jjab">
-	<strong>맛집, 숙소, 관광지 정보를 제공해주고 자유롭게 패키지를 설정하면 할인해주는 사이트. 기업인이 직접 업소를 등록할 수도 있습니다. 이거 너무 기니까 빨리 사이트 이름 정해봐요</strong>
+	<strong>Welcome!</strong>
 </h1>
 
 
@@ -72,20 +72,20 @@ ${xx}<br>
 <div id="conta">
 
 	<a class="btn dropdown-toggle btn-lg" href="<c:url value="/"/>">
-		홈으로 </a>
+		home </a>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 
 	<div class="btn-group" id="conta">
 		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
-			소개 <span class="caret"></span>
+			introduce <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="/project/NoticeListServlet">공지사항</a><br></li>
+			<li><a href="/project/NoticeListServlet">notice</a><br></li>
 
-			<li><a href="#">이벤트</a><br></li>
-			<li><a href="#">추천패키지</a></li>
+			<li><a href="#">event</a><br></li>
+			<li><a href="#">good package</a></li>
 		</ul>
 	</div>
 
@@ -94,42 +94,42 @@ ${xx}<br>
 
 	<div class="btn-group">
 		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
-			관광명소 <span class="caret"></span>
+			tour <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="tourList">관광 명소</a><br></li>
-			<li><a href="mustgo100">관광100</a></li>
-			<li><a href="fesList">축제</a></li>
+			<li><a href="tourList">tour</a><br></li>
+			<li><a href="mustgo100">mustgo100</a></li>
+			<li><a href="fesList">festival</a></li>
 		</ul>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 	<div class="btn-group">
 		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
-			맛집 <span class="caret"></span>
+			restaurant <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="/project/RestListServlet">음식점 정보</a></li>
+			<li><a href="/project/RestListServlet">restaurant information</a></li>
 		</ul>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<div class="btn-group">
 		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
-			숙소 <span class="caret"></span>
+			stay <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="/project/StayBoardListServlet">숙박업소 정보</a></li>
+			<li><a href="/project/StayBoardListServlet">stay information</a></li>
 		</ul>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<div class="btn-group">
 		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
-			게시판 <span class="caret"></span>
+			board <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="#">후기</a><br></li>
+			<li><a href="#">review</a><br></li>
 			<li><a href="#">QnA</a><br></li>
-			<li><a href="<c:url value="/guide"/>">사이트 이용법</a></li>
+			<li><a href="<c:url value="/guide"/>">guide</a></li>
 		</ul>
 	</div>
 </div>
