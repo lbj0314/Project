@@ -64,7 +64,7 @@ public class MesCont {
 		if("it".equals(locale.toString())) {
 	 		localeResolver.setLocale(request, response, Locale.ITALIAN);
 			}
-	   
+	      
 		return "homeus";
 
 	}
