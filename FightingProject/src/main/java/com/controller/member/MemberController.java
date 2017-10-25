@@ -1,5 +1,6 @@
 package com.controller.member;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
@@ -126,7 +127,6 @@ public class MemberController {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("userid", userid);
 		map.put("passwd", passwd);
-		
 		if(wholog.equals("com")) {
 			
 			ComDTO dto = service.comLogin(map);

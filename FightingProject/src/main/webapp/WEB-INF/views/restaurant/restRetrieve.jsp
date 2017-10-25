@@ -62,6 +62,7 @@
 
 <FORM action="/test/loginX/restUpdate" method="post"
 	enctype="multipart/form-data">
+	
 	<input type="hidden" name="restNum" value="${restRetrieve.restNum}"
 		id="restNum"> <input type="hidden" name="restImage"
 		value="${restRetrieve.restImage}"> <input type="hidden"
@@ -365,7 +366,7 @@
 
 		<c:if test="${!empty sessionScope.comLogin}">
 
-			<a href="packageOrderForm?restNum=${restRetrieve.restNum}" class="btn btn-default">패키지에 추가하기</a>
+			<a href="packageOrderForm?restNum=${restRetrieve.restNum}&betweenDay=${sessionScope.betweenDay}&startDay=${sessionScope.startDay}&endDay=${sessionScope.endDay}" class="btn btn-default">패키지에 추가하기</a>
 	&nbsp;&nbsp;	
 </c:if>
 

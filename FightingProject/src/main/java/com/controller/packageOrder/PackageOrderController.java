@@ -1,6 +1,8 @@
 package com.controller.packageOrder;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -34,7 +36,13 @@ public class PackageOrderController {
 	public ModelAndView packageOrderForm(@RequestParam(defaultValue="0") int attNum, 
 			@RequestParam(defaultValue="0") int restNum, 
 			@RequestParam(defaultValue="0") int stayNum,
+			@RequestParam(defaultValue="0") int betweenDay,
+			@RequestParam(defaultValue="0") String startDay,
+			@RequestParam(defaultValue="0") String endDay,
 			HttpSession session) {
+		System.out.println(betweenDay);
+		System.out.println(startDay);
+		System.out.println(endDay);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("order/orderForm");
@@ -74,6 +82,23 @@ public class PackageOrderController {
 			stayList.add(stayDto);
 			session.setAttribute("orderStayList", stayList);
 			}
+		}
+		
+		session.setAttribute("betweenDay", betweenDay);
+
+		if(startDay.equals("0")) {
+
+			Date today = new Date();
+			SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+			startDay= transFormat.format(today);
+			endDay= transFormat.format(today);
+			
+			session.setAttribute("startDay", startDay);
+			session.setAttribute("endDay", endDay);
+		}else if(!startDay.equals("0")) {
+
+			session.setAttribute("startDay", startDay);
+			session.setAttribute("endDay", endDay);
 		}
 		
 		
