@@ -19,7 +19,7 @@
 		<jsp:include page="/WEB-INF/views/login/loginForm.jsp" flush="true" /><br>
 	</div>
 	<jsp:include page="/WEB-INF/views/include/top.jsp" flush="true" /><br>
-	<jsp:include page="/WEB-INF/views/fes/FesList.jsp" flush="true" /><br>
+	<jsp:include page="/WEB-INF/views/fes/fesList.jsp" flush="true" /><br>
 	<jsp:include page="/WEB-INF/views/include/copyright.jsp" flush="true" /><br>
 </body>
 </html>

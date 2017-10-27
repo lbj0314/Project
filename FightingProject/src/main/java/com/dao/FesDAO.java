@@ -14,8 +14,8 @@ public class FesDAO {
 	@Autowired
 	SqlSessionTemplate template;
 	
-	public List<FesDTO> fesList( String FesSeason) {
-		List<FesDTO> dto = template.selectList("fesList",FesSeason);
+	public List<FesDTO> fesList() {
+		List<FesDTO> dto = template.selectList("fesList");
 		return dto;
 }
 	
