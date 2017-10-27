@@ -19,9 +19,9 @@
 <link rel="stylesheet" type="text/css" href="/project/css/style.css">
 
 <style type="text/css">
-
-body,head { text-align: center;  }
-
+body, head {
+	text-align: center;
+}
 </style>
 
 
@@ -33,34 +33,51 @@ body,head { text-align: center;  }
 	<br>
 	<br>
 	<br>
+	<br> 사이트 방문을 환영합니다! 만나서 반가워요
 	<br>
-		사이트 방문을 환영합니다! 만나서 반가워요
-
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<a href="/project/StayBoardListServlet">숙박 보기</a>
-	<br>
-	<a href="/project/RestListServlet">음식점 보기</a>
-	<br>
-	<a href="/project/TourListServlet">관광명소 보기</a>
 	<br>
 
-	<br> 마음에 드는 숙박, 음식점, 관광명소를 선택하신 후
+	<h5>관광명소에 대한 정보</h5>
+	자연, 체험, 역사, 테마, 쇼핑
+	<br>
+	<a href="/test/tourList">관광명소 보기</a><br>
+
+	<h5>맛집에 대한 정보</h5>
+	한식, 일식, 중식, 양식, 패스트푸드, 제과
+	<br>
+	<a href="restList">음식점 보기</a><br>
+
+	<h5>숙박에 대한 선택권도 다양합니다</h5>
+	게스트하우스, 아파트, 모텔, 호텔, 호스텔, 펜션, 홈스테이, 템플 스테이로 분류되어 있습니다.
+	<br>
+	<a href="stayList">숙박 보기</a><br>
+	<br> 또한 맛집, 숙박, 관광명소를 상세히 각 지역별로 볼 수 있습니다.
+	<br>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h1>스페셜 포인트</h1>
+	<br>숙박, 음식점, 관광명소에 대한 정보를 볼 수 있을 뿐만 아니라
+	<br> 마음에 드는 곳을 선택하신 후
 	<br> 자유롭게 패키지를 설정하실 수 있습니다
+	<br>
+	<br>
 	<br>
 	<br>
 	<a href="">패키지 설정하러 가기!</a>
 	<br>
 	<br>
 	<br>
-	<br> 업체를 운영중이신 경우
 	<br>
-	<a href="/project/JoinFormServlet" target="_blank">기업 회원가입 바로가기</a>
+	<a href="#top">회원가입은 오른쪽 상단에서 할 수 있습니다</a>
 	<br>
+	<br> 관광명소, 음식점, 숙박업소를 운영중이신 경우
+	<br> 직접 자신의 업체를 등록하실 수 있습니다
 	<br>
 	<br>
 	<br>

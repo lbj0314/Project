@@ -17,6 +17,13 @@
 
 
 <body>
+	<div id="mustgo" style="font-size: 20px">각 지역 클릭시 관광 상세 페이지로
+		이동합니다.</div>
+	<br>
+	<br>
+	<br>
+
+
 	<img src="/test/images/mustgo100.jpg" usemap="#001" border="0">
 	<map name="001">
 		<area shape="rect" alt="" title="" coords="306,264,438,334"
@@ -28,7 +35,8 @@
 			href="http://tour.gwd.go.kr/" target="_blank" />
 		<area shape="rect" alt="" title="" coords="184,858,390,964"
 			href="http://tour.gongju.go.kr/html/kr/" target="_blank" />
-		<area shape="rect" alt="" title="" coords="256,1094,460,1172" href=""
+		<area shape="rect" alt="" title="" coords="256,1094,460,1172"
+			href="http://www.jeonju.go.kr/index.9is?contentUid=9be517a74f72e96b014f8332a1e4145f"
 			target="_blank" />
 		<area shape="rect" alt="" title="" coords="110,1280,434,1394"
 			href="http://tour.gwangju.go.kr/home/main.cs" target="_blank" />
