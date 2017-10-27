@@ -46,6 +46,7 @@
         <value>com.dto.stay.StayPageDTO</value>
         <value>com.dto.tour.TourDTO</value>
         <value>com.dto.tour.TourPageDTO</value>
+        <value>com.dto.reservation.ReservationFormDTO</value>
        </list>
      </property>
    </bean>

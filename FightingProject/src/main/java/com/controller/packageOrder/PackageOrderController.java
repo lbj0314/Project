@@ -4,13 +4,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dto.restaurant.RestDTO;
@@ -20,7 +23,9 @@ import com.service.RestService;
 import com.service.StayService;
 import com.service.TourService;
 
-@Controller
+import net.sf.json.JSONArray;
+
+@RestController
 public class PackageOrderController {
 
 	@Autowired
@@ -40,9 +45,6 @@ public class PackageOrderController {
 			@RequestParam(defaultValue="0") String startDay,
 			@RequestParam(defaultValue="0") String endDay,
 			HttpSession session) {
-		System.out.println(betweenDay);
-		System.out.println(startDay);
-		System.out.println(endDay);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("order/orderForm");
@@ -103,6 +105,21 @@ public class PackageOrderController {
 		
 		
 		return mav;
+	}
+	@RequestMapping(value="/reservationPackage", method=RequestMethod.POST)
+	public void reservationPackage(@RequestBody String[] reservArray) {
+
+		System.out.println(reservArray);
+		
+		List<Map<String,Object>> resultMap = new ArrayList<Map<String,Object>>();
+	    resultMap = JSONArray.fromObject(reservArray);
+	 System.out.println(resultMap);
+		
+	         
+	    /*for (Map<String, Object> map : resultMap) {
+	        System.out.println(map.get("reservDate") + " : " + map.get("reservNum"));
+	     
+	    }*/
 	}
 	
 	
