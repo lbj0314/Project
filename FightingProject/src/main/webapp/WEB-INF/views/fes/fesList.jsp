@@ -18,6 +18,10 @@
 <td>축제 사이트</td>
 <td>조회수</td>
 </tr>
+<c:forEach var="fff" items="${fesList}">
+${fff}
+</c:forEach>
+
 </table>
 </body>
 </html>

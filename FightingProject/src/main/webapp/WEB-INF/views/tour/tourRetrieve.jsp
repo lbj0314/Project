@@ -5,11 +5,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+ 
 <!-- DAUM 주소 라이브러리 시작 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="/project/js_daumaddress/daum.js"></script>
 <!-- DAUM 주소 라이브러리 끝 -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <%-- <c:if test="${!empty requestScope.goodok}">
 	<script>
@@ -57,10 +61,141 @@
 			});
 </script>
 
+<script type="text/javascript">
+$(document).ready(function() {
+		
+		var RegName = /^[가-힣a-zA-Z0-9_-]{2,20}$/; //이름 유효성 검사 2~20자 사이
+		var RegTitle =  /^[가-힣a-zA-Z0-9_-]{4,30}$/;  //제목 유효성 검사 4~30자 사이
+		var RegAvgPrice = /^[0-9]{3,11}$/; //어른,어린이 가격 유효성 검사
+		var RegPhone = /^[0-9]{9,11}$/; //전화번호 유효성 검사
+		
+		 
+		$("form").submit(function(){
+			if ( !RegName.test($.trim($("#attName").val())) )
+			{
+				alert("관광지 이름에 2~20자로 입력해주세요.");
+				$("#attName").focus();
+				return false;
+			}
+			else if ( !RegTitle.test($.trim($("#attTitle").val())) )
+			{
+				alert("제목에  4~30자로 입력해주세요.");
+				$("#attTitle").focus();
+				return false;
+			}
+			else if ($("#attLocation").val() == "def") {
+                alert("지역을 선택해주세요.");
+                $("#attLocation").focus();
+			return false;	 
+       		}
+			else if ($("#attType").val() == "def2") {
+                alert("관광지 종류를 선택해주세요.");
+                $("#attType").focus();
+			return false;	 
+       		}
+			else if ($("#addr1").val() == "") {
+                alert("주소를 입력해주세요.");
+                $("#addr1").focus();
+			return false;	 
+        	}
+			else if ( !RegAvgPrice.test($.trim($("#attAdultPrice").val())) )
+			{
+				alert("성인 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$("#attAdultPrice").focus();
+				return false;
+			}
+			else if ( !RegAvgPrice.test($.trim($("#attKidPrice").val())) )
+			{
+				alert("어린이 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$("#attKidPrice").focus();
+				return false;
+			}
+			else if ( !RegPhone.test($.trim($("#attPhone").val())))
+			{
+				alert("전화번호 입력란에 9~11자리와 숫자만 입력해주세요.");
+				$("#attPhone").focus();
+				return false;
+			}
+			
+			else if ($("#attContent").val() == "") {
+                alert("내용을 입력해주세요.");
+                $("#attContent").focus();
+			return false;
+        	}
+			/* else if ($("#imgInp").val() == "") {
+                alert("이미지를 삽입해주세요.");
+                $("#imgInp").focus();
+			return false;	 
+        	} */
+		});
+	});
+	
+	$(document).ready(function() {
+		$('#attName').keyup(function() {
+		 if ($('#attName').val().length < 2 ) {
+				$('font[name=check]').css("color", "red");
+				$('font[name=check]').text("관광지 이름에 2~20자로 입력해주세요.");
+				}
+			  else {
+				$('font[name=check]').css("color", "blue");
+				$('font[name=check]').text("관광지 이름에 2~20자로 입력해주세요.");
+			}
+		});
+	});//attName
+		
+	$(document).ready(function() {
+		$('#attTitle').keyup(function() {
+			if ($('#attTitle').val().length < 4) {
+				$('font[name=check2]').css("color", "red");
+				$('font[name=check2]').text("제목에 4~30자로 입력해주세요.");
+			}
+			else {
+				$('font[name=check2]').css("color", "blue");
+				$('font[name=check2]').text("제목에 4~30자로 입력해주세요.");
+			}
+		});
+	});//attTitle
+	
+	$(document).ready(function() {
+		$('#attAdultPrice').keyup(function() {
+			if ($('#attAdultPrice').val().length < 3) {
+				$('font[name=check3]').css("color", "red");
+				$('font[name=check3]').text("성인 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+			}
+			else {
+				$('font[name=check3]').css("color", "blue");
+				$('font[name=check3]').text("성인 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+			}
+		});
+		$('#attKidPrice').keyup(function() {
+			if ($('#attKidPrice').val().length < 3) {
+				$('font[name=check4]').css("color", "red");
+				$('font[name=check4]').text("어린이 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+			}
+			else {
+				$('font[name=check4]').css("color", "blue");
+				$('font[name=check4]').text("어린이 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+			}
+		});
+	});//attPrice
+	
+	$(document).ready(function() {
+		$('#attPhone').keyup(function() {
+			if ($('#attPhone').val().length < 9) {
+				$('font[name=check5]').css("color", "red");
+				$('font[name=check5]').text("숫자 9-11자리로 입력해주세요");
+			}
+			else {
+				$('font[name=check5]').css("color", "blue");
+				$('font[name=check5]').text("숫자 9-11자리로 입력해주세요");
+			}
+		});
+	});//attPhone
+
+</script>
 
 <FORM action="loginX/tourUpdate" method="post"
 	enctype="multipart/form-data">
-	
 	<input type="hidden" name="attNum" value="${tourRetrieve.attNum}"
 		id="attNum"> <input type="hidden" name="attImage"
 		value="${tourRetrieve.attImage}"> <input type="hidden"
@@ -79,13 +214,13 @@
 					border="0" style='margin-left: 30px'>
 
 					<tr>
-						<td class="td_default" align="center"><font size="5"><b>업소
+						<td class="td_default" align="center"><font size="5"><b>관광지
 									정보 </b></font> &nbsp;</td>
 
 					</tr>
 
 					<tr>
-						<td>업소 번호:${tourRetrieve.attNum}
+						<td>관광지 번호:${tourRetrieve.attNum}
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;등록날짜:${tourRetrieve.attWriteDay}
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							조회수:${tourRetrieve.attReadCnt}
@@ -147,28 +282,28 @@
 								</td>
 						</c:if>
 
-						<td class="td_title">업소 이름</td>
+						<td class="td_title">관광지 이름</td>
 						<td class="td_default" colspan="2" style='padding-left: 30px'><input
-							type="text" name="attName" value="${tourRetrieve.attName}"
-							class="form-control"></td>
+							type="text" name="attName" id="attName" value="${tourRetrieve.attName}"
+							class="form-control"><font name="check" size="2"></td>
 
 						</tr>
 
 					</div>
 					<div class="form-inline">
-						<td class="td_title">업소 제목</td>
+						<td class="td_title">관광지 제목</td>
 						<td class="td_default" colspan="2" style='padding-left: 30px'><input
-							type="text" name="attTitle" value="${tourRetrieve.attTitle}"
-							class="form-control"></td>
+							type="text" name="attTitle" id="attTitle" value="${tourRetrieve.attTitle}"
+							class="form-control"><font name="check2" size="2"></td>
 
 					</div>
 					<div class="form-inline">
 						<tr>
 
-							<td class="td_title">업소 지역</td>
+							<td class="td_title">관광지 지역</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<select name="attLocation" class="form-control" id="attlo">
-									<option>지역선택</option>
+								<select name="attLocation" id="attLocation" class="form-control" id="attlo">
+									<option value="def">지역선택</option>
 									<option value="전체">전체</option>
 									<option value="서울">서울</option>
 									<option value="인천">인천</option>
@@ -193,11 +328,11 @@
 					</div>
 					<div class="form-inline">
 						<tr>
-							<td class="td_title">업소 타입</td>
+							<td class="td_title">관광지 타입</td>
 
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<select name="attType" class="form-control" id="attty">
-									<option value="def">타입선택</option>
+								<select name="attType" id="attType" class="form-control" id="attty">
+									<option value="def2">타입선택</option>
 									<option value="자연">자연</option>
 									<option value="체험">체험</option>
 									<option value="역사">역사</option>
@@ -249,48 +384,39 @@
 					</div>
 					<div class="form-inline">
 						<tr>
-							<td class="td_title">업소 성인가격</td>
-
-
-
-
+							<td class="td_title">성인 가격</td>
 							<td class="td_red" colspan="2" style='padding-left: 30px'><fmt:formatNumber
 									type="currency" value="${tourRetrieve.attAdultPrice}"
 									pattern="\###,###" var="aap" /> <input type="text"
-								name="attAdultPrice" value="${tourRetrieve.attAdultPrice}"
-								class="form-control"></td>
+								name="attAdultPrice" id="attAdultPrice" value="${tourRetrieve.attAdultPrice}"
+								class="form-control"><font name="check3" size="2"></td>
 						</tr>
 					</div>
 					<div class="form-inline">
 						<tr>
-							<td class="td_title">업소 어린이가격</td>
-
-
-
-
+							<td class="td_title">어린이 가격</td>
 							<td class="td_red" colspan="2" style='padding-left: 30px'><fmt:formatNumber
 									type="currency" value="${tourRetrieve.attKidPrice}"
 									pattern="\###,###" var="akp" /> <input type="text"
-								name="attKidPrice" value="${tourRetrieve.attKidPrice}"
-								class="form-control"></td>
+								name="attKidPrice" id="attKidPrice" value="${tourRetrieve.attKidPrice}"
+								class="form-control"><font name="check4" size="2"></td>
 						</tr>
 					</div>
 					<div class="form-inline">
 						<tr>
 
-							<td class="td_title">업소 전화번호</td>
+							<td class="td_title">관광지 전화번호</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<input type="text" name="attPhone"
+								<input type="text" name="attPhone" id="attPhone"
 								value="${tourRetrieve.attPhone}" class="form-control">
-
-
+								<font name="check5" size="2">
 							</td>
 						</tr>
 					</div>
 					<tr>
-						<td class="td_title">업소 설명</td>
+						<td class="td_title">관광지 설명</td>
 						<td class="td_default" colspan="2" style='padding-left: 30px'>
-							<input type="text" name="attContent"
+							<input type="text" name="attContent" id="attContent"
 							value="${tourRetrieve.attContent}" class="form-control">
 
 						</td>
@@ -298,7 +424,7 @@
 					<c:if test="${empty sessionScope.admLogin}">
 
 						<tr>
-							<td class="td_title">업소사이트 바로가기</td>
+							<td class="td_title">관광지 사이트 바로가기</td>
 
 							<c:if test="${tourRetrieve.attSite == '홈페이지 주소 없음'}">
 								<td class="td_default" colspan="2" style='padding-left: 30px'>
@@ -316,10 +442,10 @@
 					<c:if
 						test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == tourRetrieve.entNum)}">
 						<tr>
-							<td class="td_title">업소사이트 수정</td>
+							<td class="td_title">관광지 사이트 수정</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
 
-								<input type="text" name="attSite"
+								<input type="text" name="attSite" id="attSite"
 								value="${tourRetrieve.attSite}">
 
 							</td>
@@ -352,7 +478,7 @@
 	<div id="conta">
 
 		<c:if test="${!empty sessionScope.comLogin}">
-			<a href="packageOrderForm?attNum=${tourRetrieve.attNum}&betweenDay=${sessionScope.betweenDay}&startDay=${sessionScope.startDay}&endDay=${sessionScope.endDay}"
+			<a href="packageOrderForm?attNum=${tourRetrieve.attNum}"
 				class="btn btn-default">패키지에 추가하기</a>
 			
 	&nbsp;&nbsp;
