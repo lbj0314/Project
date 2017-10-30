@@ -71,36 +71,7 @@
 				var tourJson = new Object();
 				var restJson = new Object();
 				var stayJson = new Object();
-				//1일차 일경우
-				if($(item).prev().attr("id")==undefined){
-					var reservDate = "1";
-					var reservNum = $(item).attr("id");
-					var numLeng = reservNum.length;
-					if(reservNum.substring(numLeng-6, numLeng)=="tourTr"){
-						reservNum = reservNum.slice(0,-6);
-						tourJson.date = reservDate;
-						tourJson.num = reservNum;
-						tourJson.type = "tour";
-						reservArray.push(tourJson);
-					}
-					if(reservNum.substring(numLeng-6, numLeng)=="restTr"){
-						reservNum = reservNum.slice(0,-6);
-						restJson.date = reservDate;
-						restJson.num = reservNum;
-						restJson.type = "rest";
-						reservArray.push(restJson);
-					}
-					if(reservNum.substring(numLeng-6, numLeng)=="stayTr"){
-						reservNum = reservNum.slice(0,-6);
-						stayJson.date = reservDate;
-						stayJson.num = reservNum;
-						stayJson.type = "stay";
-						reservArray.push(stayJson);
-					}
-					$("#afterReserv").prepend($(item));
-					
-					//2일차부터
-				}else{
+				
 					var reservDate = $(item).prev().attr("id");
 					console.log(reservDate);
 					var reservNum = $(item).attr("id");
@@ -129,14 +100,13 @@
 						stayJson.num = reservNum;
 						stayJson.type = "stay";
 						reservArray.push(stayJson);
-					}
 					
 					$("#afterReserv").prepend($(item));
 					console.log($("#afterReserv").children().eq(0).attr("id"));
 				}
 			});
 			
-			// 위에서부터 쭈루룩 하는게 아니였음
+			// 위에서부터 쭈루룩 하는게 아니였음 (랜덤이였음ㅋ)
 			
 			console.log(reservArray);
 			 $.ajax({
