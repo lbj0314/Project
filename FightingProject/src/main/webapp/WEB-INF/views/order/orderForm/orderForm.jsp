@@ -71,14 +71,27 @@
 				var tourJson = new Object();
 				var restJson = new Object();
 				var stayJson = new Object();
+				var reservDate;
+				$(item).prevAll().each(function(index,item){
+					var fullDate = $(item).attr("id");
+					var dateLeng = fullDate.length;
+					if(fullDate.substring(dateLeng-6,dateLeng)=="termTr"){
+						reservDate = fullDate.slice(0,-7);
+						console.log(reservDate);
+						if(reservDate == undefined){
+							console.log("야");
+							reservDate = "1";
+						}
+						return false;
+					}
+				})
 				
-					var reservDate = $(item).prev().attr("id");
+					
 					console.log(reservDate);
 					var reservNum = $(item).attr("id");
 					var numLeng = reservNum.length;
 					if(reservNum.substring(numLeng-6, numLeng)=="tourTr"){
-						
-						reservDate = reservDate.slice(0,-7);
+
 						reservNum = reservNum.slice(0,-6);
 						tourJson.date = reservDate;
 						tourJson.num = reservNum;
@@ -86,7 +99,7 @@
 						reservArray.push(tourJson);
 					}
 					if(reservNum.substring(numLeng-6, numLeng)=="restTr"){
-						reservDate = reservDate.slice(0,-7);
+						
 						reservNum = reservNum.slice(0,-6);
 						restJson.date = reservDate;
 						restJson.num = reservNum;
@@ -94,17 +107,15 @@
 						reservArray.push(restJson);
 					}
 					if(reservNum.substring(numLeng-6, numLeng)=="stayTr"){
-						reservDate = reservDate.slice(0,-7);
+
 						reservNum = reservNum.slice(0,-6);
 						stayJson.date = reservDate;
 						stayJson.num = reservNum;
 						stayJson.type = "stay";
 						reservArray.push(stayJson);
-					
-					$("#afterReserv").prepend($(item));
-					console.log($("#afterReserv").children().eq(0).attr("id"));
-				}
-			});
+				
+					}
+				});
 			
 			// 위에서부터 쭈루룩 하는게 아니였음 (랜덤이였음ㅋ)
 			
