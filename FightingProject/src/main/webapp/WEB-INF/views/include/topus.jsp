@@ -119,7 +119,7 @@ ${xx}<br>
 			stay <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="/project/StayBoardListServlet">stay information</a></li>
+			<li><a href="/project/StayBoardListServlet">stay information </a></li>
 			<li><a href="http://english.visitkorea.or.kr/enu/ACM/AC_ENG_1.jsp" target="_blank">Goodstay</a></li>
 			<li><a href="https://eng.templestay.com/index2.asp?" target="_blank">Temple Stay</a></li>
 		</ul>
