@@ -49,9 +49,7 @@
 		
 		//테이블 행 추가
 		var between = $("#betweenDay").val();
-		for (var i = 1; i <= between-1; i++) {
-			console.log("몇번?")
-			
+		for (var i = 1; i <= between-1; i++) {			
 			$("#2th-tbody tr:nth-child("+i+")").after("<tr id='"+((i*1)+(2*1))+"-termTr' class='nodrag'><td>"+((i*1)+(2*1))+"일</td><td>야</td><td>야</td><td>야</td><td>야</td><td>야</td><td>야</td><td>야</td></tr>")
 		}
 		//전체 선택하기 주문하려는 친구제외
@@ -66,15 +64,16 @@
 		$("#reservation").on("click",function(){
 			
 			var reservArray = new Array();
-			var tourJson = new Object();
-			var restJson = new Object();
-			var stayJson = new Object();
+			
 			
 			$("#allCheckTr").prevAll("tr[name=reservTr]").each(function(index, item){
 				
+				var tourJson = new Object();
+				var restJson = new Object();
+				var stayJson = new Object();
 				//1일차 일경우
 				if($(item).prev().attr("id")==undefined){
-					var reservDate = 1;
+					var reservDate = "1";
 					var reservNum = $(item).attr("id");
 					var numLeng = reservNum.length;
 					if(reservNum.substring(numLeng-6, numLeng)=="tourTr"){
@@ -103,6 +102,7 @@
 					//2일차부터
 				}else{
 					var reservDate = $(item).prev().attr("id");
+					console.log(reservDate);
 					var reservNum = $(item).attr("id");
 					var numLeng = reservNum.length;
 					if(reservNum.substring(numLeng-6, numLeng)=="tourTr"){
@@ -130,14 +130,15 @@
 						stayJson.type = "stay";
 						reservArray.push(stayJson);
 					}
+					
 					$("#afterReserv").prepend($(item));
+					console.log($("#afterReserv").children().eq(0).attr("id"));
 				}
 			});
-			/* $("#reserveArrayHidden").val(reservArray);
-			$("#myForm").attr("action","/test/reservationPackage");
-			$("#myForm").attr("method","post");
-			$("#myForm").submit(); */
 			
+			// each한번이 끝날때마다 쓸데없는곳으로 item을 옮겻는데 그담 each진행할때 인식이 안됨;
+			
+			console.log(reservArray);
 			 $.ajax({
 				   url:"/test/reservationPackage",
 				   //타입은 get으로 주면안됨
