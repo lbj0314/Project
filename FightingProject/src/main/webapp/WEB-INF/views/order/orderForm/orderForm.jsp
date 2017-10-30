@@ -81,18 +81,21 @@
 						reservNum = reservNum.slice(0,-6);
 						tourJson.date = reservDate;
 						tourJson.num = reservNum;
+						tourJson.type = "tour";
 						reservArray.push(tourJson);
 					}
 					if(reservNum.substring(numLeng-6, numLeng)=="restTr"){
 						reservNum = reservNum.slice(0,-6);
 						restJson.date = reservDate;
 						restJson.num = reservNum;
+						restJson.type = "rest";
 						reservArray.push(restJson);
 					}
 					if(reservNum.substring(numLeng-6, numLeng)=="stayTr"){
 						reservNum = reservNum.slice(0,-6);
 						stayJson.date = reservDate;
 						stayJson.num = reservNum;
+						stayJson.type = "stay";
 						reservArray.push(stayJson);
 					}
 					$("#afterReserv").prepend($(item));
