@@ -110,6 +110,7 @@ ${xx}<br>
 		</a>
 		<ul class="dropdown-menu">
 			<li><a href="/project/RestListServlet">restaurant information</a></li>
+			<li><a href="https://guide.michelin.co.kr/en/" target="_blank">michelin guide Seoul</a></li>
 		</ul>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -119,6 +120,8 @@ ${xx}<br>
 		</a>
 		<ul class="dropdown-menu">
 			<li><a href="/project/StayBoardListServlet">stay information</a></li>
+			<li><a href="http://english.visitkorea.or.kr/enu/ACM/AC_ENG_1.jsp" target="_blank">Goodstay</a></li>
+			<li><a href="https://eng.templestay.com/index2.asp?" target="_blank">Temple Stay</a></li>
 		</ul>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
