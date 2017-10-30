@@ -1,11 +1,134 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<!-- DAUM 주소 라이브러리 시작 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="/test/js_daumaddress/daum.js"></script>
 <!-- DAUM 주소 라이브러리 끝 -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+		 
+		var RegName = /^[가-힣a-zA-Z0-9_-]{2,20}$/; //이름 유효성 검사 2~20자 사이
+		var RegTitle =  /^[가-힣a-zA-Z0-9_-]{4,30}$/;  //제목 유효성 검사 4~30자 사이
+		var RegAvgPrice = /^[0-9]{3,11}$/; //1인당 평균 가격 유효성 검사
+		var RegPhone = /^[0-9]{9,11}$/; //전화번호 유효성 검사
+		
+		 
+		$("form").submit(function(){
+			if ( !RegName.test($.trim($("#restName").val())) )
+			{
+				alert("음식점 이름에 2~20자로 입력해주세요.");
+				$("#restName").focus();
+				return false;
+			}
+			else if ( !RegTitle.test($.trim($("#restTitle").val())) )
+			{
+				alert("제목에  4~30자로 입력해주세요.");
+				$("#restTitle").focus();
+				return false;
+			}
+			else if ($("#restLocation").val() == "def") {
+                alert("지역을 선택해주세요.");
+                $("#restLocation").focus();
+			return false;	 
+       		}
+			else if ($("#restType").val() == "def2") {
+                alert("음식점 종류를 선택해주세요.");
+                $("#restType").focus();
+			return false;	 
+       		}
+			else if ($("#addr1").val() == "") {
+                alert("주소를 입력해주세요.");
+                $("#addr1").focus();
+			return false;	 
+        	}
+			else if ( !RegAvgPrice.test($.trim($("#restPrice").val())) )
+			{
+				alert("1인당 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$("#restPrice").focus();
+				return false;
+			}
+			else if ( !RegPhone.test($.trim($("#restPhone").val())))
+			{
+				alert("전화번호 입력란에 9~11자리와 숫자만 입력해주세요.");
+				$("#restPhone").focus();
+				return false;
+			}
+			
+			else if ($("#restContent").val() == "") {
+                alert("내용을 입력해주세요.");
+                $("#restContent").focus();
+			return false;
+        	}
+			else if ($("#imgInp").val() == "") {
+                alert("이미지를 삽입해주세요.");
+                $("#imgInp").focus();
+			return false;	 
+        	}
+		});
+	});
+	
+	$(document).ready(function() {
+		$('#restName').keyup(function() {
+		
+			
+		 if ($('#restName').val().length < 2 ) {
+				$('font[name=check]').css("color", "red");
+				$('font[name=check]').text("음식점 이름에 2~20자로 입력해주세요.");
+				}
+			  else {
+				$('font[name=check]').css("color", "blue");
+				$('font[name=check]').text("음식점 이름에 2~20자로 입력해주세요.");
+			}
+		});
+	});//restName
+		
+	$(document).ready(function() {
+		$('#restTitle').keyup(function() {
+			if ($('#restTitle').val().length < 4) {
+				$('font[name=check2]').css("color", "red");
+				$('font[name=check2]').text("제목에 4~30자로 입력해주세요.");
+			}
+			else {
+				$('font[name=check2]').css("color", "blue");
+				$('font[name=check2]').text("제목에 4~30자로 입력해주세요.");
+			}
+		});
+	});//restTitle
+	
+	$(document).ready(function() {
+		$('#restPrice').keyup(function() {
+			if ($('#restPrice').val().length < 3) {
+				$('font[name=check3]').css("color", "red");
+				$('font[name=check3]').text("1인당 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+			}
+			else {
+				$('font[name=check3]').css("color", "blue");
+				$('font[name=check3]').text("1인당 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+			}
+		});
+	});//restPrice
+	
+	$(document).ready(function() {
+		$('#restPhone').keyup(function() {
+			if ($('#restPhone').val().length < 9) {
+				$('font[name=check4]').css("color", "red");
+				$('font[name=check4]').text("숫자 9-11자리로 입력해주세요");
+			}
+			else {
+				$('font[name=check4]').css("color", "blue");
+				$('font[name=check4]').text("숫자 9-11자리로 입력해주세요");
+			}
+		});
+	});//restPhone
+
+</script>
 
 
 <form action="/test/loginX/restWrite" enctype="multipart/form-data"
@@ -17,22 +140,22 @@
 		<tr>
 
 			<div class="form-inline">
-				<td align=center>관광소 이름:</td>
-				<td><input type="text" name="restName" class="form-control"></td>
+				<td align=center>음식점 이름:</td>
+				<td><input type="text" name="restName" id="restName" maxlength="20" class="form-control"><font name="check" size="2"></td>
 
 
 
 				<!-- 이미지삽입 하여야함 -->
 				<td align=center>제목:</td>
-				<td><input type="text" name="restTitle" class="form-control"></td>
+				<td><input type="text" name="restTitle" id="restTitle" maxlength="30" class="form-control"><font name="check2" size="2"></td>
 			</div>
 		</tr>
 		<tr>
 			<div class="form-inline">
 
 				<td align=center>지역:</td>
-				<td><select name="restLocation" class="form-control">
-						<option>지역선택</option>
+				<td><select name="restLocation" id="restLocation" class="form-control">
+						<option value="def">지역선택</option>
 						<option value="전체">전체</option>
 						<option value="서울">서울</option>
 						<option value="인천">인천</option>
@@ -52,9 +175,9 @@
 						<option value="전라남도">전라남도</option>
 						<option value="제주도">제주도</option>
 				</select></td>
-				<td align=center>맛집:</td>
-				<td><select name="restType" class="form-control">
-						<option value="def">맛집선택</option>
+				<td align=center>음식점 종류:</td>
+				<td><select name="restType" id="restType" class="form-control">
+						<option value="def2">음식점 종류 선택</option>
 						<option value="한식">한식</option>
 						<option value="일식">일식</option>
 						<option value="중식">중식</option>
@@ -98,15 +221,15 @@
 		
 		<tr>
 			<div class="form-inline">
-				<td align=center>가격:</td>
-				<td><input type="text" name="restPrice" class="form-control"></td>
+				<td align=center>1인당 평균 가격 :</td>
+				<td><input type="text" name="restPrice" id="restPrice" maxlength="11" class="form-control"><font name="check3" size="2"></td>
 
 			</div>
 		</tr>
 		<tr>
 			<div class="form-inline">
 				<td colspan=2 align=center>홈페이지 주소(없을시 적지 말것):</td>
-				<td colspan=2><input type="text" name="restSite"
+				<td colspan=2><input type="text" name="restSite" id="restSite"
 					class="form-control"></td>
 
 
@@ -116,8 +239,8 @@
 			<div class="form-inline">
 
 				<td colspan=2 align=center>전화번호:</td>
-				<td colspan=2><input type="text" name="restPhone"
-					class="form-control"></td> <br>
+				<td colspan=2><input type="text" name="restPhone" id="restPhone" maxlength="11"
+					class="form-control"><font name="check4" size="2"></td> <br>
 				</td>
 			</div>
 		</tr>
@@ -128,7 +251,7 @@
 			</div>
 		</tr>
 		<tr>
-			<td colspan=4><textarea rows="10" cols="10" name="restContent"
+			<td colspan=4><textarea rows="10" cols="10" name="restContent" id="restContent"
 					class="form-control"></textarea></td>
 		</tr>
 

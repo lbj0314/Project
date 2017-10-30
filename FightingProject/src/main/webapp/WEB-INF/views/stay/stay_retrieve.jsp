@@ -5,11 +5,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 
 <!-- DAUM 주소 라이브러리 시작 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="/test/js_daumaddress/daum.js"></script>
 <!-- DAUM 주소 라이브러리 끝 -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <%-- <c:if test="${!empty requestScope.goodok}">
 	<script>
@@ -61,10 +64,146 @@
 			});
 </script>
 
+<script type="text/javascript">
+$(document).ready(function() {
+		
+		var RegName = /^[가-힣a-zA-Z0-9_-]{2,20}$/; //이름 유효성 검사 2~20자 사이
+		var RegTitle =  /^[가-힣a-zA-Z0-9_-]{4,30}$/;  //제목 유효성 검사 4~30자 사이
+		var RegAvgPrice = /^[0-9]{3,11}$/; //어른,어린이 가격 유효성 검사
+		var RegPhone = /^[0-9]{9,11}$/; //전화번호 유효성 검사
+		
+		 
+		$("form").submit(function(){
+			if ( !RegName.test($.trim($("#stayName").val())) )
+			{
+				alert("숙박업소 이름에 2~20자로 입력해주세요.");
+				$("#stayName").focus();
+				return false;
+			}
+			else if ( !RegTitle.test($.trim($("#stayTitle").val())) )
+			{
+				alert("제목에  4~30자로 입력해주세요.");
+				$("#stayTitle").focus();
+				return false;
+			}
+			else if ($("#stayLocation").val() == "def") {
+                alert("지역을 선택해주세요.");
+                $("#stayLocation").focus();
+			return false;	 
+       		}
+			else if ($("#stayType").val() == "def2") {
+                alert("숙박업소 종류를 선택해주세요.");
+                $("#stayType").focus();
+			return false;	 
+       		}
+			else if ($("#stayGrade").val() == "def3") {
+                alert("숙박업소 등급을 선택해주세요.");
+                $("#stayGrade").focus();
+			return false;	 
+       		}
+			else if ($("#addr1").val() == "") {
+                alert("주소를 입력해주세요.");
+                $("#addr1").focus();
+			return false;	 
+        	}
+			else if ( !RegAvgPrice.test($.trim($("#stayAdultPrice").val())) )
+			{
+				alert("성인 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$("#stayAdultPrice").focus();
+				return false;
+			}
+			else if ( !RegAvgPrice.test($.trim($("#stayKidPrice").val())) )
+			{
+				alert("어린이 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$("#stayKidPrice").focus();
+				return false;
+			}
+			else if ( !RegPhone.test($.trim($("#stayPhone").val())))
+			{
+				alert("전화번호 입력란에 9~11자리와 숫자만 입력해주세요.");
+				$("#stayPhone").focus();
+				return false;
+			}
+			
+			else if ($("#stayContent").val() == "") {
+                alert("내용을 입력해주세요.");
+                $("#stayContent").focus();
+			return false;
+        	}
+			/* else if ($("#imgInp").val() == "") {
+                alert("이미지를 삽입해주세요.");
+                $("#imgInp").focus();
+			return false;	 
+        	} */
+		});
+	});
+	
+	$(document).ready(function() {
+		$('#stayName').keyup(function() {
+		 if ($('#stayName').val().length < 2 ) {
+				$('font[name=check]').css("color", "red");
+				$('font[name=check]').text("숙박업소 이름에 2~20자로 입력해주세요.");
+				}
+			  else {
+				$('font[name=check]').css("color", "blue");
+				$('font[name=check]').text("숙박업소 이름에 2~20자로 입력해주세요.");
+			}
+		});
+	});//stayName
+		
+	$(document).ready(function() {
+		$('#stayTitle').keyup(function() {
+			if ($('#stayTitle').val().length < 4) {
+				$('font[name=check2]').css("color", "red");
+				$('font[name=check2]').text("제목에 4~30자로 입력해주세요.");
+			}
+			else {
+				$('font[name=check2]').css("color", "blue");
+				$('font[name=check2]').text("제목에 4~30자로 입력해주세요.");
+			}
+		});
+	});//stayTitle
+	
+	$(document).ready(function() {
+		$('#stayAdultPrice').keyup(function() {
+			if ($('#stayAdultPrice').val().length < 3) {
+				$('font[name=check3]').css("color", "red");
+				$('font[name=check3]').text("성인 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+			}
+			else {
+				$('font[name=check3]').css("color", "blue");
+				$('font[name=check3]').text("성인 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+			}
+		});
+		$('#stayKidPrice').keyup(function() {
+			if ($('#stayKidPrice').val().length < 3) {
+				$('font[name=check4]').css("color", "red");
+				$('font[name=check4]').text("어린이 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+			}
+			else {
+				$('font[name=check4]').css("color", "blue");
+				$('font[name=check4]').text("어린이 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+			}
+		});
+	});//stayPrice
+	
+	$(document).ready(function() {
+		$('#stayPhone').keyup(function() {
+			if ($('#stayPhone').val().length < 9) {
+				$('font[name=check5]').css("color", "red");
+				$('font[name=check5]').text("숫자 9-11자리로 입력해주세요");
+			}
+			else {
+				$('font[name=check5]').css("color", "blue");
+				$('font[name=check5]').text("숫자 9-11자리로 입력해주세요");
+			}
+		});
+	});//stayPhone
+
+</script>
 
 <FORM action="/test/loginX/stayUpdate" method="post"
 	enctype="multipart/form-data">
-	
 	<input type="hidden" name="stayNum" value="${stayRetrieve.stayNum}"
 		id="stayNum"> <input type="hidden" name="stayImage"
 		value="${stayRetrieve.stayImage}"> <input type="hidden"
@@ -153,8 +292,8 @@
 
 						<td class="td_title">숙박업소 이름</td>
 						<td class="td_default" colspan="2" style='padding-left: 30px'><input
-							type="text" name="stayName" value="${stayRetrieve.stayName}"
-							class="form-control"></td>
+							type="text" name="stayName" id="stayName" value="${stayRetrieve.stayName}"
+							class="form-control"><font name="check" size="2"></td>
 
 						</tr>
 
@@ -162,8 +301,8 @@
 					<div class="form-inline">
 						<td class="td_title">숙박업소 제목</td>
 						<td class="td_default" colspan="2" style='padding-left: 30px'><input
-							type="text" name="stayTitle" value="${stayRetrieve.stayTitle}"
-							class="form-control"></td>
+							type="text" name="stayTitle" id="stayTitle" value="${stayRetrieve.stayTitle}"
+							class="form-control"><font name="check2" size="2"></td>
 
 					</div>
 					<div class="form-inline">
@@ -171,8 +310,8 @@
 
 							<td class="td_title">숙박업소 지역</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<select name="stayLocation" class="form-control" id="staylo">
-									<option>지역선택</option>
+								<select name="stayLocation" id="stayLocation" class="form-control" id="staylo">
+									<option value="def">지역선택</option>
 									<option value="전체">전체</option>
 									<option value="서울">서울</option>
 									<option value="인천">인천</option>
@@ -200,8 +339,8 @@
 							<td class="td_title">숙박업소 종류</td>
 
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<select name="stayType" class="form-control" id="stayty">
-									<option value="def">숙박업소 종류 선택</option>
+								<select name="stayType" id="stayType" class="form-control" id="stayty">
+									<option value="def2">숙박업소 종류 선택</option>
 									<option value="게스트하우스">게스트하우스</option>
 									<option value="아파트">아파트</option>
 									<option value="모텔">모텔</option>
@@ -218,8 +357,8 @@
 						<tr>
 							<td class="td_title">숙박업소 등급</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<select name="stayGrade" class="form-control" id="staygd">
-									<option value="def">숙박업소 등급 선택</option>
+								<select name="stayGrade" id="stayGrade" class="form-control" id="staygd">
+									<option value="def3">숙박업소 등급 선택</option>
 									<option value="1성">1성</option>
 									<option value="1.5성">1.5성</option>
 									<option value="2성">2성</option>
@@ -283,17 +422,14 @@
 					<!-- 다음주소 끝 -->
 					</div>
 
-
-
-
 					<div class="form-inline">
 						<tr>
 							<td class="td_title">숙박업소 성인가격</td>
 							<td class="td_red" colspan="2" style='padding-left: 30px'><fmt:formatNumber
 									type="currency" value="${stayRetrieve.stayAdultPrice}"
 									pattern="\###,###" var="aap" /> <input type="text"
-								name="stayAdultPrice" value="${stayRetrieve.stayAdultPrice}"
-								class="form-control"></td>
+								name="stayAdultPrice" id="stayAdultPrice" value="${stayRetrieve.stayAdultPrice}"
+								class="form-control"><font name="check3" size="2"></td>
 						</tr>
 					</div>
 					<div class="form-inline">
@@ -302,8 +438,8 @@
 							<td class="td_red" colspan="2" style='padding-left: 30px'><fmt:formatNumber
 									type="currency" value="${stayRetrieve.stayKidPrice}"
 									pattern="\###,###" var="akp" /> <input type="text"
-								name="stayKidPrice" value="${stayRetrieve.stayKidPrice}"
-								class="form-control"></td>
+								name="stayKidPrice" id="stayKidPrice" value="${stayRetrieve.stayKidPrice}"
+								class="form-control"><font name="check4" size="2"></td>
 						</tr>
 					</div>
 					<div class="form-inline">
@@ -311,9 +447,9 @@
 
 							<td class="td_title">숙박업소 전화번호</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<input type="text" name="stayPhone"
+								<input type="text" name="stayPhone" id="stayPhone"
 								value="${stayRetrieve.stayPhone}" class="form-control">
-
+								<font name="check5" size="2">
 
 							</td>
 						</tr>
@@ -321,7 +457,7 @@
 					<tr>
 						<td class="td_title">숙박업소 설명</td>
 						<td class="td_default" colspan="2" style='padding-left: 30px'>
-							<input type="text" name="stayContent"
+							<input type="text" name="stayContent" id="stayContent"
 							value="${stayRetrieve.stayContent}" class="form-control">
 
 						</td>
@@ -353,7 +489,7 @@
 							<td class="td_title">숙박업소사이트 수정</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
 
-								<input type="text" name="staySite"
+								<input type="text" name="staySite" id="staySite"
 								value="${stayRetrieve.staySite}">
 
 							</td>
@@ -375,7 +511,7 @@
 
 	<h3 align=center>위치</h3>
 
-	<div id="myMap" style="width: 50%; height: 450px; margin: auto">
+	<div name="myMap" id="myMap" style="width: 50%; height: 450px; margin: auto">
 
 	</div>
 	<!-- 구글맵 끝 -->
@@ -385,7 +521,7 @@
 
 		<c:if test="${!empty sessionScope.comLogin}">
 
-			<a href="packageOrderForm?stayNum=${stayRetrieve.stayNum}&betweenDay=${sessionScope.betweenDay}&startDay=${sessionScope.startDay}&endDay=${sessionScope.endDay}"
+			<a href="packageOrderForm?stayNum=${stayRetrieve.stayNum}"
 				class="btn btn-default">패키지에 추가하기</a>
 	&nbsp;&nbsp;
 </c:if>
