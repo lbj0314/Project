@@ -111,6 +111,7 @@
 						reservNum = reservNum.slice(0,-6);
 						tourJson.date = reservDate;
 						tourJson.num = reservNum;
+						tourJson.type = "tour";
 						reservArray.push(tourJson);
 					}
 					if(reservNum.substring(numLeng-6, numLeng)=="restTr"){
@@ -118,6 +119,7 @@
 						reservNum = reservNum.slice(0,-6);
 						restJson.date = reservDate;
 						restJson.num = reservNum;
+						restJson.type = "rest";
 						reservArray.push(restJson);
 					}
 					if(reservNum.substring(numLeng-6, numLeng)=="stayTr"){
@@ -125,6 +127,7 @@
 						reservNum = reservNum.slice(0,-6);
 						stayJson.date = reservDate;
 						stayJson.num = reservNum;
+						stayJson.type = "stay";
 						reservArray.push(stayJson);
 					}
 					$("#afterReserv").prepend($(item));
@@ -140,7 +143,7 @@
 				   //타입은 get으로 주면안됨
 				   type:"post",
 				   //헤더정보에 json객체라는걸 알려줘야함
-				   ContentType:"application/json;charset=UTF-8",
+				   contentType:"application/json;charset=UTF-8",
 				   //json객체모양의 !!문자열!!(이게중요함)을 스프링 jackson lib가 자동으로 자바 객체로 바인드시켜줌
 				   //json객체를 문자열로 변환시켜주는 메서드
 			   		data:JSON.stringify(reservArray),

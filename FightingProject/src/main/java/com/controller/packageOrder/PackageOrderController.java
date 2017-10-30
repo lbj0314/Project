@@ -107,14 +107,20 @@ public class PackageOrderController {
 		return mav;
 	}
 	@RequestMapping(value="/reservationPackage", method=RequestMethod.POST)
-	public void reservationPackage(@RequestBody String[] reservArray) {
+	public void reservationPackage(@RequestBody String reservArray) {
 
-		System.out.println(reservArray);
+		//System.out.println(reservArray);
 		
-		List<Map<String,Object>> resultMap = new ArrayList<Map<String,Object>>();
-	    resultMap = JSONArray.fromObject(reservArray);
-	 System.out.println(resultMap);
-		
+		   List<Map<String,Object>> resultMap = new ArrayList<Map<String,Object>>();
+		    resultMap = JSONArray.fromObject(reservArray);
+		         System.out.println(reservArray);
+
+		         
+		         for (Map<String, Object> map : resultMap) {
+		             System.out.println(map.get("date") + " : " + map.get("num"));
+		          
+		         }
+
 	         
 	    /*for (Map<String, Object> map : resultMap) {
 	        System.out.println(map.get("reservDate") + " : " + map.get("reservNum"));
