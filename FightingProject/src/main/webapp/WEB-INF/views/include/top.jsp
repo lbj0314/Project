@@ -110,6 +110,7 @@ ${xx}<br>
 		</a>
 		<ul class="dropdown-menu">
 			<li><a href="/test/restList">음식점 정보</a></li>
+			<li><a href="https://guide.michelin.co.kr/ko/" target="_blank">미슐랭 가이드 서울</a></li>
 		</ul>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -119,6 +120,9 @@ ${xx}<br>
 		</a>
 		<ul class="dropdown-menu">
 			<li><a href="/test/stayList">숙박업소 정보</a></li>
+			<li><a href="http://korean.visitkorea.or.kr/kor/goodstay3/index.jsp">우수 숙박시설</a></li>
+			<li><a href="http://www.gocamping.or.kr/" target="_blank">캠핑</a></li>
+			<li><a href="https://www.templestay.com/" target="_blank">템플 스테이</a></li>
 		</ul>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
