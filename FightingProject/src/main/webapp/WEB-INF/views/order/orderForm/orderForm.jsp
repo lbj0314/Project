@@ -136,7 +136,7 @@
 				}
 			});
 			
-			// each한번이 끝날때마다 쓸데없는곳으로 item을 옮겻는데 그담 each진행할때 인식이 안됨;
+			// 위에서부터 쭈루룩 하는게 아니였음
 			
 			console.log(reservArray);
 			 $.ajax({
