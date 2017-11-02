@@ -9,13 +9,18 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dto.login.ComDTO;
 import com.dto.restaurant.RestDTO;
 import com.dto.stay.StayDTO;
 import com.dto.tour.TourDTO;
@@ -25,7 +30,7 @@ import com.service.TourService;
 
 import net.sf.json.JSONArray;
 
-@RestController
+@Controller
 public class PackageOrderController {
 
 	@Autowired
@@ -38,6 +43,7 @@ public class PackageOrderController {
 	StayService stayService;
 	
 	@RequestMapping("/packageOrderForm")
+	@ResponseBody
 	public ModelAndView packageOrderForm(@RequestParam(defaultValue="0") int attNum, 
 			@RequestParam(defaultValue="0") int restNum, 
 			@RequestParam(defaultValue="0") int stayNum,
@@ -87,7 +93,7 @@ public class PackageOrderController {
 		}
 		
 		session.setAttribute("betweenDay", betweenDay);
-
+		
 		if(startDay.equals("0")) {
 
 			Date today = new Date();
@@ -107,25 +113,50 @@ public class PackageOrderController {
 		return mav;
 	}
 	@RequestMapping(value="/reservationPackage", method=RequestMethod.POST)
-	public void reservationPackage(@RequestBody String reservArray) {
+	@ResponseBody
+	public String reservationPackage(@RequestBody String reservArray,HttpSession session1) {
 
-		//System.out.println(reservArray);
 		
-		   List<Map<String,Object>> resultMap = new ArrayList<Map<String,Object>>();
+		 List<Map<String,Object>> resultMap = new ArrayList<Map<String,Object>>();
 		    resultMap = JSONArray.fromObject(reservArray);
-		         System.out.println(reservArray);
-
+		   
+		    
+		    session1.setAttribute("reserv", resultMap);
+		        
+		    
+		    
 		         
-		         for (Map<String, Object> map : resultMap) {
-		             System.out.println(map.get("date") + " : " + map.get("num"));
-		          
-		         }
+		         
+		   return reservArray; 
+		        
 
-	         
-	    /*for (Map<String, Object> map : resultMap) {
-	        System.out.println(map.get("reservDate") + " : " + map.get("reservNum"));
-	     
-	    }*/
+	}
+	
+	
+	@RequestMapping(value="/packReserv", method=RequestMethod.GET)
+	public ModelAndView aaaa(HttpSession session1,HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+	
+		List<Map<String,Object>> resultMap = (List<Map<String,Object>>)session1.getAttribute("reserv");
+		
+	
+		 ComDTO dto =(ComDTO)session.getAttribute("comLogin");
+	
+		    
+		         for (Map<String, Object> map : resultMap) {
+		             
+		        	 if(map.get("date")==null) map.put("date", 1);
+		        	 System.out.println(map.get("date") + " : " + map.get("num") +" : "+ map.get("type") +" : "+ dto.getComid());
+		         }
+		         
+		         
+		         mav.addObject("reserv",resultMap);
+		         mav.setViewName("order/packReserv");
+		         
+		  
+		return mav;
+
+
 	}
 	
 	
