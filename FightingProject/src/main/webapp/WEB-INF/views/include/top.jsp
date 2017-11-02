@@ -112,7 +112,7 @@ ${xx}<br>
 			<li><a href="/test/restList">음식점 정보</a></li>
 			<li><a href="https://guide.michelin.co.kr/ko/" target="_blank">미슐랭 가이드 서울</a></li>
 		</ul>
-	</div>
+	</div> 
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<div class="btn-group">
 		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
