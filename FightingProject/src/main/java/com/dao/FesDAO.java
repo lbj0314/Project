@@ -13,10 +13,15 @@ public class FesDAO {
 
 	@Autowired
 	SqlSessionTemplate template;
-	
-	public List<FesDTO> fesList() {
+
+	public List<FesDTO> fesAll() {
 		List<FesDTO> dto = template.selectList("fesList");
 		return dto;
-}
+	}
 	
+	public List<FesDTO> fesList(String fesSeason) {
+		List<FesDTO> dto = template.selectList("fesList", fesSeason);
+		return dto;
+	}
+
 }

@@ -14,8 +14,13 @@ public class FesService {
 	@Autowired
 	FesDAO dao;
 	
-	public List<FesDTO> fesList() {
-		List<FesDTO> dto = dao.fesList();
+	public List<FesDTO> fesAll() {
+		List<FesDTO> dto = dao.fesAll();
+		return dto;
+	}
+	
+	public List<FesDTO> fesList(String fesSeason) {
+		List<FesDTO> dto = dao.fesList(fesSeason);
 		return dto;
 	}
 	
