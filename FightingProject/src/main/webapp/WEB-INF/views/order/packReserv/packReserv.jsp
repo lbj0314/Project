@@ -13,18 +13,9 @@
 <script type="text/javascript"
 	src="/test/js_daumaddress/jquery.tablednd.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
+	/* $(document).ready(function() {
 
 		
-		//테이블 행 이동
-		$(function() {
-			$("#termGoodsTable").tableDnD({
-				onDrop : function(table, row) {
-
-				}
-			});
-
-		});
 		
 		//날짜 변경
 		$("#dayButton").on("click",function(){
@@ -99,7 +90,6 @@
 						tourJson.date = reservDate;
 						tourJson.num = reservNum;
 						tourJson.type = "tour";
-						//tourJson.name = 
 						reservArray.push(tourJson);
 					}
 					if(reservNum.substring(numLeng-6, numLeng)=="restTr"){
@@ -108,7 +98,6 @@
 						restJson.date = reservDate;
 						restJson.num = reservNum;
 						restJson.type = "rest";
-						
 						reservArray.push(restJson);
 					}
 					if(reservNum.substring(numLeng-6, numLeng)=="stayTr"){
@@ -139,13 +128,13 @@
 			   		dataType : 'json',
 			   		
 				   success:function(responseData,status,xhr){
-					 console.log("!!!!!!!!!!"+responseData);
+					 //console.log("!!!!!!!!!!"+responseData);
 					 
 					
-					  location.href="/test/packReserv";
+					  location.href="/test/aaaa";
 				   },
 				   error:function(request,status,error){
-					  //location.href="/test/packReserv";
+					  location.href="/test/packReserv";
 					  // location.href="/test/tourList";
 					  // console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				   }
@@ -153,7 +142,7 @@
 		});
 			
 	});
-	
+	 */
 </script>
 <style type="text/css">
 tr.noDrag {
@@ -161,21 +150,15 @@ tr.noDrag {
 }
 </style>
 
-<form action="/test/packageOrderForm" method="get" name="myForm"
+<form action="/test/a" method="get" name="myForm"
 	id="myForm">
-	<input type="hidden" name="reservArray" id="reserveArrayHidden">
-	<input type="hidden" name="betweenDay" id="betweenDay"
-		value="${sessionScope.betweenDay }"> <input type="hidden"
-		name="startDay" id="startDay" value="${sessionScope.startDay }">
-	<input type="hidden" name="endDay" id="endDay"
-		value="${sessionScope.endDay }">
-	<h3>[ 패키지 만들기 ]</h3>
+	<h3>[ 패키지 주문 ]</h3>
 	<br>
-	<p>여행 시작날짜:</p>
+	<!-- <p>여행 시작날짜:</p>
 	<input type="date" id="startDate" name="startDate"><br>
 	<p>여행 종료날짜:</p>
 	<input type="date" id="endDate" name="endDate"><input
-		type="button" value="날짜 변경하기" id="dayButton" class="btn btn-default"><br>
+		type="button" value="날짜 변경하기" id="dayButton" class="btn btn-default"><br> -->
 	<br>
 	<table border='1' id="termGoodsTable">
 		<tbody id="1th-tbody">
@@ -189,19 +172,22 @@ tr.noDrag {
 				<td>어린이 가격</td>
 				<td>업소 전화번호</td>
 			</tr>
-
+			<c:forEach var="item" items="${sessionScope.reserv}" varStatus="status">
 			<tr id="1-termTr" class="nodrag">
-				<td>1일</td>
-				<td id="1-1td"></td>
-				<td id="1-2td"></td>
-				<td id="1-3td"></td>
+				<td>${item.date}일</td>
+				<td>${item.num}</td>
+				<td>${item.type}</td>
+				<!-- <td id="1-3td"></td>
 				<td id="1-4td"></td>
 				<td id="1-5td"></td>
 				<td id="1-6td"></td>
-				<td id="1-7td"></td>
+				<td id="1-7td"></td> -->
+				
 			</tr>
+			</c:forEach>
 		</tbody>
-		<tbody id="2th-tbody">
+		
+	<%-- 	<tbody id="2th-tbody">
 			<tr id="2-termTr" class="nodrag">
 				<td>2일</td>
 				<td id="2-1td"></td>
@@ -227,7 +213,7 @@ tr.noDrag {
 				<td>어린이 가격</td>
 				<td>업소 전화번호</td>
 			</tr>
-			<c:forEach var="item" items="${sessionScope.orderTourList}"
+			<c:forEach var="item" items="${sessionScope.reserv}"
 				varStatus="status">
 				<c:if test="${!empty item.attNum }">
 					<tr id="${item.attNum }tourTr" name="reservTr">
@@ -242,7 +228,7 @@ tr.noDrag {
 					</tr>
 				</c:if>
 			</c:forEach>
-			<c:forEach var="item" items="${sessionScope.orderRestList}"
+			<c:forEach var="item" items="${sessionScope.reserv}"
 				varStatus="status">
 				<c:if test="${!empty item.restNum }">
 					<tr id="${item.restNum }restTr" name="reservTr">
@@ -257,7 +243,7 @@ tr.noDrag {
 					</tr>
 				</c:if>
 			</c:forEach>
-			<c:forEach var="item" items="${sessionScope.orderStayList}"
+			<c:forEach var="item" items="${sessionScope.reserv}"
 				varStatus="status">
 				<c:if test="${!empty item.stayNum }">
 					<tr id="${item.stayNum }stayTr" name="reservTr">
@@ -272,12 +258,7 @@ tr.noDrag {
 					</tr>
 				</c:if>
 			</c:forEach>
-		</tbody>
+		</tbody> --%>
 	</table>
-	<a href="" class="btn btn-default" id="">선택 삭제하기</a> <input
-		type="button" class="btn btn-default" value="주문하기" id="reservation"><br>
-	<a href="tourList?tourForm=tourForm" class="btn btn-default">관광지
-		추가하기</a> <a href="restList?restForm=restForm" class="btn btn-default">음식점
-		추가하기</a> <a href="stayList?stayForm=stayForm" class="btn btn-default">숙박업소
-		추가하기</a>
+	
 </form>
