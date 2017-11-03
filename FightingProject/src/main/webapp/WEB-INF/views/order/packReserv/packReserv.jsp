@@ -13,136 +13,91 @@
 <script type="text/javascript"
 	src="/test/js_daumaddress/jquery.tablednd.js"></script>
 <script type="text/javascript">
-	/* $(document).ready(function() {
-
+	$(document).ready(function() {
 		
-		
-		//날짜 변경
-		$("#dayButton").on("click",function(){
-			//날짜간 일수 비교
-			var startString = $("#startDate").val();
-			var startArray = startString.split("-");
-			var startObj = new Date(startArray[0],Number(startArray[1])-1,startArray[2]);
-			
-			var endString = $("#endDate").val();
-			var endArray = endString.split("-");
-			var endObj = new Date(endArray[0],Number(endArray[1])-1,endArray[2]);
-			
-			/* 밀리세컨드 단위 1000/60/60/24 초/분/시간/일 왜 빨간줄 그어져 있는진 모르겠음 */
-			var betweenDay = (endObj.getTime() - startObj.getTime())/1000/60/60/24;
-			$("#betweenDay").val(betweenDay);
-			$("#startDay").val($("#startDate").val());
-			$("#endDay").val($("#endDate").val());
-			$("#myForm").submit();
+		//인원수 조정하기
+		$("#plusAdult").on("click",function(){
+			$("#adultCount").val($("#adultCount").val()*1+1)
 		});
-		$("#startDate").val($("#startDay").val());
-		$("#endDate").val($("#endDay").val());
+		$("#minusAdult").on("click",function(){
+			$("#adultCount").val($("#adultCount").val()*1-1)
+		});
+		$("#plusKid").on("click",function(){
+			$("#kidCount").val($("#kidCount").val()*1+1)
+		});
+		$("#minusKid").on("click",function(){
+			$("#kidCount").val($("#kidCount").val()*1-1)
+		});
 		
-		//테이블 행 추가
-		var between = $("#betweenDay").val();
-		for (var i = 1; i <= between-1; i++) {			
-			$("#2th-tbody tr:nth-child("+i+")").after("<tr id='"+((i*1)+(2*1))+"-termTr' class='nodrag'><td>"+((i*1)+(2*1))+"일</td><td>야</td><td>야</td><td>야</td><td>야</td><td>야</td><td>야</td><td>야</td></tr>")
+		//총 가격 구하기
+		var adultPriceArray = new Array();
+		var kidPriceArray = new Array();
+		
+		$("#1th-tbody").children().not("#notDto").each(function(index,item){
+			var adultPrice = $(item).children().eq(6);
+			var kidPrice = $(item).children().eq(7);
+			adultPriceArray.push(adultPrice);
+			kidPriceArray.push(kidPrice);
+		});
+		var adultResult = 0;
+		for (var i = 0; i < adultPriceArray.length; i++) {
+			adultResult+=adultPriceArray[i];
 		}
-		//전체 선택하기 주문하려는 친구제외
-		$("#allCheck").on("click",function(){
-			if($("#allCheck").prop("checked")){
-				$("#allCheckTr").nextAll("tr").find("input[name=chk]").prop("checked",true);
-			}else{
-				$("#allCheckTr").nextAll("tr").find("input[name=chk]").prop("checked",false);
+		adultResult*=$("#adultCount").val();
+		var kidResult = 0;
+		for (var i = 0; i < kidPriceArray.length; i++) {
+			kidResult+=kidPriceArray[i];
+		}
+		kidResult*=$("#kidCount").val();
+		$("resultPrice").val(adultResult+kidResult);
+		//어른인원수랑 어린이 인원수 바뀔때마다 또 조정해줘야됨 ㅅㅂ;;;;;;;
+		//어른 바뀔때
+		$("#adultCount").on("change",function(){
+			var adultPriceArray = new Array();
+			var kidPriceArray = new Array();
+			
+			$("#1th-tbody").children().not("#notDto").each(function(index,item){
+				var adultPrice = $(item).children().eq(6);
+				var kidPrice = $(item).children().eq(7);
+				adultPriceArray.push(adultPrice);
+				kidPriceArray.push(kidPrice);
+			});
+			var adultResult = 0;
+			for (var i = 0; i < adultPriceArray.length; i++) {
+				adultResult+=adultPriceArray[i];
 			}
+			adultResult*=$("#adultCount").val();
+			var kidResult = 0;
+			for (var i = 0; i < kidPriceArray.length; i++) {
+				kidResult+=kidPriceArray[i];
+			}
+			kidResult*=$("#kidCount").val();
+			$("resultPrice").val(adultResult+kidResult);
 		});
-		//주문하기 상품리스트 친구 제외
-		$("#reservation").on("click",function(){
+		//어린이 바뀔때
+		$("#kidCount").on("change",function(){
+			var adultPriceArray = new Array();
+			var kidPriceArray = new Array();
 			
-			var reservArray = new Array();
-			
-			
-			$("#allCheckTr").prevAll("tr[name=reservTr]").each(function(index, item){
-				
-				var tourJson = new Object();
-				var restJson = new Object();
-				var stayJson = new Object();
-				var reservDate;
-				console.log("1");
-				$(item).prevAll().each(function(index,item){
-					var fullDate = $(item).attr("id");
-					var dateLeng = fullDate.length;
-					console.log(fullDate);
-					console.log("2");
-					if(fullDate.substring(dateLeng-6,dateLeng)=="termTr"){
-						reservDate = fullDate.slice(0,-7);
-						console.log("!!!!"+reservDate);
-						if(reservDate == undefined){
-							console.log("야");
-							reservDate = "1";
-						}
-						return false;
-					}
-				})
-				
-					console.log("3");
-					console.log(reservDate);
-					var reservNum = $(item).attr("id");
-					var numLeng = reservNum.length;
-					if(reservNum.substring(numLeng-6, numLeng)=="tourTr"){
-
-						reservNum = reservNum.slice(0,-6);
-						tourJson.date = reservDate;
-						tourJson.num = reservNum;
-						tourJson.type = "tour";
-						reservArray.push(tourJson);
-					}
-					if(reservNum.substring(numLeng-6, numLeng)=="restTr"){
-						
-						reservNum = reservNum.slice(0,-6);
-						restJson.date = reservDate;
-						restJson.num = reservNum;
-						restJson.type = "rest";
-						reservArray.push(restJson);
-					}
-					if(reservNum.substring(numLeng-6, numLeng)=="stayTr"){
-
-						reservNum = reservNum.slice(0,-6);
-						stayJson.date = reservDate;
-						stayJson.num = reservNum;
-						stayJson.type = "stay";
-						reservArray.push(stayJson);
-				
-					}
-				});
-			
-			// 위에서부터 쭈루룩 하는게 아니였음 (랜덤이였음ㅋ)
-			
-			console.log(reservArray);
-			 $.ajax({
-				 //async:false,
-				   url:"/test/reservationPackage",
-				   //타입은 get으로 주면안됨
-				   type:"post",
-				   //헤더정보에 json객체라는걸 알려줘야함
-				   contentType:"application/json;charset=UTF-8",
-				   //json객체모양의 !!문자열!!(이게중요함)을 스프링 jackson lib가 자동으로 자바 객체로 바인드시켜줌
-				   //json객체를 문자열로 변환시켜주는 메서드
-			   		data:JSON.stringify(reservArray),
-			   		processData : true,
-			   		dataType : 'json',
-			   		
-				   success:function(responseData,status,xhr){
-					 //console.log("!!!!!!!!!!"+responseData);
-					 
-					
-					  location.href="/test/aaaa";
-				   },
-				   error:function(request,status,error){
-					  location.href="/test/packReserv";
-					  // location.href="/test/tourList";
-					  // console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-				   }
-			   });
+			$("#1th-tbody").children().not("#notDto").each(function(index,item){
+				var adultPrice = $(item).children().eq(6);
+				var kidPrice = $(item).children().eq(7);
+				adultPriceArray.push(adultPrice);
+				kidPriceArray.push(kidPrice);
+			});
+			var adultResult = 0;
+			for (var i = 0; i < adultPriceArray.length; i++) {
+				adultResult+=adultPriceArray[i];
+			}
+			adultResult*=$("#adultCount").val();
+			var kidResult = 0;
+			for (var i = 0; i < kidPriceArray.length; i++) {
+				kidResult+=kidPriceArray[i];
+			}
+			kidResult*=$("#kidCount").val();
+			$("resultPrice").val(adultResult+kidResult);
 		});
-			
 	});
-	 */
 </script>
 <style type="text/css">
 tr.noDrag {
@@ -150,19 +105,16 @@ tr.noDrag {
 }
 </style>
 
-<form action="/test/a" method="get" name="myForm"
-	id="myForm">
-	<h3>[ 패키지 주문 ]</h3>
-	<br>
-	<!-- <p>여행 시작날짜:</p>
-	<input type="date" id="startDate" name="startDate"><br>
+<form action="/test/packageBuy" method="get" name="myForm" id="myForm">
+	<h3>[ 패키지 예약하기 ]</h3>
+	<br><p>여행 시작날짜:</p>
+	<input type="date" id="startDate" name="startDate" readonly value="${startDay }">
 	<p>여행 종료날짜:</p>
-	<input type="date" id="endDate" name="endDate"><input
-		type="button" value="날짜 변경하기" id="dayButton" class="btn btn-default"><br> -->
+	<input type="date" id="endDate" name="endDate" readonly value="${endDay }">
 	<br>
 	<table border='1' id="termGoodsTable">
 		<tbody id="1th-tbody">
-			<tr class="nodrag">
+			<tr id="notDto">
 				<th>날짜</th>
 				<td>업소 분류</td>
 				<td>업소명</td>
@@ -172,93 +124,55 @@ tr.noDrag {
 				<td>어린이 가격</td>
 				<td>업소 전화번호</td>
 			</tr>
-			<c:forEach var="item" items="${sessionScope.reserv}" varStatus="status">
-			<tr id="1-termTr" class="nodrag">
-				<td>${item.date}일</td>
-				<td>${item.num}</td>
-				<td>${item.type}</td>
-				<!-- <td id="1-3td"></td>
-				<td id="1-4td"></td>
-				<td id="1-5td"></td>
-				<td id="1-6td"></td>
-				<td id="1-7td"></td> -->
-				
-			</tr>
+			<c:forEach var="item" items="${sessionScope.reserv}"
+				varStatus="status">
+				<c:if test="${item.type=='관광지' }">
+				<tr id="1-termTr" >
+					<td>${item.date}일</td>
+					<td>${item.type}</td>
+					<td>${item.tourDto.attName }</td>
+					<td>${item.tourDto.attLocation }</td>
+					<td>${item.tourDto.attType }</td>
+					<td>${item.tourDto.attAdultPrice }</td>
+					<td>${item.tourDto.attKidPrice }</td>
+					<td>${item.tourDto.attPhone }</td>
+				</tr>
+				</c:if>
+				<c:if test="${item.type=='음식점' }">
+				<tr id="1-termTr">
+					<td>${item.date}일</td>
+					<td>${item.type}</td>
+					<td>${item.restDto.restName }</td>
+					<td>${item.restDto.restLocation }</td>
+					<td>${item.restDto.restType }</td>
+					<td>${item.restDto.restPrice }</td>
+					<td>어린이 가격 추가바람</td>
+					<td>${item.restDto.restPhone }</td>
+				</tr>
+				</c:if>
+				<c:if test="${item.type=='숙박업소' }">
+				<tr id="1-termTr">
+					<td>${item.date}일</td>
+					<td>${item.type}</td>
+					<td>${item.stayDto.stayName }</td>
+					<td>${item.stayDto.stayLocation }</td>
+					<td>${item.stayDto.stayType }</td>
+					<td>${item.stayDto.stayAdultPrice }</td>
+					<td>${item.stayDto.stayKidPrice }</td>
+					<td>${item.stayDto.stayPhone }</td>
+				</tr>
+				</c:if>
 			</c:forEach>
 		</tbody>
-		
-	<%-- 	<tbody id="2th-tbody">
-			<tr id="2-termTr" class="nodrag">
-				<td>2일</td>
-				<td id="2-1td"></td>
-				<td id="2-2td"></td>
-				<td id="2-3td"></td>
-				<td id="2-4td"></td>
-				<td id="2-5td"></td>
-				<td id="2-6td"></td>
-				<td id="2-7td"></td>
-			</tr>
-			<tr id="afterReserv" class="nodrag">
-				<td colspan="8" >&nbsp;&nbsp;여기 tr 없애지 마시오!!!!&nbsp;&nbsp;</td>
-			</tr>
-
-			<tr id="allCheckTr" class="nodrag">
-				<td align="center"><input type="checkbox" name="allCheck"
-					id="allCheck"> <strong>전체선택</strong></td>
-				<td>업소 분류</td>
-				<td>업소명</td>
-				<td>업소 지역</td>
-				<td>업소 종류</td>
-				<td>성인 가격</td>
-				<td>어린이 가격</td>
-				<td>업소 전화번호</td>
-			</tr>
-			<c:forEach var="item" items="${sessionScope.reserv}"
-				varStatus="status">
-				<c:if test="${!empty item.attNum }">
-					<tr id="${item.attNum }tourTr" name="reservTr">
-						<td align="center"><input type="checkbox" name="chk"></td>
-						<td>관광지</td>
-						<td>${item.attName }</td>
-						<td>${item.attLocation }</td>
-						<td>${item.attType }</td>
-						<td>${item.attAdultPrice }</td>
-						<td>${item.attKidPrice }</td>
-						<td>${item.attPhone }</td>
-					</tr>
-				</c:if>
-			</c:forEach>
-			<c:forEach var="item" items="${sessionScope.reserv}"
-				varStatus="status">
-				<c:if test="${!empty item.restNum }">
-					<tr id="${item.restNum }restTr" name="reservTr">
-						<td align="center"><input type="checkbox" name="chk"></td>
-						<td>음식점</td>
-						<td>${item.restName }</td>
-						<td>${item.restLocation }</td>
-						<td>${item.restType }</td>
-						<td>${item.restPrice }</td>
-						<td>성인가격 어린이가격으로 구분해서 추가바람</td>
-						<td>${item.restPhone }</td>
-					</tr>
-				</c:if>
-			</c:forEach>
-			<c:forEach var="item" items="${sessionScope.reserv}"
-				varStatus="status">
-				<c:if test="${!empty item.stayNum }">
-					<tr id="${item.stayNum }stayTr" name="reservTr">
-						<td align="center"><input type="checkbox" name="chk"></td>
-						<td>숙박소</td>
-						<td>${item.stayName }</td>
-						<td>${item.stayLocation }</td>
-						<td>${item.stayType }</td>
-						<td>${item.stayAdultPrice }</td>
-						<td>${item.stayKidPrice }</td>
-						<td>${item.stayPhone }</td>
-					</tr>
-				</c:if>
-			</c:forEach>
-		</tbody> --%>
 	</table>
-	
+	어른 인원수:<input type="number" id="adultCount" value=1>
+	<button id="plusAdult" class="btn btn-default">+</button> 
+	<button id="minusAdult" class="btn btn-default">-</button> <br>
+	어린이 인원수:<input type="number" id="kidCount" value=1> 
+	<button id="plusKid" class="btn btn-default">+</button> 
+	<button id="minusKid" class="btn btn-default">-</button> <br>
+	총가격:<input type="number" readonly value=""><input type="number" readonly id="resultPrice" name="resultPrice"> <br>
+	<a href="" class="btn btn-default">만들기로 돌아가기</a> 
+	<input type="submit" value="결제하기" class="btn btn-default">
+
 </form>

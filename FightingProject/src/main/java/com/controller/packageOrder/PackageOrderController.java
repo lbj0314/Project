@@ -3,6 +3,7 @@ package com.controller.packageOrder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,14 +11,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dto.login.ComDTO;
@@ -139,14 +137,20 @@ public class PackageOrderController {
 	
 		List<Map<String,Object>> resultMap = (List<Map<String,Object>>)session1.getAttribute("reserv");
 		
-	
-		 ComDTO dto =(ComDTO)session.getAttribute("comLogin");
-	
-		    
 		         for (Map<String, Object> map : resultMap) {
 		             
 		        	 if(map.get("date")==null) map.put("date", 1);
-		        	 System.out.println(map.get("date") + " : " + map.get("num") +" : "+ map.get("type") +" : "+ dto.getComid());
+		        	 if(map.get("type").equals("관광지")) {
+		        		 TourDTO tourDto = tourService.selectByTourNum(Integer.parseInt((String)map.get("num")));
+		        		 map.put("tourDto", tourDto);
+		        	 }else if(map.get("type").equals("음식점")) {
+		        		 RestDTO restDto = restService.selectByRestNum(Integer.parseInt((String)map.get("num")));
+		        		 map.put("restDto", restDto);
+		        	 }else  {
+		        		 StayDTO stayDto = stayService.staySelectByNum(Integer.parseInt((String)map.get("num")));
+		        		 map.put("stayDto", stayDto);
+		        	 }
+		        	 System.out.println(map.get("date") + " : " + map.get("num") +" : "+ map.get("type"));
 		         }
 		         
 		         
@@ -157,6 +161,39 @@ public class PackageOrderController {
 		return mav;
 
 
+	}
+	
+	@RequestMapping("/packageBuy")
+	public void packageBuy(@RequestBody String resultPrice, String startDate,
+			HttpSession session,HttpSession session1) {
+		
+		ComDTO dto =(ComDTO)session.getAttribute("comLogin");
+		HashMap<String, String> serviceMap = new HashMap<>();
+		serviceMap.put("comId", dto.getComid());
+		serviceMap.put("totalPrice", resultPrice);
+		serviceMap.put("startDate", startDate);
+		
+		List<Map<String,Object>> resultMap = (List<Map<String,Object>>)session1.getAttribute("reserv");
+		
+		String tourList = "";
+		String restList = "";
+		String stayList = "";
+		
+		for (Map<String, Object> controllMap : resultMap) {
+             
+        	 if(controllMap.get("date")==null) controllMap.put("date", 1);
+        	 if(controllMap.get("type").equals("관광지")) {
+        		 tourList = tourList+","+controllMap.get("num");
+        	 }else if(controllMap.get("type").equals("음식점")) {
+        		 restList = restList+","+controllMap.get("num");
+        	 }else  {
+        		 stayList = stayList+","+controllMap.get("num");
+        	 }
+		}
+		serviceMap.put("tourList", tourList);
+		serviceMap.put("restList", restList);
+		serviceMap.put("stayList", stayList);
+		session1.invalidate();
 	}
 	
 	
