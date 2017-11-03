@@ -136,7 +136,7 @@ public class PackageOrderController {
 		ModelAndView mav = new ModelAndView();
 	
 		List<Map<String,Object>> resultMap = (List<Map<String,Object>>)session1.getAttribute("reserv");
-		
+	
 		         for (Map<String, Object> map : resultMap) {
 		             
 		        	 if(map.get("date")==null) map.put("date", 1);
@@ -150,7 +150,7 @@ public class PackageOrderController {
 		        		 StayDTO stayDto = stayService.staySelectByNum(Integer.parseInt((String)map.get("num")));
 		        		 map.put("stayDto", stayDto);
 		        	 }
-		        	 System.out.println(map.get("date") + " : " + map.get("num") +" : "+ map.get("type"));
+		        	 //System.out.println(map.get("date") + " : " + map.get("num") +" : "+ map.get("type"));
 		         }
 		         
 		         
@@ -162,7 +162,18 @@ public class PackageOrderController {
 
 
 	}
+	@RequestMapping(value="/packMulty", method=RequestMethod.POST)
+	@ResponseBody
+	public int packMulty(@RequestParam int n) {
+		
+		
+		System.out.println(n);
+		
+		
+		return n;
+	}
 	
+	/*
 	@RequestMapping("/packageBuy")
 	public void packageBuy(@RequestBody String resultPrice, String startDate,
 			HttpSession session,HttpSession session1) {
@@ -194,7 +205,7 @@ public class PackageOrderController {
 		serviceMap.put("restList", restList);
 		serviceMap.put("stayList", stayList);
 		session1.invalidate();
-	}
+	}*/
 	
 	
 }

@@ -15,7 +15,7 @@ public class RestFileUploadDTO {
 	private int restNum;
 	private String restPhone;//
 	private String restLocation; //
-	private int restPrice;//
+	private int restAdultPrice;//
 	private String restTitle; //
 	private String restContent;//
 	
@@ -26,20 +26,21 @@ public class RestFileUploadDTO {
 
 	private String restAddr1;//
 	private String restAddr2;///
+	private int restKidPrice;//
 	public RestFileUploadDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public RestFileUploadDTO(CommonsMultipartFile restImage, String restName, int restNum, String restPhone,
-			String restLocation, int restPrice, String restTitle, String restContent, String restSite, String restType,
-			int entNum, String restAddr1, String restAddr2) {
+			String restLocation, int restAdultPrice, String restTitle, String restContent, String restSite,
+			String restType, int entNum, String restAddr1, String restAddr2, int restKidPrice) {
 		super();
 		this.restImage = restImage;
 		this.restName = restName;
 		this.restNum = restNum;
 		this.restPhone = restPhone;
 		this.restLocation = restLocation;
-		this.restPrice = restPrice;
+		this.restAdultPrice = restAdultPrice;
 		this.restTitle = restTitle;
 		this.restContent = restContent;
 		this.restSite = restSite;
@@ -47,6 +48,7 @@ public class RestFileUploadDTO {
 		this.entNum = entNum;
 		this.restAddr1 = restAddr1;
 		this.restAddr2 = restAddr2;
+		this.restKidPrice = restKidPrice;
 	}
 	public CommonsMultipartFile getRestImage() {
 		return restImage;
@@ -78,11 +80,11 @@ public class RestFileUploadDTO {
 	public void setRestLocation(String restLocation) {
 		this.restLocation = restLocation;
 	}
-	public int getRestPrice() {
-		return restPrice;
+	public int getRestAdultPrice() {
+		return restAdultPrice;
 	}
-	public void setRestPrice(int restPrice) {
-		this.restPrice = restPrice;
+	public void setRestAdultPrice(int restAdultPrice) {
+		this.restAdultPrice = restAdultPrice;
 	}
 	public String getRestTitle() {
 		return restTitle;
@@ -126,13 +128,21 @@ public class RestFileUploadDTO {
 	public void setRestAddr2(String restAddr2) {
 		this.restAddr2 = restAddr2;
 	}
+	public int getRestKidPrice() {
+		return restKidPrice;
+	}
+	public void setRestKidPrice(int restKidPrice) {
+		this.restKidPrice = restKidPrice;
+	}
 	@Override
 	public String toString() {
 		return "RestFileUploadDTO [restImage=" + restImage + ", restName=" + restName + ", restNum=" + restNum
-				+ ", restPhone=" + restPhone + ", restLocation=" + restLocation + ", restPrice=" + restPrice
+				+ ", restPhone=" + restPhone + ", restLocation=" + restLocation + ", restAdultPrice=" + restAdultPrice
 				+ ", restTitle=" + restTitle + ", restContent=" + restContent + ", restSite=" + restSite + ", restType="
-				+ restType + ", entNum=" + entNum + ", restAddr1=" + restAddr1 + ", restAddr2=" + restAddr2 + "]";
+				+ restType + ", entNum=" + entNum + ", restAddr1=" + restAddr1 + ", restAddr2=" + restAddr2
+				+ ", restKidPrice=" + restKidPrice + "]";
 	}
+	
 
 	
 	

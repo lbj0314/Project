@@ -48,10 +48,16 @@ $(document).ready(function() {
                 $("#addr1").focus();
 			return false;	 
         	}
-			else if ( !RegAvgPrice.test($.trim($("#restPrice").val())) )
+			else if ( !RegAvgPrice.test($.trim($("#restAdultPrice").val())) )
 			{
-				alert("1인당 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
-				$("#restPrice").focus();
+				alert("성인 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$("#restAdultPrice").focus();
+				return false;
+			}
+			else if ( !RegAvgPrice.test($.trim($("#restKidPrice").val())) )
+			{
+				alert("어린이 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$("#restKidPrice").focus();
 				return false;
 			}
 			else if ( !RegPhone.test($.trim($("#restPhone").val())))
@@ -103,17 +109,33 @@ $(document).ready(function() {
 	});//restTitle
 	
 	$(document).ready(function() {
-		$('#restPrice').keyup(function() {
-			if ($('#restPrice').val().length < 3) {
+		$('#restAdultPrice').keyup(function() {
+			if ($('#restAdultPrice').val().length < 3) {
 				$('font[name=check3]').css("color", "red");
-				$('font[name=check3]').text("1인당 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$('font[name=check3]').text("성인 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
 			}
 			else {
 				$('font[name=check3]').css("color", "blue");
-				$('font[name=check3]').text("1인당 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$('font[name=check3]').text("성인 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
 			}
 		});
 	});//restPrice
+	
+	$(document).ready(function() {
+		$('#restKidPrice').keyup(function() {
+			if ($('#restKidPrice').val().length < 3) {
+				$('font[name=check3]').css("color", "red");
+				$('font[name=check3]').text("어린이 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+			}
+			else {
+				$('font[name=check3]').css("color", "blue");
+				$('font[name=check3]').text("어린이 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+			}
+		});
+	});//restPrice
+	
+	
+	
 	
 	$(document).ready(function() {
 		$('#restPhone').keyup(function() {
@@ -221,8 +243,15 @@ $(document).ready(function() {
 		
 		<tr>
 			<div class="form-inline">
-				<td align=center>1인당 평균 가격 :</td>
-				<td><input type="text" name="restPrice" id="restPrice" maxlength="11" class="form-control"><font name="check3" size="2"></td>
+			
+			<div class="form-inline">
+				<td align=center>음식점 성인가격:</td>
+				<td><input type="text" name="restAdultPrice" id="restAdultPrice"
+					class="form-control"><font name="check3" size="2"></td>
+				<td align=center>음식점 어린이가격:</td>
+				<td><input type="text" name="restKidPrice" id="restKidPrice" class="form-control" ><font name="check4" size="2"></td>
+			</div>
+			
 
 			</div>
 		</tr>

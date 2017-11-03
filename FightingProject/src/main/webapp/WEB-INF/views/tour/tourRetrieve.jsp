@@ -53,9 +53,9 @@
 					});
 
 				});
-				$("#attlo > option[value=${tourRetrieve.attLocation}]").attr(
+				$("#attLocation > option[value='${tourRetrieve.attLocation}']").attr(
 						"selected", "true");
-				$("#attty > option[value=${tourRetrieve.attType}]").attr(
+				$("#attType > option[value='${tourRetrieve.attType}']").attr(
 						"selected", "true");
 
 			});
@@ -302,7 +302,7 @@ $(document).ready(function() {
 
 							<td class="td_title">관광지 지역</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<select name="attLocation" id="attLocation" class="form-control" id="attlo">
+								<select name="attLocation" id="attLocation" class="form-control">
 									<option value="def">지역선택</option>
 									<option value="전체">전체</option>
 									<option value="서울">서울</option>
@@ -331,7 +331,7 @@ $(document).ready(function() {
 							<td class="td_title">관광지 타입</td>
 
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<select name="attType" id="attType" class="form-control" id="attty">
+								<select name="attType" id="attType" class="form-control">
 									<option value="def2">타입선택</option>
 									<option value="자연">자연</option>
 									<option value="체험">체험</option>

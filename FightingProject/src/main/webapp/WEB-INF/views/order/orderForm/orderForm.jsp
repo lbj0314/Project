@@ -249,8 +249,8 @@ tr.noDrag {
 						<td>${item.restName }</td>
 						<td>${item.restLocation }</td>
 						<td>${item.restType }</td>
-						<td>${item.restPrice }</td>
-						<td>성인가격 어린이가격으로 구분해서 추가바람</td>
+						<td>${item.restAdultPrice }</td>
+						<td>${item.restKidPrice }</td>
 						<td>${item.restPhone }</td>
 					</tr>
 				</c:if>

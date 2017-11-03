@@ -9,7 +9,7 @@ public class RestDTO {
 	private String restImage;
 	private String restPhone;
 	private String restLocation;
-	private int restPrice;
+	private int restAdultPrice;
 	private String restTitle;
 	private String restContent;
 	private String restWriteDay;
@@ -22,21 +22,22 @@ public class RestDTO {
 	private String restImageClone;
 	private String restAddr1;
 	private String restAddr2;
+	private int restKidPrice;
 	public RestDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public RestDTO(int restNum, String restName, String restImage, String restPhone, String restLocation, int restPrice,
-			String restTitle, String restContent, String restWriteDay, int restReadCnt, int restRepleCnt,
-			String restSite, int restGoods, String restType, int entNum, String restImageClone, String restAddr1,
-			String restAddr2) {
+	public RestDTO(int restNum, String restName, String restImage, String restPhone, String restLocation,
+			int restAdultPrice, String restTitle, String restContent, String restWriteDay, int restReadCnt,
+			int restRepleCnt, String restSite, int restGoods, String restType, int entNum, String restImageClone,
+			String restAddr1, String restAddr2, int restKidPrice) {
 		super();
 		this.restNum = restNum;
 		this.restName = restName;
 		this.restImage = restImage;
 		this.restPhone = restPhone;
 		this.restLocation = restLocation;
-		this.restPrice = restPrice;
+		this.restAdultPrice = restAdultPrice;
 		this.restTitle = restTitle;
 		this.restContent = restContent;
 		this.restWriteDay = restWriteDay;
@@ -49,6 +50,7 @@ public class RestDTO {
 		this.restImageClone = restImageClone;
 		this.restAddr1 = restAddr1;
 		this.restAddr2 = restAddr2;
+		this.restKidPrice = restKidPrice;
 	}
 	public int getRestNum() {
 		return restNum;
@@ -80,11 +82,11 @@ public class RestDTO {
 	public void setRestLocation(String restLocation) {
 		this.restLocation = restLocation;
 	}
-	public int getRestPrice() {
-		return restPrice;
+	public int getRestAdultPrice() {
+		return restAdultPrice;
 	}
-	public void setRestPrice(int restPrice) {
-		this.restPrice = restPrice;
+	public void setRestAdultPrice(int restAdultPrice) {
+		this.restAdultPrice = restAdultPrice;
 	}
 	public String getRestTitle() {
 		return restTitle;
@@ -158,16 +160,23 @@ public class RestDTO {
 	public void setRestAddr2(String restAddr2) {
 		this.restAddr2 = restAddr2;
 	}
+	public int getRestKidPrice() {
+		return restKidPrice;
+	}
+	public void setRestKidPrice(int restKidPrice) {
+		this.restKidPrice = restKidPrice;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "RestDTO [restNum=" + restNum + ", restName=" + restName + ", restImage=" + restImage + ", restPhone="
-				+ restPhone + ", restLocation=" + restLocation + ", restPrice=" + restPrice + ", restTitle=" + restTitle
-				+ ", restContent=" + restContent + ", restWriteDay=" + restWriteDay + ", restReadCnt=" + restReadCnt
-				+ ", restRepleCnt=" + restRepleCnt + ", restSite=" + restSite + ", restGoods=" + restGoods
+				+ restPhone + ", restLocation=" + restLocation + ", restAdultPrice=" + restAdultPrice + ", restTitle="
+				+ restTitle + ", restContent=" + restContent + ", restWriteDay=" + restWriteDay + ", restReadCnt="
+				+ restReadCnt + ", restRepleCnt=" + restRepleCnt + ", restSite=" + restSite + ", restGoods=" + restGoods
 				+ ", restType=" + restType + ", entNum=" + entNum + ", restImageClone=" + restImageClone
-				+ ", restAddr1=" + restAddr1 + ", restAddr2=" + restAddr2 + "]";
+				+ ", restAddr1=" + restAddr1 + ", restAddr2=" + restAddr2 + ", restKidPrice=" + restKidPrice + "]";
 	}
-	
 	
 
 	

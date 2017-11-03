@@ -54,11 +54,11 @@
 
 				});
 				
-				$("#staylo > option[value=${stayRetrieve.stayLocation}]").attr(
+				$("#stayLocation > option[value=${stayRetrieve.stayLocation}]").attr(
 						"selected", "true");
-				$("#stayty > option[value=${stayRetrieve.stayType}]").attr(
+				$("#stayType > option[value=${stayRetrieve.stayType}]").attr(
 						"selected", "true");
-				$("#staygd > option[value=${stayRetrieve.stayGrade}]").attr(
+				$("#stayGrade > option[value=${stayRetrieve.stayGrade}]").attr(
 						"selected", "true");
 				
 			});
@@ -310,7 +310,7 @@ $(document).ready(function() {
 
 							<td class="td_title">숙박업소 지역</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<select name="stayLocation" id="stayLocation" class="form-control" id="staylo">
+								<select name="stayLocation" id="stayLocation" class="form-control">
 									<option value="def">지역선택</option>
 									<option value="전체">전체</option>
 									<option value="서울">서울</option>
@@ -339,7 +339,7 @@ $(document).ready(function() {
 							<td class="td_title">숙박업소 종류</td>
 
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<select name="stayType" id="stayType" class="form-control" id="stayty">
+								<select name="stayType" id="stayType" class="form-control">
 									<option value="def2">숙박업소 종류 선택</option>
 									<option value="게스트하우스">게스트하우스</option>
 									<option value="아파트">아파트</option>
@@ -357,7 +357,7 @@ $(document).ready(function() {
 						<tr>
 							<td class="td_title">숙박업소 등급</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<select name="stayGrade" id="stayGrade" class="form-control" id="staygd">
+								<select name="stayGrade" id="stayGrade" class="form-control">
 									<option value="def3">숙박업소 등급 선택</option>
 									<option value="1성">1성</option>
 									<option value="1.5성">1.5성</option>

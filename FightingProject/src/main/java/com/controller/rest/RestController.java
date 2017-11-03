@@ -137,13 +137,14 @@ public class RestController extends HttpServlet  {
 		tdto.setRestLocation(dto.getRestLocation());
 		tdto.setEntNum(dto.getEntNum());
 		tdto.setRestType(dto.getRestType());
-		tdto.setRestPrice(dto.getRestPrice());
+		tdto.setRestAdultPrice(dto.getRestAdultPrice());
 		tdto.setRestSite(dto.getRestSite());
 		tdto.setRestContent(dto.getRestContent());
 		tdto.setRestName(dto.getRestName());
 		tdto.setRestNum(dto.getRestNum());
 		tdto.setRestPhone(dto.getRestPhone());
 		tdto.setRestTitle(dto.getRestTitle());
+		tdto.setRestKidPrice(dto.getRestKidPrice());
 		if (!restImage.equals("")) {
 			String[] restSplit = restImage.split("\\.");
 			String restImageClone = restSplit[0] + milliSecond + "." + restSplit[1];
@@ -218,7 +219,7 @@ public class RestController extends HttpServlet  {
 		tdto.setRestLocation(dto.getRestLocation());
 		tdto.setEntNum(dto.getEntNum());
 		tdto.setRestType(dto.getRestType());
-		tdto.setRestPrice(dto.getRestPrice());
+		tdto.setRestAdultPrice(dto.getRestAdultPrice());
 		tdto.setRestSite(restSite);
 		tdto.setRestContent(dto.getRestContent());
 		tdto.setRestName(dto.getRestName());
@@ -228,7 +229,7 @@ public class RestController extends HttpServlet  {
 		tdto.setRestImageClone(restImageClone);
 		tdto.setRestAddr1(dto.getRestAddr1());
 		tdto.setRestAddr2(dto.getRestAddr2());
-		
+		tdto.setRestKidPrice(dto.getRestKidPrice());
 		
 		try {
 		service.restWrite(tdto);

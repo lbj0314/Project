@@ -46,9 +46,9 @@
 						}
 					});
 				});
-				$("#restlo > option[value=${restRetrieve.restLocation}]").attr(
+				$("#restLocation > option[value=${restRetrieve.restLocation}]").attr(
 						"selected", "true");
-				$("#restty > option[value=${restRetrieve.restType}]").attr(
+				$("#restType > option[value=${restRetrieve.restType}]").attr(
 						"selected", "true");
 			});
 </script>
@@ -88,10 +88,16 @@ $(document).ready(function() {
                 $("#addr1").focus();
 			return false;	 
         	}
-			else if ( !RegAvgPrice.test($.trim($("#restPrice").val())) )
+			else if ( !RegAvgPrice.test($.trim($("#restAdultPrice").val())) )
 			{
-				alert("1인당 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				alert("성인 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
 				$("#restAdultPrice").focus();
+				return false;
+			}
+			else if ( !RegAvgPrice.test($.trim($("#restKidPrice").val())) )
+			{
+				alert("어린이 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$("#restKidPrice").focus();
 				return false;
 			}
 			/* else if ( !RegAvgPrice.test($.trim($("#restKidPrice").val())) )
@@ -147,14 +153,25 @@ $(document).ready(function() {
 	});//restTitle
 	
 	$(document).ready(function() {
-		$('#restPrice').keyup(function() {
-			if ($('#restPrice').val().length < 3) {
+		$('#restAdultPrice').keyup(function() {
+			if ($('#restAdultPrice').val().length < 3) {
 				$('font[name=check3]').css("color", "red");
-				$('font[name=check3]').text("1인당 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$('font[name=check3]').text("성인 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
 			}
 			else {
 				$('font[name=check3]').css("color", "blue");
-				$('font[name=check3]').text("1인당 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$('font[name=check3]').text("성인 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+			}
+		});
+		
+		$('#restKidPrice').keyup(function() {
+			if ($('#restKidPrice').val().length < 3) {
+				$('font[name=check3]').css("color", "red");
+				$('font[name=check3]').text("어린이 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+			}
+			else {
+				$('font[name=check3]').css("color", "blue");
+				$('font[name=check3]').text("어린이 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
 			}
 		});
 		/* $('#restKidPrice').keyup(function() {
@@ -241,7 +258,7 @@ $(document).ready(function() {
 							test="${!empty sessionScope.entLogin && (sessionScope.entLogin.entnum == restRetrieve.entNum)}">
 							<tr>
 								<!-- 이미지 수정부 -->
-								<td rowspan="12"><input type="file" name="restImage"
+								<td rowspan="13"><input type="file" name="restImage"
 									id="imgInp"> <img id="imgview"
 									src="image/${restRetrieve.restImageClone}"
 									alt="사진을 바꾸시려면 눌러주세요." border="0" align="center" width="300" />
@@ -282,7 +299,7 @@ $(document).ready(function() {
 
 							<td class="td_title">음식점 지역</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<select name="restLocation" id="restLocation" class="form-control" id="restlo">
+								<select name="restLocation" id="restLocation" class="form-control">
 									<option value="def">지역선택</option>
 									<option value="전체">전체</option>
 									<option value="서울">서울</option>
@@ -310,7 +327,7 @@ $(document).ready(function() {
 						<tr>
 							<td class="td_title">음식점 종류</td>
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
-								<select name="restType" id="restType" class="form-control" id="restty">
+								<select name="restType" id="restType" class="form-control">
 									<option value="def2">음식점 선택</option>
 									<option value="한식">한식</option>
 									<option value="일식">일식</option>
@@ -366,12 +383,22 @@ $(document).ready(function() {
 					
 					<div class="form-inline">
 						<tr>
-							<td class="td_title">1인당 평균 가격</td>
+							<td class="td_title">음식점 성인 가격</td>
 							<td class="td_red" colspan="2" style='padding-left: 30px'><fmt:formatNumber
-									type="currency" value="${restRetrieve.restPrice}"
+									type="currency" value="${restRetrieve.restAdultPrice}"
 									pattern="\###,###" var="aap" /> <input type="text"
-								name="restPrice" id="restPrice" value="${restRetrieve.restPrice}"
+								name="restAdultPrice" id="restAdultPrice" value="${restRetrieve.restAdultPrice}"
 								class="form-control"><font name="check3" size="2"></td>
+						</tr>
+					</div>
+					<div class="form-inline">
+						<tr>
+							<td class="td_title">음식점 어린이 가격</td>
+							<td class="td_red" colspan="2" style='padding-left: 30px'><fmt:formatNumber
+									type="currency" value="${restRetrieve.restKidPrice}"
+									pattern="\###,###" var="akp" /> <input type="text"
+								name="restKidPrice" id="restKidPrice" value="${restRetrieve.restKidPrice}"
+								class="form-control"><font name="check4" size="2"></td>
 						</tr>
 					</div>
 
@@ -416,7 +443,7 @@ $(document).ready(function() {
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
 
 								<input type="text" name="restSite" id="restSite"
-								value="${restRetrieve.restSite}">
+								value="${restRetrieve.restSite}" class="form-control">
 
 							</td>
 						</tr>
