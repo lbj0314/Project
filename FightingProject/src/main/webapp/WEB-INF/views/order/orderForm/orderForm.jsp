@@ -50,7 +50,7 @@
 		//테이블 행 추가
 		var between = $("#betweenDay").val();
 		for (var i = 1; i <= between-1; i++) {			
-			$("#2th-tbody tr:nth-child("+i+")").after("<tr id='"+((i*1)+(2*1))+"-termTr' class='nodrag'><td>"+((i*1)+(2*1))+"일</td><td>야</td><td>야</td><td>야</td><td>야</td><td>야</td><td>야</td><td>야</td></tr>")
+			$("#2th-tbody tr:nth-child("+i+")").after("<tr id='"+((i*1)+(2*1))+"-termTr' class='nodrag'><td>"+((i*1)+(2*1))+"일</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>")
 		}
 		//전체 선택하기 주문하려는 친구제외
 		$("#allCheck").on("click",function(){
@@ -94,11 +94,11 @@
 					var reservNum = $(item).attr("id");
 					var numLeng = reservNum.length;
 					if(reservNum.substring(numLeng-6, numLeng)=="tourTr"){
-
+						
 						reservNum = reservNum.slice(0,-6);
 						tourJson.date = reservDate;
 						tourJson.num = reservNum;
-						tourJson.type = "tour";
+						tourJson.type = "관광지";
 						//tourJson.name = 
 						reservArray.push(tourJson);
 					}
@@ -107,7 +107,7 @@
 						reservNum = reservNum.slice(0,-6);
 						restJson.date = reservDate;
 						restJson.num = reservNum;
-						restJson.type = "rest";
+						restJson.type = "음식점";
 						
 						reservArray.push(restJson);
 					}
@@ -116,13 +116,11 @@
 						reservNum = reservNum.slice(0,-6);
 						stayJson.date = reservDate;
 						stayJson.num = reservNum;
-						stayJson.type = "stay";
+						stayJson.type = "숙박업소";
 						reservArray.push(stayJson);
 				
 					}
 				});
-			
-			// 위에서부터 쭈루룩 하는게 아니였음 (랜덤이였음ㅋ)
 			
 			console.log(reservArray);
 			 $.ajax({
