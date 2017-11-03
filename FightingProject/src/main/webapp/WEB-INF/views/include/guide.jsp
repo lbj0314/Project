@@ -74,7 +74,7 @@ body, head {
 	<br>
 	<br>
 	<a href="">패키지 설정하러 가기!</a>
-	<br>
+	<br><br>
 	<br>
 	<br>
 	<br>
