@@ -14,8 +14,18 @@
 	src="/test/js_daumaddress/jquery.tablednd.js"></script>
 <script type="text/javascript">
 	// allresult
+	function el(){
+			if($("#adultCount").val()=='0' && $("#kidCount").val()=='0'){
+				alert('최소 한명이상은 가야합니다!');
+				return false;
+			}
+			else{
+				return true;
+			}
+			
+		}
 	$(document).ready(function() {
-
+		
 		//총 가격 구하기
 		var adultPriceArray = new Array();
 		var kidPriceArray = new Array();
@@ -188,7 +198,7 @@
 			}
 		});
 
-		//어른인원수랑 어린이 인원수 바뀔때마다 또 조정해줘야됨 ㅅㅂ;;;;;;;
+		//어른인원수랑 어린이 인원수 바뀔때마다 또 조정해줘야됨 ㅅㅂ;;;;;;; -> 했음 ㅅㄱ
 		//어른 바뀔때
 		/*
 		$("#adultCount").on("change",function(){
@@ -251,7 +261,7 @@ tr.noDrag {
 }
 </style>
 
-<form action="/test/packageBuy" method="get" name="myForm" id="myForm">
+<form action="/test/packageBuy" method="get" name="myForm" id="myForm" onsubmit="return el()" >
 	<h3>[ 패키지 예약하기 ]</h3>
 	<br>
 	<p>여행 시작날짜:</p>
@@ -323,7 +333,7 @@ tr.noDrag {
 	<!-- <input type="number" readonly value=""> -->
 	<span id="allresult"> <input type="number" readonly
 		id="resultPrice" name="resultPrice">
-	</span><br> <a href="" class="btn btn-default">만들기로 돌아가기</a> <input
+	</span><br> <a href="/test/packageOrderForm" class="btn btn-default">만들기로 돌아가기</a> <input
 		type="submit" value="결제하기" class="btn btn-default">
 
 </form>

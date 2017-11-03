@@ -162,21 +162,24 @@ public class PackageOrderController {
 
 
 	}
+	
+	
+	
+	//Ajax 플러스마이너스
 	@RequestMapping(value="/packMulty", method=RequestMethod.POST)
 	@ResponseBody
 	public int packMulty(@RequestParam int n) {
-		
-		
-		System.out.println(n);
-		
-		
 		return n;
 	}
 	
-	/*
+	
+	
+	
 	@RequestMapping("/packageBuy")
 	public void packageBuy(@RequestBody String resultPrice, String startDate,
 			HttpSession session,HttpSession session1) {
+		//시작날짜,종료날짜,총합계,인원수, 숙박,관광지,맛집별 넘버,몇일차,
+		
 		
 		ComDTO dto =(ComDTO)session.getAttribute("comLogin");
 		HashMap<String, String> serviceMap = new HashMap<>();
@@ -205,7 +208,7 @@ public class PackageOrderController {
 		serviceMap.put("restList", restList);
 		serviceMap.put("stayList", stayList);
 		session1.invalidate();
-	}*/
+	}
 	
 	
 }
