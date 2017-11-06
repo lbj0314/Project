@@ -178,8 +178,8 @@ public class PackageOrderController {
 	@RequestMapping("/packageBuy")
 	public void packageBuy(@RequestBody String resultPrice, String startDate,
 			HttpSession session,HttpSession session1) {
-		//시작날짜,종료날짜,총합계,인원수, 숙박,관광지,맛집별 넘버,몇일차,
-		
+		//시작날짜,종료날짜,총합계,인원수, usernum DB // 시작일자,종료날짜, 숙박,관광지,맛집별 넘버,몇일차, usernum DB
+		//
 		
 		ComDTO dto =(ComDTO)session.getAttribute("comLogin");
 		HashMap<String, String> serviceMap = new HashMap<>();
