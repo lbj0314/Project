@@ -12,6 +12,7 @@
 	${sessionScope.comLogin.comname }님 안녕하세요&nbsp;
 	<a href="logout" class="btn btn-default">로그아웃</a>&nbsp;
 	<a href="myPageForm" class="btn btn-default">마이페이지</a>&nbsp;
+	<a href="packageOrderForm" class="btn btn-default">패키지바로가기</a>&nbsp;
 </c:if>
 <c:if
 	test="${!empty sessionScope.entLogin}">

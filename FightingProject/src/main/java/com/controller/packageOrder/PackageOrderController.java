@@ -136,7 +136,7 @@ public class PackageOrderController {
 		ModelAndView mav = new ModelAndView();
 	
 		List<Map<String,Object>> resultMap = (List<Map<String,Object>>)session1.getAttribute("reserv");
-	
+		
 		         for (Map<String, Object> map : resultMap) {
 		             
 		        	 if(map.get("date")==null) map.put("date", 1);
@@ -150,7 +150,7 @@ public class PackageOrderController {
 		        		 StayDTO stayDto = stayService.staySelectByNum(Integer.parseInt((String)map.get("num")));
 		        		 map.put("stayDto", stayDto);
 		        	 }
-		        	 //System.out.println(map.get("date") + " : " + map.get("num") +" : "+ map.get("type"));
+		        	 System.out.println(map.get("date") + " : " + map.get("num") +" : "+ map.get("type"));
 		         }
 		         
 		         
@@ -163,23 +163,11 @@ public class PackageOrderController {
 
 	}
 	
-	
-	
-	//Ajax 플러스마이너스
-	@RequestMapping(value="/packMulty", method=RequestMethod.POST)
-	@ResponseBody
-	public int packMulty(@RequestParam int n) {
-		return n;
-	}
-	
-	
-	
-	
 	@RequestMapping("/packageBuy")
 	public void packageBuy(@RequestBody String resultPrice, String startDate,
 			HttpSession session,HttpSession session1) {
-		//시작날짜,종료날짜,총합계,인원수, 숙박,관광지,맛집별 넘버,몇일차,
-		
+		//시작날짜,종료날짜,총합계,인원수, usernum DB // 시작일자,종료날짜, 숙박,관광지,맛집별 넘버,몇일차, usernum DB
+		//
 		
 		ComDTO dto =(ComDTO)session.getAttribute("comLogin");
 		HashMap<String, String> serviceMap = new HashMap<>();
