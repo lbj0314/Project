@@ -32,9 +32,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert ALL
 		
 		<foreach collection="list" item="item" index="index">
-		into packlist(packListNum, type, day, packOrderNum, comNum)
+		into packlist(packListNum, type, day, packOrderNum, comNum,typeNum)
 		values
-		(orderAll(), #{item.type}, #{item.day}, #{item.packOrderNum}, #{item.comNum})
+		(orderAll(), #{item.type}, #{item.day}, #{item.packOrderNum}, #{item.comNum},#{item.typeNum})
 
 		</foreach>		
 		select *
@@ -42,7 +42,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		dual
 	</insert>
 	
-
+	<select id="packOrderList" resultType="PackOrderDTO" parameterType="int">
+	select packordernum,startday,endday,packname,adult,kid,payment,price,comnum
+	from packorder where comnum=#{comNum}		
+	</select>
+	
+	<select id="packListList" resultType="PackListDTO" parameterType="hashmap">
+	select packlistnum,type,day,packordernum,comnum,typenum
+	from packlist where comnum=#{comNum} and typenum=#{typeNum}
+	</select>
 
 
 </mapper>

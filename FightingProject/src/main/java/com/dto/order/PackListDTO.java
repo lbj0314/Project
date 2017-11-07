@@ -9,19 +9,19 @@ public class PackListDTO {
 	private int day;
 	private int packOrderNum;
 	private int comNum;
-	private String startDay;
+	private int typeNum;
 	public PackListDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PackListDTO(int packListNum, String type, int day, int packOrderNum, int comNum, String startDay) {
+	public PackListDTO(int packListNum, String type, int day, int packOrderNum, int comNum, int typeNum) {
 		super();
 		this.packListNum = packListNum;
 		this.type = type;
 		this.day = day;
 		this.packOrderNum = packOrderNum;
 		this.comNum = comNum;
-		this.startDay = startDay;
+		this.typeNum = typeNum;
 	}
 	public int getPackListNum() {
 		return packListNum;
@@ -53,17 +53,19 @@ public class PackListDTO {
 	public void setComNum(int comNum) {
 		this.comNum = comNum;
 	}
-	public String getStartDay() {
-		return startDay;
+	public int getTypeNum() {
+		return typeNum;
 	}
-	public void setStartDay(String startDay) {
-		this.startDay = startDay;
+	public void setTypeNum(int typeNum) {
+		this.typeNum = typeNum;
 	}
 	@Override
 	public String toString() {
 		return "PackListDTO [packListNum=" + packListNum + ", type=" + type + ", day=" + day + ", packOrderNum="
-				+ packOrderNum + ", comNum=" + comNum + ", startDay=" + startDay + "]";
+				+ packOrderNum + ", comNum=" + comNum + ", typeNum=" + typeNum + "]";
 	}
+	
+	
 	
 	
 	

@@ -26,5 +26,12 @@ public class PackOrderService {
 		dao.packListInsert(dto);
 		
 	}
+	public List<PackOrderDTO> packOrderList(int comNum){
+		return dao.packOrderList(comNum);
+	}
+	
+	public List<PackListDTO> packListList(Map<String, Integer> map){
+		return dao.packListList(map);
+	}
 
 }

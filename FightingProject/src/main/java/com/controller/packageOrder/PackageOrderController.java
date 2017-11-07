@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -112,7 +113,7 @@ public class PackageOrderController {
 			session.setAttribute("startDay", startDay);
 			session.setAttribute("endDay", endDay);
 		}
-		
+		mav.addObject("orderForm","aaaaa");
 		
 		return mav;
 	}
@@ -166,6 +167,8 @@ public class PackageOrderController {
 		         
 		         
 		         mav.addObject("reserv",resultMap);
+		         
+		         mav.addObject("orderForm","aaaaa");
 		         mav.setViewName("order/packReserv");
 		         
 		  
@@ -176,13 +179,13 @@ public class PackageOrderController {
 	
 	@RequestMapping("/packageBuy")
 	public String packageBuy(@RequestParam int resultPrice,@RequestParam int adultCount,@RequestParam int kidCount,@RequestParam String payment,
-			@RequestParam String packName,HttpSession session,HttpSession session1) {
+			@RequestParam String packName,HttpSession session,HttpSession session1,Model m) {
 		//시작날짜,종료날짜,총합계,인원수, usernum DB // 시작일자,종료날짜, 숙박,관광지,맛집별 넘버,몇일차, usernum DB
 		//
 		List<Map<String,Object>> resultMap = (List<Map<String,Object>>)session1.getAttribute("reserv");
 		ComDTO dto =(ComDTO)session.getAttribute("comLogin");
 		
-
+		
 		PackOrderDTO odto = new PackOrderDTO();
 		Map<String, Object> map = new HashMap<String, Object>();
 		
@@ -202,6 +205,9 @@ public class PackageOrderController {
 		
 		map.put("startDay", (String)session.getAttribute("startDay"));
 		map.put("comNum", (int)dto.getComnum());
+		
+		
+		
 		PackOrderDTO pdto = packService.packOrderInsert(odto, map);
 		
 		//serviceMap.put("totalPrice", resultPrice);
@@ -225,7 +231,7 @@ public class PackageOrderController {
 				ddto.setDay(Integer.parseInt(String.valueOf(controllMap.get("date"))));
 				System.out.println(ddto.getDay());
 				ddto.setPackOrderNum(pdto.getPackOrderNum());
-				ddto.setStartDay(String.valueOf(session.getAttribute("startDay")));
+				ddto.setTypeNum(Integer.parseInt(String.valueOf(controllMap.get("num"))));
 				ddto.setType(String.valueOf(controllMap.get("type")));				
 				
 				
@@ -244,8 +250,41 @@ public class PackageOrderController {
 		serviceMap.put("restList", restList);
 		serviceMap.put("stayList", stayList);*/
 		session1.invalidate();
+		m.addAttribute("orderDone",1);
+		return "order/orderForm";
+	}
+	
+	
+	@RequestMapping("/Reserv")
+	public ModelAndView Reserv(HttpSession session) {
+		ComDTO cdto =(ComDTO)session.getAttribute("comLogin");
 		
-		return "/";
+		List<PackOrderDTO> odto = packService.packOrderList(cdto.getComnum());
+		ModelAndView mav = new ModelAndView();
+		int[] packOrderNum = {};
+		int i=0;
+		
+		
+		for (PackOrderDTO dto : odto) 
+		{
+			packOrderNum[i] = dto.getPackOrderNum();
+			i++;
+		}
+		
+		
+		
+		
+		Map<String, Integer> map = new HashMap<>();
+		Map<String, Object> map2= new HashMap<>();
+		
+		map.put("packOrderNum", packOrderNum[0]);
+		map.put("comNum", cdto.getComnum());
+		
+		mav.addObject("packOrderView",odto);
+		List<PackListDTO> ldto = packService.packListList(map);
+		
+		
+		return mav;
 	}
 	
 	

@@ -33,6 +33,18 @@ public class PackOrderDAO {
 				template.insert("packListInsert",dto);
 				
 			}
+			public List<PackOrderDTO> packOrderList(int comNum){
+				List<PackOrderDTO> dto = template.selectList("packOrderList",comNum);
+				return dto;
+			}
+			
+			
+			public List<PackListDTO> packListList(Map<String, Integer> map){
+				
+				List<PackListDTO> dto = template.selectList("packListList",map);
+				return dto;
+				
+			}
 	
 
 }
