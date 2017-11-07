@@ -22,9 +22,14 @@
 	
 	<jsp:include page="../login/loginForm.jsp" flush="true" /><br>
 	<jsp:include page="../include/top.jsp" flush="true" />
-	<jsp:include page="orderForm/orderForm.jsp" flush="true" />
+	<c:if test="${!empty orderForm}">
+		<jsp:include page="orderForm/orderForm.jsp" flush="true" />
+	</c:if>
 	<c:if test="${!empty tourOrderForm}">
 		<jsp:include page="../tour/tourList.jsp" flush="true" />
+	</c:if>
+	<c:if test="${!empty orderDone}">
+		<jsp:include page="orderForm/orderDone.jsp" flush="true"/>
 	</c:if>
 	<c:if test="${!empty restOrderForm}">
 		<jsp:include page="../restaurant/restList.jsp" flush="true" />
