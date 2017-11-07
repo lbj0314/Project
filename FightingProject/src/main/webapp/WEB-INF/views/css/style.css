@@ -1,3 +1,8 @@
-#conta { text-align:center; }
+#conta {
+	text-align: center;
+}
 
-#conright { text-align:right; }
+.form-group {
+	text-align: right;
+}
+

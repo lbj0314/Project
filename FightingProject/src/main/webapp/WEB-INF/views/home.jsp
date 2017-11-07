@@ -17,25 +17,28 @@
 	</script>
 </c:if>
 
-<c:if test="${!empty sessionScope.admLogin and sessionScope.alert==true}">
+<c:if
+	test="${!empty sessionScope.admLogin and sessionScope.alert==true}">
 	<script>
 		alert("관리자로 로그인 되었습니다.");
 	</script>
-	<c:set value="false" var="alert" scope="session"/>
+	<c:set value="false" var="alert" scope="session" />
 </c:if>
 
-<c:if test="${!empty sessionScope.comLogin and sessionScope.alert==true}">
+<c:if
+	test="${!empty sessionScope.comLogin and sessionScope.alert==true}">
 	<script>
 		alert("일반 회원으로 로그인 되었습니다.");
 	</script>
-	<c:set value="false" var="alert" scope="session"/>
+	<c:set value="false" var="alert" scope="session" />
 </c:if>
 
-<c:if test="${!empty sessionScope.entLogin and sessionScope.alert==true}">
+<c:if
+	test="${!empty sessionScope.entLogin and sessionScope.alert==true}">
 	<script>
 		alert("기업 회원으로 로그인 되었습니다.");
 	</script>
-	<c:set value="false" var="alert" scope="session"/>
+	<c:set value="false" var="alert" scope="session" />
 </c:if>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -51,7 +54,13 @@
 
 
 <link rel="stylesheet" type="text/css" href="/test/css/style.css">
-
+<style>
+#conright {
+	position: relative;
+	top: 30px;
+	right: 60px;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/login/loginForm.jsp" flush="true" /><br>
@@ -59,10 +68,10 @@
 	<jsp:include page="/WEB-INF/views/include/main.jsp" flush="true" /><br>
 	<jsp:include page="/WEB-INF/views/include/bottom.jsp" flush="true" /><br>
 	<jsp:include page="/WEB-INF/views/include/copyright.jsp" flush="true" />
-	
-	
-	
-	
-	
+
+
+
+
+
 </body>
 </html>

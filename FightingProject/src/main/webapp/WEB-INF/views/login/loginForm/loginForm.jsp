@@ -30,7 +30,7 @@
 <c:if
 	test="${empty sessionScope.entLogin and empty sessionScope.comLogin and empty sessionScope.admLogin}">
 	<div id="conright" class="form-group">
-		<form action="login" method="get" class="form-inline">
+		<form action="login" method="get" class="form-inline" id="loginForm">
 			<select name="wholog" class="form-control">
 				<option value="com">일반회원</option>
 				<option value="ent">기업회원</option>

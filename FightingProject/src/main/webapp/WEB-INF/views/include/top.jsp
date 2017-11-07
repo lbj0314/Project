@@ -36,6 +36,20 @@ h5 {
 	text-align: center;
 }
 
+.language{
+	color:#0404B4;
+}
+
+#siteTitle{
+	width:150px;
+	height:100px;
+	text-align:center;
+	background-color:blue;
+	position: relative;
+	top: -60px;
+	left: 90px;
+}
+
 /* a:link {
     color: #99994d;
 }
@@ -49,18 +63,20 @@ h5 {
 </style>
 
 <!-- 타이틀은 대한민국 구석구석 짭 -->
+<div id="siteTitle">
 <h1 id="jjab">
-	<strong>맛집, 숙소, 관광지 정보를 제공해주고 자유롭게 패키지를 설정하면 할인해주는 사이트. 기업인이 직접 업소를 등록할 수도 있습니다. 이거 너무 기니까 빨리 사이트 이름 정해봐요</strong>
+	<strong text><p style="color:white;">대한민국<br>모아모아<p><p style="color:yellow;">패키지여행<p></strong>
 </h1>
+</div>
 
 
-<a href="/test/setChangeLocale.do?locale=ko">한국어</a> &nbsp;&nbsp;
-<a href="/test/setChangeLocale.do?locale=en">ENGLISH</a> &nbsp;&nbsp;
-<a href="/test/setChangeLocale.do?locale=zh">中国</a> &nbsp;&nbsp;
-<a href="/test/setChangeLocale.do?locale=de">Deutsch</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=ko" class="language">한국어</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=en" class="language">ENGLISH</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=zh" class="language">中国</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=de" class="language">Deutsch</a> &nbsp;&nbsp;
 <!-- <a href="/test/setChangeLocale.do?locale=jp">日本人</a> &nbsp;&nbsp; -->
-<a href="/test/setChangeLocale.do?locale=fr">Français</a> &nbsp;&nbsp;
-<a href="/test/setChangeLocale.do?locale=it">italiano</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=fr" class="language">Français</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=it" class="language">italiano</a> &nbsp;&nbsp;
 
 
 <h5 id="i1818">
@@ -71,14 +87,14 @@ ${xx}<br>
 
 <div id="conta">
 
-	<a class="btn dropdown-toggle btn-lg" href="<c:url value="/"/>">
+	<a class="btn dropdown-toggle btn-lg" style="color:green;" href="<c:url value="/"/>">
 		홈으로 </a>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 
 	<div class="btn-group" id="conta">
-		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
+		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" style="color:green;" href="#">
 			소개 <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
@@ -93,7 +109,7 @@ ${xx}<br>
 
 
 	<div class="btn-group">
-		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
+		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" style="color:green;" href="#">
 			관광명소 <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
@@ -105,7 +121,7 @@ ${xx}<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 	<div class="btn-group">
-		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
+		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" style="color:green;" href="#">
 			맛집 <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
@@ -115,7 +131,7 @@ ${xx}<br>
 	</div> 
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<div class="btn-group">
-		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
+		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" style="color:green;" href="#">
 			숙소 <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
@@ -127,7 +143,7 @@ ${xx}<br>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<div class="btn-group">
-		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
+		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" style="color:green;" href="#">
 			게시판 <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
