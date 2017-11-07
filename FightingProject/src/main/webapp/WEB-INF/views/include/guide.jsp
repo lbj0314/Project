@@ -9,6 +9,12 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- 스페셜 포인트 css 적용 태그 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
 <title>Guide</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
@@ -80,7 +86,7 @@ body, head {
 	<a href="restList"><img src="/test/images/guide/restguide.jpg"
 		width="500px" height=* /></a>
 	<br>
-	<a href="restList">음식점에 대한 정보를 보시려면 그림이나 여기를 클릭!</a>
+	<a href="/test/restList">음식점에 대한 정보를 보시려면 그림이나 여기를 클릭!</a>
 	<br>
 	<br>
 	<br>
@@ -96,7 +102,7 @@ body, head {
 	<a href="stayList"><img src="/test/images/guide/sleepguide.jpg"
 		width="500px" height=* /></a>
 	<br>
-	<a href="stayList">숙박에 대한 정보를 보시려면 그림이나 여기를 클릭!</a>
+	<a href="/test/stayList">숙박에 대한 정보를 보시려면 그림이나 여기를 클릭!</a>
 	<br>
 	<br>
 	<br>
@@ -112,7 +118,21 @@ body, head {
 	<br>
 	<br>
 	<h1>
-		<strong>스페셜 포인트!</strong>
+	<div class="w3-container">
+  <span class="w3-tag w3-xxlarge">S</span>
+  <span class="w3-tag w3-xxlarge">p</span>
+  <span class="w3-tag w3-xxlarge">c</span>
+  <span class="w3-tag w3-xxlarge">i</span>
+  <span class="w3-tag w3-xxlarge">a</span>
+  <span class="w3-tag w3-xxlarge">l</span>&nbsp;&nbsp;
+  <span class="w3-tag w3-xxlarge">P</span>
+  <span class="w3-tag w3-xxlarge">o</span>
+  <span class="w3-tag w3-xxlarge">i</span>
+  <span class="w3-tag w3-xxlarge">n</span>
+  <span class="w3-tag w3-xxlarge">t</span>
+  <span class="w3-tag w3-xxlarge">!</span>
+</div>
+	<!-- 	<strong>스페셜 포인트!</strong> -->
 	</h1>
 	<img src="/test/images/guide/spe.jpg" width="500px" height=* />
 	<br>
