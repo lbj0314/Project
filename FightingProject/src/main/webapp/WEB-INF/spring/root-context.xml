@@ -29,7 +29,8 @@
         <value>classpath:com/config/NoticeMapper.xml</value>
         <value>classpath:com/config/RestMapper.xml</value> 
         <value>classpath:com/config/StayMapper.xml</value> 
-        <value>classpath:com/config/TourMapper.xml</value>  
+        <value>classpath:com/config/TourMapper.xml</value>
+        <value>classpath:com/config/PackOrderMapper.xml</value>    
        </list>
      </property>
      <property name="typeAliases">
@@ -47,6 +48,8 @@
         <value>com.dto.tour.TourDTO</value>
         <value>com.dto.tour.TourPageDTO</value>
         <value>com.dto.reservation.ReservationFormDTO</value>
+        <value>com.dto.order.PackOrderDTO</value>
+        <value>com.dto.order.PackListDTO</value>
        </list>
      </property>
    </bean>
