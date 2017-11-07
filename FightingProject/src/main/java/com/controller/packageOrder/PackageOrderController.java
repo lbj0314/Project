@@ -19,9 +19,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dto.login.ComDTO;
+import com.dto.order.PackListDTO;
+import com.dto.order.PackOrderDTO;
 import com.dto.restaurant.RestDTO;
 import com.dto.stay.StayDTO;
 import com.dto.tour.TourDTO;
+import com.service.PackOrderService;
 import com.service.RestService;
 import com.service.StayService;
 import com.service.TourService;
@@ -39,6 +42,9 @@ public class PackageOrderController {
 	
 	@Autowired
 	StayService stayService;
+	
+	@Autowired
+	PackOrderService packService;
 	
 	@RequestMapping("/packageOrderForm")
 	@ResponseBody
@@ -137,10 +143,15 @@ public class PackageOrderController {
 	
 		List<Map<String,Object>> resultMap = (List<Map<String,Object>>)session1.getAttribute("reserv");
 		
+		
+		
 		         for (Map<String, Object> map : resultMap) {
 		             
 		        	 if(map.get("date")==null) map.put("date", 1);
-		        	 if(map.get("type").equals("관광지")) {
+		        	 
+		        	 
+		        	 
+		        	if(map.get("type").equals("관광지")) {
 		        		 TourDTO tourDto = tourService.selectByTourNum(Integer.parseInt((String)map.get("num")));
 		        		 map.put("tourDto", tourDto);
 		        	 }else if(map.get("type").equals("음식점")) {
@@ -164,38 +175,80 @@ public class PackageOrderController {
 	}
 	
 	@RequestMapping("/packageBuy")
-	public void packageBuy(@RequestBody String resultPrice, String startDate,
-			HttpSession session,HttpSession session1) {
+	public String packageBuy(@RequestParam int resultPrice,@RequestParam int adultCount,@RequestParam int kidCount,@RequestParam String payment,
+			@RequestParam String packName,HttpSession session,HttpSession session1) {
 		//시작날짜,종료날짜,총합계,인원수, usernum DB // 시작일자,종료날짜, 숙박,관광지,맛집별 넘버,몇일차, usernum DB
 		//
-		
-		ComDTO dto =(ComDTO)session.getAttribute("comLogin");
-		HashMap<String, String> serviceMap = new HashMap<>();
-		serviceMap.put("comId", dto.getComid());
-		serviceMap.put("totalPrice", resultPrice);
-		serviceMap.put("startDate", startDate);
-		
 		List<Map<String,Object>> resultMap = (List<Map<String,Object>>)session1.getAttribute("reserv");
+		ComDTO dto =(ComDTO)session.getAttribute("comLogin");
 		
-		String tourList = "";
-		String restList = "";
-		String stayList = "";
+
+		PackOrderDTO odto = new PackOrderDTO();
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		List<PackListDTO> list = new ArrayList<>();
+	/*	HashMap<String, String> serviceMap = new HashMap<>();
+		serviceMap.put("comId", dto.getComid());
+		*/
+		
+		odto.setComNum(dto.getComnum());
+		odto.setAdult(adultCount);
+		odto.setKid(kidCount);
+		odto.setPackName(packName);
+		odto.setPayment(payment);
+		odto.setPrice(resultPrice);
+		odto.setStartDay((String)session.getAttribute("startDay"));
+		odto.setEndDay((String)session.getAttribute("endDay"));
+		
+		map.put("startDay", (String)session.getAttribute("startDay"));
+		map.put("comNum", (int)dto.getComnum());
+		PackOrderDTO pdto = packService.packOrderInsert(odto, map);
+		PackListDTO ddto = new PackListDTO();
+		//serviceMap.put("totalPrice", resultPrice);
+		//serviceMap.put("startDate", startDate);
+		
+		
+		
+		
 		
 		for (Map<String, Object> controllMap : resultMap) {
              
-        	 if(controllMap.get("date")==null) controllMap.put("date", 1);
-        	 if(controllMap.get("type").equals("관광지")) {
-        		 tourList = tourList+","+controllMap.get("num");
-        	 }else if(controllMap.get("type").equals("음식점")) {
-        		 restList = restList+","+controllMap.get("num");
-        	 }else  {
-        		 stayList = stayList+","+controllMap.get("num");
-        	 }
+			
+				
+				if(controllMap.get("date")==null)
+				{
+					controllMap.put("date", "1");
+				}
+				
+				ddto.setComNum(dto.getComnum());
+				
+				ddto.setDay(Integer.parseInt(String.valueOf(controllMap.get("date"))));
+				System.out.println(ddto.getDay());
+				ddto.setPackOrderNum(pdto.getPackOrderNum());
+				ddto.setStartDay(String.valueOf(session.getAttribute("startDay")));
+				ddto.setType(String.valueOf(controllMap.get("type")));				
+				
+				
+				list.add(ddto);
+				//System.out.println(ldto.get(0));
+				//System.out.println(ldto.get(1));
+				//System.out.println(ldto.get(2));
+        	 
+        	 
 		}
+		
+		for (PackListDTO a : list) {
+			System.out.println(a.getDay());
+		}
+		//packService.packListInsert(list);
+		
+		/*
 		serviceMap.put("tourList", tourList);
 		serviceMap.put("restList", restList);
-		serviceMap.put("stayList", stayList);
+		serviceMap.put("stayList", stayList);*/
 		session1.invalidate();
+		
+		return "/";
 	}
 	
 	

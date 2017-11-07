@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.PackOrderMapper">
+
+
+
+	
+	
+	
+	<insert id="packOrderInsert" parameterType="PackOrderDTO">
+		insert into packorder
+		(packOrderNum,startDay,endDay,adult,kid,packName,payment,price,comNum)
+		values ( packorder_seq.nextval,
+		#{startDay}, #{endDay}, #{adult}, #{kid}, #{packName}, #{payment}, #{price}, #{comNum})
+
+	</insert>
+	
+	
+
+	<select id="selectByPNum" resultType="PackOrderDTO" parameterType="hashmap">
+		select packOrderNum,to_char(startDay,'YYYY/MM/dd'),to_char(endDay,'YYYY/MM/dd'),adult,
+		kid,packName,payment,price,comNum
+		from packorder
+		where startDay = #{startDay} AND comNum=#{comNum}
+	</select>
+
+
+
+	<insert id="packListInsert" parameterType="arraylist">
+		insert ALL
+		
+		<foreach collection="list" item="item" index="index">
+		into packlist(packListNum, type, day, packOrderNum, comNum)
+		values
+		(orderAll(), #{item.type}, #{item.day}, #{item.packOrderNum}, #{item.comNum})
+
+		</foreach>		
+		select *
+		from
+		dual
+	</insert>
+	
+
+
+
+</mapper>
+
+
+
+
+
