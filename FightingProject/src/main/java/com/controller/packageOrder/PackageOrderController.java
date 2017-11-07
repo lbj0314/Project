@@ -203,7 +203,7 @@ public class PackageOrderController {
 		map.put("startDay", (String)session.getAttribute("startDay"));
 		map.put("comNum", (int)dto.getComnum());
 		PackOrderDTO pdto = packService.packOrderInsert(odto, map);
-		PackListDTO ddto = new PackListDTO();
+		
 		//serviceMap.put("totalPrice", resultPrice);
 		//serviceMap.put("startDate", startDate);
 		
@@ -219,7 +219,7 @@ public class PackageOrderController {
 				{
 					controllMap.put("date", "1");
 				}
-				
+				PackListDTO ddto = new PackListDTO();
 				ddto.setComNum(dto.getComnum());
 				
 				ddto.setDay(Integer.parseInt(String.valueOf(controllMap.get("date"))));
@@ -237,10 +237,7 @@ public class PackageOrderController {
         	 
 		}
 		
-		for (PackListDTO a : list) {
-			System.out.println(a.getDay());
-		}
-		//packService.packListInsert(list);
+		packService.packListInsert(list);
 		
 		/*
 		serviceMap.put("tourList", tourList);
