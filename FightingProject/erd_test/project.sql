@@ -25,6 +25,8 @@ DROP SEQUENCE PROJECT.FES_SEQ;
 DROP SEQUENCE PROJECT.GOODPACKAGE_SEQ;
 DROP SEQUENCE PROJECT.NOTICE_SEQ;
 DROP SEQUENCE PROJECT.ORDERPACKAGE_SEQ;
+DROP SEQUENCE PROJECT.PACKLIST;
+DROP SEQUENCE PROJECT.PACKORDER;
 DROP SEQUENCE PROJECT.RESTAURANT_SEQ;
 DROP SEQUENCE PROJECT.STAY_SEQ;
 DROP SEQUENCE PROJECT.TEST_SEQ;
@@ -42,6 +44,8 @@ CREATE SEQUENCE PROJECT.FES_SEQ INCREMENT BY 1 MINVALUE 0 MAXVALUE 999 START WIT
 CREATE SEQUENCE PROJECT.GOODPACKAGE_SEQ INCREMENT BY 1 MINVALUE 0 MAXVALUE 999 START WITH 0 NOCACHE;
 CREATE SEQUENCE PROJECT.NOTICE_SEQ INCREMENT BY 1 MINVALUE 0 MAXVALUE 999 START WITH 35 NOCACHE;
 CREATE SEQUENCE PROJECT.ORDERPACKAGE_SEQ INCREMENT BY 1 MINVALUE 0 MAXVALUE 999 START WITH 0 NOCACHE;
+CREATE SEQUENCE PROJECT.PACKLIST INCREMENT BY 1 MINVALUE 0 MAXVALUE 999 START WITH 1 NOCACHE;
+CREATE SEQUENCE PROJECT.PACKORDER INCREMENT BY 1 MINVALUE 0 MAXVALUE 999 START WITH 1 NOCACHE;
 CREATE SEQUENCE PROJECT.RESTAURANT_SEQ INCREMENT BY 1 MINVALUE 0 MAXVALUE 999 START WITH 27 NOCACHE;
 CREATE SEQUENCE PROJECT.STAY_SEQ INCREMENT BY 1 MINVALUE 0 MAXVALUE 999 START WITH 15 NOCACHE;
 CREATE SEQUENCE PROJECT.TEST_SEQ INCREMENT BY 1 MINVALUE 0 MAXVALUE 999 START WITH 14 NOCACHE;
@@ -56,9 +60,9 @@ CREATE TABLE PROJECT.ADMINATOR
 	-- 관리자 번호
 	ADMNUM number(4,0) NOT NULL,
 	-- 관리자 아이디
-	ADMID varchar2(20) NOT NULL,
+	ADMID varchar2(20 char) NOT NULL,
 	-- 관리자 비밀번호
-	ADMPASSWD varchar2(20) NOT NULL,
+	ADMPASSWD varchar2(20 char) NOT NULL,
 	CONSTRAINT ADMINNUM_PK PRIMARY KEY (ADMNUM)
 );
 
@@ -68,23 +72,23 @@ CREATE TABLE PROJECT.COMMEMBER
 	-- 사용자 번호
 	COMNUM number(4,0) NOT NULL,
 	-- 사용자 아이디
-	COMID varchar2(20) NOT NULL,
+	COMID varchar2(20 char) NOT NULL,
 	-- 사용자 비밀번호
-	COMPASSWD varchar2(20) NOT NULL,
+	COMPASSWD varchar2(20 char) NOT NULL,
 	-- 사용자 이름
-	COMNAME varchar2(20) NOT NULL,
+	COMNAME varchar2(20 char) NOT NULL,
 	-- 사용자 주민등록번호
 	COMSSN number(13) NOT NULL,
 	-- 사용자 전화번호
 	COMPHONE number(13) NOT NULL,
 	-- 사용자 등급
-	COMGRADE varchar2(10) NOT NULL,
+	COMGRADE varchar2(10 char) NOT NULL,
 	-- 사용자 이메일
-	COMEMAIL varchar2(40) NOT NULL,
+	COMEMAIL varchar2(40 char) NOT NULL,
 	-- 사용자 주소1
-	COMADDR1 varchar2(40) NOT NULL,
+	COMADDR1 varchar2(40 char) NOT NULL,
 	-- 사용자 주소2
-	COMADDR2 varchar2(40) NOT NULL,
+	COMADDR2 varchar2(40 char) NOT NULL,
 	-- 사용자 우편번호1
 	COMPOST1 number(5,0) NOT NULL,
 	-- 사용자 우편번호2
@@ -98,14 +102,14 @@ CREATE TABLE PROJECT.ENTMEMBER
 	-- 기업 번호
 	ENTNUM number(4,0) NOT NULL,
 	-- 기업 아이디
-	ENTID varchar2(10) NOT NULL,
+	ENTID varchar2(10 char) NOT NULL,
 	-- 기업 비밀번호
-	ENTPASSWD varchar2(20) NOT NULL,
+	ENTPASSWD varchar2(20 char) NOT NULL,
 	-- 기업 이름
-	ENTNAME varchar2(20) NOT NULL,
+	ENTNAME varchar2(20 char) NOT NULL,
 	-- 기업 지역위치
 	-- 
-	ENTLOCATION varchar2(500) NOT NULL,
+	ENTLOCATION varchar2(500 char) NOT NULL,
 	-- 기업 전화번호
 	ENTPHONE number(13) NOT NULL,
 	-- 업주 핸드폰 번호
@@ -115,7 +119,7 @@ CREATE TABLE PROJECT.ENTMEMBER
 	-- 기업 사업자등록번호
 	ENTIN number(12) NOT NULL,
 	-- 기업 종류(명소,맛집,숙박)
-	ENTTYPE varchar2(10) NOT NULL,
+	ENTTYPE varchar2(10 char) NOT NULL,
 	CONSTRAINT SYS_C0011035 PRIMARY KEY (ENTNUM)
 );
 
@@ -126,31 +130,31 @@ CREATE TABLE PROJECT.FESTIVAL
 	-- 
 	FESNUM number(7,0) NOT NULL,
 	-- 축제 이름
-	FESNAME varchar2(20),
+	FESNAME varchar2(20 char),
 	-- 축제 전화번호
 	FESPHONE number,
 	-- 축제 지역
-	FESLOCATION varchar2(20) NOT NULL,
+	FESLOCATION varchar2(20 char) NOT NULL,
 	-- 축제 가격
 	FESPRICE number(10,0),
 	-- 축제 제목
-	FESTITLE varchar2(50),
+	FESTITLE varchar2(50 char),
 	-- 축제 내용
-	FESCONTENT varchar2(1000),
+	FESCONTENT varchar2(1000 char),
 	-- 축제 글쓴 날짜
 	FESWRITEDAY date DEFAULT SYSDATE,
 	-- 축제 댓글 수
 	FESREADCNT number(10,0) DEFAULT 0,
 	-- 축제 이미지
-	FESIMAGE varchar2(500),
+	FESIMAGE varchar2(500 char),
 	-- 축제 이미지 중복시
-	FESIMAGECLONE varchar2(500),
+	FESIMAGECLONE varchar2(500 char),
 	-- 축제 사이트
-	FESSITE varchar2(500),
+	FESSITE varchar2(500 char),
 	-- 축제 시즌
-	FESSEASON varchar2(20),
+	FESSEASON varchar2(20 char),
 	-- 축제 주소
-	FESADDR varchar2(50 char),
+	FESADDR varchar2(50),
 	CONSTRAINT SYS_C0011798 PRIMARY KEY (FESNUM)
 );
 
@@ -160,11 +164,11 @@ CREATE TABLE PROJECT.NOTICE
 	-- 게시판 번호
 	NONUM number(4,0) NOT NULL,
 	-- 게시판 글 제목
-	NOTITLE varchar2(20) NOT NULL,
+	NOTITLE varchar2(20 char) NOT NULL,
 	-- 공지사항 글 작성날짜
 	NOWRITEDAY date DEFAULT SYSDATE,
 	-- 공지사항 글 내용
-	NOCONTENT varchar2(1000) NOT NULL,
+	NOCONTENT varchar2(1000 char) NOT NULL,
 	-- 공지사항 글 조회수
 	NOREADCNT number(4,0) DEFAULT 0,
 	-- 관리자 번호
@@ -198,9 +202,9 @@ CREATE TABLE PROJECT.QNA
 	-- 질답 번호
 	QNANUM number NOT NULL,
 	-- 질답 글 제목
-	QNATITLE varchar2(20) NOT NULL,
+	QNATITLE varchar2(20 char) NOT NULL,
 	-- 질답 글 내용
-	QNACONTENT varchar2(80) NOT NULL,
+	QNACONTENT varchar2(80 char) NOT NULL,
 	-- 질답 글 작성 날짜
 	QNAWRITEDAY date DEFAULT SYSDATE,
 	-- 질답 글 조회수
@@ -214,19 +218,19 @@ CREATE TABLE PROJECT.RESTAURANT
 	-- 음식점 번호
 	RESTNUM number(4,0) NOT NULL,
 	-- 음식점 종류
-	RESTTYPE varchar2(50) NOT NULL,
+	RESTTYPE varchar2(50 char) NOT NULL,
 	-- 음식점 이름
-	RESTNAME varchar2(50) NOT NULL,
+	RESTNAME varchar2(50 char) NOT NULL,
 	-- 음식점 지역위치
-	RESTLOCATION varchar2(200) NOT NULL,
+	RESTLOCATION varchar2(200 char) NOT NULL,
 	-- 음식점 가격
 	RESTADULTPRICE number(10,0) DEFAULT 0,
 	-- 음식점 전화번호
 	RESTPHONE number(12) NOT NULL,
 	-- 음식점 글 제목
-	RESTTITLE varchar2(50) NOT NULL,
+	RESTTITLE varchar2(50 char) NOT NULL,
 	-- 음식점 글 내용
-	RESTCONTENT varchar2(1000) NOT NULL,
+	RESTCONTENT varchar2(1000 char) NOT NULL,
 	-- 음식점 글 작성 날짜
 	RESTWRITEDAY date DEFAULT SYSDATE,
 	-- 음식점 글 조회수
@@ -234,19 +238,19 @@ CREATE TABLE PROJECT.RESTAURANT
 	-- 댓글수
 	RESTREPLECNT number(4,0) DEFAULT 0,
 	-- 음식점 이미지
-	RESTIMAGE varchar2(500) NOT NULL,
+	RESTIMAGE varchar2(500 char) NOT NULL,
 	-- 음식점 사이트
-	RESTSITE varchar2(500) NOT NULL,
+	RESTSITE varchar2(500 char) NOT NULL,
 	-- 기업 번호
 	ENTNUM number(4,0) NOT NULL,
 	-- 음식점 좋아요 카운트
 	RESTGOODS number(10,0) DEFAULT 0,
 	-- 음식점 이미지 중복시
-	RESTIMAGECLONE varchar2(500),
+	RESTIMAGECLONE varchar2(500 char),
 	-- 음식점 도로명 주소
-	RESTADDR1 varchar2(500 char),
+	RESTADDR1 varchar2(500),
 	-- 음식점 지번 주소
-	RESTADDR2 varchar2(500 char),
+	RESTADDR2 varchar2(500),
 	RESTKIDPRICE number(10,0),
 	CONSTRAINT SYS_C0011039 PRIMARY KEY (RESTNUM)
 );
@@ -257,9 +261,9 @@ CREATE TABLE PROJECT.REVIEW
 	-- 리뷰 번호
 	REVIEWNUM number(4,0) NOT NULL,
 	-- 리뷰 글 제목
-	REVIEWTITLE varchar2(50) NOT NULL,
+	REVIEWTITLE varchar2(50 char) NOT NULL,
 	-- 리뷰 글 내용
-	REVIEWCONTENT varchar2(500 char) NOT NULL,
+	REVIEWCONTENT varchar2(500) NOT NULL,
 	-- 리뷰 글 작성 날짜
 	REVIEWWRITEDAY date DEFAULT SYSDATE,
 	-- 리뷰 글 조회수
@@ -275,13 +279,13 @@ CREATE TABLE PROJECT.STAY
 	-- 숙박업소 번호
 	STAYNUM number(7,0) NOT NULL,
 	-- 숙박업소 종류
-	STAYTYPE varchar2(50 char) NOT NULL,
+	STAYTYPE varchar2(50) NOT NULL,
 	-- 숙박업소 이름
-	STAYNAME varchar2(50 char) NOT NULL,
+	STAYNAME varchar2(50) NOT NULL,
 	-- 숙박업소 지역위치
-	STAYLOCATION varchar2(200) NOT NULL,
+	STAYLOCATION varchar2(200 char) NOT NULL,
 	-- 숙박업소 등급
-	STAYGRADE varchar2(20 char) NOT NULL,
+	STAYGRADE varchar2(20) NOT NULL,
 	-- 숙박업소 어른 가격
 	STAYADULTPRICE number(10,0) DEFAULT 0,
 	-- 숙박업소 어린이 가격
@@ -289,9 +293,9 @@ CREATE TABLE PROJECT.STAY
 	-- 숙박업소 전화번호
 	STAYPHONE number(13) NOT NULL,
 	-- 숙박업소 글 제목
-	STAYTITLE varchar2(50) NOT NULL,
+	STAYTITLE varchar2(50 char) NOT NULL,
 	-- 숙박업소 글 내용
-	STAYCONTENT varchar2(1000) NOT NULL,
+	STAYCONTENT varchar2(1000 char) NOT NULL,
 	-- 숙박업소 글 작성 날짜
 	STAYWRITEDAY date DEFAULT SYSDATE,
 	-- 숙박업소 글 조회수
@@ -299,19 +303,19 @@ CREATE TABLE PROJECT.STAY
 	-- 숙박업소 댓글수
 	STAYREPLECNT number(5,0) DEFAULT 0,
 	-- 숙박업소 이미지
-	STAYIMAGE varchar2(500) NOT NULL,
+	STAYIMAGE varchar2(500 char) NOT NULL,
 	-- 숙박업소 사이트
-	STAYSITE varchar2(500) NOT NULL,
+	STAYSITE varchar2(500 char) NOT NULL,
 	-- 기업 번호
 	ENTNUM number(4,0) NOT NULL,
 	-- 숙박업소 좋아요 카운트
 	STAYGOODS number(10,0) DEFAULT 0,
 	-- 숙박업소 이미지 중복시
-	STAYIMAGECLONE varchar2(500),
+	STAYIMAGECLONE varchar2(500 char),
 	-- 숙박업소 도로명 주소
-	STAYADDR1 varchar2(500),
+	STAYADDR1 varchar2(500 char),
 	-- 숙박업소 지번 주소
-	STAYADDR2 varchar2(500 char),
+	STAYADDR2 varchar2(500),
 	CONSTRAINT SYS_C0011042 PRIMARY KEY (STAYNUM)
 );
 
@@ -321,11 +325,11 @@ CREATE TABLE PROJECT.TEST
 	REPLY_ID number NOT NULL,
 	ARTICLE_ID number,
 	MEMBER_ID number,
-	DESCRIPTION varchar2(50 char),
-	GROUP_ID number DEFAULT 0  NOT NULL,
-	PARENT_REPLY_ID number DEFAULT 0  NOT NULL,
-	DEPTH number DEFAULT 0  NOT NULL,
-	ORDER_NO number DEFAULT 0  NOT NULL,
+	DESCRIPTION varchar2(50),
+	GROUP_ID number DEFAULT 0   NOT NULL,
+	PARENT_REPLY_ID number DEFAULT 0   NOT NULL,
+	DEPTH number DEFAULT 0   NOT NULL,
+	ORDER_NO number DEFAULT 0   NOT NULL,
 	CONSTRAINT PK_REPLY_ID PRIMARY KEY (REPLY_ID)
 );
 
@@ -333,23 +337,23 @@ CREATE TABLE PROJECT.TEST
 CREATE TABLE PROJECT.TOUR
 (
 	-- 관광지 종류
-	ATTTYPE varchar2(50) NOT NULL,
+	ATTTYPE varchar2(50 char) NOT NULL,
 	-- 관광지 이름
-	ATTNAME varchar2(50) NOT NULL,
+	ATTNAME varchar2(50 char) NOT NULL,
 	-- 관광지 지역위치
-	ATTLOCATION varchar2(200) NOT NULL,
+	ATTLOCATION varchar2(200 char) NOT NULL,
 	-- 관광지 어른 가격
 	ATTADULTPRICE number(10,0) DEFAULT 0,
 	-- 관광지 어린이 가격
 	ATTKIDPRICE number(10,0),
 	-- 관광지 전화번호
-	ATTPHONE varchar2(20) NOT NULL,
+	ATTPHONE varchar2(20 char) NOT NULL,
 	-- 관광지 글 제목
-	ATTTITLE varchar2(50) NOT NULL,
+	ATTTITLE varchar2(50 char) NOT NULL,
 	-- 관광지 번호
 	ATTNUM number(7,0) NOT NULL,
 	-- 관광지 글 내용
-	ATTCONTENT varchar2(1000) NOT NULL,
+	ATTCONTENT varchar2(1000 char) NOT NULL,
 	-- 관광지 글쓴 날짜
 	ATTWRITEDAY date DEFAULT SYSDATE,
 	-- 관광지 조회수
@@ -357,19 +361,19 @@ CREATE TABLE PROJECT.TOUR
 	-- 관광지 댓글수
 	ATTREPLECNT number(10,0) DEFAULT 0,
 	-- 관광지 이미지
-	ATTIMAGE varchar2(500) NOT NULL,
+	ATTIMAGE varchar2(500 char) NOT NULL,
 	-- 관광지 사이트
-	ATTSITE varchar2(500) NOT NULL,
+	ATTSITE varchar2(500 char) NOT NULL,
 	-- 기업 번호
 	ENTNUM number(4,0) NOT NULL,
 	-- 좋아요 카운트
 	ATTGOODS number(10,0) DEFAULT 0 ,
 	-- 이미지 중복시에
-	ATTIMAGECLONE varchar2(500),
+	ATTIMAGECLONE varchar2(500 char),
 	-- 관광지 도로명 주소
-	ATTADDR1 varchar2(500),
+	ATTADDR1 varchar2(500 char),
 	-- 관광지 지번 주소
-	ATTADDR2 varchar2(500 char),
+	ATTADDR2 varchar2(500),
 	CONSTRAINT SYS_C0011329 PRIMARY KEY (ATTNUM)
 );
 

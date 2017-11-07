@@ -73,7 +73,7 @@ body, head {
 	<br>
 	<br>
 	<br>
-	<h1><a href="/test/packageOrderForm">패키지 설정하러 가기!</a></h1>
+	<h1><a href="">패키지 설정하러 가기!</a></h1>
 	<br><br>
 	<br>
 	<br>

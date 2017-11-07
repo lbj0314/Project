@@ -265,10 +265,10 @@ tr.noDrag {
 	<h3>[ 패키지 예약하기 ]</h3>
 	<br>
 	<p>여행 시작날짜:</p>
-	<input type="date" id="startDate" name="startDate" readonly
+	<input type="date" id="startDate" name="startDay" readonly
 		value="${startDay }">
 	<p>여행 종료날짜:</p>
-	<input type="date" id="endDate" name="endDate" readonly
+	<input type="date" id="endDate" name="endDay" readonly
 		value="${endDay }"> <br>
 	<table border='1' id="termGoodsTable">
 		<tbody id="1th-tbody">
@@ -323,17 +323,33 @@ tr.noDrag {
 			</c:forEach>
 		</tbody>
 	</table>
-	어른 인원수:<input type="number" id="adultCount" value=1> <input
+	패키지 이름:<input type="text" name="packName"><br>
+	어른 인원수:<input type="number" id="adultCount" value=1 name="adultCount"> <input
 		type=button id="plusAdult" class="btn btn-default" value="+">
 	<input type=button id="minusAdult" class="btn btn-default" value="-"><br>
-	어린이 인원수:<input type="number" id="kidCount" value=1> <input
+	어린이 인원수:<input type="number" id="kidCount" value=1 name="kidCount"> <input
 		type=button id="plusKid" class="btn btn-default" value="+"> <input
 		type=button id="minusKid" class="btn btn-default" value="-"><br>
 	총가격:
 	<!-- <input type="number" readonly value=""> -->
 	<span id="allresult"> <input type="number" readonly
 		id="resultPrice" name="resultPrice">
-	</span><br> <a href="/test/packageOrderForm" class="btn btn-default">만들기로 돌아가기</a> <input
+	</span><br> 
+	
+	
+	<table width="100%" >
+					<tr>
+						<td width="125" height="35" class="td_default"><input
+							type="radio" name="payment" value="신용카드" checked>신용카드</input> <input
+							type="radio" name="payment" value="계좌이체">계좌이체</input> <input
+							type="radio" name="payment" value="무통장입금">무통장 입금</input></td>
+
+					</tr>
+
+				</table>
+	
+	
+	<a href="/test/packageOrderForm" class="btn btn-default">만들기로 돌아가기</a> <input
 		type="submit" value="결제하기" class="btn btn-default">
 
 </form>

@@ -8,6 +8,8 @@
 
 
 <script type="text/javascript">
+
+
 	$('.dropdown-toggle').dropdown()
 </script>
 

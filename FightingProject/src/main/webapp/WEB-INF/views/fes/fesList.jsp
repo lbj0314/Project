@@ -9,6 +9,82 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<%-- <body>
+
+<div class="w3-container">
+  <h2>Filter List</h2>
+  <p>Search for a name in the input field.</p>
+
+  <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="myInput" onkeyup="myFunction()">
+  <ul class="w3-ul w3-margin-top" id="myUL">
+    <li>${ }</li>
+  </ul>
+</div>
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        if (li[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+</body>
+</html> --%>
+
+
+<div class="w3-container">
+  <h2>${xx.fesSeason}</h2>
+  <p>${xx.fesLocation}</p>
+  <ul class="w3-ul w3-card-4">
+    <li class="w3-bar">
+      <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
+      <img src="${xx.fesImage}" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
+      <div class="w3-bar-item">
+        <span class="w3-large">${xx.fesTitle}</span><br>
+        <span>${xx.fesLocation}</span>
+      </div>
+    </li>
+</ul>
+</div>
+
+
+<%-- 
+<table border="1">
+<c:forEach var="xx" items="${list}">
+
+<tr>
+<td>축제 번호</td>
+<td>${xx.fesNum}</td>
+</tr>
+<tr>
+<td>축제 이름</td>
+<td>${xx.fesTitle}</td>
+</tr>
+<tr>
+<td>위치</td>
+<td>${xx.fesLocation}</td>
+</tr>
+<tr>
+<td>축제 내용</td>
+<td>${xx.fesLocation}</td>
+</tr>
+</c:forEach>
+</table>
+
+</body> --%>
 <!-- <style>
 .button {
 	background-color: #4CAF50; /* Green */
@@ -76,14 +152,12 @@
 	border: 2px solid #666666;
 }
 
-.button4:hover {
-	background-color: #666666;
-	color: white;
-}
-</style> -->
 </head>
 <body>
 
+
+
+${FesDTO}
 
 <%-- 	<form action="fesList" id="aaa">
 
@@ -93,15 +167,14 @@
 		<input type="hidden" name="btngo" value="1" id="btngo"> <input
 			type="hidden" value="${fff.FesImage}" id="btngo">
 		<div class="form-inline" id="conta"> --%>
-			<button onclick="/test/fesList?fesSeason=all">전체</button>
+			<!-- <button onclick="/test/fesList?fesSeason=all">전체</button>
 			<button onclick="/test/fes/fesList?fesSeason=spring">봄</button>
 			<button onclick="/test/fesList?fesSeason=summer">여름</button>
 			<button onclick="/test/fesList?fesSeason=fall">가을</button>
-			<button onclick="/test/fesList?fesSeason=winter">겨울</button>
+			<button onclick="/test/fesList?fesSeason=winter">겨울</button> -->
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<!-- </div> -->
 		
-		<table width="100%" cellspacing="0" cellpadding="0">
+	<%-- 	<table width="100%" cellspacing="0" cellpadding="0">
 	<tr>
 		<td>
 			<table align="center" width="710" cellspacing="0" cellpadding="0"
@@ -161,7 +234,7 @@ ${(status.index+1)%4==0}
 	<tr>
 		<td height="10">
 	</tr>
-</table>
+</table> --%>
 		
 
 	<%-- </form>
