@@ -12,6 +12,59 @@
 </script>
 
 <style>
+/* 드롭다운 메뉴 css */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
 body,head { text-align: center;  }
 
 h1 {
@@ -54,21 +107,6 @@ h5 {
 </h1>
 
 
-<a href="/test/setChangeLocale.do?locale=ko">한국어</a> &nbsp;&nbsp;
-<a href="/test/setChangeLocale.do?locale=en">ENGLISH</a> &nbsp;&nbsp;
-<a href="/test/setChangeLocale.do?locale=zh">中国</a> &nbsp;&nbsp;
-<a href="/test/setChangeLocale.do?locale=de">Deutsch</a> &nbsp;&nbsp;
-<!-- <a href="/test/setChangeLocale.do?locale=jp">日本人</a> &nbsp;&nbsp; -->
-<a href="/test/setChangeLocale.do?locale=fr">Français</a> &nbsp;&nbsp;
-<a href="/test/setChangeLocale.do?locale=it">italiano</a> &nbsp;&nbsp;
-
-
-<h5 id="i1818">
-<spring:message code="spring.mesg" var="xx"/>
-</h5>
-
-${xx}<br>
-
 <div id="conta">
 
 	<a class="btn dropdown-toggle btn-lg" href="<c:url value="/"/>">
@@ -79,11 +117,9 @@ ${xx}<br>
 
 	<div class="btn-group" id="conta">
 		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
-			introduce <span class="caret"></span>
-		</a>
+			introduce <span class="caret"></span></a>
 		<ul class="dropdown-menu">
 			<li><a href="/test/noticeList">notice</a><br></li>
-
 			<li><a href="#">event</a><br></li>
 			<li><a href="#">good package</a></li>
 		</ul>

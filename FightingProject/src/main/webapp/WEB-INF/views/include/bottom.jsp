@@ -1,8 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<style>
+#nalssi {
+   border: 3px solid black;
+   text-align:center;
+}
+#dosi {
+   border-bottom: 2px solid black;
+   font-size:20px;
+}
+   
+   </style> 
     <center>
-<table border="1">
-		<thead>
+  <hr>
+  
+  <img src="/test/images/wheather.png"><h3>날씨 정보</h3>
+<table border="1" id="nalssi">
+		<thead id="dosi">
 			<tr>
 				<td>서울</td>
 				<td>부산</td>

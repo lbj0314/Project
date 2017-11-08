@@ -64,6 +64,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/login/loginForm.jsp" flush="true" /><br>
+	<hr>
 	<jsp:include page="/WEB-INF/views/include/top.jsp" flush="true" /><br>
 	<jsp:include page="/WEB-INF/views/include/main.jsp" flush="true" /><br>
 	<jsp:include page="/WEB-INF/views/include/bottom.jsp" flush="true" /><br>

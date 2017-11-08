@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <!-- jQeury문 -->
@@ -47,5 +52,19 @@
 	</a>
 </div>
 	<br><br>
-<b style="font-size:20px;color:red;">사이트 방문을 환영합니다! 마음에 드는 음식점, 숙박업소를 선택하신 후, 자유롭게 패키지를 설정 할 수 있습니다.</b><br>
+<a href="/test/setChangeLocale.do?locale=ko" class="language">한국어</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=en" class="language">ENGLISH</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=zh" class="language">中国</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=de" class="language">Deutsch</a> &nbsp;&nbsp;
+<!-- <a href="/test/setChangeLocale.do?locale=jp">日本人</a> &nbsp;&nbsp; -->
+<a href="/test/setChangeLocale.do?locale=fr" class="language">Français</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=it" class="language">italiano</a> &nbsp;&nbsp;
+
+<br><br>
+<h5 id="i1818">
+<spring:message code="spring.mesg" var="xx"/>
+</h5>
+
+${xx}<br><br>
 <a href="/test/guide" class="btn btn-default">패키지 가이드 보기</a>
+<br><br><br><br>

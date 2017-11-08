@@ -9,8 +9,11 @@
 
 <script type="text/javascript">
 
-
 	$('.dropdown-toggle').dropdown()
+	
+	/* $(documant).ready(function(){
+		$("[class*='btn-group']").css("color","black");
+	}); */
 </script>
 
 <style>
@@ -40,14 +43,14 @@ h5 {
 }
 
 .language{
-	color:#660000;
+	color:#223a5e;
 }
 
 #siteTitle{
 	width:150px;
 	height:100px;
 	text-align:center;
-	background-color:#000066;
+	background-color:#223a5e;
 	position: relative;
 	top: -60px;
 	left: 90px;
@@ -62,97 +65,116 @@ h5 {
     color: #994d00;
 } */
 *
+#titleImage.fixed {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+   /*  border: 3px solid #73AD21; */
+}
+
+/* Style the top navigation bar */
+#conta {
+    /* overflow: hidden; */
+    /* border-bottom: 6px solid #223A5E; */
+   /*  border: 6px solid #223A5E;
+    border-radius: 5px; */
+   background-color: #B18F6A;
+    text-color:balck;
+}
+
+/* Style the topnav links */
+#conta a {
+    color: black;
+  /*   text-align: center;
+    padding: 14px 16px; */
+    text-color:black;
+}
+
+/* Change color on hover */
+#conta a:hover {
+    background-color: #AF9483;
+    color: black;
+    text-color:black;
+}
+
 
 </style>
 
+
+
+<body>
 <!-- 타이틀은 대한민국 구석구석 짭 -->
 <div id="siteTitle">
 <h1 id="jjab">
-	<strong><p style="color:white;">대한민국<br>모아모아<p><p style="color:#FFFF66;">패키지여행<p></strong>
+	<strong><p style="color:white;">대한민국<br>모아모아<p><p style="color:#f6d155;">패키지여행<p></strong>
 </h1>
 </div>
+<img id="siteImage" src="/test/images/dnfltkdlxmdlfmawhdwjdgody.png"  style="width: 500px; height: auto;"/>
+<br><br><br><br>
 
-
-<a href="/test/setChangeLocale.do?locale=ko" class="language">한국어</a> &nbsp;&nbsp;
-<a href="/test/setChangeLocale.do?locale=en" class="language">ENGLISH</a> &nbsp;&nbsp;
-<a href="/test/setChangeLocale.do?locale=zh" class="language">中国</a> &nbsp;&nbsp;
-<a href="/test/setChangeLocale.do?locale=de" class="language">Deutsch</a> &nbsp;&nbsp;
-<!-- <a href="/test/setChangeLocale.do?locale=jp">日本人</a> &nbsp;&nbsp; -->
-<a href="/test/setChangeLocale.do?locale=fr" class="language">Français</a> &nbsp;&nbsp;
-<a href="/test/setChangeLocale.do?locale=it" class="language">italiano</a> &nbsp;&nbsp;
-
-
-<h5 id="i1818">
-<spring:message code="spring.mesg" var="xx"/>
-</h5>
-
-${xx}<br>
 
 <div id="conta">
-
-	<a class="btn dropdown-toggle btn-lg" style="color:green;" href="<c:url value="/"/>">
+	<a class="btn dropdown-toggle btn-lg" href="<c:url value="/"/>">
 		홈으로 </a>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-
-
-	<div class="btn-group" id="conta">
-		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" style="color:green;" href="#">
+	<div class="btn-group">
+		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
 			소개 <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
 			<li><a href="/test/noticeList">공지사항</a><br></li>
-
 			<li><a href="#">이벤트</a><br></li>
-			<li><a href="#">추천패키지</a></li>
+			<li><a href="#">추천패키지</a><br></li>
 		</ul>
 	</div>
 
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-
 	<div class="btn-group">
-		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" style="color:green;" href="#">
+		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
 			관광명소 <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
 			<li><a href="/test/tourList">관광 명소</a><br></li>
-			<li><a href="/test/mustgo100">관광100</a></li>
-			<li><a href="/test/fesList">축제</a></li>
+			<li><a href="/test/mustgo100">관광100</a><br></li>
+			<li><a href="/test/fesList">축제</a><br></li>
 		</ul>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 	<div class="btn-group">
-		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" style="color:green;" href="#">
+		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
 			맛집 <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="/test/restList">음식점 정보</a></li>
-			<li><a href="https://guide.michelin.co.kr/ko/" target="_blank">미슐랭 가이드 서울</a></li>
+			<li><a href="/test/restList">음식점 정보</a><br></li>
+			<li><a href="https://guide.michelin.co.kr/ko/" target="_blank">미슐랭 가이드 서울</a><br></li>
 		</ul>
 	</div> 
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<div class="btn-group">
-		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" style="color:green;" href="#">
+		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
 			숙소 <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="/test/stayList">숙박업소 정보</a></li>
-			<li><a href="http://korean.visitkorea.or.kr/kor/goodstay3/index.jsp"  target="_blank">우수 숙박시설</a></li>
-			<li><a href="http://www.gocamping.or.kr/" target="_blank">캠핑</a></li>
-			<li><a href="https://www.templestay.com/" target="_blank">템플 스테이</a></li>
+			<li><a href="/test/stayList">숙박업소 정보</a><br></li>
+			<li><a href="http://korean.visitkorea.or.kr/kor/goodstay3/index.jsp"  target="_blank">우수 숙박시설</a><br></li>
+			<li><a href="http://www.gocamping.or.kr/" target="_blank">캠핑</a><br></li>
+			<li><a href="https://www.templestay.com/" target="_blank">템플 스테이</a><br></li>
 		</ul>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<div class="btn-group">
-		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" style="color:green;" href="#">
+		<a class="btn dropdown-toggle btn-lg" data-toggle="dropdown" href="#">
 			게시판 <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
 			<li><a href="#">후기</a><br></li>
 			<li><a href="#">QnA</a><br></li>
-			<li><a href="<c:url value="/guide"/>">사이트 이용법</a></li>
+			<li><a href="<c:url value="/guide"/>">사이트 이용법</a><br></li>
 		</ul>
 	</div>
 </div>
+</body>
