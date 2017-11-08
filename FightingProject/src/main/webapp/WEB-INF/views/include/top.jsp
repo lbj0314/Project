@@ -74,7 +74,7 @@ h5 {
 }
 
 /* Style the top navigation bar */
-#conta {
+.menumenu {
     /* overflow: hidden; */
     /* border-bottom: 6px solid #223A5E; */
    /*  border: 6px solid #223A5E;
@@ -84,7 +84,7 @@ h5 {
 }
 
 /* Style the topnav links */
-#conta a {
+.menumenu a {
     color: black;
   /*   text-align: center;
     padding: 14px 16px; */
@@ -92,7 +92,7 @@ h5 {
 }
 
 /* Change color on hover */
-#conta a:hover {
+.menumenu a:hover {
     background-color: #AF9483;
     color: black;
     text-color:black;
@@ -114,7 +114,7 @@ h5 {
 <br><br><br><br>
 
 
-<div id="conta">
+<div id="conta" class="menumenu">
 	<a class="btn dropdown-toggle btn-lg" href="<c:url value="/"/>">
 		홈으로 </a>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
