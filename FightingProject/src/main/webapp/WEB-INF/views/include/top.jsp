@@ -36,17 +36,18 @@ h5 {
 	margin-right: 0;
 	font-weight: bold;
 	text-align: center;
+	color:#CC0000;
 }
 
 .language{
-	color:#0404B4;
+	color:#660000;
 }
 
 #siteTitle{
 	width:150px;
 	height:100px;
 	text-align:center;
-	background-color:blue;
+	background-color:#000066;
 	position: relative;
 	top: -60px;
 	left: 90px;
@@ -67,7 +68,7 @@ h5 {
 <!-- 타이틀은 대한민국 구석구석 짭 -->
 <div id="siteTitle">
 <h1 id="jjab">
-	<strong text><p style="color:white;">대한민국<br>모아모아<p><p style="color:yellow;">패키지여행<p></strong>
+	<strong><p style="color:white;">대한민국<br>모아모아<p><p style="color:#FFFF66;">패키지여행<p></strong>
 </h1>
 </div>
 
