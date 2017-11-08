@@ -116,7 +116,7 @@ ${xx}<br>
 		</a>
 		<ul class="dropdown-menu">
 			<li><a href="/test/tourList">관광 명소</a><br></li>
-			<li><a href="mustgo100">관광100</a></li>
+			<li><a href="/test/mustgo100">관광100</a></li>
 			<li><a href="/test/fesList">축제</a></li>
 		</ul>
 	</div>

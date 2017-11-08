@@ -46,15 +46,15 @@ body, head {
 <br><br><br><br><br><br>
 	<h4>맛집에 대해서도 지역별은 물론 <br>
 	한식, 일식, 중식, 양식, 패스트푸드, 제과 별로 보실 수 있습니다</h4><br>
-	<a href="restList"><img src="/test/images/guide/restguide.jpg" width="500px" height=*/></a>
+	<a href="/test/restList"><img src="/test/images/guide/restguide.jpg" width="500px" height=*/></a>
 	<br>
-	<a href="restList">음식점에 대한 정보를 보시려면 그림이나 여기를 클릭!</a><br>
+	<a href="/test/restList">음식점에 대한 정보를 보시려면 그림이나 여기를 클릭!</a><br>
 <br><br><br><br><br><br>
 	<h4>숙박에 대한 선택권도 다양합니다<br>
 	지역별 / 게스트하우스, 아파트, 모텔, 호텔, 호스텔, 펜션, 홈스테이, 템플 스테이로 분류되어 있습니다.</h4><br>
-	<a href="stayList"><img src="/test/images/guide/sleepguide.jpg" width="500px" height=*/></a>
+	<a href="/test/stayList"><img src="/test/images/guide/sleepguide.jpg" width="500px" height=*/></a>
 	<br>
-	<a href="stayList">숙박에 대한 정보를 보시려면 그림이나 여기를 클릭!</a><br>
+	<a href="/test/stayList">숙박에 대한 정보를 보시려면 그림이나 여기를 클릭!</a><br>
 	<br>
 <br><br><br><br><br>
 	<br>

@@ -82,7 +82,7 @@ ${xx}<br>
 			introduce <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="/project/NoticeListServlet">notice</a><br></li>
+			<li><a href="/test/noticeList">notice</a><br></li>
 
 			<li><a href="#">event</a><br></li>
 			<li><a href="#">good package</a></li>
@@ -97,9 +97,9 @@ ${xx}<br>
 			tour <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="tourList">tour</a><br></li>
-			<li><a href="mustgo100">mustgo100</a></li>
-			<li><a href="fesList">festival</a></li>
+			<li><a href="/test/tourList">tour</a><br></li>
+			<li><a href="/test/mustgo100">mustgo100</a></li>
+			<li><a href="/test/fesList">festival</a></li>
 		</ul>
 	</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -109,7 +109,7 @@ ${xx}<br>
 			restaurant <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="/project/RestListServlet">restaurant information</a></li>
+			<li><a href="/test/restList">restaurant information</a></li>
 			<li><a href="https://guide.michelin.co.kr/en/" target="_blank">michelin guide Seoul</a></li>
 		</ul>
 	</div>
@@ -119,7 +119,7 @@ ${xx}<br>
 			stay <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="/project/StayBoardListServlet">stay information </a></li>
+			<li><a href="/test/stayList">stay information </a></li>
 			<li><a href="http://english.visitkorea.or.kr/enu/ACM/AC_ENG_1.jsp" target="_blank">Goodstay</a></li>
 			<li><a href="https://eng.templestay.com/index2.asp?" target="_blank">Temple Stay</a></li>
 		</ul>
