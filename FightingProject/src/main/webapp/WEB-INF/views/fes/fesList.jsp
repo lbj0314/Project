@@ -9,9 +9,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 </head>
+
+<body>
+	<c:forEach var="xx" items="${list}">
+		<div class="panel panel-info">
+			<div class="panel-heading">${xx.fesTitle}</div>
+			<div class="panel-body">${xx.fesLocation}</div>
+		</div>
+	</c:forEach>
+</body>
 <%-- <body>
 
 <div class="w3-container">
@@ -45,7 +64,7 @@ function myFunction() {
 </html> --%>
 
 
-<div class="w3-container">
+<%-- <div class="w3-container">
   <h2>${xx.fesSeason}</h2>
   <p>${xx.fesLocation}</p>
   <ul class="w3-ul w3-card-4">
@@ -59,7 +78,7 @@ function myFunction() {
     </li>
 </ul>
 </div>
-
+ --%>
 
 <%-- 
 <table border="1">
@@ -172,9 +191,9 @@ ${FesDTO}
 			<button onclick="/test/fesList?fesSeason=summer">여름</button>
 			<button onclick="/test/fesList?fesSeason=fall">가을</button>
 			<button onclick="/test/fesList?fesSeason=winter">겨울</button> -->
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		
-	<%-- 	<table width="100%" cellspacing="0" cellpadding="0">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<%-- 	<table width="100%" cellspacing="0" cellpadding="0">
 	<tr>
 		<td>
 			<table align="center" width="710" cellspacing="0" cellpadding="0"
@@ -235,9 +254,9 @@ ${(status.index+1)%4==0}
 		<td height="10">
 	</tr>
 </table> --%>
-		
 
-	<%-- </form>
+
+<%-- </form>
 <table width="100%" cellspacing="0" cellpadding="0">
 	<tr>
 		<td>
