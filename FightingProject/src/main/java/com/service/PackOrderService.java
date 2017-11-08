@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.dao.PackOrderDAO;
 import com.dto.order.PackListDTO;
 import com.dto.order.PackOrderDTO;
+import com.dto.order.PackResultListDTO;
 
 @Service("PackOrderService")
 public class PackOrderService {
@@ -30,8 +31,12 @@ public class PackOrderService {
 		return dao.packOrderList(comNum);
 	}
 	
-	public List<PackListDTO> packListList(Map<String, Integer> map){
-		return dao.packListList(map);
+	public List<PackListDTO> packListList(int comNum){
+		return dao.packListList(comNum);
+	}
+	
+	public List<PackResultListDTO> selectByResultPack(Map<String,Object> map){
+		return dao.selectByResultPack(map);
 	}
 
 }

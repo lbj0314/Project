@@ -50,6 +50,7 @@
         <value>com.dto.reservation.ReservationFormDTO</value>
         <value>com.dto.order.PackOrderDTO</value>
         <value>com.dto.order.PackListDTO</value>
+        <value>com.dto.order.PackResultListDTO</value>
        </list>
      </property>
    </bean>
