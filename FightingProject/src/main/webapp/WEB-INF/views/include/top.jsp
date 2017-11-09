@@ -73,24 +73,29 @@ h1 {
    /*  border: 6px solid #223A5E;
     border-radius: 5px; */
    background-color: white;
-   border-bottom: 6px solid white;
+   /* border-bottom: 6px solid white; */
     text-color:balck;
 }
 
 /* Style the topnav links */
 .menumenu a {
     color: black;
-  /*   text-align: center;
-    padding: 14px 16px; */
+	/* text-align: center; */
+    padding: 14px 16px;
     text-color:black;
+    
+    
 }
 
 /* Change color on hover */
 .menumenu a:hover {
-	border-bottom: 6px solid #223A5E; 
+	/* border-bottom: 6px solid #223A5E;  */
     /* background-color: #AF9483; */
     /* color: black; */
     text-color:black;
+    
+    background-color: #A9B2C3;
+    color: white;
 }
 
 

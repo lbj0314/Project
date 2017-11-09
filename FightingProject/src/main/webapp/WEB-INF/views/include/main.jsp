@@ -40,16 +40,20 @@ h5 {
 	<!-- Wrapper for slides -->
 	<div align="center" class="carousel-inner" role="listbox">
 		<div class="item active">
-			<img src="/test/images/catcute.gif" alt="..." width=* height=*>
-			<div class="carousel-caption">...</div>
+			<a href="#"><img src="/test/images/seoul.png" alt="..." width=* height=*></a>
+			<div class="carousel-caption">....</div>
 		</div>
 		<div class="item">
-			<img src="/test/images/cat.jpg" alt="..." width=* height=*>
-			<div class="carousel-caption">...</div>
+			<a href="#"><img src="/test/images/pusan.png" alt="..." width=* height=*></a>
+			<div class="carousel-caption">....</div>
 		</div>
 		<div class="item">
-			<img src="/test/images/sul.gif" alt="..." width=* height=*>
-			<div class="carousel-caption">...</div>
+			<a href="#"><img src="/test/images/jeju.png" alt="..." width=* height=*></a>
+			<div class="carousel-caption">....</div>
+		</div>
+		<div class="item">
+			<a href="#"><img src="/test/images/jj.png" alt="..." width=* height=*></a>
+			<div class="carousel-caption">....</div>
 		</div>
 	</div>
 
