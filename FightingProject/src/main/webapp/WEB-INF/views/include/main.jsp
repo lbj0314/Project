@@ -40,19 +40,19 @@ h5 {
 	<!-- Wrapper for slides -->
 	<div align="center" class="carousel-inner" role="listbox">
 		<div class="item active">
-			<a href="#"><img src="/test/images/seoul.png" alt="..." width=* height=*></a>
+			<a href="#"><img src="/test/images/seoul.png" alt="서울지역 추천 패키지" width=* height=*></a>
 			<div class="carousel-caption">....</div>
 		</div>
 		<div class="item">
-			<a href="#"><img src="/test/images/pusan.png" alt="..." width=* height=*></a>
+			<a href="#"><img src="/test/images/pusan.png" alt="부산지역 추천 패키지" width=* height=*></a>
 			<div class="carousel-caption">....</div>
 		</div>
 		<div class="item">
-			<a href="#"><img src="/test/images/jeju.png" alt="..." width=* height=*></a>
+			<a href="#"><img src="/test/images/jeju.png" alt="제주지역 추천 패키지" width=* height=*></a>
 			<div class="carousel-caption">....</div>
 		</div>
 		<div class="item">
-			<a href="#"><img src="/test/images/jj.png" alt="..." width=* height=*></a>
+			<a href="#"><img src="/test/images/jj.png" alt="전주지역 추천 패키지" width=* height=*></a>
 			<div class="carousel-caption">....</div>
 		</div>
 	</div>
