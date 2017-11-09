@@ -6,12 +6,11 @@
 	text-align: right;
 }
 
-#table1{
+.table1 {
 	width: 60%;
 	height: 100%;
 	margin: auto;
 	text-align: center;
-	
 }
 
 /* 마우스 1초쯤 대고있으면 무슨 색인지 보입니다 */

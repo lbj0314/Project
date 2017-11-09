@@ -9,13 +9,13 @@ public class EntDTO {
 	private String entlocation;
 	private long entphone;
 	private long entcellphone;
-	private int entfax;
-	private int entin;
+	private long entfax;
+	private long entin;
 	private String enttype;
 	
 	
 	public EntDTO(String entid, String entpasswd, String entname, String entlocation, long entphone, long entcellphone,
-			int entfax, int entin, String enttype) {
+			long entfax, long entin, String enttype) {
 		super();
 		this.entid = entid;
 		this.entpasswd = entpasswd;
@@ -29,7 +29,7 @@ public class EntDTO {
 	}
 	public EntDTO() {}
 	public EntDTO(int entnum, String entid, String entpasswd, String entname, String entlocation, long entphone,
-			long entcellphone, int entfax, int entin, String enttype) {
+			long entcellphone, long entfax, long entin, String enttype) {
 		this.entnum = entnum;
 		this.entid = entid;
 		this.entpasswd = entpasswd;
@@ -89,16 +89,16 @@ public class EntDTO {
 	public void setEntcellphone(long entcellphone) {
 		this.entcellphone = entcellphone;
 	}
-	public int getEntfax() {
+	public long getEntfax() {
 		return entfax;
 	}
-	public void setEntfax(int entfax) {
+	public void setEntfax(long entfax) {
 		this.entfax = entfax;
 	}
-	public int getEntin() {
+	public long getEntin() {
 		return entin;
 	}
-	public void setEntin(int entin) {
+	public void setEntin(long entin) {
 		this.entin = entin;
 	}
 	public String getEnttype() {

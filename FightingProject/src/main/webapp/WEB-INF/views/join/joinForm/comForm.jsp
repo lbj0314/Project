@@ -269,7 +269,7 @@
 	});//EIN */
 	
 </script>
-<form action="/test/join" method="get">
+<form action="/test/join2" method="get">
 	<table border='1'>
 		<tr>
 			<td>이름</td>

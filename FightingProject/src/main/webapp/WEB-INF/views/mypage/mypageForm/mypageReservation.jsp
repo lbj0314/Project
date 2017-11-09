@@ -8,21 +8,23 @@
 
 <script type="text/javascript">
 
-$(document).ready(function() {
-	
-	
-	 $("#hideNshow").click(function(){
-		/* var data-num="${xxx.num}"; */
-		 if($("#hideNshow").val() == '+')
+
+	$(document).ready(function() {
+		
+	 $(".hideNshow").click(function(){
+		
+		 var num=$(this).attr("data-num");
+		 console.log(num);
+		 if($("#"+num+"hideNshow").val() == '+')
 		 { 
-        	$("#table1").show();
-        	$("#hideNshow").val('-');
+        	$("#"+num+"table1").show();
+        	$("#"+num+"hideNshow").val('-');
 		 }
 		 
-		 else if($("#hideNshow").val() == '-')
+		 else if($("#"+num+"hideNshow").val() == '-')
 		 { 
-        	$("#table1").hide();
-        	$("#hideNshow").val('+');
+        	$("#"+num+"table1").hide();
+        	$("#"+num+"hideNshow").val('+');
 		 }
 	        
 	    });
@@ -39,12 +41,12 @@ $(document).ready(function() {
 <c:forEach var="item" items="${requestScope.order}" varStatus="status">
 	패키지 이름:${item.packName}&nbsp;&nbsp;&nbsp;&nbsp;출발 날짜:${item.startDay}&nbsp;&nbsp;&nbsp;&nbsp;종료 날짜${item.endDay}&nbsp;&nbsp;&nbsp;&nbsp;
 	결제했던 수단:${item.payment}&nbsp;&nbsp;&nbsp;&nbsp;결제했던 가격:${item.price}&nbsp;&nbsp;&nbsp;&nbsp;어른 인원수:${item.adult}&nbsp;&nbsp;&nbsp;&nbsp;			
-	어린이 인원수:${item.kid}&nbsp;&nbsp;자세히보기<input type="button" value="+"
-		class="btn btn-info" id="hideNshow">
+	어린이 인원수:${item.kid}&nbsp;&nbsp;자세히보기<input type="button" value="+" class="hideNshow btn btn-info"
+		data-num="${item.packOrderNum}" id="${item.packOrderNum}hideNshow">
 	<br>
 	<br>
 
-	<table border=1 id="table1" style="display:none">
+	<table border=1 id="${item.packOrderNum}table1" style="display:none" class="table1">
 		<tr>
 			<td align=center><b>일자</b></td>
 			<td align=center><b>타입</b></td>
