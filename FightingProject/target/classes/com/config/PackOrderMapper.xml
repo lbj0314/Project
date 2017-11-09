@@ -43,15 +43,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="packOrderList" resultType="PackOrderDTO" parameterType="int">
-	select packordernum,startday,endday,packname,adult,kid,payment,price,comnum
+	select packordernum,to_char(startday,'YYYY/MM/dd') startday,to_char(endday,'YYYY/MM/dd') endday,packname,adult,kid,payment,price,comnum
 	from packorder where comnum=#{comNum}		
 	</select>
 	
-	<select id="packListList" resultType="PackListDTO" parameterType="hashmap">
+	<select id="packListList" resultType="PackListDTO" parameterType="int">
 	select packlistnum,type,day,packordernum,comnum,typenum
-	from packlist where comnum=#{comNum} and typenum=#{typeNum}
+	from packlist where comnum=#{comNum}
 	</select>
 
+
+	<select id="selectByResultPack" resultType="PackResultListDTO" parameterType="hashmap">
+		
+		<if test="type == '관광지'">
+		 select day,type, attname name,attlocation location,atttype style,attadultprice adultprice,attkidprice kidprice,attphone phone from packlist join tour on(typenum=attnum) where packordernum=#{packOrderNum} and type=#{type}
+		</if>
+		<if test="type == '음식점'">
+		 select day,type, restname name,restlocation location,resttype style,restadultprice adultprice,restkidprice kidprice,restphone phone from packlist join restaurant on(typenum=restnum) where packordernum=#{packOrderNum} and type=#{type}
+		</if>
+		<if test="type == '숙박업소'">
+		 select day,type, stayname name,staylocation location,staytype style,stayadultprice adultprice,staykidprice kidprice,stayphone phone from packlist join stay on(typenum=staynum) where packordernum=#{packOrderNum} and type=#{type}
+		</if>
+		
+		 
+		
+	</select>
 
 </mapper>
 
