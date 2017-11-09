@@ -11,7 +11,7 @@
 <!-- DAUM 주소 라이브러리 끝 -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
+	/* $(document).ready(function() {
 		$("#userid").on("blur", function() {
 			$.ajax({
 				type : "get",
@@ -66,7 +66,7 @@
 				}
 			});
 		});
-	});
+	}); */
 	
 	$(document).ready(function() {
 		
@@ -76,8 +76,8 @@
 		var RegSsn = /^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))|[1-4][0-9]{6}$/; //주민등록 번호 유효성 검사
 		var RegPhone = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/; //핸드폰 유효성 검사
 		var RegEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i; //이메일 유효성검사
-		/* var RegPhone2 = /^[0-9]{9,11}$/; //전화번호 유효성 검사
-		var RegIn = /^[0-9]{10}$/; //사업자등록번호 유효성 검사 */
+		var RegPhone2 = /^[0-9]{9,11}$/; //전화번호 유효성 검사
+		var RegIn = /^[0-9]{10}$/; //사업자등록번호 유효성 검사
 		 
 		$("form").submit(function(){
 			if ( !RegName.test($.trim($("#name").val())) )
@@ -98,12 +98,12 @@
 				$("#passwd").focus();
 				return false;
 			}
-			else if ( !RegSsn.test($.trim($("#ssn").val())) )
+			/* else if ( !RegSsn.test($.trim($("#ssn").val())) )
 			{
 				alert("주민 번호 입력란에 13자리와 숫자만 입력해주세요.");
 				$("#ssn").focus();
 				return false;
-			}
+			} */
 			else if ( !RegPhone.test($.trim($("#phone1").val())) )
 			{
 				alert("핸드폰 입력란에 10~11자리와 숫자만 입력해주세요.");
@@ -203,7 +203,7 @@
 		});
 	});//passwd
 		
-	$(document).ready(function() {
+	/* $(document).ready(function() {
 		$('#ssn').keyup(function() {
 			if ($('#ssn').val().length < 13) {
 				$('font[name=check5]').css("color", "red");
@@ -214,7 +214,7 @@
 				$('font[name=check5]').text("숫자 13자리로 입력해주세요");
 			}
 		});
-	});//ssn
+	});//ssn */
 	
 	$(document).ready(function() {
 		$('#phone1').keyup(function() {
@@ -232,12 +232,12 @@
 	$(document).ready(function() {
 		$('#phone2').keyup(function() {
 			if ($('#phone2').val().length < 9) {
-				$('font[name=check5]').css("color", "red");
-				$('font[name=check5]').text("숫자 9-11자리로 입력해주세요");
+				$('font[name=check7]').css("color", "red");
+				$('font[name=check7]').text("숫자 9-11자리로 입력해주세요");
 			}
 			else {
-				$('font[name=check5]').css("color", "blue");
-				$('font[name=check5]').text("숫자 9-11자리로 입력해주세요");
+				$('font[name=check7]').css("color", "blue");
+				$('font[name=check7]').text("숫자 9-11자리로 입력해주세요");
 			}
 		});
 	});//phone2
@@ -245,12 +245,12 @@
 	$(document).ready(function() {
 		$('#fax').keyup(function() {
 			if ($('#fax').val().length < 9) {
-				$('font[name=check6]').css("color", "red");
-				$('font[name=check6]').text("숫자 9-11자리로 입력해주세요");
+				$('font[name=check8]').css("color", "red");
+				$('font[name=check8]').text("숫자 9-11자리로 입력해주세요");
 			}
 			else {
-				$('font[name=check6]').css("color", "blue");
-				$('font[name=check6]').text("숫자 9-11자리로 입력해주세요");
+				$('font[name=check8]').css("color", "blue");
+				$('font[name=check8]').text("숫자 9-11자리로 입력해주세요");
 			}
 		});
 	});//fax
@@ -258,18 +258,18 @@
 	$(document).ready(function() {
 		$('#in').keyup(function() {
 			if ($('#in').val().length < 10) {
-				$('font[name=check7]').css("color", "red");
-				$('font[name=check7]').text("숫자 10자리로 입력해주세요");
+				$('font[name=check9]').css("color", "red");
+				$('font[name=check9]').text("숫자 10자리로 입력해주세요");
 			}
 			else {
-				$('font[name=check7]').css("color", "blue");
-				$('font[name=check7]').text("숫자 10자리로 입력해주세요");
+				$('font[name=check9]').css("color", "blue");
+				$('font[name=check9]').text("숫자 10자리로 입력해주세요");
 			}
 		});
 	});//EIN
 	
 </script>
-<form action="/test/join" method="get">
+<form action="/test/join3" method="get">
 	<table border='1'>
 		<tr>
 			<td>이름</td>
@@ -291,11 +291,11 @@
 			<td><input type="password" name="passwd2" id="passwd2" placeholder="특수 문자 가능" maxlength="16" /> <font
 				name="check4" size="2"></font></td>
 		</tr>
-		<tr>
+		<!-- <tr>
 			<td>주민 번호</td>
 			<td><input type="text" placeholder="주민 번호(-제외)" id="ssn"
 				name="ssn" maxlength="13"> <font name="check5" size="2"></font></td>
-		</tr>
+		</tr> -->
 		<tr>
 			<td>핸드폰 번호</td>
 			<td><input type="text" placeholder="휴대폰 번호(-제외)" id="phone1"
@@ -322,9 +322,54 @@
 		<tr>
 			<td>지번 주소</td>
 			<td><input name="addr2" id="addr2" size="40"
-				placeholder="지번주소(기업회원의 경우 업소 지역)" value=""></td>
+				placeholder="지번주소" value=""></td>
 		</tr>
 		<!-- 다음주소 끝 -->
+		<tr>
+			<td>업소 지역</td>
+			<td><select name="location" class="form-control"
+				id="location">
+					<option value="def">지역선택</option>
+					<option value="전체">전체</option>
+					<option value="서울">서울</option>
+					<option value="인천">인천</option>
+					<option value="대전">대전</option>
+					<option value="대구">대구</option>
+					<option value="광주">광주</option>
+					<option value="부산">부산</option>
+					<option value="울산">울산</option>
+					<option value="세종특별자치시">세종특별자치시</option>
+					<option value="경기도">경기도</option>
+					<option value="강원도">강원도</option>
+					<option value="충청북도">충청북도</option>
+					<option value="충청남도">충청남도</option>
+					<option value="경상북도">경상북도</option>
+					<option value="경상남도">경상남도</option>
+					<option value="전라북도">전라북도</option>
+					<option value="전라남도">전라남도</option>
+					<option value="제주도">제주도</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td>업소 전화번호</td>
+			<td><input type="text" placeholder="전화번호(-제외)" id="phone2" name="phone2" maxlength="11"><font name="check7" size="2"></font></td>
+		</tr>
+		<tr>
+			<td>업소 팩스번호</td>
+			<td><input type="text" placeholder="팩스 번호(-제외)" id="fax"name="fax" maxlength="11"><font name="check8" size="2"></font></td>
+		</tr>
+		<tr>
+			<td>사업자 등록번호</td>
+			<td><input type="text" id="in" placeholder="사업자 등록번호(-제외)" name="in" maxlength="10"><font name="check9" size="2"></font></td>
+		</tr>
+		<tr>
+			<td>업소 종류</td>
+			<td><select id="kind"  name="kind">
+			<option value="def2">업소 종류 선택</option>
+			<option value="tour">관광 명소</option>
+					<option value="restaurant">음식점</option>
+					<option value="stay">숙박 업소</option></select></td>
+		</tr>
 	</table>
 	<input type="submit" value="가입하기" class="btn btn-default">
 
