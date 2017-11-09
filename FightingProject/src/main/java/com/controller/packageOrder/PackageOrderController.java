@@ -244,6 +244,15 @@ public class PackageOrderController {
 		m.addAttribute("orderDone", 1);
 		return "order/orderForm";
 	}
+	
+	
+	
+	//제발 지우지 말아주세요 ajax 통신부에요 왜 값이 안먹나했네
+	@ResponseBody
+	@RequestMapping("/packMulty")
+	public int packMulty(int n) {
+		return n;
+	}
 
 	@RequestMapping("/Reserv")
 	public ModelAndView Reserv(HttpSession session)  {
@@ -255,13 +264,15 @@ public class PackageOrderController {
 		List<PackListDTO> ldto = packService.packListList(cdto.getComnum());
 		List<PackResultListDTO> ydto = null;
 		Map<String, Object> map = new HashMap<>();
-
+		
 			//for문 시작
 			for (PackOrderDTO dto : odto) {
 				
 				//반복 돌리기 위한 초기회 작업
 				List<List<PackResultListDTO>> lldto = new ArrayList<>();
 				List<PackResultListDTO> yydto = new ArrayList<>();
+				
+				
 				String a1="a";
 				String a2="b";
 				String a3="c";
@@ -271,62 +282,69 @@ public class PackageOrderController {
 				//조건비교 
 				for (PackListDTO packListDTO : ldto) {
 					
+					ydto=null;
 					String tt = packListDTO.getType();
-					if(tt.equals("음식점"))
+					if(tt.equals("음식점") && a1.equals("a"))
 					{
-
-						if(a1.equals("a")) {
+						System.out.println(packListDTO.getType());
 							map.put("type", packListDTO.getType());
 							map.put("packOrderNum", dto.getPackOrderNum());
+							
 							ydto = packService.selectByResultPack(map);
 							a1="nono";
-						}
-
+							System.out.println("second1"+ydto);
 					}
-					else if(tt.equals("관광지"))
+					else if(tt.equals("관광지") && a2.equals("b"))
 					{
-						
-						if(a2.equals("b"))
-						{
+						System.out.println(packListDTO.getType());
 							map.put("type", packListDTO.getType());
 							map.put("packOrderNum", dto.getPackOrderNum());
+							map.get("type");
 							ydto = packService.selectByResultPack(map);
 							a2="nono";
-						}
+							
 					}
-					else if(tt.equals("숙박업소"))
+					else if(tt.equals("숙박업소") && a3.equals("c"))
 					{
-
-						if(a3.equals("c"))
-						{
+						System.out.println(packListDTO.getType());
 							map.put("type",packListDTO.getType());
 							map.put("packOrderNum", dto.getPackOrderNum());
+							map.get("type");
 							ydto = packService.selectByResultPack(map);
 							a3="nono";
-						}
+							
 					}
 
-					if(ydto != null) lldto.add(ydto);
-					//System.out.println(lldto);
-					map.remove("type");
-					map.remove("packOrderNum");
-					ydto=null;
+					if(ydto != null) {
+						lldto.add(ydto);
+					}
+					
+					
 
 				}
+				System.out.println("lldto!"+lldto);
 				
 				for (List<PackResultListDTO> packResultListDTO : lldto) {
+					
 					for (PackResultListDTO aaa : packResultListDTO) {
 							yydto.add(aaa);
 					}
 				}
 				
 				dto.setPackrelist(yydto);
+				
+				
+				ydto=null;
 		
 				
 
 		}
-			
-			
+	
+			for (PackOrderDTO dto : odto) {
+				System.out.println("GETPACKLIST!"+dto.getPackrelist());
+				
+			}
+		
 		
 		
 		mav.addObject("order", odto);

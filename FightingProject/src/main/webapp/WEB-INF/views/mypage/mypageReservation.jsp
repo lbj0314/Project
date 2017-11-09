@@ -14,15 +14,16 @@
 	src="//netdna.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="/project/css/style.css">
+<link rel="stylesheet" type="text/css" href="/test/css/style.css">
 
 
 </head>
 <body>
 	<jsp:include page="../login/loginForm.jsp" flush="true" /><br>
 	<jsp:include page="../include/top.jsp" flush="true" />
+
 	<jsp:include page="mypageForm/mypageReservation.jsp" flush="true" />
-	
+
 	
 
 	<jsp:include page="../include/copyright.jsp" flush="true" />

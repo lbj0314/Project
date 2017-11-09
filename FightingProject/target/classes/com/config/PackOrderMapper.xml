@@ -56,15 +56,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectByResultPack" resultType="PackResultListDTO" parameterType="hashmap">
 		
 		<if test="type == '관광지'">
-		select day,type, attname name,attlocation location,atttype style,attadultprice adultprice,attkidprice kidprice,attphone phone from packlist join tour on(typenum=attnum)
+		 select day,type, attname name,attlocation location,atttype style,attadultprice adultprice,attkidprice kidprice,attphone phone from packlist join tour on(typenum=attnum) where packordernum=#{packOrderNum} and type=#{type}
 		</if>
 		<if test="type == '음식점'">
-		select day,type, restname name,restlocation location,resttype style,restadultprice adultprice,restkidprice kidprice,restphone phone from packlist join restaurant on(typenum=restnum)
+		 select day,type, restname name,restlocation location,resttype style,restadultprice adultprice,restkidprice kidprice,restphone phone from packlist join restaurant on(typenum=restnum) where packordernum=#{packOrderNum} and type=#{type}
 		</if>
 		<if test="type == '숙박업소'">
-		select day,type, stayname name,staylocation location,staytype style,stayadultprice adultprice,staykidprice kidprice,stayphone phone from packlist join stay on(typenum=staynum) 
+		 select day,type, stayname name,staylocation location,staytype style,stayadultprice adultprice,staykidprice kidprice,stayphone phone from packlist join stay on(typenum=staynum) where packordernum=#{packOrderNum} and type=#{type}
 		</if>
-		where packordernum=#{packOrderNum}
+		
+		 
 		
 	</select>
 
