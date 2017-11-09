@@ -7,6 +7,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
+
 <script type="text/javascript">
 
 	$('.dropdown-toggle').dropdown()
@@ -17,6 +18,9 @@
 </script>
 
 <style>
+/* @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+font-family: 'Jeju Gothic', serif; */
+
 body,head { text-align: center;  }
 
 h1 {
@@ -35,7 +39,7 @@ h1 {
 	color:#223a5e;
 }
 
-#siteTitle{
+/* #siteTitle{
 	width:150px;
 	height:100px;
 	text-align:center;
@@ -43,7 +47,7 @@ h1 {
 	position: relative;
 	top: -60px;
 	left: 90px;
-}
+} */
 
 /* a:link {
     color: #99994d;
@@ -68,7 +72,8 @@ h1 {
     /* border-bottom: 6px solid #223A5E; */
    /*  border: 6px solid #223A5E;
     border-radius: 5px; */
-   background-color: #B18F6A;
+   background-color: white;
+   border-bottom: 6px solid white;
     text-color:balck;
 }
 
@@ -82,8 +87,9 @@ h1 {
 
 /* Change color on hover */
 .menumenu a:hover {
-    background-color: #AF9483;
-    color: black;
+	border-bottom: 6px solid #223A5E; 
+    /* background-color: #AF9483; */
+    /* color: black; */
     text-color:black;
 }
 
@@ -94,12 +100,12 @@ h1 {
 
 <body>
 <!-- 타이틀은 대한민국 구석구석 짭 -->
-<div id="siteTitle">
+<!-- <div id="siteTitle">
 <h1 id="jjab">
 	<strong><p style="color:white;">대한민국<br>모아모아<p><p style="color:#f6d155;">패키지여행<p></strong>
 </h1>
-</div>
-<img id="siteImage" src="/test/images/dnfltkdlxmdlfmawhdwjdgody.png"  style="width: 500px; height: auto;"/>
+</div> -->
+<a href="<c:url value="/"/>"><img id="siteImage" src="/test/images/dnfltkdlxmdlfmawhdwjdgody.png"  style="width: 500px; height: auto;"/></a>
 <br><br><br><br>
 
 
