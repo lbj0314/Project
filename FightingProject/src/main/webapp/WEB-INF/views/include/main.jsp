@@ -6,6 +6,19 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<style>
+h5 {
+	display: block;
+	font-size: 20px;
+	margin-top: 0.67em;
+	margin-bottom: 0.67em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
+	text-align: center;
+	color:#DC4C46;
+}
+</style>
 
 <!-- jQeury문 -->
 <script type="text/javascript">
@@ -40,6 +53,8 @@
 		</div>
 	</div>
 
+
+
 	<!-- Controls -->
 	<a class="left carousel-control" href="#carousel-example-generic"
 		role="button" data-slide="prev"> <span
@@ -52,6 +67,8 @@
 	</a>
 </div>
 	<br><br>
+	
+	<hr>
 <a href="/test/setChangeLocale.do?locale=ko" class="language">한국어</a> &nbsp;&nbsp;
 <a href="/test/setChangeLocale.do?locale=en" class="language">ENGLISH</a> &nbsp;&nbsp;
 <a href="/test/setChangeLocale.do?locale=zh" class="language">中国</a> &nbsp;&nbsp;
@@ -63,8 +80,9 @@
 <br><br>
 <h5 id="i1818">
 <spring:message code="spring.mesg" var="xx"/>
+${xx}<br><br>
 </h5>
 
-${xx}<br><br>
+
 <a href="/test/guide" class="btn btn-default">패키지 가이드 보기</a>
 <br><br><br><br>
