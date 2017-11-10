@@ -45,6 +45,11 @@ public class ReviewService {
 		return dao.packListView(map);
 	}
 	
+
+	public ReviewDTO readpackReviewGoods(int packReviewNum) {
+		return dao.readpackReviewGoods(packReviewNum);
+	}
+	
 	/*ublic void boardWrite(NoticeDTO dto) {
 		dao.boardWrite(dto);
 	}// end boardWrite

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dto.notice.NoticeDTO;
 import com.dto.notice.PageDTO;
@@ -29,8 +30,10 @@ public class ReviewDAO {
 	}
 	
 	
+	@Transactional
 	public ReviewDTO reviewRetrieve(int packReviewNum) {
-		ReviewDTO dto = template.selectOne("reviewRetrieve",packReviewNum);
+		ReviewDTO dto = template.selectOne("reviewRetrieve",packReviewNum); //수정해야함
+		template.update("readReviewCnt",packReviewNum);
 		return dto;
 	}
 	
@@ -51,15 +54,19 @@ public class ReviewDAO {
 		return dto;
 	}
 	
+	@Transactional
+	public ReviewDTO readpackReviewGoods(int packReviewNum) {
+		template.update("readpackReviewGoods",packReviewNum);
+		return template.selectOne("reviewRetrieve",packReviewNum);
+	}
+	
 	
 	//3글 자세히 보기
 	/*public NoticeDTO selectByNum(int num) {
 		NoticeDTO dto = template.selectOne("selectByNum", num);
 		return dto;
 	}*/
-	public void readCnt(int num) {
-		template.update("readCnt",num);
-	}
+	
 
 	/*//4. 글 삭제
 	public void deleteByNum(int num) {

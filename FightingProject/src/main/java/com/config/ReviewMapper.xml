@@ -69,6 +69,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 
 		
 	</select> 
+	
+	<update id="readReviewCnt" parameterType="int">
+		update review
+		set packReviewRcnt
+		= packReviewRcnt + 1 
+		where packReviewNum = #{packReviewNum}
+	</update>
+	
+	<update id="readpackReviewGoods" parameterType="int">
+		update review
+		set packReviewGoods
+		= packReviewGoods + 1 
+		where packReviewNum = #{packReviewNum}
+	</update>
+	
 	<!-- 
 	
 	<select id="selectByNum" resultType="NoticeDTO" parameterType="int">

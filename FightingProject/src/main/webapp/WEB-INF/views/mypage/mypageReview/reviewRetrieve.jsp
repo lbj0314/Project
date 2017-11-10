@@ -51,16 +51,16 @@
 
 
 
-<h1>글자세히 화면</h1>
+<h1>후기 게시글 보기</h1>
 
 <form action="/test/loginX/noticeUpdate" method="post">
 	 <input type="hidden" name="packReviewNum"
 		value="${rdto.packReviewNum }">
-	<div class="form-group">
+	
 		<b>글번호:&nbsp;</b>${rdto.packReviewNum }
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>작성일:&nbsp;</b>${rdto.packReviewWriteDay }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<b>조회수:&nbsp;</b>${rdto.packReviewRcnt}<br>
-	</div>
+	
 	좋아요수: <span id="re1">${rdto.packReviewGoods}</span>
 	<c:if test="${!empty sessionScope.comLogin}">
 
@@ -109,7 +109,7 @@
 		</c:forEach>
 
 	</table>
-	
+	<div id="conta">
 	<div class="form-group">
 		제목<input type="text" name="notitle" value="${rdto.packTitle }"
 			class="form-control"><br>
@@ -121,6 +121,7 @@
 			<input type="submit" value="수정" class="btn btn-primary">
 		</c:if>
 
+	</div>
 	</div>
 </form>
 
