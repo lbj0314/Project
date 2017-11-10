@@ -31,6 +31,7 @@
         <value>classpath:com/config/StayMapper.xml</value> 
         <value>classpath:com/config/TourMapper.xml</value>
         <value>classpath:com/config/PackOrderMapper.xml</value>    
+        <value>classpath:com/config/ReviewMapper.xml</value>    
        </list>
      </property>
      <property name="typeAliases">
@@ -51,6 +52,8 @@
         <value>com.dto.order.PackOrderDTO</value>
         <value>com.dto.order.PackListDTO</value>
         <value>com.dto.order.PackResultListDTO</value>
+        <value>com.dto.review.ReviewDTO</value>
+        <value>com.dto.review.ReviewPageDTO</value>
        </list>
      </property>
    </bean>

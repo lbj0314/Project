@@ -7,7 +7,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
-
 <script type="text/javascript">
 
 	$('.dropdown-toggle').dropdown()
@@ -18,9 +17,6 @@
 </script>
 
 <style>
-/* @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
-font-family: 'Jeju Gothic', serif; */
-
 body,head { text-align: center;  }
 
 h1 {
@@ -34,12 +30,23 @@ h1 {
 	text-align: center;
 }
 
+h5 {
+	display: block;
+	/*  font-size: 2em; */
+	margin-top: 0.67em;
+	margin-bottom: 0.67em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
+	text-align: center;
+	color:#CC0000;
+}
 
 .language{
 	color:#223a5e;
 }
 
-/* #siteTitle{
+#siteTitle{
 	width:150px;
 	height:100px;
 	text-align:center;
@@ -47,7 +54,7 @@ h1 {
 	position: relative;
 	top: -60px;
 	left: 90px;
-} */
+}
 
 /* a:link {
     color: #99994d;
@@ -72,30 +79,23 @@ h1 {
     /* border-bottom: 6px solid #223A5E; */
    /*  border: 6px solid #223A5E;
     border-radius: 5px; */
-   background-color: white;
-   /* border-bottom: 6px solid white; */
+   background-color: #B18F6A;
     text-color:balck;
 }
 
 /* Style the topnav links */
 .menumenu a {
     color: black;
-	/* text-align: center; */
-    padding: 14px 16px;
+  /*   text-align: center;
+    padding: 14px 16px; */
     text-color:black;
-    
-    
 }
 
 /* Change color on hover */
 .menumenu a:hover {
-	/* border-bottom: 6px solid #223A5E;  */
-    /* background-color: #AF9483; */
-    /* color: black; */
+    background-color: #AF9483;
+    color: black;
     text-color:black;
-    
-    background-color: #A9B2C3;
-    color: white;
 }
 
 
@@ -105,12 +105,12 @@ h1 {
 
 <body>
 <!-- 타이틀은 대한민국 구석구석 짭 -->
-<!-- <div id="siteTitle">
+<div id="siteTitle">
 <h1 id="jjab">
 	<strong><p style="color:white;">대한민국<br>모아모아<p><p style="color:#f6d155;">패키지여행<p></strong>
 </h1>
-</div> -->
-<a href="<c:url value="/"/>"><img id="siteImage" src="/test/images/dnfltkdlxmdlfmawhdwjdgody.png"  style="width: 500px; height: auto;"/></a>
+</div>
+<img id="siteImage" src="/test/images/dnfltkdlxmdlfmawhdwjdgody.png"  style="width: 500px; height: auto;"/>
 <br><br><br><br>
 
 
@@ -171,7 +171,7 @@ h1 {
 			게시판 <span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu">
-			<li><a href="#">후기</a><br></li>
+			<li><a href="/test/reviewList">후기</a><br></li>
 			<li><a href="#">QnA</a><br></li>
 			<li><a href="<c:url value="/guide"/>">사이트 이용법</a><br></li>
 		</ul>

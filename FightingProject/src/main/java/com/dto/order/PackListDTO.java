@@ -10,11 +10,14 @@ public class PackListDTO {
 	private int packOrderNum;
 	private int comNum;
 	private int typeNum;
+	private int state;
+	private String endDay;
 	public PackListDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PackListDTO(int packListNum, String type, int day, int packOrderNum, int comNum, int typeNum) {
+	public PackListDTO(int packListNum, String type, int day, int packOrderNum, int comNum, int typeNum, int state,
+			String endDay) {
 		super();
 		this.packListNum = packListNum;
 		this.type = type;
@@ -22,6 +25,8 @@ public class PackListDTO {
 		this.packOrderNum = packOrderNum;
 		this.comNum = comNum;
 		this.typeNum = typeNum;
+		this.state = state;
+		this.endDay = endDay;
 	}
 	public int getPackListNum() {
 		return packListNum;
@@ -59,12 +64,28 @@ public class PackListDTO {
 	public void setTypeNum(int typeNum) {
 		this.typeNum = typeNum;
 	}
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
+	public String getEndDay() {
+		return endDay;
+	}
+	public void setEndDay(String endDay) {
+		this.endDay = endDay;
+	}
 	@Override
 	public String toString() {
 		return "PackListDTO [packListNum=" + packListNum + ", type=" + type + ", day=" + day + ", packOrderNum="
-				+ packOrderNum + ", comNum=" + comNum + ", typeNum=" + typeNum + "]";
+				+ packOrderNum + ", comNum=" + comNum + ", typeNum=" + typeNum + ", state=" + state + ", endDay="
+				+ endDay + ", getPackListNum()=" + getPackListNum() + ", getType()=" + getType() + ", getDay()="
+				+ getDay() + ", getPackOrderNum()=" + getPackOrderNum() + ", getComNum()=" + getComNum()
+				+ ", getTypeNum()=" + getTypeNum() + ", getState()=" + getState() + ", getEndDay()=" + getEndDay()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
 	}
-	
 	
 	
 	

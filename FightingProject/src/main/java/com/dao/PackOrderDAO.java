@@ -50,5 +50,24 @@ public class PackOrderDAO {
 		List<PackResultListDTO> list = template.selectList("selectByResultPack", map);
 		return list;
 	}
+	
+	
+	public List<PackOrderDTO> packOrderListLeave(int comNum) {
+		List<PackOrderDTO> dto = template.selectList("packOrderListLeave", comNum);
+		return dto;
+	}
+
+	public List<PackListDTO> packListListLeave(int comNum) {
+
+		List<PackListDTO> dto = template.selectList("packListListLeave", comNum);
+		return dto;
+
+	}
+	
+	public List<PackResultListDTO> selectByResultPackLeave(Map<String, Object> map) {
+
+		List<PackResultListDTO> list = template.selectList("selectByResultPackLeave", map);
+		return list;
+	}
 
 }

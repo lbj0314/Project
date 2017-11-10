@@ -2,23 +2,102 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mybatis.PackOrderMapper">
+<mapper namespace="com.mybatis.ReviewMapper">
 
 
 
 	
 	
 	
-	<insert id="packOrderInsert" parameterType="PackOrderDTO">
-		insert into packorder
-		(packOrderNum,startDay,endDay,adult,kid,packName,payment,price,comNum,state)
-		values ( packorder_seq.nextval,
-		#{startDay}, #{endDay}, #{adult}, #{kid}, #{packName}, #{payment}, #{price}, #{comNum},#{state})
+	<insert id="packReviewInsert" parameterType="ReviewDTO">
+		insert into review
+		(packReviewNum,packTitle,packContent,packOrdernum,comNum)
+		values ( REVIEW_SEQ.nextval,
+		#{packTitle}, #{packContent}, #{packOrderNum}, #{comNum})
 
 	</insert>
 	
 	
+	
+	
+	
+	<select id="reviewselectAll" resultType="ReviewDTO" parameterType="hashmap">
+		select packreviewnum,packtitle, to_char(packreviewwriteday,'YYYY/MM/dd') packreviewwriteday, packReviewrcnt
+	    from review
+	     <if test="searchName == 'title'">
+	       where packtitle LIKE '%'||#{searchValue}||'%'
+	    </if>
+	  
+	    order by packreviewnum desc
+	</select>
+	
+	
+	<!-- 
+	
+	<select id="selectByNum" resultType="NoticeDTO" parameterType="int">
+		select nonum,notitle, nocontent, to_char(nowriteDay,'YYYY/MM/dd') nowriteDay, noreadCnt
+	    from notice
+	    where nonum = #{nonum}
+	</select>
+	<update id="readCnt" parameterType="int">
+	   update notice
+	   set noreadCnt = noreadCnt + 1
+	   where nonum = #{nonum}
+	</update>
+	
+	<delete id="deleteByNum" parameterType="int">
+	   delete from notice
+	    where nonum = #{nonum}
+	</delete>
+	
+	<update id="updateByNum" parameterType="NoticeDTO">
+	    update notice
+	    set notitle=#{notitle} , nocontent=#{nocontent}
+	    where nonum = #{nonum}
+	</update>  -->
 
+	<select id="reviewtotalCount" resultType="int">
+	   select count(*)
+	   from review
+	</select>
+	
+	<select id="reviewtotalCount1" resultType="int" parameterType="hashmap">
+	   select count(*)
+	   from review
+	   
+	    <if test="searchName == 'title'">
+	       where packtitle LIKE '%'||#{searchValue}||'%'
+	    </if>
+
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!-- 
 	<select id="selectByPNum" resultType="PackOrderDTO" parameterType="hashmap">
 		select packOrderNum,to_char(startDay,'YYYY/MM/dd') startDay,to_char(endDay,'YYYY/MM/dd') endDay,adult,
 		kid,packName,payment,price,comNum,state
@@ -92,7 +171,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 
 		
 	</select>
-
+ -->
 </mapper>
 
 

@@ -38,5 +38,18 @@ public class PackOrderService {
 	public List<PackResultListDTO> selectByResultPack(Map<String,Object> map){
 		return dao.selectByResultPack(map);
 	}
+	
+	
+	public List<PackOrderDTO> packOrderListLeave(int comNum){
+		return dao.packOrderListLeave(comNum);
+	}
+	
+	public List<PackListDTO> packListListLeave(int comNum){
+		return dao.packListListLeave(comNum);
+	}
+	
+	public List<PackResultListDTO> selectByResultPackLeave(Map<String,Object> map){
+		return dao.selectByResultPackLeave(map);
+	}
 
 }
