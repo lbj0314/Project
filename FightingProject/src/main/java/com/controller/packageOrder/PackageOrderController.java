@@ -467,7 +467,80 @@ public class PackageOrderController {
 		return mav;
 	}
 	
-	
+	@RequestMapping("/deletePackage")
+	   public String deletePackage(@RequestBody String[] deleteArray,HttpSession session) {
+	      for (int i = 0; i < deleteArray.length; i++) {
+	         
+	         String deleteType = deleteArray[i].substring(deleteArray[i].length()-6, deleteArray[i].length());
+	         int deleteData = Integer.parseInt(deleteArray[i].substring(0,deleteArray[i].length()-6));
+	         if(deleteType.equals("tourTr")) {
+	            List<TourDTO> list = (List<TourDTO>)session.getAttribute("orderTourList");
+	            while(true) {
+	            if(list.size()>1) {
+	            for(TourDTO dto : list) {
+	               if(dto.getAttNum()==deleteData) {
+	                  list.remove(dto);
+	                  session.setAttribute("orderTourList", list);
+	                  break;
+	               }
+	            }
+
+	            }else if(list.size()==1){
+	               session.removeAttribute("orderTourList");
+	            }
+	            break;
+	            }
+	            
+	         }
+	         if(deleteType.equals("restTr")) {
+	            List<RestDTO> list = (List<RestDTO>)session.getAttribute("orderRestList");
+	            while(true) {
+	            if(list.size()>1) {
+	            for(RestDTO dto : list) {
+	               if(dto.getRestNum()==deleteData) {
+	                  list.remove(dto);
+	                  session.setAttribute("orderRestList", list);
+	                  break;
+	               }
+	            }
+
+	            }else if(list.size()==1){
+	               System.out.println("1개");
+	               session.removeAttribute("orderRestList");
+	            }
+	            break;
+	            }
+	            
+	         }
+	         if(deleteType.equals("stayTr")) {
+	            List<StayDTO> list = (List<StayDTO>)session.getAttribute("orderStayList");
+	            while(true) {
+	            if(list.size()>1) {
+	            for(StayDTO dto : list) {
+	               if(dto.getStayNum()==deleteData) {
+	                  list.remove(dto);
+	                  session.setAttribute("orderStayList", list);
+	                  break;
+	               }
+	            }
+
+	            }else if(list.size()==1){
+	               System.out.println("1개");
+	               session.removeAttribute("orderStayList");
+	            }
+	            break;
+	            }
+	            
+	         }
+	         
+	      }
+	      return "order/orderForm";
+	   }
+	   @RequestMapping("/guideDate")
+	   public void guideDate(@RequestBody String startDate, String endDate,HttpSession session) {
+	      ComDTO comDto = (ComDTO)session.getAttribute("comLogin");
+	      
+	   }
 	
 	@ExceptionHandler(MyException.class)
 	public String xxxx2() {

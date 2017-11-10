@@ -47,11 +47,79 @@
 		$("#startDate").val($("#startDay").val());
 		$("#endDate").val($("#endDay").val());
 		
+		//날짜 예외처리
+	      $("#myForm").submit(function(){
+	          var now = new Date();
+	          var nowString = now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
+	          var nowArray = nowString.split("-");
+	          var nowObj = new Date(nowArray[0],Number(nowArray[1])-1,nowArray[2]);
+	          
+	          var startString = $("#startDate").val();
+	          var startArray = startString.split("-");
+	          var startObj = new Date(startArray[0],Number(startArray[1])-1,startArray[2]);
+	          
+	          var betweenDay = (startObj.getTime() - nowObj.getTime())/1000/60/60/24;
+	          if(betweenDay<0){
+	             alert("현재 날짜보다 이전날짜를 설정 할 수 없습니다.");
+	               $("#startDate").focus();
+	               return false;
+	          }
+	          $.ajax({
+	               type : "get",
+	               url : "/test/guideDate",
+	               data : {
+	                  startDate : $("#startDate").val(),
+	                  endDate : $("#endDate").val()
+	               },
+	               dataType : "text",
+	               success : function(responseData, status, xhr) {
+	                  
+	               },
+	               error : function(xhr, status, e) {
+	                  console.log(status, e)
+	               }
+	          });
+	          
+	      });
+		
 		//테이블 행 추가
 		var between = $("#betweenDay").val();
 		for (var i = 1; i <= between-1; i++) {			
 			$("#2th-tbody tr:nth-child("+i+")").after("<tr id='"+((i*1)+(2*1))+"-termTr' class='nodrag'><td>"+((i*1)+(2*1))+"일</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>")
 		}
+		
+		//선택 삭제하기
+	      
+	      
+	      $("#deleteClick").on("click",function(){
+
+	         var deleteArray = new Array();
+	         
+	         $("td").children("#delChk").each(function(index, item){
+	            if($(item).prop("checked")){
+	               deleteArray.push($(item).parent().parent().attr("id"))
+	            }
+	         });
+	         console.log(deleteArray);
+	         jQuery.ajaxSettings.traditional = true;
+	         $.ajax({
+	            type:"post",
+	            url:"/test/deletePackage",
+	            data:JSON.stringify(deleteArray),
+	            contentType:"application/json;charset=UTF-8",
+	            processData : true,
+	            success:function(responseData, status, xhr){
+	               $("td").children("#delChk").each(function(index, item){
+	                  if($(item).prop("checked")){
+	                     $(item).parent().parent().remove();
+	                  }
+	               });
+	            },
+	            error:function(xhr,status,e){
+	               console.log(status,e);
+	            }
+	         });
+	      });
 		//전체 선택하기 주문하려는 친구제외
 		$("#allCheck").on("click",function(){
 			if($("#allCheck").prop("checked")){
