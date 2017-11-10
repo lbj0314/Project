@@ -23,7 +23,7 @@
 
 	</div>
 	<jsp:include page="/WEB-INF/views/include/top.jsp" flush="true" /><br>
-	<jsp:include page="/WEB-INF/views/notice/retrieve.jsp" flush="true" /><br>
+	<jsp:include page="/WEB-INF/views/mypage/mypageReview/reviewRetrieve.jsp" flush="true" /><br>
 	<jsp:include page="/WEB-INF/views/include/copyright.jsp" flush="true" /><br>
 
 </body>

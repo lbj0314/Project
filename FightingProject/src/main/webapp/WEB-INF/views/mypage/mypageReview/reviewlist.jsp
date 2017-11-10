@@ -15,6 +15,8 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
+		
+		
 
 		
 		
@@ -65,7 +67,7 @@
 
 
 	<h1 align=center>
-		&nbsp;&nbsp;&nbsp;패키지<small>&nbsp;&nbsp;&nbsp;등록한 사용자만 CRUD가능</small>
+		&nbsp;&nbsp;&nbsp;후기 게시판<small>&nbsp;&nbsp;&nbsp;등록한 사용자만 CRUD가능</small>
 	</h1>
 
 	<div class="container">
@@ -102,7 +104,7 @@
 
 						<tr>
 							<td>${xx.packReviewNum}</td>
-							<td><a href="/test/reviewRetrieve?nonum=${xx.packReviewNum}">${xx.packTitle}</a></td>
+							<td><a href="/test/reviewRetrieve?packReviewNum=${xx.packReviewNum}">${xx.packTitle}</a></td>
 							<td>${xx.packReviewWriteDay}</td>
 							<td>${xx.packReviewRcnt}</td>
 						</tr>

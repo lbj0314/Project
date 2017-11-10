@@ -29,9 +29,46 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    </if>
 	  
 	    order by packreviewnum desc
+	    
+	    
+	</select>
+	<select id="reviewRetrieve" resultType="ReviewDTO" parameterType="int">
+	select packreviewnum,packtitle, to_char(packreviewwriteday,'YYYY/MM/dd') packreviewwriteday,packreviewgoods,packordernum,comnum, packReviewrcnt
+	    from review where packreviewnum=#{packreviewnum}
 	</select>
 	
 	
+	
+	<select id="packOrderView" resultType="PackOrderDTO" parameterType="hashmap">
+	select packordernum,to_char(startday,'YYYY/MM/dd') startday,to_char(endday,'YYYY/MM/dd') endday,packname,adult,kid,payment,price,comnum,state 
+	from packorder where comnum=#{comNum} and state=1 and packordernum=#{packOrderNum}
+	</select>
+	
+	
+	
+	<select id="packListSelect" resultType="PackListDTO" parameterType="hashmap">
+	
+	select packlistnum,type,day,packordernum,comnum,typenum,state 
+	from packlist where comnum=#{comNum} and state=1 and packordernum=#{packOrderNum}
+	
+	</select>
+	
+	
+	<select id="packListView" resultType="PackResultListDTO" parameterType="hashmap">
+		
+		<if test="type == '관광지'">
+		 select day,type,state, attname name,attlocation location,atttype style,attadultprice adultprice,attkidprice kidprice,attphone phone from packlist join tour on(typenum=attnum) where  state=1 and type=#{type} and packOrderNum=#{packOrderNum}
+		</if>
+		<if test="type == '음식점'">
+		 select day,type,state, restname name,restlocation location,resttype style,restadultprice adultprice,restkidprice kidprice,restphone phone from packlist join restaurant on(typenum=restnum) where state=1 and type=#{type} and packOrderNum=#{packOrderNum}
+		</if>
+		<if test="type == '숙박업소'">
+		 select day,type,state, stayname name,staylocation location,staytype style,stayadultprice adultprice,staykidprice kidprice,stayphone phone from packlist join stay on(typenum=staynum)where state=1 and type=#{type} and packOrderNum=#{packOrderNum}
+		</if>
+		
+		 
+		
+	</select> 
 	<!-- 
 	
 	<select id="selectByNum" resultType="NoticeDTO" parameterType="int">

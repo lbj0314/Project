@@ -2,6 +2,7 @@ package com.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -10,6 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import com.dto.notice.NoticeDTO;
 import com.dto.notice.PageDTO;
+import com.dto.order.PackListDTO;
+import com.dto.order.PackOrderDTO;
+import com.dto.order.PackResultListDTO;
 import com.dto.review.ReviewDTO;
 import com.dto.review.ReviewPageDTO;
 
@@ -25,7 +29,29 @@ public class ReviewDAO {
 	}
 	
 	
-
+	public ReviewDTO reviewRetrieve(int packReviewNum) {
+		ReviewDTO dto = template.selectOne("reviewRetrieve",packReviewNum);
+		return dto;
+	}
+	
+	public PackOrderDTO packOrderView(Map<String, Integer> map) {
+		PackOrderDTO dto = template.selectOne("packOrderView",map);
+		return dto;
+	}
+	
+	
+	public List<PackListDTO> packListSelect(Map<String, Integer> map){
+		List<PackListDTO> dto = template.selectList("packListSelect",map);
+		return dto;
+		
+	}
+	
+	public List<PackResultListDTO> packListView(Map<String, Object> map) {
+		List<PackResultListDTO> dto = template.selectList("packListView",map);
+		return dto;
+	}
+	
+	
 	//3글 자세히 보기
 	/*public NoticeDTO selectByNum(int num) {
 		NoticeDTO dto = template.selectOne("selectByNum", num);
