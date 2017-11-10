@@ -54,14 +54,14 @@
 <h1>글자세히 화면</h1>
 
 <form action="/test/loginX/noticeUpdate" method="post">
-	packReviewGoods <input type="hidden" name="packReviewNum"
+	 <input type="hidden" name="packReviewNum"
 		value="${rdto.packReviewNum }">
 	<div class="form-group">
-		<b>글번호:&nbsp;</b>${rdto.packReviewNum }>
+		<b>글번호:&nbsp;</b>${rdto.packReviewNum }
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>작성일:&nbsp;</b>${rdto.packReviewWriteDay }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<b>조회수:&nbsp;</b>${retrieve.noreadCnt}<br>
+		<b>조회수:&nbsp;</b>${rdto.packReviewRcnt}<br>
 	</div>
-	좋아요수: <span id="re1">${rdto.packReviewRcnt}</span>
+	좋아요수: <span id="re1">${rdto.packReviewGoods}</span>
 	<c:if test="${!empty sessionScope.comLogin}">
 
 		<span id="result"></span>
@@ -71,7 +71,7 @@
 			<img src="/test/images/goods.png">
 		</button>
 	</c:if>
-
+<br>
 	패키지 다녀왔던 곳<br> 패키지 이름:${odto.packName}&nbsp;&nbsp;&nbsp;&nbsp;출발
 	날짜:${odto.startDay}&nbsp;&nbsp;&nbsp;&nbsp;종료
 	날짜${odto.endDay}&nbsp;&nbsp;&nbsp;&nbsp; 결제했던
