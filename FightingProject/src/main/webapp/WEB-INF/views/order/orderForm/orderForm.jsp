@@ -250,7 +250,7 @@ background-color: green;
 여행 종료날짜:<input type="date" id="endDate" name="endDate">&nbsp;&nbsp;
 <input type="button" value="날짜 변경하기" id="dayButton" class="btn btn-default"><br>
 	<br>
-	<table id="termGoodsTable" class="table">
+	<table id="termGoodsTable" class="table table-condensed">
 		<tbody id="1th-tbody">
 			<tr class="nodrag">
 				<th>날짜</th>

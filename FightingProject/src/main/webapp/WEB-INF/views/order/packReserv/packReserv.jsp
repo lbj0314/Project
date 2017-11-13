@@ -208,13 +208,9 @@ tr.noDrag {
 <form action="/test/packageBuy" method="get" name="myForm" id="myForm" onsubmit="return el()" >
 	<h3>[ 패키지 예약하기 ]</h3>
 	<br>
-	<p>여행 시작날짜:</p>
-	<input type="date" id="startDate" name="startDay" readonly
-		value="${startDay }">
-	<p>여행 종료날짜:</p>
-	<input type="date" id="endDate" name="endDay" readonly
-		value="${endDay }"> <br>
-	<table border='1' id="termGoodsTable">
+	여행 시작날짜:<input type="date" id="startDate" name="startDay" readonly value="${startDay }">&nbsp;&nbsp;
+	여행 종료날짜:<input type="date" id="endDate" name="endDay" readonly value="${endDay }"> <br>
+	<table border='1' id="termGoodsTable" class="table table-striped table-condensed">
 		<tbody id="1th-tbody">
 			<tr id="notDto">
 				<th>날짜</th>

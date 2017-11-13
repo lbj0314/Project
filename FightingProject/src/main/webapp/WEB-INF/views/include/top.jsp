@@ -109,12 +109,12 @@ h5 {
 <h1 id="jjab">
 </h1>
 </div>
-<img id="siteImage" src="/test/images/dnfltkdlxmdlfmawhdwjdgody.png"  style="width: 500px; height: auto;"/>
+<a href="/test"><img id="siteImage" src="/test/images/dnfltkdlxmdlfmawhdwjdgody.png"  style="width: 500px; height: auto;"/></a>
 <br><br><br><br>
 
 
 <div id="conta" class="menumenu">
-	<a class="btn dropdown-toggle btn-lg" href="<c:url value="/"/>">
+	<a class="btn dropdown-toggle btn-lg" href="/test">
 		홈으로 </a>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
