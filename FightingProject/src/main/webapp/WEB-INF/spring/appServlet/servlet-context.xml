@@ -17,6 +17,7 @@
 	<mvc:resources location="file:///C:/upload/" mapping="/image/**" />
 	<mvc:resources location="/WEB-INF/views/js_daumaddress/"
 		mapping="/js_daumaddress/**" />
+	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
 	<mvc:view-resolvers>
 		<mvc:jsp prefix="/WEB-INF/views/" suffix=".jsp" />
 	</mvc:view-resolvers>

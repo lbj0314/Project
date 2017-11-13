@@ -1,4 +1,45 @@
-<%@page import="com.dto.fes.FesDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!doctype html>
+<html>
+<head>
+<style>
+ul{
+text-align: center;
+ 
+}
+
+li{
+text-align: left;
+}
+
+.heroes{
+
+margin: 30px; padding: 40px;
+}
+
+
+</style>
+
+<meta charset="utf-8">
+<title>Festival</title>
+<base href="/">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+	<app-root>Loading...</app-root>
+	<script type="text/javascript" src="/test/js/inline.bundle.js"></script>
+	<script type="text/javascript" src="/test/js/polyfills.bundle.js"></script>
+	<script type="text/javascript" src="/test/js/styles.bundle.js"></script>
+	<script type="text/javascript" src="/test/js/vendor.bundle.js"></script>
+	<script type="text/javascript" src="/test/js/main.bundle.js"></script>
+</body>
+</html>
+
+
+<%-- <%@page import="com.dto.fes.FesDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -9,16 +50,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Bootstrap Example</title>
+<title>Festival</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 </head>
@@ -31,7 +71,7 @@
 		</div>
 	</c:forEach>
 </body>
-<%-- <body>
+<body>
 
 <div class="w3-container">
   <h2>Filter List</h2>
@@ -61,10 +101,10 @@ function myFunction() {
 </script>
 
 </body>
-</html> --%>
+</html>
 
 
-<%-- <div class="w3-container">
+<div class="w3-container">
   <h2>${xx.fesSeason}</h2>
   <p>${xx.fesLocation}</p>
   <ul class="w3-ul w3-card-4">
@@ -78,9 +118,9 @@ function myFunction() {
     </li>
 </ul>
 </div>
- --%>
 
-<%-- 
+
+
 <table border="1">
 <c:forEach var="xx" items="${list}">
 
@@ -103,7 +143,7 @@ function myFunction() {
 </c:forEach>
 </table>
 
-</body> --%>
+</body>
 <!-- <style>
 .button {
 	background-color: #4CAF50; /* Green */
@@ -178,14 +218,14 @@ function myFunction() {
 
 ${FesDTO}
 
-<%-- 	<form action="fesList" id="aaa">
+	<form action="fesList" id="aaa">
 
 		<c:forEach var="fff" items="${fesList}">
 		</c:forEach>
 
 		<input type="hidden" name="btngo" value="1" id="btngo"> <input
 			type="hidden" value="${fff.FesImage}" id="btngo">
-		<div class="form-inline" id="conta"> --%>
+		<div class="form-inline" id="conta">
 			<!-- <button onclick="/test/fesList?fesSeason=all">전체</button>
 			<button onclick="/test/fes/fesList?fesSeason=spring">봄</button>
 			<button onclick="/test/fesList?fesSeason=summer">여름</button>
@@ -193,7 +233,7 @@ ${FesDTO}
 			<button onclick="/test/fesList?fesSeason=winter">겨울</button> -->
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-<%-- 	<table width="100%" cellspacing="0" cellpadding="0">
+	<table width="100%" cellspacing="0" cellpadding="0">
 	<tr>
 		<td>
 			<table align="center" width="710" cellspacing="0" cellpadding="0"
@@ -253,10 +293,10 @@ ${(status.index+1)%4==0}
 	<tr>
 		<td height="10">
 	</tr>
-</table> --%>
+</table>
 
 
-<%-- </form>
+</form>
 <table width="100%" cellspacing="0" cellpadding="0">
 	<tr>
 		<td>
@@ -346,11 +386,11 @@ ${(status.index+1)%4==0}
 </body>
 </html>
 
- --%>
 
 
 
-<%-- <html>
+
+<html>
 <body>
 <h1>축제 리스트</h1>
 <table border="1">
