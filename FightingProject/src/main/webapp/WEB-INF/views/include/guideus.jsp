@@ -44,11 +44,9 @@ h5 {
 
 
 sorry, we will service to join our website for foreign people soon.
-	<jsp:include page="/WEB-INF/views/include/topus.jsp" flush="true" /><br>
 
-	<br>
-	<br>
-	<br><br><br>
+<br><br><br><br>
+
 	<a href="/test/setChangeLocale.do?locale=ko" class="language">한국어</a> &nbsp;&nbsp;
 <a href="/test/setChangeLocale.do?locale=en" class="language">ENGLISH</a> &nbsp;&nbsp;
 <a href="/test/setChangeLocale.do?locale=zh" class="language">中国</a> &nbsp;&nbsp;
@@ -62,10 +60,14 @@ sorry, we will service to join our website for foreign people soon.
 <spring:message code="spring.mesg" var="xx"/>
 ${xx}<br><br>
 </h5>
-	<br><br><br><br>
+	<jsp:include page="/WEB-INF/views/include/topus.jsp" flush="true" /><br>
+
+	<br>
+	<br>
+	<br><br>
 	<br> <h1>Welcome to our site! Nice to meet you</h1><br>
 	<img src="/test/images/guide/welcome.jpg" width="500px" height=*/>
-	<br><br><br><br><br><br>
+	<br><br>
 	<br>
 
 
