@@ -101,10 +101,15 @@ h5 {
 
 </style>
 
+
 <!-- 타이틀은 대한민국 구석구석 짭 -->
+<div id="siteTitle">
 <h1 id="jjab">
-	<strong>Welcome!</strong>
+<strong>Welcome!</strong>
 </h1>
+</div>
+<img id="siteImage" src="/test/images/dnfltkdlxmdlfmawhdwjdgody.png"  style="width: 500px; height: auto;"/>
+<br><br><br><br>
 
 
 <div id="conta">

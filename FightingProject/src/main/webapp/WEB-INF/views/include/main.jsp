@@ -51,10 +51,7 @@ h5 {
 			<a href="#"><img src="/test/images/jeju.png" alt="제주지역 추천 패키지" width=* height=*></a>
 			<div class="carousel-caption">....</div>
 		</div>
-		<div class="item">
-			<a href="#"><img src="/test/images/jj.png" alt="전주지역 추천 패키지" width=* height=*></a>
-			<div class="carousel-caption">....</div>
-		</div>
+		
 	</div>
 
 

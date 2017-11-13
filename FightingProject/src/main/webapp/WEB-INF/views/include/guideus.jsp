@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -22,6 +24,18 @@
 body, head {
 	text-align: center;
 }
+
+h5 {
+	display: block;
+	font-size: 20px;
+	margin-top: 0.67em;
+	margin-bottom: 0.67em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
+	text-align: center;
+	color:#DC4C46;
+}
 </style>
 
 
@@ -34,11 +48,26 @@ sorry, we will service to join our website for foreign people soon.
 
 	<br>
 	<br>
-	<br>
+	<br><br><br>
+	<a href="/test/setChangeLocale.do?locale=ko" class="language">한국어</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=en" class="language">ENGLISH</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=zh" class="language">中国</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=de" class="language">Deutsch</a> &nbsp;&nbsp;
+<!-- <a href="/test/setChangeLocale.do?locale=jp">日本人</a> &nbsp;&nbsp; -->
+<a href="/test/setChangeLocale.do?locale=fr" class="language">Français</a> &nbsp;&nbsp;
+<a href="/test/setChangeLocale.do?locale=it" class="language">italiano</a> &nbsp;&nbsp;
+
+<br><br>
+<h5 id="i1818">
+<spring:message code="spring.mesg" var="xx"/>
+${xx}<br><br>
+</h5>
+	<br><br><br><br>
 	<br> <h1>Welcome to our site! Nice to meet you</h1><br>
 	<img src="/test/images/guide/welcome.jpg" width="500px" height=*/>
 	<br><br><br><br><br><br>
 	<br>
+
 
 	<h4>As for the tourist attractions, <br>
 	you can be informed Nature, experience, history, theme, shopping</h4><br>
