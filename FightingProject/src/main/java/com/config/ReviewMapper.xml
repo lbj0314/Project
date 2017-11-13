@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.ReviewMapper">
+
+
+
+	
+	
+	
+	<insert id="packReviewInsert" parameterType="ReviewDTO">
+		insert into review
+		(packReviewNum,packTitle,packContent,packOrdernum,comNum)
+		values ( REVIEW_SEQ.nextval,
+		#{packTitle}, #{packContent}, #{packOrderNum}, #{comNum})
+
+	</insert>
+	
+	
+	
+	
+	
+	<select id="reviewselectAll" resultType="ReviewDTO" parameterType="hashmap">
+		select packreviewnum,packtitle, to_char(packreviewwriteday,'YYYY/MM/dd') packreviewwriteday, packReviewrcnt
+	    from review
+	     <if test="searchName == 'title'">
+	       where packtitle LIKE '%'||#{searchValue}||'%'
+	    </if>
+	  
+	    order by packreviewnum desc
+	    
+	    
+	</select>
+	<select id="reviewRetrieve" resultType="ReviewDTO" parameterType="int">
+	select packreviewnum,packtitle, to_char(packreviewwriteday,'YYYY/MM/dd') packreviewwriteday,packreviewgoods,packordernum,comnum, packReviewrcnt
+	    from review where packreviewnum=#{packreviewnum}
+	</select>
+	
+	
+	
+	<select id="packOrderView" resultType="PackOrderDTO" parameterType="hashmap">
+	select packordernum,to_char(startday,'YYYY/MM/dd') startday,to_char(endday,'YYYY/MM/dd') endday,packname,adult,kid,payment,price,comnum,state 
+	from packorder where comnum=#{comNum} and state=1 and packordernum=#{packOrderNum}
+	</select>
+	
+	
+	
+	<select id="packListSelect" resultType="PackListDTO" parameterType="hashmap">
+	
+	select packlistnum,type,day,packordernum,comnum,typenum,state 
+	from packlist where comnum=#{comNum} and state=1 and packordernum=#{packOrderNum}
+	
+	</select>
+	
+	
+	<select id="packListView" resultType="PackResultListDTO" parameterType="hashmap">
+		
+		<if test="type == '관광지'">
+		 select day,type,state, attname name,attlocation location,atttype style,attadultprice adultprice,attkidprice kidprice,attphone phone from packlist join tour on(typenum=attnum) where  state=1 and type=#{type} and packOrderNum=#{packOrderNum}
+		</if>
+		<if test="type == '음식점'">
+		 select day,type,state, restname name,restlocation location,resttype style,restadultprice adultprice,restkidprice kidprice,restphone phone from packlist join restaurant on(typenum=restnum) where state=1 and type=#{type} and packOrderNum=#{packOrderNum}
+		</if>
+		<if test="type == '숙박업소'">
+		 select day,type,state, stayname name,staylocation location,staytype style,stayadultprice adultprice,staykidprice kidprice,stayphone phone from packlist join stay on(typenum=staynum)where state=1 and type=#{type} and packOrderNum=#{packOrderNum}
+		</if>
+		
+		 
+		
+	</select> 
+	
+	<update id="readReviewCnt" parameterType="int">
+		update review
+		set packReviewRcnt
+		= packReviewRcnt + 1 
+		where packReviewNum = #{packReviewNum}
+	</update>
+	
+	<update id="readpackReviewGoods" parameterType="int">
+		update review
+		set packReviewGoods
+		= packReviewGoods + 1 
+		where packReviewNum = #{packReviewNum}
+	</update>
+	
+	<!-- 
+	
+	<select id="selectByNum" resultType="NoticeDTO" parameterType="int">
+		select nonum,notitle, nocontent, to_char(nowriteDay,'YYYY/MM/dd') nowriteDay, noreadCnt
+	    from notice
+	    where nonum = #{nonum}
+	</select>
+	<update id="readCnt" parameterType="int">
+	   update notice
+	   set noreadCnt = noreadCnt + 1
+	   where nonum = #{nonum}
+	</update>
+	
+	<delete id="deleteByNum" parameterType="int">
+	   delete from notice
+	    where nonum = #{nonum}
+	</delete>
+	
+	<update id="updateByNum" parameterType="NoticeDTO">
+	    update notice
+	    set notitle=#{notitle} , nocontent=#{nocontent}
+	    where nonum = #{nonum}
+	</update>  -->
+
+	<select id="reviewtotalCount" resultType="int">
+	   select count(*)
+	   from review
+	</select>
+	
+	<select id="reviewtotalCount1" resultType="int" parameterType="hashmap">
+	   select count(*)
+	   from review
+	   
+	    <if test="searchName == 'title'">
+	       where packtitle LIKE '%'||#{searchValue}||'%'
+	    </if>
+
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!-- 
+	<select id="selectByPNum" resultType="PackOrderDTO" parameterType="hashmap">
+		select packOrderNum,to_char(startDay,'YYYY/MM/dd') startDay,to_char(endDay,'YYYY/MM/dd') endDay,adult,
+		kid,packName,payment,price,comNum,state
+		from packorder
+		where startDay = #{startDay} AND comNum=#{comNum}
+	</select>
+
+
+
+	<insert id="packListInsert" parameterType="arraylist">
+		insert ALL
+		
+		<foreach collection="list" item="item" index="index">
+		into packlist(packListNum, type, day, packOrderNum, comNum,typeNum,state,endDay)
+		values
+		(orderAll(), #{item.type}, #{item.day}, #{item.packOrderNum}, #{item.comNum},#{item.typeNum},#{item.state},#{item.endDay})
+
+		</foreach>		
+		select *
+		from
+		dual
+	</insert>
+	
+	<select id="packOrderList" resultType="PackOrderDTO" parameterType="int">
+	select packordernum,to_char(startday,'YYYY/MM/dd') startday,to_char(endday,'YYYY/MM/dd') endday,packname,adult,kid,payment,price,comnum,state 
+	from packorder where comnum=#{comNum} and state=0
+	</select>
+	
+	<select id="packListList" resultType="PackListDTO" parameterType="int">
+	select packlistnum,type,day,packordernum,comnum,typenum,state 
+	from packlist where comnum=#{comNum} and state=0
+	</select>
+	
+	<select id="packOrderListLeave" resultType="PackOrderDTO" parameterType="int">
+	select packordernum,to_char(startday,'YYYY/MM/dd') startday,to_char(endday,'YYYY/MM/dd') endday,packname,adult,kid,payment,price,comnum,state 
+	from packorder where comnum=#{comNum} and state=1
+	</select>
+	
+	<select id="packListListLeave" resultType="PackListDTO" parameterType="int">
+	select packlistnum,type,day,packordernum,comnum,typenum,state 
+	from packlist where comnum=#{comNum} and state=1
+	</select>
+
+	<select id="selectByResultPack" resultType="PackResultListDTO" parameterType="hashmap">
+		
+		<if test="type == '관광지'">
+		 select day,type,state, attname name,attlocation location,atttype style,attadultprice adultprice,attkidprice kidprice,attphone phone from packlist join tour on(typenum=attnum) where packordernum=#{packOrderNum} and type=#{type} and state=0
+		</if>
+		<if test="type == '음식점'">
+		 select day,type,state, restname name,restlocation location,resttype style,restadultprice adultprice,restkidprice kidprice,restphone phone from packlist join restaurant on(typenum=restnum) where packordernum=#{packOrderNum} and type=#{type} and state=0
+		</if>
+		<if test="type == '숙박업소'">
+		 select day,type,state, stayname name,staylocation location,staytype style,stayadultprice adultprice,staykidprice kidprice,stayphone phone from packlist join stay on(typenum=staynum) where packordernum=#{packOrderNum} and type=#{type} and state=0
+		</if>
+		
+		 
+		
+	</select>
+	<select id="selectByResultPackLeave" resultType="PackResultListDTO" parameterType="hashmap">
+		
+		<if test="type == '관광지'">
+		 select day,type,state, attname name,attlocation location,atttype style,attadultprice adultprice,attkidprice kidprice,attphone phone from packlist join tour on(typenum=attnum) where packordernum=#{packOrderNum} and type=#{type} and state=1 
+		</if>
+		<if test="type == '음식점'">
+		 select day,type,state, restname name,restlocation location,resttype style,restadultprice adultprice,restkidprice kidprice,restphone phone from packlist join restaurant on(typenum=restnum) where packordernum=#{packOrderNum} and type=#{type} and state=1
+		</if>
+		<if test="type == '숙박업소'">
+		 select day,type,state, stayname name,staylocation location,staytype style,stayadultprice adultprice,staykidprice kidprice,stayphone phone from packlist join stay on(typenum=staynum) where packordernum=#{packOrderNum} and type=#{type} and state=1
+		</if>
+		
+		 
+		
+	</select>
+ -->
+</mapper>
+
+
+
+
+

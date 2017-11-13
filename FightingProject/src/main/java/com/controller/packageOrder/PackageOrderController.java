@@ -12,7 +12,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +28,7 @@ import com.dto.order.PackListDTO;
 import com.dto.order.PackOrderDTO;
 import com.dto.order.PackResultListDTO;
 import com.dto.restaurant.RestDTO;
+import com.dto.review.ReviewDTO;
 import com.dto.stay.StayDTO;
 import com.dto.tour.TourDTO;
 import com.exception.MyException;
@@ -190,12 +194,12 @@ public class PackageOrderController {
 		odto.setPrice(resultPrice);
 		odto.setStartDay((String) session.getAttribute("startDay"));
 		odto.setEndDay((String) session.getAttribute("endDay"));
-
+		odto.setState(0);
 		map.put("startDay", (String) session.getAttribute("startDay"));
 		map.put("comNum", (int) dto.getComnum());
 
 		PackOrderDTO pdto = packService.packOrderInsert(odto, map);
-
+		
 		// serviceMap.put("totalPrice", resultPrice);
 		// serviceMap.put("startDate", startDate);
 
@@ -212,7 +216,8 @@ public class PackageOrderController {
 			ddto.setPackOrderNum(pdto.getPackOrderNum());
 			ddto.setTypeNum(Integer.parseInt(String.valueOf(controllMap.get("num"))));
 			ddto.setType(String.valueOf(controllMap.get("type")));
-
+			ddto.setState(0);
+			ddto.setEndDay(pdto.getEndDay());
 			list.add(ddto);
 			// System.out.println(ldto.get(0));
 			// System.out.println(ldto.get(1));
@@ -352,7 +357,191 @@ public class PackageOrderController {
 
 		return mav;
 	}
+	
+	
+	
+	
+	@RequestMapping("/ReservLeave")
+	public ModelAndView ReservLeave(HttpSession session)  {
+		ModelAndView mav = new ModelAndView();
+		
+		ComDTO cdto = (ComDTO) session.getAttribute("comLogin");
 
+		List<PackOrderDTO> odto = packService.packOrderListLeave(cdto.getComnum());
+		List<PackListDTO> ldto = packService.packListListLeave(cdto.getComnum());
+		List<PackResultListDTO> ydto = null;
+		Map<String, Object> map = new HashMap<>();
+		
+			//for문 시작
+			for (PackOrderDTO dto : odto) {
+				
+				//반복 돌리기 위한 초기회 작업
+				List<List<PackResultListDTO>> lldto = new ArrayList<>();
+				List<PackResultListDTO> yydto = new ArrayList<>();
+				
+				
+				String a1="a";
+				String a2="b";
+				String a3="c";
+				
+				
+				
+				//조건비교 
+				for (PackListDTO packListDTO : ldto) {
+					
+					ydto=null;
+					String tt = packListDTO.getType();
+					if(tt.equals("음식점") && a1.equals("a"))
+					{
+						System.out.println(packListDTO.getType());
+							map.put("type", packListDTO.getType());
+							map.put("packOrderNum", dto.getPackOrderNum());
+							
+							ydto = packService.selectByResultPackLeave(map);
+							a1="nono";
+							System.out.println("second1"+ydto);
+					}
+					else if(tt.equals("관광지") && a2.equals("b"))
+					{
+						System.out.println(packListDTO.getType());
+							map.put("type", packListDTO.getType());
+							map.put("packOrderNum", dto.getPackOrderNum());
+							map.get("type");
+							ydto = packService.selectByResultPackLeave(map);
+							a2="nono";
+							
+					}
+					else if(tt.equals("숙박업소") && a3.equals("c"))
+					{
+						System.out.println(packListDTO.getType());
+							map.put("type",packListDTO.getType());
+							map.put("packOrderNum", dto.getPackOrderNum());
+							map.get("type");
+							ydto = packService.selectByResultPackLeave(map);
+							a3="nono";
+							
+					}
+
+					if(ydto != null) {
+						lldto.add(ydto);
+					}
+					
+					
+
+				}
+				System.out.println("lldto!"+lldto);
+				
+				for (List<PackResultListDTO> packResultListDTO : lldto) {
+					
+					for (PackResultListDTO aaa : packResultListDTO) {
+							yydto.add(aaa);
+					}
+				}
+				
+				dto.setPackrelist(yydto);
+				
+				
+				ydto=null;
+		
+				
+
+		}
+	
+		
+		
+		mav.addObject("order", odto);
+		mav.setViewName("mypage/mypageBox");
+		
+		return mav;
+	}
+	
+	
+	@RequestMapping(value="/Review" , method = RequestMethod.GET)
+	public ModelAndView Review(@ModelAttribute PackOrderDTO dto)  {
+		ModelAndView mav = new ModelAndView();
+		
+		
+		
+		mav.addObject("order",dto);
+		mav.setViewName("mypage/mypageReview/reviewWriteView");
+		return mav;
+	}
+	
+	@RequestMapping("/deletePackage")
+	   public String deletePackage(@RequestBody String[] deleteArray,HttpSession session) {
+	      for (int i = 0; i < deleteArray.length; i++) {
+	         
+	         String deleteType = deleteArray[i].substring(deleteArray[i].length()-6, deleteArray[i].length());
+	         int deleteData = Integer.parseInt(deleteArray[i].substring(0,deleteArray[i].length()-6));
+	         if(deleteType.equals("tourTr")) {
+	            List<TourDTO> list = (List<TourDTO>)session.getAttribute("orderTourList");
+	            while(true) {
+	            if(list.size()>1) {
+	            for(TourDTO dto : list) {
+	               if(dto.getAttNum()==deleteData) {
+	                  list.remove(dto);
+	                  session.setAttribute("orderTourList", list);
+	                  break;
+	               }
+	            }
+
+	            }else if(list.size()==1){
+	               session.removeAttribute("orderTourList");
+	            }
+	            break;
+	            }
+	            
+	         }
+	         if(deleteType.equals("restTr")) {
+	            List<RestDTO> list = (List<RestDTO>)session.getAttribute("orderRestList");
+	            while(true) {
+	            if(list.size()>1) {
+	            for(RestDTO dto : list) {
+	               if(dto.getRestNum()==deleteData) {
+	                  list.remove(dto);
+	                  session.setAttribute("orderRestList", list);
+	                  break;
+	               }
+	            }
+
+	            }else if(list.size()==1){
+	               System.out.println("1개");
+	               session.removeAttribute("orderRestList");
+	            }
+	            break;
+	            }
+	            
+	         }
+	         if(deleteType.equals("stayTr")) {
+	            List<StayDTO> list = (List<StayDTO>)session.getAttribute("orderStayList");
+	            while(true) {
+	            if(list.size()>1) {
+	            for(StayDTO dto : list) {
+	               if(dto.getStayNum()==deleteData) {
+	                  list.remove(dto);
+	                  session.setAttribute("orderStayList", list);
+	                  break;
+	               }
+	            }
+
+	            }else if(list.size()==1){
+	               System.out.println("1개");
+	               session.removeAttribute("orderStayList");
+	            }
+	            break;
+	            }
+	            
+	         }
+	         
+	      }
+	      return "order/orderForm";
+	   }
+	   @RequestMapping("/guideDate")
+	   public void guideDate(@RequestBody String startDate, String endDate,HttpSession session) {
+	      ComDTO comDto = (ComDTO)session.getAttribute("comLogin");
+	      
+	   }
+	
 	@ExceptionHandler(MyException.class)
 	public String xxxx2() {
 		return "error";
