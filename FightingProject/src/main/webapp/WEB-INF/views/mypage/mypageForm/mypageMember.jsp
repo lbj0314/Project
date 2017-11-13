@@ -376,7 +376,7 @@ $(document).ready(function() {
 </c:if>
 <c:if test="${!empty sessionScope.comLogin }">
 	<form action="changeMember" method="get">
-		<table border='1'>
+		<table border='1' class="table table-striped table-condensed">
 			<tr>
 				<td>아이디</td>
 				<td><input type="text" readonly="" name="comid" id="comid"
@@ -436,7 +436,7 @@ $(document).ready(function() {
 </c:if>
 <c:if test="${!empty sessionScope.entLogin }">
 	<form action="changeMember" method="get">
-		<table border='1'>
+		<table border='1' class="table table-striped table-condensed">
 			<tr>
 				<td>
 			<tr>

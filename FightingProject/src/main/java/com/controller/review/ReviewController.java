@@ -5,15 +5,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dto.login.ComDTO;
 import com.dto.notice.NoticeDTO;
 import com.dto.notice.PageDTO;
 import com.dto.order.PackListDTO;
@@ -62,11 +67,19 @@ public class ReviewController {
 	}
 	
 	
-	@RequestMapping("/reviewRetrieve")
-	public ModelAndView reviewRetrieve(@RequestParam int packReviewNum) {
+	@RequestMapping("/reviewRetrieve/packReviewNum/{packReviewNum}")
+	public ModelAndView reviewRetrieve(@PathVariable int packReviewNum ,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Map<String, Integer> map = new HashMap<>();
 		Map<String, Object> map2 = new HashMap<>();
+		
+		if(session.getAttribute("comLogin") != null) {
+		ComDTO dto = (ComDTO)session.getAttribute("comLogin");
+		
+		
+		int comNum1=dto.getComnum();
+		mav.addObject("comNum1",comNum1);
+		}
 		ReviewDTO rdto = reviewService.reviewRetrieve(packReviewNum);
 		int comNum=rdto.getComNum();
 		int packOrderNum=rdto.getPackOrderNum();
@@ -124,6 +137,7 @@ public class ReviewController {
 		mav.addObject("odto",odto);
 		mav.addObject("ldto",llldto);
 		
+		
 		mav.setViewName("mypage/mypageReview/reviewRetrieveview");
 		return mav;
 		
@@ -132,106 +146,68 @@ public class ReviewController {
 	}
 	
 	
-	/*@RequestMapping("/loginX/packReviewGoods")
+	@RequestMapping("/loginX/packReviewGoods")
 	@ResponseBody
 	public String packReviewGoods(@RequestParam int packReviewNum) throws MyException {
-		
+		System.out.println(packReviewNum);
 		String cnt=null;
+		System.out.println(packReviewNum);
+		
+		
 		
 		try {
 		
-			ReviewDTO dto = service.goodsRest(restNum);
-			cnt = String.valueOf(dto.getRestGoods());
+			ReviewDTO dto = reviewService.readpackReviewGoods(packReviewNum);
+			cnt = String.valueOf(dto.getPackReviewGoods());
 			System.out.println("cnt!!"+cnt);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MyException("restGoods예외");
+			throw new MyException("packReviewGoods예외");
 			
 		}
 		
 		
+		
 		return cnt;
-	}*/
-	
-	
-	
-	@RequestMapping("/reviewPerPage")
-	public String reviewPerPage(String perPage) {
-		if (perPage.equals("def"))
-			perPage = "3";
-		System.out.println(perPage);
-		ReviewPageDTO.setPerPage(Integer.parseInt(perPage));
-		return "reviewList";
-	}
-	/*
-	@RequestMapping("/loginX/noticeWrite")
-	public String noticeWrite(NoticeDTO dto) throws MyException{
-		
-
-		NoticeDTO dto1 = new NoticeDTO();
-		dto1.setNotitle(dto.getNotitle());
-		dto1.setNocontent(dto.getNocontent());
-		dto1.setAdmnum(dto.getAdmnum());
-		try {
-			service.boardWrite(dto1);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw new MyException("noticeWrite예외");
-		}
-		
-		
-		return "redirect:/noticeList";
 	}
 	
-	@RequestMapping("/noticeRetrieve")
-	public String noticeRetrieve(int nonum,Model m) throws MyException {
+	
+	@RequestMapping("/loginX/packReviewUpdate")
+	public String packReviewUpdate(ReviewDTO dto)throws MyException{
+	
+		
+		ReviewDTO dto1 = new ReviewDTO();
+		dto1.setPackReviewNum(dto.getPackReviewNum());
+		dto1.setPackContent(dto.getPackContent());
+		dto1.setPackTitle(dto.getPackTitle());
 		
 		
 		try {
-			m.addAttribute("retrieve", service.selectByNum(nonum));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw new MyException("noticeRetrieve예외");
-		}
+			reviewService.packReviewUpdate(dto1);
 
-		 
-		 return "notice/retrieveview";
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new MyException("ReviewUpdate예외");
+		}
+		
+		return "redirect:/reviewList";
 	}
-	@RequestMapping("/loginX/noticeUpdate")
-	public String noticeUpdate(NoticeDTO dto)throws MyException{
 	
-		
-		NoticeDTO dto1 = new NoticeDTO();
-		dto1.setNonum(dto.getNonum());
-		dto1.setNotitle(dto.getNotitle());
-		dto1.setNocontent(dto.getNocontent());
-		
-		
+	
+	
+	@RequestMapping("/loginX/packReviewDelete/packReviewNum/{packReviewNum}")
+	public String packReviewDelete(@PathVariable int packReviewNum) throws MyException {
 		try {
-			service.updateByNum(dto1);
+			reviewService.packReviewDelete(packReviewNum);
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new MyException("noticeUpdate예외");
+			throw new MyException("packReviewDelete예외");
 		}
 		
-		return "redirect:/noticeList";
+		return "redirect:/reviewList";
+		
 	}
-	@RequestMapping("/loginX/noticeDelete")
-	public String noticeDelete(int nonum) throws MyException {
-		try {
-			service.deleteByNum(nonum);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new MyException("noticeDelete예외");
-		}
-		
-		return "redirect:/noticeList";
-		
-	}*/
 	
 
 }

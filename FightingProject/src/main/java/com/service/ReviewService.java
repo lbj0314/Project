@@ -50,6 +50,23 @@ public class ReviewService {
 		return dao.readpackReviewGoods(packReviewNum);
 	}
 	
+	
+	
+	public void packReviewUpdate(ReviewDTO dto) {
+
+		dao.packReviewUpdate(dto);
+
+	}
+	
+	public void packReviewDelete(int packReviewNum) {
+
+		dao.packReviewDelete(packReviewNum);
+
+	}
+	
+	
+	
+	
 	/*ublic void boardWrite(NoticeDTO dto) {
 		dao.boardWrite(dto);
 	}// end boardWrite
@@ -62,17 +79,9 @@ public class ReviewService {
 		
 	}// end selectByNum
 
-	public void deleteByNum(int num) {
+	// end deleteByNum
 
-		dao.deleteByNum(num);
-
-	}// end deleteByNum
-
-	public void updateByNum(NoticeDTO dto) {
-
-		dao.updateByNum(dto);
-
-	}// end deleteByNum
+	// end deleteByNum
 
 	public List<NoticeDTO> search(HashMap<String, String> map) {
 		return dao.search(map);

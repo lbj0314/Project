@@ -7,28 +7,28 @@
 
 
 <script type="text/javascript">
-	$("#result").on("click", function(event) {
-		//event.preventDefault();
-		//ajax 지역별 통신
-		$.ajax({
-			type : "get",
-			url : "/test/loginX/packReviewGoods",
-			dataType : "text",
-			data : {
-				packReviewNum : $("#packReviewNum").val()
-			},
-			success : function(responseData, status, xhr) {
-				console.log(responseData);
-				$("#result").text(responseData);
-				$("#re1").css("display", "none");
-			},
-			error : function(xhr, status, e) {
-				console.log(status, e);
-			}
-		});
-	});
-
 	$(document).ready(function() {
+
+		$("#xxx2").on("click", function(event) {
+			//event.preventDefault();
+			//ajax 지역별 통신
+			$.ajax({
+				type : "get",
+				url : "/test/loginX/packReviewGoods",
+				dataType : "text",
+				data : {
+					packReviewNum : $("#packReviewNum").val()
+				},
+				success : function(responseData, status, xhr) {
+					console.log(responseData);
+					$("#result").text(responseData);
+					$("#re1").css("display", "none");
+				},
+				error : function(xhr, status, e) {
+					console.log(status, e);
+				}
+			});
+		});
 
 		$(".hideNshow").click(function() {
 
@@ -53,26 +53,22 @@
 
 <h1>후기 게시글 보기</h1>
 
-<form action="/test/loginX/noticeUpdate" method="post">
-	 <input type="hidden" name="packReviewNum"
-		value="${rdto.packReviewNum }">
-	
-		<b>글번호:&nbsp;</b>${rdto.packReviewNum }
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>작성일:&nbsp;</b>${rdto.packReviewWriteDay }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<b>조회수:&nbsp;</b>${rdto.packReviewRcnt}<br>
-	
-	좋아요수: <span id="re1">${rdto.packReviewGoods}</span>
-	<c:if test="${!empty sessionScope.comLogin}">
+<form action="/test/loginX/packReviewUpdate">
+	<input type="hidden" id="packReviewNum" name="packReviewNum"
+		value="${rdto.packReviewNum }"> <b>글번호:&nbsp;</b>${rdto.packReviewNum }
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>작성일:&nbsp;</b>${rdto.packReviewWriteDay }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<b>조회수:&nbsp;</b>${rdto.packReviewRcnt}<br> 좋아요수: <span id="re1">${rdto.packReviewGoods}</span>
+	<c:if test="${!empty sessionScope.comLogin  && rdto.comNum != comNum1}">
 
 		<span id="result"></span>
-		<button type="button" id="xxx" class="btn btn-default btn-xs">
+		<button type="button" id="xxx2" class="btn btn-default btn-xs">
 
 
 			<img src="/test/images/goods.png">
 		</button>
 	</c:if>
-<br>
-	패키지 다녀왔던 곳<br> 패키지 이름:${odto.packName}&nbsp;&nbsp;&nbsp;&nbsp;출발
+	<br> 패키지 다녀왔던 곳<br> 패키지
+	이름:${odto.packName}&nbsp;&nbsp;&nbsp;&nbsp;출발
 	날짜:${odto.startDay}&nbsp;&nbsp;&nbsp;&nbsp;종료
 	날짜${odto.endDay}&nbsp;&nbsp;&nbsp;&nbsp; 결제했던
 	수단:${odto.payment}&nbsp;&nbsp;&nbsp;&nbsp;결제했던
@@ -94,8 +90,8 @@
 			<td align=center><b>어린이가격</b></td>
 			<td align=center><b>전화번호</b></td>
 		</tr>
-		
-		 <c:forEach var="cc" items="${ldto}" varStatus="status">
+
+		<c:forEach var="cc" items="${ldto}" varStatus="status">
 			<tr>
 				<td align=center>${cc.day}</td>
 				<td align=center>${cc.type}</td>
@@ -110,26 +106,36 @@
 
 	</table>
 	<div id="conta">
-	<div class="form-group">
-		제목<input type="text" name="notitle" value="${rdto.packTitle }"
-			class="form-control"><br>
+		<div class="form-group">
+			제목<input type="text" name="packTitle" value="${rdto.packTitle }"
+				class="form-control"><br>
+		</div>
+		<div class="form-group">
+			내용
+			<textarea rows="10" cols="10" name="packContent" class="form-control">${rdto.packContent}</textarea>
+			
+
+		</div>
 	</div>
-	<div class="form-group">
-		내용
-		<textarea rows="10" cols="10" name="nocontent" class="form-control">${rdto.packContent }</textarea>
-		<c:if test="${!empty sessionScope.admLogin}">
-			<input type="submit" value="수정" class="btn btn-primary">
+
+
+	<div id="conta">
+		<c:if
+			test="${!empty sessionScope.comLogin && (rdto.comNum == comNum1)}">
+
+
+			<input type="submit" class="btn btn-default" value="수정 하기">
+		</c:if>
+		<c:if
+			test="${!empty sessionScope.admLogin || (!empty sessionScope.comLogin && (rdto.comNum == comNum1))}">
+			<a href="/test/loginX/packReviewDelete/packReviewNum/${rdto.packReviewNum}"
+				class="btn btn-default">삭제 하기</a>
 		</c:if>
 
-	</div>
+		<a href="/test/reviewList" class="btn btn-primary">목록</a>
+
 	</div>
 </form>
-
-<%-- <a href="/test/noticeList" class="btn btn-primary">목록</a>
-<c:if test="${!empty sessionScope.admLogin}">
-	<a href="/test/loginX/noticeDelete?nonum=${retrieve.nonum }"
-		class="btn btn-primary"> 삭제</a>
-</c:if> --%>
 
 
 

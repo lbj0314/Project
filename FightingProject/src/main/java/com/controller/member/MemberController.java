@@ -33,8 +33,8 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/myPageForm")
-	public String myPage() {
-
+	public String myPage(Model m) {
+		m.addAttribute("member", "member");
 		return "mypage/mypage";
 	}
 	
