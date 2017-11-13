@@ -85,7 +85,7 @@
 		//테이블 행 추가
 		var between = $("#betweenDay").val();
 		for (var i = 1; i <= between-1; i++) {			
-			$("#2th-tbody tr:nth-child("+i+")").after("<tr id='"+((i*1)+(2*1))+"-termTr' class='nodrag'><td>"+((i*1)+(2*1))+"일</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>")
+			$("#2th-tbody tr:nth-child("+i+")").after("<tr id='"+((i*1)+(2*1))+"-termTr' class='nodrag'><td>"+((i*1)+(2*1))+"일차</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>")
 		}
 		
 		//선택 삭제하기
@@ -225,6 +225,15 @@
 tr.noDrag {
 	cursor: point;
 }
+.tourTr{
+background-color: yellow;
+}
+.restTr{
+background-color: blue;
+}
+.stayTr{
+background-color: green;
+}
 </style>
 
 <form action="/test/packageOrderForm" method="get" name="myForm"
@@ -237,13 +246,11 @@ tr.noDrag {
 		value="${sessionScope.endDay }">
 	<h3>[ 패키지 만들기 ]</h3>
 	<br>
-	<p>여행 시작날짜:</p>
-	<input type="date" id="startDate" name="startDate"><br>
-	<p>여행 종료날짜:</p>
-	<input type="date" id="endDate" name="endDate"><input
-		type="button" value="날짜 변경하기" id="dayButton" class="btn btn-default"><br>
+여행 시작날짜:<input type="date" id="startDate" name="startDate">&nbsp;&nbsp;
+여행 종료날짜:<input type="date" id="endDate" name="endDate">&nbsp;&nbsp;
+<input type="button" value="날짜 변경하기" id="dayButton" class="btn btn-default"><br>
 	<br>
-	<table border='1' id="termGoodsTable">
+	<table id="termGoodsTable" class="table">
 		<tbody id="1th-tbody">
 			<tr class="nodrag">
 				<th>날짜</th>
@@ -257,7 +264,7 @@ tr.noDrag {
 			</tr>
 
 			<tr id="1-termTr" class="nodrag">
-				<td>1일</td>
+				<td>1일차</td>
 				<td id="1-1td"></td>
 				<td id="1-2td"></td>
 				<td id="1-3td"></td>
@@ -269,7 +276,7 @@ tr.noDrag {
 		</tbody>
 		<tbody id="2th-tbody">
 			<tr id="2-termTr" class="nodrag">
-				<td>2일</td>
+				<td>2일차</td>
 				<td id="2-1td"></td>
 				<td id="2-2td"></td>
 				<td id="2-3td"></td>
@@ -279,7 +286,10 @@ tr.noDrag {
 				<td id="2-7td"></td>
 			</tr>
 			<tr id="afterReserv" class="nodrag">
-				<td colspan="8" >&nbsp;&nbsp;여기 tr 없애지 마시오!!!!&nbsp;&nbsp;</td>
+				<td colspan="8" >&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr id="afterReserv" class="nodrag">
+				<td colspan="8" >&nbsp;&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 
 			<tr id="allCheckTr" class="nodrag">
@@ -296,7 +306,7 @@ tr.noDrag {
 			<c:forEach var="item" items="${sessionScope.orderTourList}"
 				varStatus="status">
 				<c:if test="${!empty item.attNum }">
-					<tr id="${item.attNum }tourTr" name="reservTr">
+					<tr id="${item.attNum }tourTr" name="reservTr" class="tourTr">
 						<td align="center"><input type="checkbox" name="chk"></td>
 						<td>관광지</td>
 						<td>${item.attName }</td>
@@ -311,7 +321,7 @@ tr.noDrag {
 			<c:forEach var="item" items="${sessionScope.orderRestList}"
 				varStatus="status">
 				<c:if test="${!empty item.restNum }">
-					<tr id="${item.restNum }restTr" name="reservTr">
+					<tr id="${item.restNum }restTr" name="reservTr" class="restTr">
 						<td align="center"><input type="checkbox" name="chk"></td>
 						<td>음식점</td>
 						<td>${item.restName }</td>
@@ -326,7 +336,7 @@ tr.noDrag {
 			<c:forEach var="item" items="${sessionScope.orderStayList}"
 				varStatus="status">
 				<c:if test="${!empty item.stayNum }">
-					<tr id="${item.stayNum }stayTr" name="reservTr">
+					<tr id="${item.stayNum }stayTr" name="reservTr" class="stayTr">
 						<td align="center"><input type="checkbox" name="chk"></td>
 						<td>숙박소</td>
 						<td>${item.stayName }</td>
@@ -341,7 +351,7 @@ tr.noDrag {
 		</tbody>
 	</table>
 	<a href="" class="btn btn-default" id="">선택 삭제하기</a> <input
-		type="button" class="btn btn-default" value="주문하기" id="reservation"><br>
+		type="button" class="btn btn-default" value="주문하기" id="reservation"><br><br><br>
 	<a href="tourList?tourForm=tourForm" class="btn btn-default">관광지
 		추가하기</a> <a href="restList?restForm=restForm" class="btn btn-default">음식점
 		추가하기</a> <a href="stayList?stayForm=stayForm" class="btn btn-default">숙박업소
