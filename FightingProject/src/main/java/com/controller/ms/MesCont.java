@@ -65,7 +65,7 @@ public class MesCont {
 	 		localeResolver.setLocale(request, response, Locale.ITALIAN);
 			}
 	      
-		return "homeus";
+		return "include/guideus";
 
 	}
 }
