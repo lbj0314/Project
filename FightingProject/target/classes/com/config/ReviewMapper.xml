@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    
 	</select>
 	<select id="reviewRetrieve" resultType="ReviewDTO" parameterType="int">
-	select packreviewnum,packtitle, to_char(packreviewwriteday,'YYYY/MM/dd') packreviewwriteday,packreviewgoods,packordernum,comnum, packReviewrcnt
+	select packreviewnum,packtitle, to_char(packreviewwriteday,'YYYY/MM/dd') packreviewwriteday,packreviewgoods,packordernum,comnum, packReviewrcnt, packContent
 	    from review where packreviewnum=#{packreviewnum}
 	</select>
 	
@@ -84,29 +84,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where packReviewNum = #{packReviewNum}
 	</update>
 	
-	<!-- 
-	
-	<select id="selectByNum" resultType="NoticeDTO" parameterType="int">
-		select nonum,notitle, nocontent, to_char(nowriteDay,'YYYY/MM/dd') nowriteDay, noreadCnt
-	    from notice
-	    where nonum = #{nonum}
-	</select>
-	<update id="readCnt" parameterType="int">
-	   update notice
-	   set noreadCnt = noreadCnt + 1
-	   where nonum = #{nonum}
+	<update id="packReviewUpdate" parameterType="ReviewDTO">
+	    update review
+	    set packTitle=#{packTitle} , packContent=#{packContent}
+	    where packReviewNum = #{packReviewNum}
 	</update>
 	
-	<delete id="deleteByNum" parameterType="int">
-	   delete from notice
-	    where nonum = #{nonum}
+	<delete id="packReviewDelete" parameterType="int">
+	   delete from review
+	    where packReviewNum = #{packReviewNum}
 	</delete>
 	
-	<update id="updateByNum" parameterType="NoticeDTO">
-	    update notice
-	    set notitle=#{notitle} , nocontent=#{nocontent}
-	    where nonum = #{nonum}
-	</update>  -->
+	
 
 	<select id="reviewtotalCount" resultType="int">
 	   select count(*)

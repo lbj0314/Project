@@ -104,7 +104,7 @@
 
 						<tr>
 							<td>${xx.packReviewNum}</td>
-							<td><a href="/test/reviewRetrieve?packReviewNum=${xx.packReviewNum}">${xx.packTitle}</a></td>
+							<td><a href="/test/reviewRetrieve/packReviewNum/${xx.packReviewNum}">${xx.packTitle}</a></td>
 							<td>${xx.packReviewWriteDay}</td>
 							<td>${xx.packReviewRcnt}</td>
 						</tr>

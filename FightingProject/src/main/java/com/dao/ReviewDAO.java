@@ -59,24 +59,17 @@ public class ReviewDAO {
 		template.update("readpackReviewGoods",packReviewNum);
 		return template.selectOne("reviewRetrieve",packReviewNum);
 	}
-	
-	
-	//3글 자세히 보기
-	/*public NoticeDTO selectByNum(int num) {
-		NoticeDTO dto = template.selectOne("selectByNum", num);
-		return dto;
-	}*/
-	
-
-	/*//4. 글 삭제
-	public void deleteByNum(int num) {
-		template.delete("deleteByNum",num);
+	public void packReviewUpdate(ReviewDTO dto) {
+		template.update("packReviewUpdate", dto);
 	}
-	*///5. 글 수정
-	/*	public void updateByNum(NoticeDTO dto) {
-			template.update("updateByNum", dto);
-		}
-	*/	
+	
+	
+	public void packReviewDelete(int packReviewNum) {
+		template.delete("packReviewDelete",packReviewNum);
+	}
+	
+	
+	
 		//6. 검색보기
 		public List<NoticeDTO> search(HashMap<String, String> map){
 	      List<NoticeDTO> list =template.selectList("search", map);
