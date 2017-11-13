@@ -197,62 +197,6 @@
 				return false;
 			}
 		});
-
-		//어른인원수랑 어린이 인원수 바뀔때마다 또 조정해줘야됨 ㅅㅂ;;;;;;; -> 했음 ㅅㄱ
-		//어른 바뀔때
-		/*
-		$("#adultCount").on("change",function(){
-		var adultPriceArray = new Array();
-		var kidPriceArray = new Array();
-		
-		$("#1th-tbody").children().not("#notDto").each(function(index,item){
-			var adultPrice = $(item).children().eq(6);
-			var kidPrice = $(item).children().eq(7);
-			adultPriceArray.push(adultPrice);
-			kidPriceArray.push(kidPrice);
-		});
-		var adultResult = 0;
-		for (var i = 0; i < adultPriceArray.length; i++) {
-			adultResult+=adultPriceArray[i];
-		}
-		adultResult*=$("#adultCount").val();
-		var kidResult = 0;
-		for (var i = 0; i < kidPriceArray.length; i++) {
-			kidResult+=kidPriceArray[i];
-		}
-		kidResult*=$("#kidCount").val();
-		$("#resultPrice").val(adultResult+kidResult);
-		});
-		
-		
-		 */
-		//어린이 바뀔때
-		/*
-		$("#kidCount").on("change",function(){
-			var adultPriceArray = new Array();
-			var kidPriceArray = new Array();
-			
-			$("#1th-tbody").children().not("#notDto").each(function(index,item){
-				var adultPrice = $(item).children().eq(6);
-				var kidPrice = $(item).children().eq(7);
-				adultPriceArray.push(adultPrice);
-				kidPriceArray.push(kidPrice);
-			});
-			var adultResult = 0;
-			for (var i = 0; i < adultPriceArray.length; i++) {
-				adultResult+=adultPriceArray[i];
-			}
-			adultResult*=$("#adultCount").val();
-			var kidResult = 0;
-			for (var i = 0; i < kidPriceArray.length; i++) {
-				kidResult+=kidPriceArray[i];
-			}
-			kidResult*=$("#kidCount").val();
-			$("#resultPrice").val(adultResult+kidResult);
-			
-		}); 
-		 */
-
 	});
 </script>
 <style type="text/css">
