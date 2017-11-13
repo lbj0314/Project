@@ -14,6 +14,7 @@ text-align: left;
 }
 
 .heroes{
+
 margin: 30px; padding: 40px;
 }
 
