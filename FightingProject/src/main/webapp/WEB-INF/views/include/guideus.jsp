@@ -41,13 +41,13 @@ sorry, we will service to join our website for foreign people soon.
 	<br>
 
 	<h4>As for the tourist attractions, <br>
-	Nature, experience, history, theme, shopping</h4><br>
+	you can be informed Nature, experience, history, theme, shopping</h4><br>
 	<a href="/test/tourList"><img src="/test/images/guide/tourguide.jpg" width="500px" height=*/></a>
 	<br>
 	<a href="/test/tourList">Click on the picture or click here to see information about the attractions!</a><br>
 <br><br><br><br><br><br>
 	<h4>As for the restaurant, <br>
-	Korean, Japanese, Chinese, Western, fast food, confectionary</h4><br>
+	you can be informed Korean, Japanese, Chinese, Western, fast food, confectionary</h4><br>
 	<a href="/test/restList"><img src="/test/images/guide/restguide.jpg" width="500px" height=*/></a>
 	<br>
 	<a href="/test/restList">Click on the picture or here to see information about the restaurant!</a><br>
