@@ -124,7 +124,7 @@ h5 {
 		</a>
 		<ul class="dropdown-menu">
 			<li><a href="/test/noticeList">공지사항</a><br></li>
-			<li><a href="#">이벤트</a><br></li>
+			<li><a href="<c:url value="/guide"/>">사이트 이용법</a><br></li>
 			<li><a href="#">추천패키지</a><br></li>
 		</ul>
 	</div>
@@ -172,7 +172,7 @@ h5 {
 		<ul class="dropdown-menu">
 			<li><a href="/test/reviewList">후기</a><br></li>
 			<li><a href="#">QnA</a><br></li>
-			<li><a href="<c:url value="/guide"/>">사이트 이용법</a><br></li>
+			
 		</ul>
 	</div>
 </div>
