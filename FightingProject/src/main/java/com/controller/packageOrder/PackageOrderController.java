@@ -535,9 +535,9 @@ public class PackageOrderController {
 			
 			long a = startDate.getTime()-orderStartDate.getTime();
 			long c = endDate.getTime()-orderStartDate.getTime();
-			if(a>0) {
+			if(a>=0) {
 				result = false;
-			}else if(c<0) {
+			}else if(c<=0) {
 				result = false;
 			}
 		}
