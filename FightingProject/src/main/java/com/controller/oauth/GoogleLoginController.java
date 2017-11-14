@@ -44,7 +44,7 @@ public class GoogleLoginController {
 	@RequestMapping(value = "/**")
 	public String login(Model model) {
 
-		 //구글code 발행 
+		 //구글code 발행  
 		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
 		String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
 		System.out.println("구글:" + url);
