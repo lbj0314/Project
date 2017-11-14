@@ -42,10 +42,12 @@
 
 	<c:if test="${!empty aa}">
 		<script>
-			window.close();
+			
 			$(document).ready(function() {
-				location.reload();
+				opener.parent.location.reload();
+				window.close();
 			});
+			
 		</script>
 	</c:if>
 	${sessionScope.google}&nbsp;
@@ -57,10 +59,10 @@
 <c:if test="${!empty sessionScope.naver}">
 	<c:if test="${!empty bb}">
 		<script>
+		$(document).ready(function() {
+			opener.parent.location.reload();
 			window.close();
-			$(document).ready(function() {
-				$("#loin").attr("href", "/test/oauth2callback");
-			});
+		});
 		</script>
 	</c:if>
 	${sessionScope.naver}&nbsp;
