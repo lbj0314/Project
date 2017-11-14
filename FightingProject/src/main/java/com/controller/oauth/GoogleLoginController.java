@@ -55,7 +55,7 @@ public class GoogleLoginController {
 
 	// 구글 Callback호출 메소드
 	@RequestMapping(value = "/oauth2callback")
-	public String googleCallback(HttpSession session, @RequestParam String code) throws IOException {
+	public String googleCallback(HttpSession session, @RequestParam String code,Model m) throws IOException {
 		
 		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
 		AccessGrant accessGrant = oauthOperations.exchangeForAccess(code , googleOAuth2Parameters.getRedirectUri(),
@@ -81,7 +81,7 @@ public class GoogleLoginController {
 		PlusOperations plusOperations = google.plusOperations();
 		//System.out.println(">!"+plusOperations);
 		
-		
+		m.addAttribute("aa",1);
 		
 		
 		
