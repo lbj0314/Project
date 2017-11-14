@@ -109,7 +109,7 @@ h5 {
 <h1 id="jjab">
 </h1>
 </div>
-<a href="<c:url value="/"/>"><img id="siteImage" src="/test/images/dnfltkdlxmdlfmawhdwjdgody.png"  style="width: 500px; height: auto;"/></a>
+<a href="/test"><img id="siteImage" src="/test/images/dnfltkdlxmdlfmawhdwjdgody.png"  style="width: 500px; height: auto;"/></a>
 <br><br><br><br>
 
 
@@ -124,7 +124,7 @@ h5 {
 		</a>
 		<ul class="dropdown-menu">
 			<li><a href="/test/noticeList">공지사항</a><br></li>
-			<li><a href="#">이벤트</a><br></li>
+			<li><a href="/test/eventList">이벤트</a><br></li>
 			<li><a href="#">추천패키지</a><br></li>
 		</ul>
 	</div>

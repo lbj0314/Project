@@ -1,6 +1,6 @@
-<%@page import="com.dto.notice.PageDTO"%>
+<%@page import="com.dto.event.EventPageDTO"%>
 <%@page import="java.util.HashMap"%>
-<%@page import="com.dto.notice.NoticeDTO"%>
+<%@page import="com.dto.event.EventDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -24,7 +24,7 @@
 			//ajax 페이지 보여줄 갯수 통신
 			$.ajax({
 				type:"get",
-				url:"/test/noticePerPage",
+				url:"/test/eventPerPage",
 				data:{
 					perPage:$("#perPage").val()
 				},
@@ -65,7 +65,7 @@
 
 
 	<h1 align=center>
-		&nbsp;&nbsp;&nbsp;공지사항<small>&nbsp;&nbsp;&nbsp;</small>
+		&nbsp;&nbsp;&nbsp;이벤트<small>&nbsp;&nbsp;&nbsp;</small>
 	</h1>
 
 	<div class="container">
@@ -81,11 +81,11 @@
 			</tr>
 			<c:set value="${list}" var="dto" scope="request" />
 
-			<c:set value="${dto.getList()}" var="list1" scope="request" />
+			<c:set value="${dto.getEventList()}" var="list1" scope="request" />
 			<c:choose>
 
 
-				<c:when test="${list.getList().size()==0}">
+				<c:when test="${list.getEventList().size()==0}">
 
 
 					<tr>
@@ -101,10 +101,10 @@
 
 
 						<tr>
-							<td>${xx.nonum}</td>
-							<td><a href="/test/noticeRetrieve?nonum=${xx.nonum}">${xx.notitle}</a></td>
-							<td>${xx.nowriteDay}</td>
-							<td>${xx.noreadCnt}</td>
+							<td>${xx.eventNonum}</td>
+							<td><a href="/test/eventRetrieve?nonum=${xx.eventNonum}">${xx.eventNotitle}</a></td>
+							<td>${xx.eventNowriteDay}</td>
+							<td>${xx.eventNoreadCnt}</td>
 						</tr>
 
 					</c:forEach>
@@ -124,7 +124,7 @@
 					
 					
 					<!-- 검색 -->
-					<form action="/test/noticeList" class="form-inline" id="aaa">
+					<form action="/test/eventList" class="form-inline" id="aaa">
 						페이지에서 보여줄 갯수 <select name="perPage" class="form-inline" id="perPage">
 							<option value="def">선택하세요</option>
 							<option value="3">3</option>
@@ -145,9 +145,9 @@
 			
 			
 			<!-- 데이터가 하나도 없을시에 페이징처리 안함. -->
-			<c:if test="${list.getList().size()!=0}">
+			<c:if test="${list.getEventList().size()!=0}">
 				<tr>
-					<td colspan="5"><jsp:include page="page.jsp" flush="true" /></td>
+					<td colspan="5"><jsp:include page="eventPage.jsp" flush="true" /></td>
 				</tr>
 			</c:if>
 
@@ -158,7 +158,7 @@
 
 		<div class="huge-top">
 			<button class="btn btn-normal pull-right"
-				onclick="location.href='/test/loginX/noticeWriteUI';">글쓰기</button>
+				onclick="location.href='/test/loginX/eventWriteUI';">글쓰기</button>
 		</div>
 		</c:if>
 	</div>

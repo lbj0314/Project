@@ -395,12 +395,12 @@ $(document).ready(function() {
 			<tr>
 				<td>주민번호</td>
 				<td><input type="text" readonly="" name="comssn" id="comssn"
-					value="${sessionScope.comLogin.comssn }"><font name="check3" size="2" >></font></td>
+					value="${sessionScope.comLogin.comssn }"><font name="check3" size="2" ></font></td>
 			</tr>
 			<tr>
 				<td>핸드폰번호</td>
 				<td><input type="text" name="comphone" id="comphone"
-					value="${sessionScope.comLogin.comphone }"><font name="check4" size="2" ></font>></td>
+					value="${sessionScope.comLogin.comphone }"><font name="check4" size="2" ></font></td>
 			</tr>
 			<tr>
 				<td>회원등급</td>

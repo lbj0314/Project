@@ -46,7 +46,7 @@
 	<br>
 	<br>
 
-	<table border=1 id="${item.packOrderNum}table1" style="display:none" class="table1">
+	<table border=1 id="${item.packOrderNum}table1" style="display:none" class="table1 table table-striped table-condensed">
 		<tr>
 			<td align=center><b>일자</b></td>
 			<td align=center><b>타입</b></td>

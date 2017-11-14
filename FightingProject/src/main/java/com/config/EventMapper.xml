@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.EventMapper">
+
+	<select id="eventSelectAll" resultType="EventDTO" parameterType="hashmap">
+		select eventnonum,eventnotitle, to_char(eventnowriteday,'YYYY/MM/dd') eventnowriteDay, eventnoreadCnt
+	    from event
+	     <if test="searchName == 'title'">
+	       where eventnotitle LIKE '%'||#{searchValue}||'%'
+	    </if>
+	  
+	    order by eventnonum desc
+	</select>
+	<insert id="eventBoardWrite" parameterType="EventDTO">
+	    insert into event ( eventnonum,eventnotitle,eventnocontent,eventadmnum)
+	    values ( event_seq.nextval, #{eventNotitle},#{eventNocontent},#{eventAdmnum})
+	</insert>
+	<select id="eventSelectByNum" resultType="EventDTO" parameterType="int">
+		select eventnonum,eventnotitle, eventnocontent, to_char(eventNowriteDay,'YYYY/MM/dd') eventNowriteDay, eventnoreadCnt
+	    from event
+	    where eventnonum = #{eventNonum}
+	</select>
+	<update id="eventReadCnt" parameterType="int">
+	   update event
+	   set eventnoreadCnt = eventnoreadCnt + 1
+	   where eventnonum = #{eventNonum}
+	</update>
+	
+	<delete id="eventDeleteByNum" parameterType="int">
+	   delete from event
+	    where eventnonum = #{eventNonum}
+	</delete>
+	
+	<update id="eventUpdateByNum" parameterType="EventDTO">
+	    update event
+	    set eventnotitle=#{eventNotitle} , eventnocontent=#{eventNocontent}
+	    where eventnonum = #{eventNonum}
+	</update>
+
+	<select id="eventTotalCount" resultType="int">
+	   select count(*)
+	   from event
+	</select>
+	
+	<select id="eventTotalCount1" resultType="int" parameterType="hashmap">
+	   select count(*)
+	   from event
+	   
+	    <if test="eventSearchName == 'title'">
+	       where eventnotitle LIKE '%'||#{searchValue}||'%'
+	    </if>
+
+	</select>
+	
+</mapper>
+
+
+
+
+

@@ -6,7 +6,7 @@
 <c:if test="${!empty sessionScope.comdto and !empty requestScope.commember }">
 	<form action="memberManageDelete" method="get">
 	<input type="hidden" name="category" value="com">
-		<table border='1'>
+		<table border='1' class="table table-striped table-condensed">
 			<tr>
 				<td>아이디</td>
 				<td><input type="text" readonly="" 
@@ -66,7 +66,7 @@
 <c:if test="${!empty sessionScope.entdto and !empty requestScope.entmember }">
 	<form action="memberManageDelete" method="get">
 	<input type="hidden" name="category" value="ent">
-		<table border='1'>
+		<table border='1' class="table table-striped table-condensed">
 			<tr>
 				<td>
 			<tr>
