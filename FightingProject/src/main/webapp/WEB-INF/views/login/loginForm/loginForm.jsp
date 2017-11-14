@@ -15,6 +15,8 @@
 		$("#loout").attr("href", "/test/googleLogout");
 		$("#loout2").attr("href", "/test/naverLogout");
 
+		$("#loin2").attr("href", "/test/naverLogout");
+
 	});
 </script>
 
@@ -37,14 +39,35 @@
 	<a href="myPageForm" class="btn btn-default">DB관리</a>&nbsp;
 </c:if>
 <c:if test="${!empty sessionScope.google}">
+
+	<c:if test="${!empty aa}">
+		<script>
+			window.close();
+			$(document).ready(function() {
+				location.reload();
+			});
+		</script>
+	</c:if>
 	${sessionScope.google}&nbsp;
-	<a id="loout" onclick="window.open('https://accounts.google.com/logout','win','width=500,height=500,toolbar=0,scrollbars=0,resizable=0');location.reload(true);" class="btn btn-default" >로그아웃</a>
-	
+	<a id="loout"
+		onclick="window.open('https://accounts.google.com/logout','win','width=500,height=500,toolbar=0,scrollbars=0,resizable=0');"
+		class="btn btn-default">로그아웃</a>
+
 </c:if>
 <c:if test="${!empty sessionScope.naver}">
+	<c:if test="${!empty bb}">
+		<script>
+			window.close();
+			$(document).ready(function() {
+				$("#loin").attr("href", "/test/oauth2callback");
+			});
+		</script>
+	</c:if>
 	${sessionScope.naver}&nbsp;
-	<a id="loout2" onclick="window.open('http://nid.naver.com/nidlogin.logout','win','width=500,height=500,toolbar=0,scrollbars=0,resizable=0');location.reload(true);" class="btn btn-default">로그아웃</a>
-	location.reload();
+	<a id="loout2"
+		onclick="window.open('http://nid.naver.com/nidlogin.logout','win','width=500,height=500,toolbar=0,scrollbars=0,resizable=0');"
+		class="btn btn-default">로그아웃</a>
+
 </c:if>
 <c:if
 	test="${empty sessionScope.entLogin and empty sessionScope.comLogin and empty sessionScope.admLogin and empty sessionScope.google and empty sessionScope.naver}">
@@ -60,15 +83,15 @@
 			<input type="submit" value="로그인" class="btn btn-default"> <a
 				href="joinForm" class="btn btn-default">회원가입</a>
 		</form>
-		<br>
+		<br> <span id="google_id_login" style="text-align: right">
+			<a id="loin"
+			onclick="window.open('${google_url}','win','width=500,height=500,toolbar=0,scrollbars=0,resizable=0')"><img
+				src="images/google.jpg"></a> <jsp:include
+				page="/WEB-INF/views/oauth/oauthtest.jsp" flush="true" />
+		</span>
 
-		<div id="google_id_login" style="text-align: right">
-			<a onclick="window.open('${google_url}','win','width=500,height=500,toolbar=0,scrollbars=0,resizable=0')";><img src="images/google.jpg"></a><jsp:include page="/WEB-INF/views/oauth/oauthtest.jsp" flush="true" />
-			
-		</div>
-		
-		
-		
+
+
 	</div>
 
 </c:if>
