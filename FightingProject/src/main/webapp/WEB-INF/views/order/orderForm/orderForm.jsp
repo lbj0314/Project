@@ -62,18 +62,26 @@
 	          if(betweenDay<0){
 	             alert("현재 날짜보다 이전날짜를 설정 할 수 없습니다.");
 	               $("#startDate").focus();
+	               console.log("넘어갔으려나?");
 	               return false;
 	          }
 	          $.ajax({
-	               type : "get",
+	               type : "post",
 	               url : "/test/guideDate",
-	               data : {
-	                  startDate : $("#startDate").val(),
-	                  endDate : $("#endDate").val()
+	               contentType:"application/json;charset=UTF-8",
+	               data:{
+	            	   startDate:$("#startDate").val(),
+	            	   endDate:$("#endDate").val()
 	               },
-	               dataType : "text",
-	               success : function(responseData, status, xhr) {
-	                  
+	       	       success : function(responseData, status, xhr) {
+
+	       	    	   if(responseData=="true"){
+	       	    		   alert("트루트루");
+	       	    		   return true;
+	       	    	   }else if(responseData=="false"){
+	       	    		   alert("폴스폴스");
+	       	    		   return false;
+	       	    	   }
 	               },
 	               error : function(xhr, status, e) {
 	                  console.log(status, e)

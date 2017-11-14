@@ -270,7 +270,7 @@
 	
 </script>
 <form action="/test/join3" method="get">
-	<table border='1'>
+	<table border='1' class="table table-striped table-condensed">
 		<tr>
 			<td>이름</td>
 			<td><input type="text" id="name" name="name" placeholder="영문 또는 한글 2 - 6자" maxlength="6"><font name="check" size="2"></font></td>
