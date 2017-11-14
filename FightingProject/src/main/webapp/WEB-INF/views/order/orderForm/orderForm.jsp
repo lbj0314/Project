@@ -14,8 +14,8 @@
 	src="/test/js_daumaddress/jquery.tablednd.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-
-		
+		var aa=false;
+		 
 		//테이블 행 이동
 		$(function() {
 			$("#termGoodsTable").tableDnD({
@@ -28,6 +28,8 @@
 		
 		//날짜 변경
 		$("#dayButton").on("click",function(){
+			
+			
 			//날짜간 일수 비교
 			var startString = $("#startDate").val();
 			var startArray = startString.split("-");
@@ -49,6 +51,11 @@
 		
 		//날짜 예외처리
 	      $("#myForm").submit(function(){
+	    	
+	    	 
+	    	
+				
+	    	  
 	          var now = new Date();
 	          var nowString = now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
 	          var nowArray = nowString.split("-");
@@ -57,17 +64,21 @@
 	          var startString = $("#startDate").val();
 	          var startArray = startString.split("-");
 	          var startObj = new Date(startArray[0],Number(startArray[1])-1,startArray[2]);
-	          
+	          //var result=new Boolean(false);
 	          var betweenDay = (startObj.getTime() - nowObj.getTime())/1000/60/60/24;
+	         
 	          if(betweenDay<0){
 	             alert("현재 날짜보다 이전날짜를 설정 할 수 없습니다.");
 	               $("#startDate").focus();
 	               console.log("넘어갔으려나?");
 	               return false;
 	          }
+	         
+	         
 	          $.ajax({
 	               type : "post",
 	               url : "/test/guideDate",
+	               async : false,
 	               contentType:"application/json;charset=UTF-8",
 	               data:{
 	            	   startDate:$("#startDate").val(),
@@ -77,17 +88,27 @@
 
 	       	    	   if(responseData=="true"){
 	       	    		   alert("트루트루");
-	       	    		   return true;
+	       	    		   aa=true;
+	       	    		//bb(true);
+	       	    		   console.log("??"+aa);
+	       	    		
 	       	    	   }else if(responseData=="false"){
 	       	    		   alert("폴스폴스");
-	       	    		   return false;
+	       	    		   aa=false;
+	       	    		//bb(false);
+	       	    		// result=new Boolean(false);
+	       	    		console.log("!!"+aa);
+	       	    		
 	       	    	   }
 	               },
 	               error : function(xhr, status, e) {
 	                  console.log(status, e)
 	               }
 	          });
+	         
 	          
+	         
+	          return aa;
 	      });
 		
 		//테이블 행 추가
