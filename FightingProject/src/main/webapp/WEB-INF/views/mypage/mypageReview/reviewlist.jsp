@@ -65,7 +65,7 @@
 
 
 
-
+	
 	<h1 align=center>
 		&nbsp;&nbsp;&nbsp;후기 게시판<small>&nbsp;&nbsp;&nbsp;등록한 사용자만 CRUD가능</small>
 	</h1>
@@ -156,15 +156,8 @@
 
 		</table>
 
-<%-- <c:if test="${!empty sessionScope.admLogin}">
 
-		<div class="huge-top">
-			<button class="btn btn-normal pull-right"
-				onclick="location.href='/test/loginX/noticeWriteUI';">글쓰기</button>
-		</div>
-		</c:if> --%>
 	</div>
-
 
 
 
