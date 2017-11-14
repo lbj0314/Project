@@ -15,7 +15,7 @@ text-align: left;
 
 .heroes{
 
-margin: 30px; padding: 40px;
+margin: 10px 30px 0 50px; padding: 30px 0
 }
 
 

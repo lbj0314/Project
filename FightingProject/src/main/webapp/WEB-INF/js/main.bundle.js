@@ -57,7 +57,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = '한국 관광공사 축제 41선';
+        this.title = '한국 관광공사 축제 36선';
     }
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
@@ -136,7 +136,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* HeroesComponent's private CSS styles */\r\n.selected {\r\n  background-color: #dac292 !important;\r\n  color: rgb(0, 0, 0);\r\n}\r\n.heroes {\r\n  margin: 0 0 2em 0;\r\n  list-style-type: none;\r\n  padding: 0;\r\n  width: 15em;\r\n}\r\n.heroes li {\r\n  cursor: pointer;\r\n  position: relative;\r\n  left: 0;\r\n  background-color: #dac292;\r\n  margin: .5em;\r\n  padding: .3em 0;\r\n  height: 1.6em;\r\n  border-radius: 4px;\r\n}\r\n.heroes li.selected:hover {\r\n  background-color: #c1946a !important;\r\n  color: black;\r\n}\r\n.heroes li:hover {\r\n  color: #b9936c;\r\n  background-color: #c4b7a6;\r\n  left: .1em;\r\n}\r\n.heroes .text {\r\n  position: relative;\r\n  top: -3px;\r\n}\r\n.heroes .badge {\r\n  display: inline-block;\r\n  font-size: small;\r\n  color: black;\r\n  padding: 0.8em 0.7em 0 0.7em;\r\n  background-color: #b9936c;\r\n  line-height: 1em;\r\n  position: relative;\r\n  left: -1px;\r\n  top: -4px;\r\n  height: 1.8em;\r\n  margin-right: .8em;\r\n  border-radius: 4px 0 0 4px;\r\n}\r\n\r\n\r\n/*\r\nCopyright 2017 Google Inc. All Rights Reserved.\r\nUse of this source code is governed by an MIT-style license that\r\ncan be found in the LICENSE file at http://angular.io/license\r\n*/", ""]);
+exports.push([module.i, "/* HeroesComponent's private CSS styles */\r\n.selected {\r\n  background-color: #dac292 !important;\r\n  color: rgb(0, 0, 0);\r\n}\r\n.heroes {\r\n  margin: 0 0 2em 0;\r\n  list-style-type: none;\r\n  padding: 0;\r\n  width: 15em;\r\n  display:inline-block;\r\n  \r\n}\r\n.heroes li {\r\n  cursor: pointer;\r\n  position: relative;\r\n  left: 0;\r\n  background-color: white;\r\n  border-bottom: 2px solid black;\r\n  margin: .5em;\r\n  padding: .3em 0;\r\n  height: 1.6em;\r\n  border-radius: 4px;\r\n  /* display:inline-block; */\r\n\r\n}\r\n.heroes li.selected:hover {\r\n  background-color: #c1946a !important;\r\n  color: black;\r\n}\r\n.heroes li:hover {\r\n  color: black;\r\n  background-color: #646464;\r\n  left: .1em;\r\n}\r\n.heroes .text {\r\n  position: relative;\r\n  top: -3px;\r\n}\r\n.heroes .badge {\r\n  display: inline-block;\r\n  font-size: small;\r\n  color: black;\r\n  padding: 0.8em 0.7em 0 0.7em;\r\n  background-color: #b4b4b4;\r\n  line-height: 1em;\r\n  position: relative;\r\n  left: -1px;\r\n  top: -4px;\r\n  height: 1.8em;\r\n  margin-right: .8em;\r\n  border-radius: 4px 0 0 4px;\r\n}\r\n\r\n\r\n/*\r\nCopyright 2017 Google Inc. All Rights Reserved.\r\nUse of this source code is governed by an MIT-style license that\r\ncan be found in the LICENSE file at http://angular.io/license\r\n*/", ""]);
 
 // exports
 
@@ -149,7 +149,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/heroes/heroes.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>월별 축제</h2>\n\n<div *ngIf=\"selectedHero\">\n  <h1>{{selectedHero.id}} <span> 월 </span></h1>\n    <h2>{{ selectedHero.name | uppercase }} 가 열립니다</h2>\n    <h3>일정: {{ selectedHero.date}}</h3>\n    \n    <div>\n      <label>name:\n        <input [(ngModel)]=\"selectedHero.name\" placeholder=\"name\">\n      </label>\n    </div>\n  \n  </div>\n<br>\n<ul class=\"heroes\">\n  <li *ngFor=\"let hero of heroes\"\n    [class.selected]=\"hero === selectedHero\"\n    (click)=\"onSelect(hero)\">\n    <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n  </li>\n</ul>\n\n\n\n\n<!-- \nCopyright 2017 Google Inc. All Rights Reserved.\nUse of this source code is governed by an MIT-style license that\ncan be found in the LICENSE file at http://angular.io/license\n-->"
+module.exports = "<h2>월별 축제</h2>\n\n<div *ngIf=\"selectedHero\">\n  <h1>{{selectedHero.wol}} <span> 월 </span></h1>\n    <h2>{{ selectedHero.name | uppercase }} 가 열립니다</h2>\n    <h3>일정: {{ selectedHero.date}}</h3>\n    \n    <div>\n      <label>name:\n        <input [(ngModel)]=\"selectedHero.name\" placeholder=\"name\">\n      </label>\n    </div>\n  \n  </div>\n<br>\n<ul class=\"heroes\">\n  <li *ngFor=\"let hero of heroes\"\n    [class.selected]=\"hero === selectedHero\"\n    (click)=\"onSelect(hero)\">\n    <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n  </li>\n</ul>\n\n\n\n\n<!-- \nCopyright 2017 Google Inc. All Rights Reserved.\nUse of this source code is governed by an MIT-style license that\ncan be found in the LICENSE file at http://angular.io/license\n-->"
 
 /***/ }),
 
@@ -206,42 +206,42 @@ can be found in the LICENSE file at http://angular.io/license
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HEROES; });
 var HEROES = [
-    { id: 1, name: '화천 산천어 축제', date: '1.14~2.1' },
-    { id: 3, name: '제주 들불 축제', date: '3.2~3.5' },
-    { id: 4, name: '고령 대가야 체험축제', date: '4.6~4.9' },
-    { id: 4, name: '영암 왕인 문화제', date: '4.6~4.9' },
-    { id: 4, name: '진도 신비의 바닷길축제', date: '4.26~4.29' },
-    { id: 4, name: '문경 전통 찻사발 축제', date: '4.26~4.29' },
-    { id: 5, name: '광안리 어방축제', date: '5.12~5.14' },
-    { id: 5, name: '담양 대나무 축제', date: '5.2~5.7' },
-    { id: 5, name: '대구 한방문화축제', date: '5.3~5.7' },
-    { id: 5, name: '보성 다향 대축제', date: '5.3~5.7' },
-    { id: 5, name: '울산 옹기 축제', date: '5.3~5.7' },
-    { id: 5, name: '춘천 마임 축제', date: '5.21~5.28' },
-    { id: 5, name: '밀양 아리랑 대축제', date: '5.21~5.28' },
-    { id: 7, name: '포항 국제 불빛 축제', date: '7.26~7.30' },
-    { id: 7, name: '정남진 장흥 물 축제', date: '7.26~7.30' },
-    { id: 7, name: '강진 청자 축제', date: '7.29~8.5' },
-    { id: 7, name: '봉화 은어 축제', date: '7.29~8.5' },
-    { id: 7, name: '부여 서동 연꽃축제', date: '7.7~07.16' },
-    { id: 8, name: '통영 한산대첩 축제', date: '8.26~9.3' },
-    { id: 8, name: '무주 반딧불 축제', date: '8.26~9.3' },
-    { id: 8, name: '괴산 고추축제', date: '08.11~08.13' },
-    { id: 8, name: '인천 펜타포트 음악축제', date: '08.11~08.13' },
-    { id: 9, name: '평창 효석 문화제', date: '9.2~9.10' },
-    { id: 9, name: '산청 한방 약초 축제', date: '9.15~9.24' },
-    { id: 9, name: '김제지평선축제', date: '9.2~9.10' },
-    { id: 9, name: '원주 댄싱 카니발', date: '9.27~10.2' },
-    { id: 9, name: '수원 화성 문화제', date: '9.27~10.2' },
-    { id: 9, name: '시흥 갯골 축제', date: '9.27~10.2' },
-    { id: 9, name: '남사당 바우덕이 축제', date: '9.15~9.24' },
-    { id: 9, name: '대전 효뿌리 문화축제', date: '9.27~10.2' },
-    { id: 9, name: '완주 와일드 푸드 축제', date: '9.27~10.2' },
-    { id: 10, name: '해미읍성 역사체험축제', date: '10.6~10.8' },
-    { id: 10, name: '강릉 커피 축제', date: '10.18~10.22' },
-    { id: 10, name: '이천 쌀 문화 축제', date: '10.6~10.8' },
-    { id: 10, name: '고창 모양성제', date: '10.25~10.29' },
-    { id: 10, name: '자라섬 재즈 페스티벌', date: '10.18~10.22' }
+    { wol: 1, id: 1, name: '화천 산천어 축제', date: '1.14~2.1' },
+    { wol: 3, id: 2, name: '제주 들불 축제', date: '3.2~3.5' },
+    { wol: 4, id: 3, name: '고령 대가야 체험축제', date: '4.6~4.9' },
+    { wol: 4, id: 4, name: '영암 왕인 문화제', date: '4.6~4.9' },
+    { wol: 4, id: 5, name: '진도 신비의 바닷길축제', date: '4.26~4.29' },
+    { wol: 4, id: 6, name: '문경 전통 찻사발 축제', date: '4.26~4.29' },
+    { wol: 5, id: 7, name: '광안리 어방축제', date: '5.12~5.14' },
+    { wol: 5, id: 8, name: '담양 대나무 축제', date: '5.2~5.7' },
+    { wol: 5, id: 9, name: '대구 한방문화축제', date: '5.3~5.7' },
+    { wol: 5, id: 10, name: '보성 다향 대축제', date: '5.3~5.7' },
+    { wol: 5, id: 11, name: '울산 옹기 축제', date: '5.3~5.7' },
+    { wol: 5, id: 12, name: '춘천 마임 축제', date: '5.21~5.28' },
+    { wol: 5, id: 13, name: '밀양 아리랑 대축제', date: '5.21~5.28' },
+    { wol: 5, id: 14, name: '포항 국제 불빛 축제', date: '7.26~7.30' },
+    { wol: 5, id: 15, name: '정남진 장흥 물 축제', date: '7.26~7.30' },
+    { wol: 5, id: 16, name: '강진 청자 축제', date: '7.29~8.5' },
+    { wol: 5, id: 17, name: '봉화 은어 축제', date: '7.29~8.5' },
+    { wol: 5, id: 18, name: '부여 서동 연꽃축제', date: '7.7~07.16' },
+    { wol: 5, id: 19, name: '통영 한산대첩 축제', date: '8.26~9.3' },
+    { wol: 5, id: 20, name: '무주 반딧불 축제', date: '8.26~9.3' },
+    { wol: 5, id: 21, name: '괴산 고추축제', date: '08.11~08.13' },
+    { wol: 5, id: 22, name: '인천 펜타포트 음악축제', date: '08.11~08.13' },
+    { wol: 5, id: 23, name: '평창 효석 문화제', date: '9.2~9.10' },
+    { wol: 5, id: 24, name: '산청 한방 약초 축제', date: '9.15~9.24' },
+    { wol: 5, id: 25, name: '김제지평선축제', date: '9.2~9.10' },
+    { wol: 5, id: 26, name: '원주 댄싱 카니발', date: '9.27~10.2' },
+    { wol: 5, id: 27, name: '수원 화성 문화제', date: '9.27~10.2' },
+    { wol: 5, id: 28, name: '시흥 갯골 축제', date: '9.27~10.2' },
+    { wol: 5, id: 29, name: '남사당 바우덕이 축제', date: '9.15~9.24' },
+    { wol: 5, id: 30, name: '대전 효뿌리 문화축제', date: '9.27~10.2' },
+    { wol: 5, id: 31, name: '완주 와일드 푸드 축제', date: '9.27~10.2' },
+    { wol: 5, id: 32, name: '해미읍성 역사체험축제', date: '10.6~10.8' },
+    { wol: 5, id: 33, name: '강릉 커피 축제', date: '10.18~10.22' },
+    { wol: 5, id: 34, name: '이천 쌀 문화 축제', date: '10.6~10.8' },
+    { wol: 5, id: 35, name: '고창 모양성제', date: '10.25~10.29' },
+    { wol: 5, id: 36, name: '자라섬 재즈 페스티벌', date: '10.18~10.22' }
 ];
 // <p>10월 | October</p> 
 // <ul> 
