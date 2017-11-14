@@ -1,6 +1,6 @@
 package com.controller.oauth;
 
-/*import java.io.IOException;
+import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,9 +26,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class LoginController {
+public class GoogleLoginController {
 	
-	 GoogleLogin 
+	
 	@Autowired
 	private GoogleConnectionFactory googleConnectionFactory;
 	@Autowired
@@ -39,30 +39,28 @@ public class LoginController {
 	
 	
 	// 로그인 첫 화면 요청 메소드
-	@RequestMapping(value = "/login")
+	@RequestMapping(value = "/")
 	public String login(Model model) {
 
-		 구글code 발행 
+		 //구글code 발행 
 		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
 		String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
 		System.out.println("구글:" + url);
 
 		model.addAttribute("google_url", url);
 		//session.invalidate();
-		 생성한 인증 URL을 View로 전달 
-		return "login";
+		// 생성한 인증 URL을 View로 전달 
+		return "home";
 	}
 
 	// 구글 Callback호출 메소드
 	@RequestMapping(value = "/oauth2callback")
-	public String googleCallback(Model model, @RequestParam String code) throws IOException {
+	public String googleCallback(HttpSession session, @RequestParam String code) throws IOException {
 		
 		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
 		AccessGrant accessGrant = oauthOperations.exchangeForAccess(code , googleOAuth2Parameters.getRedirectUri(),
 				null);
-		System.out.println("!!!"+oauthOperations);
-		System.out.println("+++"+code);
-		System.out.println(accessGrant);
+		
 
 		String accessToken = accessGrant.getAccessToken();
 		
@@ -82,9 +80,12 @@ public class LoginController {
 		 System.out.println(connection.getApi());
 		PlusOperations plusOperations = google.plusOperations();
 		//System.out.println(">!"+plusOperations);
-		Person person =new Person();
-		person = plusOperations.getPerson(code);
-		System.out.println("?"+person);
+		
+		
+		
+		
+		
+		session.setAttribute("google","안녕하세요 구글 및 네이버 로그인은 로그인만 가능합니다.");
 		
 		
 		
@@ -93,41 +94,26 @@ public class LoginController {
 		
 		
 		
-		
-		
-		
-		
-		//accessGrant.
-		System.out.println(person.getId());
-		System.out.println("1");	
-		System.out.println(person.getDisplayName());
-		System.out.println("2");	
-		//System.out.println(person.getEmailAddresses());
-		System.out.println(person.getOccupation());
-		System.out.println(person.getEmails());
-		System.out.println(person.getAccountEmail());
-		System.out.println(person.getGender());
-		System.out.println("3");	
-	
-		//System.out.println(person.getEmails().toString());
-		System.out.println(person.getGivenName());
-		System.out.println("6");	
-		//System.out.println(person.getEmailAddresses().toString());
 		
 		//System.out.println(person.get);
 		System.out.println("여기는 googleCallback");
 	
-		model.addAttribute("result",person);
-		return "googleSuccess";
+		
+		return "home";
+	}
+	
+	@RequestMapping(value = "/googleLogout")
+	public String googleLogout(HttpSession session) {
+		
+		
+		
+		session.invalidate();
+		
+		return "redirect:/";
+		
 	}
 
-    @Override
-    protected String extractProviderUserId(AccessGrant accessGrant) {
-        Google api = ((GoogleServiceProvider)getServiceProvider()).getApi(accessGrant.getAccessToken());
-        UserProfile userProfile = getApiAdapter().fetchUserProfile(api);
-        return userProfile.getUsername();
-    }
+   
 
 
 }
-*/

@@ -109,7 +109,7 @@ h5 {
 <h1 id="jjab">
 </h1>
 </div>
-<a href="/test"><img id="siteImage" src="/test/images/dnfltkdlxmdlfmawhdwjdgody.png"  style="width: 500px; height: auto;"/></a>
+<a href="<c:url value="/"/>"><img id="siteImage" src="/test/images/dnfltkdlxmdlfmawhdwjdgody.png"  style="width: 500px; height: auto;"/></a>
 <br><br><br><br>
 
 

@@ -7,28 +7,47 @@
 
 
 
-<c:if
-	test="${!empty sessionScope.comLogin}">
+
+<script>
+	$(document).ready(function() {
+
+		//$("#loout").attr("href", "https://accounts.google.com/logout");
+		$("#loout").attr("href", "/test/googleLogout");
+		$("#loout2").attr("href", "/test/naverLogout");
+
+	});
+</script>
+
+
+
+<c:if test="${!empty sessionScope.comLogin}">
 	${sessionScope.comLogin.comname }님 안녕하세요&nbsp;
 	<a href="logout" class="btn btn-default">로그아웃</a>&nbsp;
 	<a href="myPageForm" class="btn btn-default">마이페이지</a>&nbsp;
 	<a href="packageOrderForm" class="btn btn-default">패키지바로가기</a>&nbsp;
 </c:if>
-<c:if
-	test="${!empty sessionScope.entLogin}">
+<c:if test="${!empty sessionScope.entLogin}">
 	${sessionScope.entLogin.entname }님 안녕하세요&nbsp;
 	<a href="logout" class="btn btn-default">로그아웃</a>&nbsp;
 	<a href="myPageForm" class="btn btn-default">마이페이지</a>&nbsp;
 </c:if>
-<c:if
-	test="${!empty sessionScope.admLogin}">
+<c:if test="${!empty sessionScope.admLogin}">
 	관리자님 안녕하세요&nbsp;
 	<a href="logout" class="btn btn-default">로그아웃</a>&nbsp;
 	<a href="myPageForm" class="btn btn-default">DB관리</a>&nbsp;
 </c:if>
-
+<c:if test="${!empty sessionScope.google}">
+	${sessionScope.google}&nbsp;
+	<a id="loout" onclick="window.open('https://accounts.google.com/logout','win','width=500,height=500,toolbar=0,scrollbars=0,resizable=0');location.reload(true);" class="btn btn-default" >로그아웃</a>
+	
+</c:if>
+<c:if test="${!empty sessionScope.naver}">
+	${sessionScope.naver}&nbsp;
+	<a id="loout2" onclick="window.open('http://nid.naver.com/nidlogin.logout','win','width=500,height=500,toolbar=0,scrollbars=0,resizable=0');location.reload(true);" class="btn btn-default">로그아웃</a>
+	location.reload();
+</c:if>
 <c:if
-	test="${empty sessionScope.entLogin and empty sessionScope.comLogin and empty sessionScope.admLogin}">
+	test="${empty sessionScope.entLogin and empty sessionScope.comLogin and empty sessionScope.admLogin and empty sessionScope.google and empty sessionScope.naver}">
 	<div id="conright" class="form-group">
 		<form action="login" method="get" class="form-inline" id="loginForm">
 			<select name="wholog" class="form-control">
@@ -41,8 +60,18 @@
 			<input type="submit" value="로그인" class="btn btn-default"> <a
 				href="joinForm" class="btn btn-default">회원가입</a>
 		</form>
+		<br>
+
+		<div id="google_id_login" style="text-align: right">
+			<a onclick="window.open('${google_url}','win','width=500,height=500,toolbar=0,scrollbars=0,resizable=0')";><img src="images/google.jpg"></a><jsp:include page="/WEB-INF/views/oauth/oauthtest.jsp" flush="true" />
+			
+		</div>
+		
+		
+		
 	</div>
+
 </c:if>
 
-
+<!-- /* href="${google_url}"*/ -->
 

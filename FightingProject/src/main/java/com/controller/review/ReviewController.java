@@ -63,6 +63,7 @@ public class ReviewController {
 			e.printStackTrace();
 			throw new MyException("list예외");
 		}
+
 		return "mypage/mypageReview/reviewlistview";
 	}
 	
@@ -170,7 +171,14 @@ public class ReviewController {
 		
 		return cnt;
 	}
-	
+	@RequestMapping("/reviewPerPage")
+	public String reviewPerPage(String perPage) {
+		if (perPage.equals("def"))
+			perPage = "3";
+		System.out.println(perPage);
+		ReviewPageDTO.setPerPage(Integer.parseInt(perPage));
+		return "redirect:/reviewList";
+	}
 	
 	@RequestMapping("/loginX/packReviewUpdate")
 	public String packReviewUpdate(ReviewDTO dto)throws MyException{
