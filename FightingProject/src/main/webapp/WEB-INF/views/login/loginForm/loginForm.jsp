@@ -19,7 +19,7 @@
 
 	});
 </script>
-
+<div id="conright" class="form-group">
 
 
 <c:if test="${!empty sessionScope.comLogin}">
@@ -73,7 +73,7 @@
 </c:if>
 <c:if
 	test="${empty sessionScope.entLogin and empty sessionScope.comLogin and empty sessionScope.admLogin and empty sessionScope.google and empty sessionScope.naver}">
-	<div id="conright" class="form-group">
+	
 		<form action="login" method="get" class="form-inline" id="loginForm">
 			<select name="wholog" class="form-control">
 				<option value="com">일반회원</option>
@@ -93,9 +93,9 @@
 				page="/WEB-INF/views/oauth/oauthtest.jsp" flush="true" />&nbsp; 
 
 
-	</div>
+
 
 </c:if>
-
+	</div>
 <!-- /* href="${google_url}"*/ -->
 
