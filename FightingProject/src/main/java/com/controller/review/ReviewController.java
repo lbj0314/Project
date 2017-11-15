@@ -43,7 +43,7 @@ public class ReviewController {
 		
 		reviewService.packReviewInsert(dto);
 		
-		m.addAttribute("success","성공적으로 리뷰가 등록되었습니다!");
+		m.addAttribute("reviewWriteSuccess","성공적으로 리뷰가 등록되었습니다!");
 		
 		return "redirect:reviewList";
 	}

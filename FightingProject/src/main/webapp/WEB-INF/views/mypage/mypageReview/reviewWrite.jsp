@@ -87,17 +87,17 @@
  <input type="submit" value="글쓰기" class="form-control">
 
 
-<div class="huge-top">
-			<button class="btn btn-normal pull-right"
-				onclick="location.href='/test/noticeList';">목록</button>
-		</div>
+
 
 
 </div>
 
 	</form>
 
-
+<div class="huge-top">
+			<button class="btn btn-normal pull-right"
+				onclick="location.href='/test/reviewList';">목록</button>
+		</div>
 
 
 
