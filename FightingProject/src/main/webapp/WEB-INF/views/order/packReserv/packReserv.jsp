@@ -203,6 +203,16 @@
 tr.noDrag {
 	cursor: point;
 }
+
+#termGoodsTable{
+border-collapse: collapse;
+}
+
+#notDto{
+ 	padding: 8px;
+    /* text-align: left; */
+    border-bottom: 3px solid #000000;
+}
 </style>
 
 <form action="/test/packageBuy" method="get" name="myForm" id="myForm" onsubmit="return el()" >

@@ -252,13 +252,13 @@ tr.noDrag {
 	cursor: point;
 }
 .tourTr{
-background-color: yellow;
+background-color: #DC4C46;
 }
 .restTr{
-background-color: blue;
+background-color: #C48F65;
 }
 .stayTr{
-background-color: green;
+background-color: #F3D6E4;
 }
 </style>
 
