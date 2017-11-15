@@ -88,7 +88,7 @@
 		<br> 
 		<span id="google_id_login" style="text-align: center">
 			<a id="loin" href="#" onclick="window.open('${google_url}','win','width=500,height=500,toolbar=0,scrollbars=0,resizable=0')"><img
-				src="images/google.jpg"></a> </span> 
+				src="/test/images/google.jpg"></a> </span> 
 		<jsp:include
 				page="/WEB-INF/views/oauth/oauthtest.jsp" flush="true" />&nbsp; 
 
