@@ -23,7 +23,9 @@
 
 	</div>
 	<jsp:include page="/WEB-INF/views/include/top.jsp" flush="true" /><br>
+	<div class="table1">
 	<jsp:include page="/WEB-INF/views/notice/retrieve.jsp" flush="true" /><br>
+	</div>
 	<jsp:include page="/WEB-INF/views/include/copyright.jsp" flush="true" /><br>
 
 </body>

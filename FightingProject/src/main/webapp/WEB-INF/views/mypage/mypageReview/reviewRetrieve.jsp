@@ -57,7 +57,7 @@
 	<input type="hidden" id="packReviewNum" name="packReviewNum"
 		value="${rdto.packReviewNum }"> <b>글번호:&nbsp;</b>${rdto.packReviewNum }
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>작성일:&nbsp;</b>${rdto.packReviewWriteDay }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<b>조회수:&nbsp;</b>${rdto.packReviewRcnt}<br> 좋아요수: <span id="re1">${rdto.packReviewGoods}</span>
+	<b>조회수:&nbsp;</b>${rdto.packReviewRcnt}&nbsp;&nbsp;&nbsp;&nbsp; <b>좋아요수:</b> <span id="re1">${rdto.packReviewGoods}</span>
 	<c:if test="${!empty sessionScope.comLogin  && rdto.comNum != comNum1}">
 
 		<span id="result"></span>
@@ -67,14 +67,14 @@
 			<img src="/test/images/goods.png">
 		</button>
 	</c:if>
-	<br> 패키지 다녀왔던 곳<br> 패키지
-	이름:${odto.packName}&nbsp;&nbsp;&nbsp;&nbsp;출발
-	날짜:${odto.startDay}&nbsp;&nbsp;&nbsp;&nbsp;종료
-	날짜${odto.endDay}&nbsp;&nbsp;&nbsp;&nbsp; 결제했던
-	수단:${odto.payment}&nbsp;&nbsp;&nbsp;&nbsp;결제했던
-	가격:${odto.price}&nbsp;&nbsp;&nbsp;&nbsp;어른
-	인원수:${odto.adult}&nbsp;&nbsp;&nbsp;&nbsp; 어린이
-	인원수:${odto.kid}&nbsp;&nbsp;자세히보기<input type="button" value="+"
+	<br><b> 패키지 다녀왔던 곳</b><br><br> <b>패키지
+	이름:</b>${odto.packName}&nbsp;&nbsp;&nbsp;&nbsp;<b>출발
+	날짜:</b>${odto.startDay}&nbsp;&nbsp;&nbsp;&nbsp;<b>종료
+	날짜:</b>${odto.endDay}&nbsp;&nbsp;&nbsp;&nbsp; <b>결제했던
+	수단:</b>${odto.payment}&nbsp;&nbsp;&nbsp;&nbsp;<b>결제했던
+	가격:</b>${odto.price}<br><b>어른
+	인원수:</b>${odto.adult}&nbsp;&nbsp;&nbsp;&nbsp; <b>어린이
+	인원수:</b>${odto.kid}&nbsp;&nbsp;<b>자세히보기</b><input type="button" value="+"
 		class="hideNshow btn btn-info" data-num="${odto.packOrderNum}"
 		id="${odto.packOrderNum}hideNshow"> <br> <br>
 
@@ -105,18 +105,18 @@
 		</c:forEach>
 
 	</table>
-	<div id="conta">
-		<div class="form-group">
+	
+	
 			제목<input type="text" name="packTitle" value="${rdto.packTitle }"
 				class="form-control"><br>
-		</div>
-		<div class="form-group">
+
+	
 			내용
 			<textarea rows="10" cols="10" name="packContent" class="form-control">${rdto.packContent}</textarea>
 			
 
-		</div>
-	</div>
+
+
 
 
 	<div id="conta">

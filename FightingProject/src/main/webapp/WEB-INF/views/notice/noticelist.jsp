@@ -119,7 +119,7 @@
 					
 					
 					<!-- ajax  -->
-					<div class="form-group" align="center">
+				
 						
 					
 					
@@ -138,7 +138,7 @@
 							<input type="submit" value="검색" class="btn btn-primary">
 						
 					</form>
-					</div>
+					
 					
 				</td>
 			</tr>
