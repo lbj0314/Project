@@ -118,10 +118,7 @@
 		}
 		
 		//선택 삭제하기
-	      
-	      
 	      $("#deleteClick").on("click",function(){
-
 	         var deleteArray = new Array();
 	         
 	         $("td").children("#delChk").each(function(index, item){
@@ -336,7 +333,7 @@ background-color: green;
 				varStatus="status">
 				<c:if test="${!empty item.attNum }">
 					<tr id="${item.attNum }tourTr" name="reservTr" class="tourTr">
-						<td align="center"><input type="checkbox" name="chk"></td>
+						<td align="center"><input type="checkbox" name="chk" id="delChk"></td>
 						<td>관광지</td>
 						<td>${item.attName }</td>
 						<td>${item.attLocation }</td>
@@ -351,7 +348,7 @@ background-color: green;
 				varStatus="status">
 				<c:if test="${!empty item.restNum }">
 					<tr id="${item.restNum }restTr" name="reservTr" class="restTr">
-						<td align="center"><input type="checkbox" name="chk"></td>
+						<td align="center"><input type="checkbox" name="chk" id="delChk"></td>
 						<td>음식점</td>
 						<td>${item.restName }</td>
 						<td>${item.restLocation }</td>
@@ -366,7 +363,7 @@ background-color: green;
 				varStatus="status">
 				<c:if test="${!empty item.stayNum }">
 					<tr id="${item.stayNum }stayTr" name="reservTr" class="stayTr">
-						<td align="center"><input type="checkbox" name="chk"></td>
+						<td align="center"><input type="checkbox" name="chk" id="delChk"></td>
 						<td>숙박소</td>
 						<td>${item.stayName }</td>
 						<td>${item.stayLocation }</td>
@@ -379,7 +376,7 @@ background-color: green;
 			</c:forEach>
 		</tbody>
 	</table>
-	<a href="" class="btn btn-default" id="">선택 삭제하기</a> <input
+	<input type="button" class="btn btn-default" id="deleteClick" value="선택 삭제하기"> <input
 		type="button" class="btn btn-default" value="주문하기" id="reservation"><br><br><br>
 	<a href="tourList?tourForm=tourForm" class="btn btn-default">관광지
 		추가하기</a> <a href="restList?restForm=restForm" class="btn btn-default">음식점

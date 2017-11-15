@@ -436,7 +436,9 @@ public class PackageOrderController {
 			int deleteData = Integer.parseInt(deleteArray[i].substring(0, deleteArray[i].length() - 6));
 			if (deleteType.equals("tourTr")) {
 				List<TourDTO> list = (List<TourDTO>) session.getAttribute("orderTourList");
+				System.out.println(list);
 				while (true) {
+					
 					if (list.size() > 1) {
 						for (TourDTO dto : list) {
 							if (dto.getAttNum() == deleteData) {
@@ -466,7 +468,6 @@ public class PackageOrderController {
 						}
 
 					} else if (list.size() == 1) {
-						System.out.println("1개");
 						session.removeAttribute("orderRestList");
 					}
 					break;
@@ -486,7 +487,6 @@ public class PackageOrderController {
 						}
 
 					} else if (list.size() == 1) {
-						System.out.println("1개");
 						session.removeAttribute("orderStayList");
 					}
 					break;
