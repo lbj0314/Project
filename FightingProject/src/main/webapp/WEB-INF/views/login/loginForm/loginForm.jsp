@@ -85,7 +85,8 @@
 			<input type="submit" value="로그인" class="btn btn-default"> <a
 				href="joinForm" class="btn btn-default">회원가입</a>
 		</form>
-		<br> <span id="google_id_login" style="text-align: center">
+		<br> 
+		<span id="google_id_login" style="text-align: center">
 			<a id="loin" href="#" onclick="window.open('${google_url}','win','width=500,height=500,toolbar=0,scrollbars=0,resizable=0')"><img
 				src="images/google.jpg"></a> </span> 
 		<jsp:include

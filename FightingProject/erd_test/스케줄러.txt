@@ -1,0 +1,114 @@
+// services.msc가서 OracleJobSchedulerORCL 켜야함.
+
+
+//권한주기
+grant create any job to project; // 관리자에서 권할을 줘야 함
+
+
+
+
+alter table packorder add(state number(2));
+commit;
+
+
+create or replace procedure update_state
+
+is
+begin
+  update packorder set state = 1 where sysdate>endday and state=0;
+  update packlist set state = 1 where sysdate>endday and state=0;
+  commit;
+end;
+/
+
+
+
+begin
+
+    dbms_scheduler.create_job(             
+
+       job_name => 'update_date_state' ,                        
+
+      job_type => 'plsql_block' ,                                   
+
+       job_action => 'begin update_state; end;' ,          
+
+       start_date => systimestamp ,                               
+
+       repeat_interval => 'freq=minutely; interval=1;' );      
+
+    end;
+
+  /
+
+
+-- freq=minutely; interval=1;
+  -- FREQ = DAILY; interval=1
+
+
+exec dbms_scheduler.enable('update_date_state') ;
+
+exec dbms_scheduler.run_job('update_date_state') ;
+
+alter session set nls_date_format='YYYY-MM-DD:HH24:MI:SS' ;
+
+
+
+
+
+exec dbms_scheduler.disable ('update_date_state') ;        <-- 일시중지
+
+exec dbms_scheduler.enable ('update_date_state') ; <-- 다시시작
+
+commit;
+
+
+
+
+
+
+
+--실행중인 잡 확인
+select p.job_name, p.job_type, o.object_id, p.enabled, o.last_ddl_time, o.created,
+
+       cast(p.next_run_date as date) next_run_date, p.state, p.job_class, o.owner,
+
+       schedule_type
+
+from dba_objects o , dba_scheduler_jobs p
+
+where o.owner=p.owner
+
+and o.object_name=p.job_name
+
+and o.object_type='JOB'
+
+ and o.owner='PROJECT'
+
+
+
+
+
+
+
+create table review(packReviewNum number(10),
+packTitle varchar2(50),
+packReviewWriteDay date default sysdate,
+packReviewGoods number(10) default 0,
+packOrderNum number(10),
+comNum number(10),
+packReviewRcnt number(10) default 0,
+CONSTRAINT PK_packReviewNum PRIMARY KEY(packReviewNum),
+CONSTRAINTS FK_packOrderNum
+FOREIGN KEY(packOrderNum)
+REFERENCES packorder(packOrderNum) ON DELETE SET NULL,
+
+CONSTRAINTS FK_comNum
+FOREIGN KEY(comNum)
+REFERENCES commember(comNum) ON DELETE SET NULL
+
+
+
+
+)
+

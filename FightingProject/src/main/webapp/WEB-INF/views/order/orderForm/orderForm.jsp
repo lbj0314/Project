@@ -87,9 +87,17 @@
 	       	       success : function(responseData, status, xhr) {
 
 	       	    	   if(responseData=="true"){
-	       	    		   aa=true;       	    		
+	       	    		   alert("트루트루");
+	       	    		   aa=true;
+	       	    		//bb(true);
+	       	    		   console.log("??"+aa);
+	       	    		
 	       	    	   }else if(responseData=="false"){
+	       	    		   alert("폴스폴스");
 	       	    		   aa=false;
+	       	    		//bb(false);
+	       	    		// result=new Boolean(false);
+	       	    		console.log("!!"+aa);
 	       	    		
 	       	    	   }
 	               },

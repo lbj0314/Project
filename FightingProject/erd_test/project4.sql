@@ -1,7 +1,7 @@
 
 /* Drop Tables */
 
-DROP TABLE EVENT CASCADE CONSTRAINTS;
+DROP TABLE PROJECT.EVENT CASCADE CONSTRAINTS;
 DROP TABLE PROJECT.ADMINATOR CASCADE CONSTRAINTS;
 DROP TABLE PROJECT.REVIEW CASCADE CONSTRAINTS;
 DROP TABLE PROJECT.COMMEMBER CASCADE CONSTRAINTS;
@@ -54,12 +54,30 @@ CREATE SEQUENCE PROJECT.REVIEW_SEQ INCREMENT BY 1 MINVALUE 0 MAXVALUE 999 START 
 CREATE SEQUENCE PROJECT.STAY_SEQ INCREMENT BY 1 MINVALUE 0 MAXVALUE 999 START WITH 2 NOCACHE;
 CREATE SEQUENCE PROJECT.TEST_SEQ INCREMENT BY 1 MINVALUE 0 MAXVALUE 999 START WITH 0 NOCACHE;
 CREATE SEQUENCE PROJECT.TOUR_SEQ INCREMENT BY 1 MINVALUE 0 MAXVALUE 999 START WITH 2 NOCACHE;
-CREATE SEQUENCE PROJECT.event_SEQ INCREMENT BY 1 MINVALUE 0 MAXVALUE 999 START WITH 0 NOCACHE;
+CREATE SEQUENCE PROJECT.EVENT_SEQ INCREMENT BY 1 MINVALUE 0 MAXVALUE 999 START WITH 0 NOCACHE;
 
+
+
+
+
+/* Drop Functions */
+
+DROP FUNCTION ORDERALL;
+
+
+/* Create Functions */
+
+create or replace function orderAll
+return number
+is
+begin
+return project.packlist_seq.nextval;
+end;
+/
 
 /* Create Tables */
 
-CREATE TABLE EVENT
+CREATE TABLE PROJECT.EVENT
 (
 	-- 이벤트 게시판 번호
 	-- 
@@ -570,3 +588,67 @@ COMMENT ON COLUMN PROJECT.TOUR.ATTADDR2 IS '관광지 지번 주소';
 
 
 
+
+
+
+
+-- services.msc가서 OracleJobSchedulerORCL 켜야함.
+
+
+--권한주기
+--grant create any job to project; // 관리자에서 권할을 줘야 함
+
+
+
+
+alter table packorder add(state number(2));
+commit;
+
+
+create or replace procedure update_state
+
+is
+begin
+  update packorder set state = 1 where sysdate>endday and state=0;
+  update packlist set state = 1 where sysdate>endday and state=0;
+  commit;
+end;
+/
+
+
+
+begin
+
+    dbms_scheduler.create_job(             
+
+       job_name => 'update_date_state' ,                        
+
+      job_type => 'plsql_block' ,                                   
+
+       job_action => 'begin update_state; end;' ,          
+
+       start_date => systimestamp ,                               
+
+       repeat_interval => 'freq=minutely; interval=1;' );      
+
+    end;
+
+  /
+
+
+-- freq=minutely; interval=1; 1분
+  -- FREQ = DAILY; interval=1 하루
+
+
+exec dbms_scheduler.enable('update_date_state') ;
+
+exec dbms_scheduler.run_job('update_date_state') ;
+
+
+
+
+--exec dbms_scheduler.disable ('update_date_state') ;        <-- 일시중지
+
+--exec dbms_scheduler.enable ('update_date_state') ; <-- 다시시작
+
+commit;
