@@ -35,19 +35,6 @@ public class FesController {
 		
 		return mav;
 	}
-	
-	/*@RequestMapping("/fesRetrieve")
-	public String tourRetrieve(int attNum,Model m) throws MyException{
-		try {
-			m.addAttribute("tourRetrieve",service.selectByTourNum(attNum));
-		} catch (Exception e) {
-			// TODO Auto-generated catch blocke.
-			e.printStackTrace();
-				throw new MyException("selectByTour예외");
-		}
-		return "tour/tourRetrieveView";
-		
-	}*/
-	
+
 	
 }
