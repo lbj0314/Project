@@ -87,13 +87,12 @@
 	       	       success : function(responseData, status, xhr) {
 
 	       	    	   if(responseData=="true"){
-	       	    	
+
 	       	    		   aa=true;
 	       	    		
 	       	    	   }else if(responseData=="false"){
-	       	    		   alert("이미 예약되어있는 날짜 입니다.");
+	       	    		   alert("이미 예약되어 있는 날짜입니다.");
 	       	    		   aa=false;
-
 	       	    		
 	       	    	   }
 	               },
