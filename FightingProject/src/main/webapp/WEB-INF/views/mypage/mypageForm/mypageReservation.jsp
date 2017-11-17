@@ -61,7 +61,15 @@
 			<tr>
 				<td align=center>${cc.day}</td>
 				<td align=center>${cc.type}</td>
-				<td align=center>${cc.name}</td>
+				<c:if test="${cc.type == '관광지' }">
+				<td align=center><a href="/test/tourRetrieve?attNum=${cc.listnum }" target="_blank">${cc.name}</a></td>
+				</c:if>
+				<c:if test="${cc.type == '숙박업소' }">
+				<td align=center><a href="/test/stayRetrieve?stayNum=${cc.listnum }" target="_blank">${cc.name}</a></td>
+				</c:if>
+				<c:if test="${cc.type == '음식점' }">
+				<td align=center><a href="/test/restRetrieve?restNum=${cc.listnum }" target="_blank">${cc.name}</a></td>
+				</c:if>
 				<td align=center>${cc.location}</td>
 				<td align=center>${cc.style}</td>
 				<td align=center>${cc.adultPrice}</td>
