@@ -56,20 +56,20 @@
 <script type="text/javascript">
 $(document).ready(function() {
 		
-		var RegName = /^[가-힣a-zA-Z0-9_-]{2,20}$/; //이름 유효성 검사 2~20자 사이
-		var RegTitle =  /^[가-힣a-zA-Z0-9_-]{4,30}$/;  //제목 유효성 검사 4~30자 사이
-		var RegAvgPrice = /^[0-9]{3,11}$/; //어른,어린이 가격 유효성 검사
-		var RegPhone = /^[0-9]{9,11}$/; //전화번호 유효성 검사
+		var RegName = /^[가-힣a-zA-Z0-9_-]{1,20}$/; //이름 유효성 검사 1~20자 사이
+		var RegTitle =  /^[가-힣a-zA-Z0-9_-]{1,30}$/;  //제목 유효성 검사 1~30자 사이
+		var RegAvgPrice = /^[0-9]{1,11}$/; //어른,어린이 가격 유효성 검사
+		var RegPhone = /^[0-9]{8,11}$/; //전화번호 유효성 검사
 		$("form").submit(function(){
 			if ( !RegName.test($.trim($("#restName").val())) )
 			{
-				alert("음식점 이름에 2~20자로 입력해주세요.");
+				alert("음식점 이름에 1~20자로 입력해주세요.");
 				$("#restName").focus();
 				return false;
 			}
 			else if ( !RegTitle.test($.trim($("#restTitle").val())) )
 			{
-				alert("제목에  4~30자로 입력해주세요.");
+				alert("제목에  1~30자로 입력해주세요.");
 				$("#restTitle").focus();
 				return false;
 			}
@@ -90,13 +90,13 @@ $(document).ready(function() {
         	}
 			else if ( !RegAvgPrice.test($.trim($("#restAdultPrice").val())) )
 			{
-				alert("성인 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				alert("성인 평균 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
 				$("#restAdultPrice").focus();
 				return false;
 			}
 			else if ( !RegAvgPrice.test($.trim($("#restKidPrice").val())) )
 			{
-				alert("어린이 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				alert("어린이 평균 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
 				$("#restKidPrice").focus();
 				return false;
 			}
@@ -108,7 +108,7 @@ $(document).ready(function() {
 			} */
 			else if ( !RegPhone.test($.trim($("#restPhone").val())))
 			{
-				alert("전화번호 입력란에 9~11자리와 숫자만 입력해주세요.");
+				alert("전화번호 입력란에 8~11자리와 숫자만 입력해주세요.");
 				$("#restPhone").focus();
 				return false;
 			}
@@ -128,73 +128,63 @@ $(document).ready(function() {
 	
 	$(document).ready(function() {
 		$('#restName').keyup(function() {
-		 if ($('#restName').val().length < 2 ) {
+		 if ($('#restName').val().length < 1 ) {
 				$('font[name=check]').css("color", "red");
-				$('font[name=check]').text("음식점 이름에 2~20자로 입력해주세요.");
+				$('font[name=check]').text("음식점 이름에 1~20자로 입력해주세요.");
 				}
 			  else {
 				$('font[name=check]').css("color", "blue");
-				$('font[name=check]').text("음식점 이름에 2~20자로 입력해주세요.");
+				$('font[name=check]').text("음식점 이름에 1~20자로 입력해주세요.");
 			}
 		});
 	});//restName
 		
 	$(document).ready(function() {
 		$('#restTitle').keyup(function() {
-			if ($('#restTitle').val().length < 4) {
+			if ($('#restTitle').val().length < 1) {
 				$('font[name=check2]').css("color", "red");
-				$('font[name=check2]').text("제목에 4~30자로 입력해주세요.");
+				$('font[name=check2]').text("제목에 1~30자로 입력해주세요.");
 			}
 			else {
 				$('font[name=check2]').css("color", "blue");
-				$('font[name=check2]').text("제목에 4~30자로 입력해주세요.");
+				$('font[name=check2]').text("제목에 1~30자로 입력해주세요.");
 			}
 		});
 	});//restTitle
 	
 	$(document).ready(function() {
 		$('#restAdultPrice').keyup(function() {
-			if ($('#restAdultPrice').val().length < 3) {
+			if ($('#restAdultPrice').val().length < 1) {
 				$('font[name=check3]').css("color", "red");
-				$('font[name=check3]').text("성인 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$('font[name=check3]').text("성인 평균 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
 			}
 			else {
 				$('font[name=check3]').css("color", "blue");
-				$('font[name=check3]').text("성인 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$('font[name=check3]').text("성인 평균 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
 			}
 		});
 		
 		$('#restKidPrice').keyup(function() {
-			if ($('#restKidPrice').val().length < 3) {
-				$('font[name=check3]').css("color", "red");
-				$('font[name=check3]').text("어린이 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
-			}
-			else {
-				$('font[name=check3]').css("color", "blue");
-				$('font[name=check3]').text("어린이 평균 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
-			}
-		});
-		/* $('#restKidPrice').keyup(function() {
-			if ($('#restKidPrice').val().length < 3) {
+			if ($('#restKidPrice').val().length < 1) {
 				$('font[name=check4]').css("color", "red");
-				$('font[name=check4]').text("어린이 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$('font[name=check4]').text("어린이 평균 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
 			}
 			else {
 				$('font[name=check4]').css("color", "blue");
-				$('font[name=check4]').text("어린이 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$('font[name=check4]').text("어린이 평균 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
 			}
-		}); */
-	});//restPrice
+		});
+
 	
 	$(document).ready(function() {
 		$('#restPhone').keyup(function() {
-			if ($('#restPhone').val().length < 9) {
-				$('font[name=check4]').css("color", "red");
-				$('font[name=check4]').text("숫자 9-11자리로 입력해주세요");
+			if ($('#restPhone').val().length < 8) {
+				$('font[name=check5]').css("color", "red");
+				$('font[name=check5]').text("숫자 8-11자리로 입력해주세요");
 			}
 			else {
-				$('font[name=check4]').css("color", "blue");
-				$('font[name=check4]').text("숫자 9-11자리로 입력해주세요");
+				$('font[name=check5]').css("color", "blue");
+				$('font[name=check5]').text("숫자 8-11자리로 입력해주세요");
 			}
 		});
 	});//restPhone
@@ -409,7 +399,7 @@ $(document).ready(function() {
 							<td class="td_default" colspan="2" style='padding-left: 30px'>
 								<input type="text" name="restPhone" id="restPhone"
 								value="${restRetrieve.restPhone}" class="form-control">
-								<font name="check4" size="2">
+								<font name="check5" size="2">
 							</td>
 						</tr>
 					</div>
