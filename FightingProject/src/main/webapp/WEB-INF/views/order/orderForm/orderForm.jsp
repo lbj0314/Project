@@ -8,10 +8,14 @@
 <link
 	href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
 	rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript"
 	src="/test/js_daumaddress/jquery.tablednd.js"></script>
+	
+
+	
 <script type="text/javascript">
 	$(document).ready(function() {
 		var aa=false;
@@ -243,6 +247,15 @@
 	
 </script>
 <style type="text/css">
+
+#termGoodsTable{
+font-size:15px;
+}
+
+/* #1th-tbody{
+background-color: #DFCFBE;
+} */
+
 tr.noDrag {
 	cursor: point;
 }
@@ -255,8 +268,15 @@ background-color: #C48F65;
 .stayTr{
 background-color: #F3D6E4;
 }
+
+h4{
+color:red;
+}
+
 </style>
 
+
+<br><br>
 <form action="/test/packageOrderForm" method="get" name="myForm"
 	id="myForm">
 	<input type="hidden" name="reservArray" id="reserveArrayHidden">
@@ -265,15 +285,21 @@ background-color: #F3D6E4;
 		name="startDay" id="startDay" value="${sessionScope.startDay }">
 	<input type="hidden" name="endDay" id="endDay"
 		value="${sessionScope.endDay }">
+<img src="/test/images/luggage.jpg" width="650px" height="auto">		
+		
 	<h3>[ 패키지 만들기 ]</h3>
 	<br>
 여행 시작날짜:<input type="date" id="startDate" name="startDate">&nbsp;&nbsp;
 여행 종료날짜:<input type="date" id="endDate" name="endDate">&nbsp;&nbsp;
-<input type="button" value="날짜 변경하기" id="dayButton" class="btn btn-default"><br>
-	<br>
+<input type="button" value="날짜 변경하기" id="dayButton" class="btn btn-default">
+<br><br>
+	
+<h4><strong><i class="glyphicon glyphicon-thumbs-up">가실 음식점, 숙소, 명소를 밑에서 끌어오세요</i></strong></h4>
+	
+	<br><br>
 	<table id="termGoodsTable" class="table table-condensed">
 		<tbody id="1th-tbody">
-			<tr class="nodrag">
+			<tr class="nodrag" >
 				<th>날짜</th>
 				<td>업소 분류</td>
 				<td>업소명</td>
@@ -312,7 +338,8 @@ background-color: #F3D6E4;
 			<tr id="afterReserv" class="nodrag">
 				<td colspan="8" >&nbsp;&nbsp;&nbsp;&nbsp;</td>
 			</tr>
-
+			
+			
 			<tr id="allCheckTr" class="nodrag">
 				<td align="center"><input type="checkbox" name="allCheck"
 					id="allCheck"> <strong>전체선택</strong></td>
@@ -373,8 +400,12 @@ background-color: #F3D6E4;
 	</table>
 	<input type="button" class="btn btn-default" id="deleteClick" value="선택 삭제하기"> <input
 		type="button" class="btn btn-default" value="주문하기" id="reservation"><br><br><br>
-	<a href="tourList?tourForm=tourForm" class="btn btn-default">관광지
-		추가하기</a> <a href="restList?restForm=restForm" class="btn btn-default">음식점
-		추가하기</a> <a href="stayList?stayForm=stayForm" class="btn btn-default">숙박업소
-		추가하기</a>
+	
+	<hr style="border: dotted 2px grey;">
+	
+	<a href="tourList?tourForm=tourForm" class="btn btn-default">관광지추가하기</a> 
+	<a href="restList?restForm=restForm" class="btn btn-default">음식점추가하기</a> 
+	<a href="stayList?stayForm=stayForm" class="btn btn-default">숙박업소추가하기</a>
+	
+	<br><br><br>
 </form>
