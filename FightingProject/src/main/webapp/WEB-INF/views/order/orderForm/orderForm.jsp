@@ -87,17 +87,13 @@
 	       	       success : function(responseData, status, xhr) {
 
 	       	    	   if(responseData=="true"){
-	       	    		   alert("트루트루");
+	       	    	
 	       	    		   aa=true;
-	       	    		//bb(true);
-	       	    		   console.log("??"+aa);
 	       	    		
 	       	    	   }else if(responseData=="false"){
-	       	    		   alert("폴스폴스");
+	       	    		   alert("이미 예약되어있는 날짜 입니다.");
 	       	    		   aa=false;
-	       	    		//bb(false);
-	       	    		// result=new Boolean(false);
-	       	    		console.log("!!"+aa);
+
 	       	    		
 	       	    	   }
 	               },

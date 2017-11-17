@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -16,10 +16,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,7 +30,6 @@ import com.dto.order.PackListDTO;
 import com.dto.order.PackOrderDTO;
 import com.dto.order.PackResultListDTO;
 import com.dto.restaurant.RestDTO;
-import com.dto.review.ReviewDTO;
 import com.dto.stay.StayDTO;
 import com.dto.tour.TourDTO;
 import com.exception.MyException;
@@ -112,7 +109,11 @@ public class PackageOrderController {
 			Date today = new Date();
 			SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 			startDay = transFormat.format(today);
-			endDay = transFormat.format(today);
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(today);
+			cal.add(Calendar.DATE, 1);
+			
+			endDay = transFormat.format(cal.getTime());
 
 			session.setAttribute("startDay", startDay);
 			session.setAttribute("endDay", endDay);
