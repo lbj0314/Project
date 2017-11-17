@@ -12,12 +12,13 @@ public class PackResultListDTO {
 	private int adultPrice;
 	private int kidPrice;
 	private String phone;
+	private int listnum;
 	public PackResultListDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public PackResultListDTO(int day, String type, String name, String location, String style, int adultPrice,
-			int kidPrice, String phone) {
+			int kidPrice, String phone, int listnum) {
 		super();
 		this.day = day;
 		this.type = type;
@@ -27,6 +28,7 @@ public class PackResultListDTO {
 		this.adultPrice = adultPrice;
 		this.kidPrice = kidPrice;
 		this.phone = phone;
+		this.listnum = listnum;
 	}
 	public int getDay() {
 		return day;
@@ -76,13 +78,18 @@ public class PackResultListDTO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	public int getListnum() {
+		return listnum;
+	}
+	public void setListnum(int listnum) {
+		this.listnum = listnum;
+	}
 	@Override
 	public String toString() {
 		return "PackResultListDTO [day=" + day + ", type=" + type + ", name=" + name + ", location=" + location
 				+ ", style=" + style + ", adultPrice=" + adultPrice + ", kidPrice=" + kidPrice + ", phone=" + phone
-				+ "]";
+				+ ", listnum=" + listnum + "]";
 	}
-	
 	
 	
 

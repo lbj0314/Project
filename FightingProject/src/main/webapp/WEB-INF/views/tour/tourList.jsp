@@ -236,7 +236,7 @@
 										<tr>
 											<td><a href="tourRetrieve?attNum=${xxx.attNum}">
 													<img src="image/${xxx.attImageClone}" border="0"
-													align="center" width="200">
+													align="center" width="200" height="200">
 
 											</a></td>
 										</tr>

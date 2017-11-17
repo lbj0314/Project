@@ -44,7 +44,7 @@
 										<tr>
 											<td><a href="/test/stayRetrieve?stayNum=${xxx.stayNum}">
 													<img src="image/${xxx.stayImageClone}" border="0"
-													align="center" width="200">
+													align="center" width="200" height="200">
 
 											</a></td>
 										</tr>

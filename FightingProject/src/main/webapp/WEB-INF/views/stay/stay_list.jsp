@@ -147,7 +147,7 @@
 			<option value="제주도">제주도</option>
 		</select> <select name="stayType" class="form-control" id="stayty">
 			<option value="def">타입선택</option>
-			<option value="게스트 하우스">게스트 하우스</option>
+			<option value="게스트하우스">게스트 하우스</option>
 			<option value="아파트">아파트</option>
 			<option value="모텔">모텔</option>
 			<option value="호텔">호텔</option>
@@ -214,7 +214,7 @@
 										<tr>
 											<td><a href="/test/stayRetrieve?stayNum=${xxx.stayNum}">
 													<img src="image/${xxx.stayImageClone}" border="0"
-													align="center" width="200">
+													align="center" width="200" height="200">
 
 											</a></td>
 										</tr>
