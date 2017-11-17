@@ -63,7 +63,11 @@
 	});
 </script>
 
-
+<c:if test="${!empty reviewWriteSuccess}">
+<script>
+alert('${reviewWriteSuccess}');
+</script>
+</c:if>
 
 	
 	<h1 align=center>
