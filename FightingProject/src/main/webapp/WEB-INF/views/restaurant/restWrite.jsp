@@ -124,12 +124,12 @@ $(document).ready(function() {
 	$(document).ready(function() {
 		$('#restKidPrice').keyup(function() {
 			if ($('#restKidPrice').val().length < 1) {
-				$('font[name=check3]').css("color", "red");
-				$('font[name=check3]').text("어린이 평균 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
+				$('font[name=check4]').css("color", "red");
+				$('font[name=check4]').text("어린이 평균 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
 			}
 			else {
-				$('font[name=check3]').css("color", "blue");
-				$('font[name=check3]').text("어린이 평균 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
+				$('font[name=check4]').css("color", "blue");
+				$('font[name=check4]').text("어린이 평균 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
 			}
 		});
 	});//restPrice
@@ -140,12 +140,12 @@ $(document).ready(function() {
 	$(document).ready(function() {
 		$('#restPhone').keyup(function() {
 			if ($('#restPhone').val().length < 8) {
-				$('font[name=check4]').css("color", "red");
-				$('font[name=check4]').text("숫자 8-11자리로 입력해주세요");
+				$('font[name=check5]').css("color", "red");
+				$('font[name=check5]').text("숫자 8-11자리로 입력해주세요");
 			}
 			else {
-				$('font[name=check4]').css("color", "blue");
-				$('font[name=check4]').text("숫자 8-11자리로 입력해주세요");
+				$('font[name=check5]').css("color", "blue");
+				$('font[name=check5]').text("숫자 8-11자리로 입력해주세요");
 			}
 		});
 	});//restPhone
@@ -269,7 +269,7 @@ $(document).ready(function() {
 
 				<td colspan=2 align=center>전화번호:</td>
 				<td colspan=2><input type="text" name="restPhone" id="restPhone" maxlength="11"
-					class="form-control"><font name="check4" size="2"></td> <br>
+					class="form-control"><font name="check5" size="2"></td> <br>
 				</td>
 			</div>
 		</tr>
