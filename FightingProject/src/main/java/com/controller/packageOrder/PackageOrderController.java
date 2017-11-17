@@ -505,7 +505,7 @@ public class PackageOrderController {
 		
 		String startDay = dateForm.substring(10, 20);
 		String endDay = dateForm.substring(29);
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date startDate = null;
 		Date endDate = null;
 		boolean result = true;
@@ -525,7 +525,7 @@ public class PackageOrderController {
 			String orderEndDay = orderDto.getEndDay();
 			Date orderStartDate = null;
 			Date orderEndDate = null;
-			SimpleDateFormat format2 = new SimpleDateFormat("yyyy/mm/dd");
+			SimpleDateFormat format2 = new SimpleDateFormat("yyyy/MM/dd");
 			try {
 				orderStartDate = format2.parse(orderStartDay);
 				orderEndDate = format2.parse(orderEndDay);
@@ -533,13 +533,15 @@ public class PackageOrderController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			long a = startDate.getTime()-orderStartDate.getTime();
-			long c = endDate.getTime()-orderEndDate.getTime();
-			if(a>=0) {
-				System.out.println("이거냐?");
+			long a = startDate.getTime();
+			long b = orderStartDate.getTime();
+			long c = endDate.getTime();
+			long d = orderEndDate.getTime();
+			if((a-b)>=0&&(d-a)>=0) {
+				System.out.println("시작날짜와 끝나는날짜 사이에 startDate");
 				result = false;
-			}else if(c>=0) {
-				System.out.println("아오 ㅅㅂ");
+			}else if((c-b)>=0&&(d-c)>=0) {
+				System.out.println("저기냐");
 				result = false;
 			}
 		}
