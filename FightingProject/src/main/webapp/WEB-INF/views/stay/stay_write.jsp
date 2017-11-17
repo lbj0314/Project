@@ -15,22 +15,22 @@
 <script type="text/javascript">
 $(document).ready(function() {
 		
-		var RegName = /^[가-힣a-zA-Z0-9_-]{2,20}$/; //이름 유효성 검사 2~20자 사이
-		var RegTitle =  /^[가-힣a-zA-Z0-9_-]{4,30}$/;  //제목 유효성 검사 4~30자 사이
-		var RegAvgPrice = /^[0-9]{3,11}$/; //어른,어린이 가격 유효성 검사
-		var RegPhone = /^[0-9]{9,11}$/; //전화번호 유효성 검사
+		var RegName = /^[가-힣a-zA-Z0-9_-]{1,20}$/; //이름 유효성 검사 1~20자 사이
+		var RegTitle =  /^[가-힣a-zA-Z0-9_-]{1,30}$/;  //제목 유효성 검사 1~30자 사이
+		var RegAvgPrice = /^[0-9]{1,11}$/; //어른,어린이 가격 유효성 검사
+		var RegPhone = /^[0-9]{8,11}$/; //전화번호 유효성 검사
 		
 		 
 		$("form").submit(function(){
 			if ( !RegName.test($.trim($("#stayName").val())) )
 			{
-				alert("숙박업소 이름에 2~20자로 입력해주세요.");
+				alert("숙박업소 이름에 1~20자로 입력해주세요.");
 				$("#stayName").focus();
 				return false;
 			}
 			else if ( !RegTitle.test($.trim($("#stayTitle").val())) )
 			{
-				alert("제목에  4~30자로 입력해주세요.");
+				alert("제목에  1~30자로 입력해주세요.");
 				$("#stayTitle").focus();
 				return false;
 			}
@@ -56,19 +56,19 @@ $(document).ready(function() {
         	}
 			else if ( !RegAvgPrice.test($.trim($("#stayAdultPrice").val())) )
 			{
-				alert("성인 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				alert("성인 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
 				$("#stayAdultPrice").focus();
 				return false;
 			}
 			else if ( !RegAvgPrice.test($.trim($("#stayKidPrice").val())) )
 			{
-				alert("어린이 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				alert("어린이 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
 				$("#stayKidPrice").focus();
 				return false;
 			}
 			else if ( !RegPhone.test($.trim($("#stayPhone").val())))
 			{
-				alert("전화번호 입력란에 9~11자리와 숫자만 입력해주세요.");
+				alert("전화번호 입력란에 8~11자리와 숫자만 입력해주세요.");
 				$("#stayPhone").focus();
 				return false;
 			}
@@ -88,62 +88,62 @@ $(document).ready(function() {
 	
 	$(document).ready(function() {
 		$('#stayName').keyup(function() {
-		 if ($('#stayName').val().length < 2 ) {
+		 if ($('#stayName').val().length < 1 ) {
 				$('font[name=check]').css("color", "red");
-				$('font[name=check]').text("숙박업소 이름에 2~20자로 입력해주세요.");
+				$('font[name=check]').text("숙박업소 이름에 1~20자로 입력해주세요.");
 				}
 			  else {
 				$('font[name=check]').css("color", "blue");
-				$('font[name=check]').text("숙박업소 이름에 2~20자로 입력해주세요.");
+				$('font[name=check]').text("숙박업소 이름에 1~20자로 입력해주세요.");
 			}
 		});
 	});//stayName
 		
 	$(document).ready(function() {
 		$('#stayTitle').keyup(function() {
-			if ($('#stayTitle').val().length < 4) {
+			if ($('#stayTitle').val().length < 1) {
 				$('font[name=check2]').css("color", "red");
-				$('font[name=check2]').text("제목에 4~30자로 입력해주세요.");
+				$('font[name=check2]').text("제목에 1~30자로 입력해주세요.");
 			}
 			else {
 				$('font[name=check2]').css("color", "blue");
-				$('font[name=check2]').text("제목에 4~30자로 입력해주세요.");
+				$('font[name=check2]').text("제목에 1~30자로 입력해주세요.");
 			}
 		});
 	});//stayTitle
 	
 	$(document).ready(function() {
 		$('#stayAdultPrice').keyup(function() {
-			if ($('#stayAdultPrice').val().length < 3) {
+			if ($('#stayAdultPrice').val().length < 1) {
 				$('font[name=check3]').css("color", "red");
-				$('font[name=check3]').text("성인 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$('font[name=check3]').text("성인 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
 			}
 			else {
 				$('font[name=check3]').css("color", "blue");
-				$('font[name=check3]').text("성인 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$('font[name=check3]').text("성인 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
 			}
 		});
 		$('#stayKidPrice').keyup(function() {
-			if ($('#stayKidPrice').val().length < 3) {
+			if ($('#stayKidPrice').val().length < 1) {
 				$('font[name=check4]').css("color", "red");
-				$('font[name=check4]').text("어린이 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$('font[name=check4]').text("어린이 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
 			}
 			else {
 				$('font[name=check4]').css("color", "blue");
-				$('font[name=check4]').text("어린이 가격 입력란에 3~11자리의 숫자만 입력해주세요.");
+				$('font[name=check4]').text("어린이 가격 입력란에 1~11자리의 숫자만 입력해주세요.");
 			}
 		});
 	});//stayPrice
 	
 	$(document).ready(function() {
 		$('#stayPhone').keyup(function() {
-			if ($('#stayPhone').val().length < 9) {
+			if ($('#stayPhone').val().length < 8) {
 				$('font[name=check5]').css("color", "red");
-				$('font[name=check5]').text("숫자 9-11자리로 입력해주세요");
+				$('font[name=check5]').text("숫자 8-11자리로 입력해주세요");
 			}
 			else {
 				$('font[name=check5]').css("color", "blue");
-				$('font[name=check5]').text("숫자 9-11자리로 입력해주세요");
+				$('font[name=check5]').text("숫자 8-11자리로 입력해주세요");
 			}
 		});
 	});//stayPhone
