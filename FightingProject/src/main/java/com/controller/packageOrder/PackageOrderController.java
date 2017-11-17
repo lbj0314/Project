@@ -502,7 +502,7 @@ public class PackageOrderController {
 	@RequestMapping("/guideDate")
 	@ResponseBody
 	public void guideDate(@RequestBody String dateForm, HttpSession session,HttpServletResponse response) {
-
+		
 		String startDay = dateForm.substring(10, 20);
 		String endDay = dateForm.substring(29);
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
@@ -533,12 +533,13 @@ public class PackageOrderController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			long a = startDate.getTime()-orderStartDate.getTime();
-			long c = endDate.getTime()-orderStartDate.getTime();
+			long c = endDate.getTime()-orderEndDate.getTime();
 			if(a>=0) {
+				System.out.println("이거냐?");
 				result = false;
-			}else if(c<=0) {
+			}else if(c>=0) {
+				System.out.println("아오 ㅅㅂ");
 				result = false;
 			}
 		}
