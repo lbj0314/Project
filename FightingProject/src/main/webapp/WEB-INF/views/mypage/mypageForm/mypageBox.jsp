@@ -36,27 +36,9 @@
 
 </script>
 
-<style>
-.btn-info{
-  background:#1AAB8A;
-  color:#fff;
-  border:none;
-  outline:none;
-}
-
-</style>
-
-<br>
-<br>
-
-
-<hr style="border: double 10px #C0C0C0;">
 
 
 <c:forEach var="item" items="${requestScope.order}" varStatus="status">
-
-
-
 	<form action="/test/Review">
 	<input type="hidden" name=comNum value="${item.comNum}">
 	<input type="hidden" name=packName value="${item.packName}">
@@ -67,6 +49,11 @@
 	<input type="hidden" name=adult value="${item.adult}">
 	<input type="hidden" name=kid value="${item.kid}">
 	<input type="hidden" name=packOrderNum value="${item.packOrderNum}">
+	
+	
+	
+	
+	
 	
 	
 	
@@ -122,16 +109,9 @@
 	</table>
 	<%-- <a href="/test/Review/packOrderNum/${item.packOrderNum}/state/${item.state}" class="btn btn-info">후기 작성하러 가기</a> --%>
 	<br>
+	<br>
 	
 	<input type="submit" value="후기 등록하러 가기" class="btn btn-info"><br>
 	</form>
-	
-	<br>
-<br>
-
-
-<hr style="border: dashed 6px #C0C0C0;">
 </c:forEach>
-
-
 

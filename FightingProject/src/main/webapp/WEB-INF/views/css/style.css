@@ -16,7 +16,7 @@
 	text-align: center;
 }
 
-/* button{
+button{
   background:#1AAB8A;
   color:#fff;
   border:none;
@@ -52,4 +52,4 @@ button:hover:before,button:hover:after{
   width:100%;
   transition:800ms ease all;
 }
- */
+
