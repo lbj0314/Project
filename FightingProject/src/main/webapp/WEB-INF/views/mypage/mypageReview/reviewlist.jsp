@@ -71,7 +71,7 @@ alert('${reviewWriteSuccess}');
 
 	
 	<h1 align=center>
-		&nbsp;&nbsp;&nbsp;후기 게시판<small>&nbsp;&nbsp;&nbsp;등록한 사용자만 CRUD가능</small>
+		&nbsp;&nbsp;&nbsp;후기 게시판<small>&nbsp;&nbsp;&nbsp;다녀온 사용자만 작성 가능</small>
 	</h1>
 
 	<div class="container">
